@@ -29,7 +29,7 @@
     </head>
 <body class="bg-gray-100">
     <div class="container ">
-      <h1 class="text-gray-500 mx-32 mt-10 mx-1 text-xl">
+      <h1 class="text-gray-500 mx-32 mt-10 text-xl">
         Edit Profile
       </h1>
      

@@ -58,9 +58,7 @@
                 './resources/js/script.js',
                 './resources/js/ckeditor.js',
         ])
-        {{-- <script>
-          new WOW().init();
-        </script> --}}
+       
     </head>
     <body class="antialiased">
        
