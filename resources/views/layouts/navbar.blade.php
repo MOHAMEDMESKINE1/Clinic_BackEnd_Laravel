@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+
     <nav class="bg-white   border-gray-200 dark:bg-cyan-50   fixed w-full z-20 top-0 left-0 nav ">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4  ">
         <a href="#home" class="flex items-center">
@@ -64,6 +56,3 @@
         </div>
 
     </nav>
-
-</body>
-</html>

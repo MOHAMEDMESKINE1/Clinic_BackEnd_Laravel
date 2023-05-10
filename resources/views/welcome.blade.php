@@ -53,11 +53,7 @@
         </style>
 
      
-        @vite(['./resources/js/app.js','./resources/css/animate.css',
-                './resources/js/wow.min.js','./resources/css/style.css',
-                './resources/js/script.js',
-                './resources/js/ckeditor.js',
-        ])
+      @include('layouts.scripts')
        
     </head>
     <body class="antialiased">
@@ -568,7 +564,7 @@
   @extends('layouts.footer')
   <!-- footer -->
 
-   <script>
+   {{-- <script>
       // Dark Mode Map
       const btnMap = document.getElementById("btn-map");
       const darkMap = document.getElementById("map");
@@ -579,7 +575,7 @@
           darkMap.classList.toggle('dark')
 
       })
-   </script>
+   </script> --}}
          <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
     </body>
 </html>

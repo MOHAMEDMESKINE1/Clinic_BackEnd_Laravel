@@ -24,8 +24,14 @@
     
   <!-- animate css-->
 
-  <link rel="stylesheet" href="../css/animate.css">
- 
+  @vite(['./resources/js/app.js','./resources/css/animate.css',
+                './resources/js/wow.min.js','./resources/css/style.css',
+                './resources/js/script.js',
+                './resources/js/ckeditor.js',
+        ])
+        <script>
+          new WOW().init();
+        </script>
   <!-- animate css-->
 </head>
 <body>
@@ -281,13 +287,9 @@
   <!-- footer -->   
   @extends('layouts.footer')
   <!-- footer -->
-  <script src="../js/wow.min.js"></script>
-  <script>
-  new WOW().init();
-  </script>
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/script.js"></script>
+
+
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

@@ -1,4 +1,4 @@
- new WOW().init();
+
 // SERVICES
 // $(document).ready(function() {
 

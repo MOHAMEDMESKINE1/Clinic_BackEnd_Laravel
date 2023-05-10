@@ -42,11 +42,9 @@
      }
     
   </style>
-  <!-- animate css-->
-
-  <link rel="stylesheet" href="../css/animate.css">
  
-  <!-- animate css-->
+  @include('layouts.scripts')
+
 
 </head>
 <body>
@@ -133,14 +131,7 @@
   @extends('layouts.footer')
   <!-- footer -->
   
-<script src="../js/wow.min.js"></script>
-<script>
-new WOW().init();
-</script>
 
-<script src="../js/jquery.min.js"></script>
-
-<script src="../js/script.js"></script>
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

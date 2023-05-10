@@ -41,11 +41,8 @@
     
   </style>
      
-  <!-- animate css-->
+     @include('layouts.scripts')
 
-  <link rel="stylesheet" href="../css/animate.css">
- 
-  <!-- animate css-->
 </head>
 <body class="bg-cyan-50">
     
@@ -133,14 +130,7 @@ shadow-lg overflow-hidden   md:p-5 my-5 md:mx-10  " style="border-bottom: 40px !
     @extends('layouts.footer')
     <!-- footer -->
 
-      
-      <script src="../js/wow.min.js"></script>
-      <script>
-      new WOW().init();
-      </script>
     
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/script.js"></script>
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

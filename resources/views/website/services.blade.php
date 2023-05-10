@@ -20,11 +20,8 @@
         font-family: 'Poppins', sans-serif;
     }
     </style>
- <!-- animate css-->
+    @include('layouts.scripts')
 
- <link rel="stylesheet" href="../css/animate.css">
- 
- <!-- animate css-->
 </head>
 <body>
         <!-- navbar -->
@@ -73,12 +70,6 @@
   <!-- footer -->   
   @extends('layouts.footer')
   <!-- footer -->
-  <script src="../js/wow.min.js"></script>
-  <script>
-  new WOW().init();
-  </script>
-
-  <script src="../js/jquery.min.js"></script>
 
   <script src="../js/script.js"></script>
   <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
