@@ -41,15 +41,16 @@
             </li>
             </ul>
             <div class="mx-4 flex flex-col   md:flex-row justify-between text-center">
-                @if (Route::has('login'))
+                {{-- @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}" class="font-semibold  text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Log in</a>
 
                 @endauth 
-                @endif
-    
+                @endif --}}
+                <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Log in</a>
+
                 <a href="{{route('appointement')}}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">Make appointement</a>
 
             </div>
