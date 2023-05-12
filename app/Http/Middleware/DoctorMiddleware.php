@@ -15,9 +15,10 @@ class DoctorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role == 'doctor') {
-        return redirect('/doctor/dashboard');
+        if ( auth()->user()->role !== 'doctor') {
+            return redirect('/');
         }
+        
         return $next($request);
     }
 }

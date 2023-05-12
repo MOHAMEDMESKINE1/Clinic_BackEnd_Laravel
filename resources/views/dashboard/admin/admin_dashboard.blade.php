@@ -55,14 +55,14 @@
           Loading.....
         </div>
         <!-- Sidebar -->
-        <aside class="flex-shrink-0 hidden w-64 bg-white  border-r dark:border-primary-darker  md:block ">
+        <aside class="flex-shrink-0 overflow-auto hidden w-64 bg-white  border-r dark:border-primary-darker  md:block ">
           <div class="flex flex-col h-full">
             <!-- Sidebar links -->
             <nav aria-label="Main" class="flex-1 px-2 py-2 overflow-y-hidden  ">
               <!-- Dashboards links -->
               <div class=" " x-data="{ isActive: true, open: true}">
                 <div class="flex justify-start ml-2   text-sm "> 
-                  <img src="../admin/imgs/hospital.png" class="w-7 h-7 max-w-md mx-5" alt="photo" >
+                  <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="w-7 h-7 max-w-md mx-5" alt="photo" >
                   <h1 class=" mt-2">
                     We<b class="text-cyan-500">Care</b>
                   </h1>
@@ -155,6 +155,17 @@
                   
                   Settings
                   </a>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+  
+                    <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                    
+                     :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
+                    </a>
+                </form>       
                  
                 </div>
               </div>
@@ -194,9 +205,9 @@
               <!-- Brand -->
               <a
                 href="index.html"
-                class="inline-block text-2xl  font-bold tracking-wider uppercase text-primary-dark dark:text-light"
+                class="inline-block text-2xl  font-light tracking-wider capitalize text-cyan-900 dark:text-light"
               >
-               <span>We<b class="text-cyan-700 ">Care</b></span>
+              Admin Dashboard 
 
                
               </a>
@@ -490,13 +501,17 @@
                     
         
                       <!-- Logout links -->
-                      <a
-                      href="#logout"
-                      class="flex items-center p-2 hover:font-semibold hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 active:bg-gray-50 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary"
-                    >
-                    <i class="fas fa-light fa-right-from-bracket p-1"></i>
-                      <span class="ml-2 text-sm"> LogOut </span>
-                    </a>
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+      
+                        <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        
+                         :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
+                        </a>
+                    </form>       
                      
                     </nav>
                   </div>
@@ -674,6 +689,10 @@
 
       }
     </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+
   </body>
   
 </html>

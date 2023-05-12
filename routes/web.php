@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +27,6 @@ route::view('/services','website.services')->name('services');
 route::view('/appointement','website.appointement')->name('appointement');
 route::view('/thankyou','website.thankyou');
 
-// admin pages
-route::view('/admin','dashboard.admin.admin_dashboard')->name('admin.admin_dashboard');
-route::view('/admin/dashboard','dashboard.admin.statistics')->name('admin.statistics');
-route::view('/admin/patients','dashboard.admin.patients')->name('admin.patients');
-route::view('/admin/appointements','dashboard.admin.appointements')->name('admin.appointements');
-route::view('/admin/appointement_details','dashboard.admin.appointement_details')->name('admin.appointement_details');
-route::view('/admin/doctors','dashboard.admin.doctors')->name('admin.doctors');
-route::view('/admin/profile','dashboard.admin.profile')->name('admin.profile');
 
 
 
@@ -55,8 +48,9 @@ route::view('/doctor/profile','dashboard.doctor.profile')->name('doctor.profile'
 
 // patient pages
 route::view('/patient','dashboard.patient.patient_dashboard')->name('patient.patient_dashboard');
-route::view('/patient/dashboard','dashboard.patient.statistics')->name('patient.statistics');
 route::view('/patients','dashboard.patient.patients')->name('patient.patients');
+
+route::view('/patient/dashboard','dashboard.patient.statistics')->name('patient.statistics');
 route::view('/patient/doctor_details','dashboard.patient.doctor_details')->name('patient.doctor_details');
 route::view('/patient/appointements','dashboard.patient.appointements')->name('patient.appointements');
 route::view('/patient/appointement_details','dashboard.patient.appointement_details')->name('patient.appointement_details');
@@ -71,25 +65,41 @@ route::view('/patient/visits_details','dashboard.patient.visits_details')->name(
 
 
 // Routes for the admin dashboard
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('dashboard.admin.statistics');
-    });
+
+Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin','name'=>"admin"], function () {
+    
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/patients', [AdminController::class, 'patients'])->name('patients');
+    Route::get('/doctors', [AdminController::class, 'doctors'])->name('doctors');
+    Route::get('/appointements', [AdminController::class, 'appointements'])->name('appointements');
+    Route::get('/appointement_details', [AdminController::class, 'appointement_details'])->name('appointement_details');
+    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+    Route::get('/statistics', [AdminController::class, 'statistics'])->name('statistics');
+    
+
+
 });
+
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/admin/dashboard', function () {
+//         return view('dashboard.admin.statistics');
+//     })->name('admin.dashboard');
+// });
+
 
 // Routes for the doctor dashboard
-Route::middleware(['auth', 'doctor'])->group(function () {
-    Route::get('/doctor/dashboard', function () {
-        return view('dashboard.doctor.statistics');
-    });
-});
+// Route::middleware(['auth', 'doctor'])->group(function () {
+//     Route::get('/doctor/dashboard', function () {
+//         return view('dashboard.doctor.statistics');
+//     })->name('doctor.dashboard');
+// });
 
 // Routes for the patient dashboard
-Route::middleware(['auth', 'patient'])->group(function () {
-    Route::get('/patient/dashboard', function () {
-        return view('dashboard.patient.statistics');
-    });
-});
+// Route::middleware(['auth', 'patient'])->group(function () {
+//     Route::get('/patient/dashboard', function () {
+//         return view('dashboard.patient.statistics');
+//     })->name('patient.dashboard');
+// });
 
 // Route::group(['middleware' => ['auth', 'admin']], function () {
 //     // admin routes
@@ -117,6 +127,8 @@ Route::middleware(['auth', 'patient'])->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/home',[AdminController::class ,'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

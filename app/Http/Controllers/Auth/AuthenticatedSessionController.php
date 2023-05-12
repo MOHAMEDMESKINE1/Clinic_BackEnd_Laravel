@@ -25,18 +25,18 @@ class AuthenticatedSessionController extends Controller
      */
     protected function redirectTo()
     {
-    if (auth()->user()->role === 'admin') {
+    // if (auth()->user()->role === 'admin') {
         
-        return redirect('/admin/dashboard');
+    //     return redirect('/admin/dashboard');
 
-    } elseif (auth()->user()->role === 'doctor') {
+    // } elseif (auth()->user()->role === 'doctor') {
 
-        return redirect('/doctor/dashboard');
+    //     return redirect('/doctor/dashboard');
 
-    } elseif (auth()->user()->role === 'patient') {
+    // } elseif (auth()->user()->role === 'patient') {
 
-        return redirect('/patient/dashboard');
-    }
+    //     return redirect('/patient/dashboard');
+    // }
 
     return redirect('/dashboard');
     }
@@ -48,7 +48,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // return view('website.thankyou');
-        // return redirect()->intended(RouteServiceProvider::HOME);
+         return redirect()->intended(RouteServiceProvider::HOME);
         return redirect()->intended($this->redirectTo());
 
     }

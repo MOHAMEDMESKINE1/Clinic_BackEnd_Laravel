@@ -15,9 +15,9 @@ class RedirectIfAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle(Request $request, Closure $next, $guards = null): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
+        // $guards = empty($guards) ? [null] : $guards;
 
         // foreach ($guards as $guard) {
         //     if (Auth::guard($guard)->check()) {
@@ -26,29 +26,16 @@ class RedirectIfAuthenticated
           
            
         // }
-        
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                // Get the user's role
-                $user = Auth::guard($guard)->user();
-                $role = $user->role;
-    
-                // Redirect based on the user's role
-                switch ($role) {
-                    case 'admin':
-                        return redirect('/admin/dashboard');
-                        break;
-                    case 'doctor':
-                        return redirect('/doctor/dashboard');
-                        break;
-                    case 'patient':
-                    default:
-                        return redirect('/patient/dashboard');
-                        break;
-                }
+        if (Auth::guard($guards)->check()) {
+            if ($guards == 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($guards == 'doctor') {
+                return redirect()->route('doctor.dashboard');
+            } elseif ($guards == 'patient') {
+                return redirect()->route('patient.dashboard');
             }
         }
-    
+
         return $next($request);
     }
 }
