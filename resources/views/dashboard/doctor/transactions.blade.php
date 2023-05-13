@@ -130,7 +130,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                               
-                                <a href="{{route('doctor.transactions_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('transactions_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a>                                
                                

@@ -171,7 +171,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                            
-                                <a href="appointement_details.html"  data-tooltip-target="tooltip-view"  data-modal-target="editAppointement" data-modal-toggle="editAppointement" class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('appointement_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editAppointement" data-modal-toggle="editAppointement" class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-green-700 text-xl"></i>
                                 </a> 
                                 <div id="tooltip-view" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">

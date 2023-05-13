@@ -128,7 +128,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                 <!-- view -->
-                                <a href="{{route('doctor.visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a> 
                                 <!-- edit -->
