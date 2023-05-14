@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transactions</title>
+    <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
@@ -42,13 +42,13 @@
       </style>
 </head>
 <body class="bg-gray-100">
-    @extends('dashboard.patient.patient_dashboard')
-        
+    @extends('dashboard.admin.admin_dashboard')
+
     @section('content')
     <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container m-5">
-            <div class="">
+        <div class=" container ">
+            <div class="m-5">
                 <div class="flex justify-between mx-4 mb-4 sm\:flex-row ">
                 <div>
                     <form action="">
@@ -102,9 +102,9 @@
                     <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                         <td>
                             <div class="flex justify-center">
-                                <img src="../admin/imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
                                 <p class="mx-3">
-                                    <a href="../doctor/patient_details.html">James Sam</a>
+                                    <a href="#">James Sam</a>
                                 </p>
                                </div>
                                 <div class="flex justify-center" >
@@ -129,7 +129,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                               
-                                <a href="/admin/transactions_details.html"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('admin.transactions_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a>                                
                                
@@ -144,9 +144,9 @@
                     <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                         <td>
                             <div class="flex justify-center">
-                                <img src="../admin/imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
                                 <p class="mx-3">
-                                    <a href="../doctor/patient_details.html">James Sam</a>
+                                    <a href="#">James Sam</a>
                                 </p>
                                </div>
                                 <div class="flex justify-center" >
@@ -176,7 +176,7 @@
                                     <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
                                 </label>                             
                                
-                                <div id="tooltip-status" role="tooltip" class="absolute z-10 invisible inline-block p-1 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                <div id="tooltip-status" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                      status 
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div> 
@@ -188,9 +188,9 @@
                     <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                         <td>
                             <div class="flex justify-center">
-                                <img src="../admin/../admin/imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
                                 <p class="mx-3">
-                                    <a href="../doctor/patient_details.html">James Sam</a>
+                                    <a href="#">James Sam</a>
                                 </p>
                                </div>
                                 <div class="flex justify-center" >
@@ -214,7 +214,7 @@
                        
                         <td>
                             <div  data-tooltip-target="tooltip-status"  class="flex justify-center mt-5">
-                                <a href="{{route('patient.transactions_details')}}"  data-tooltip-target="tooltip-order"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2 bg-gradient-to-br w-25   font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="/admin/transactions_details.html"  data-tooltip-target="tooltip-order"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2 bg-gradient-to-br w-25   font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-regular fa-circle-xmark text-red-600 text-xl"></i>
                                 </a>                                
                                
@@ -242,7 +242,7 @@
             </div>
              <!-- show result -->
             <!-- navigation -->
-            <nav class="flex items-start justify-between  mt-2 pt-4" aria-label="Table navigation">
+            <nav class="flex items-start justify-between  mt-5 pt-4" aria-label="Table navigation">
                 <ul class="inline-flex items-center -space-x-px">
                     <li>
                         <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-cyan-100 hover:text-gray-200  dark:border-gray-200  dark:hover:bg-gray-700 dark:hover:text-white">
@@ -269,8 +269,7 @@
            </div>
         </div>
     <div>
-    @endsection
-   
+   @endsection
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

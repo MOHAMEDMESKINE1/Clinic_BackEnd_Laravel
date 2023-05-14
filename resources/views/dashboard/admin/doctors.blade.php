@@ -528,7 +528,14 @@
                                                 <div class="w-full mb-4 group">
                                                     <label for="year" class="font-medium ">Year:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                                     <select id="year" name="year" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                                        <option selected class="font-medium">Select a Year</option>
+                                                        <option selected disabled class="font-medium">Select a Year</option>
+                                                        <?php
+                                                            $start_year = 1970;
+                                                            $current_year = date('Y');
+                                                            for ($year = $start_year; $year <= $current_year; $year++) {
+                                                            echo '<option value="' . $year . '">' . $year . '</option>';
+                                                            }
+                                                        ?>
                                                                                 
                                                     </select>                                
                                                 </div>
@@ -684,7 +691,14 @@
                             <div class="w-full mb-4 group">
                                 <label for="year" class="font-medium ">Year:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                 <select id="yearQualification" name="year" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                    <option selected class="font-medium">Select a Year</option>
+                                    <option selected disabled class="font-medium">Select a Year</option>
+                                    <?php
+                                            $start_year = 1970;
+                                            $current_year = date('Y');
+                                            for ($year = $start_year; $year <= $current_year; $year++) {
+                                            echo '<option value="' . $year . '">' . $year . '</option>';
+                                            }
+                                        ?>
                                                             
                                 </select>                                
                             </div>
@@ -732,36 +746,7 @@
     </div>
     
     @endsection
-
-  
-
-
-    <!-- select year -->
-    <script>
-        var select = document.getElementById("year");
-        
-        var startYear = 1960;
-        var endYear = new Date().getFullYear(); // get current year as end year
-        
-        for (var year = startYear; year <= endYear; year++) {
-            var option = document.createElement("option");
-            option.value = year;
-            option.text = year;
-            select.add(option);
-        }
-
-        var yearQualification = document.querySelector("#yearQualification");
-        var startYearQ = 1960;
-        var endYearQ = new Date().getFullYear();
-        for (var year = startYearQ; year <= endYearQ; year++) {
-            var option = document.createElement("option");
-            option.value = year;
-            option.text = year;
-            yearQualification.add(option);
-        }
-      
-    </script>
-    <!-- select year -->
+   
     <!-- flag -->
     <script>
         const phoneInputField = document.getElementById("phone");
@@ -771,7 +756,6 @@
             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
     </script>
-    <!-- <script defer src="script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

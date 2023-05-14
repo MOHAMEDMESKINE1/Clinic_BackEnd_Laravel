@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
     <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
@@ -70,7 +70,7 @@
               </a>
               <div role="menu" x-show="open" class="mt-5 space-y-5 px-5" aria-label="Dashboards">
                 <a
-                  href="#"
+                  href="{{route('doctor.statistics')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -80,7 +80,7 @@
                
               
                 <a
-                  href="#"
+                  href="{{route('doctor.appointements')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -88,7 +88,7 @@
                   Appointements
                 </a>
                 <a
-                  href="#"
+                  href="{{route('doctor.transactions')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -97,7 +97,7 @@
                 </a>
                
                 <a
-                  href="#"
+                  href="{{route('doctor.visits')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -105,7 +105,7 @@
                   Visits
                 </a>
                 <a
-                  href="#"
+                  href="{{route('doctor.schedule')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -114,7 +114,7 @@
                 My Schedule
                 </a>
                 <a
-                  href="#"
+                  href="{{route('doctor.live_consultations')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -124,7 +124,7 @@
               
               </a>
                 <a
-                  href="#"
+                  href="{{route('doctor.holidays')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -132,13 +132,7 @@
                  Holiday
                 </a>
                 <!-- Logout links -->
-                  {{-- <a
-                  href="#logout"
-                  class="flex items-center p-2 hover:font-semibold hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 active:bg-gray-50 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary"
-                >
-                <i class="fas fa-light fa-right-from-bracket p-1"></i>
-                  <span class="ml-2 text-sm"> LogOut </span>
-                </a>   --}}
+                
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
 
@@ -631,6 +625,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
     {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+
 
 
    

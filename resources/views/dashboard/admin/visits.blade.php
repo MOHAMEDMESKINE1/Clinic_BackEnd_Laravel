@@ -31,13 +31,13 @@
 </style>
 </head>
 <body class="bg-gray-100">
-    @extends('dashboard.patient.patient_dashboard')
-        
+    @extends('dashboard.admin.admin_dashboard')
+
     @section('content')
     <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container m-5">
-            <div class="">
+        <div class=" container ">
+            <div class="m-5">
                 <div class="flex justify-between sm\:flex-row ">
                 <div>
                     <form action="">
@@ -57,7 +57,7 @@
                         </label>
                     </form>  
                 </div>              
-                <div class=" flex justify-between mx-8  " >
+                <div class=" flex justify-between  " >
                   
                     
                     <button data-modal-target="addVisit" data-modal-toggle="addVisit" class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
@@ -127,7 +127,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                 <!-- view -->
-                                <a href="{{route('patient.visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('admin.visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a> 
                                 <!-- edit -->
@@ -222,6 +222,17 @@
 
                                 <input type="date" name="visit_date" id="visit_date" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                             </div>
+                            <!-- Doctor   -->
+                            <div class="w-full  group">
+                                <label for="role" class="font-medium ">Doctor:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                <select id="role" name="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                    <option selected>Select a doctor</option>
+                                    <option value="0">smith</option>
+                                    <option value="0">smith</option>
+                                    <option value="0">smith</option>
+                                
+                                </select>                                
+                            </div>
                             <!-- Patient   -->
                             <div class="w-full  group">
                                 <label for="role" class="font-medium ">Patient:<span class="text-red-500 font-medium mb-1">*</span><br></label>
@@ -233,21 +244,10 @@
                                 
                                 </select>                                
                             </div>
-                            <!-- Patient   -->
-                            <div class="w-full  group">
-                                <label for="patient" class="font-medium ">Patient:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                <select id="patient" name="patient" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                    <option selected>Select a patient</option>
-                                    <option value="0">smith</option>
-                                    <option value="0">smith</option>
-                                    <option value="0">smith</option>
-                                
-                                </select>                                
-                            </div>
                             <!-- description -->
                             <div class="w-full group">
                                 <label for="description" class="font-medium ">Description:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                <textarea name="description" id="editor" cols="10" rows="10" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer"></textarea>
+                                <textarea name="description" id="editor" cols="30" rows="10"></textarea>
                             </div>
                     </div>        
                     </form>
@@ -293,11 +293,11 @@
 
                                     <input type="date" name="visit_date" id="visit_date" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                                 </div>
-                                <!-- Patient   -->
+                                <!-- Doctor   -->
                                 <div class="w-full  group">
-                                    <label for="patient" class="font-medium ">Patient:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <select id="patient" name="patient" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                        <option selected>Select a patient</option>
+                                    <label for="role" class="font-medium ">Doctor:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                    <select id="role" name="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                        <option selected>Select a doctor</option>
                                         <option value="0">smith</option>
                                         <option value="0">smith</option>
                                         <option value="0">smith</option>
@@ -318,7 +318,7 @@
                                 <!-- profile -->
                                 <div class="w-full group">
                                     <label for="description" class="font-medium ">Description:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <textarea name="description" id="editortextarea" cols="10" rows="10" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer"></textarea>
+                                    <textarea name="description" id="editortextarea" cols="30" rows="10"></textarea>
                                 </div>
                         </div>
                                            
@@ -378,7 +378,7 @@
     </script> 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <script type="text/javascript" defer src="../node_modules/flowbite/dist/flowbite.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

@@ -184,7 +184,7 @@
                             <td>
                                 <div class="flex justify-center mt-5">
                                                                
-                                    <a href="appointement_details.html"  data-tooltip-target="tooltip-view"  class="text-white  text-sm px-5 py-2 text-center mb-2" type="button">
+                                    <a href="{{route('admin.appointement_details')}}"  data-tooltip-target="tooltip-view"  class="text-white  text-sm px-5 py-2 text-center mb-2" type="button">
                                         <i class="fas fa-eye text-green-700 text-xl"></i>
                                     </a> 
                                     <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-target="deleteDoctor" data-modal-toggle="deleteDoctor" class="text-white   text-sm px-5 py-2 text-center mb-2" type="button">

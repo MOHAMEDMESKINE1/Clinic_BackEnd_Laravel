@@ -12,7 +12,8 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "symfony/http-client": "*",
-        "symfony/mailgun-mailer": "*"
+        "symfony/mailgun-mailer": "*",
+        "wisdom-diala/countrypkg-laravel": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

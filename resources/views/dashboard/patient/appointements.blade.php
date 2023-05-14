@@ -59,7 +59,7 @@
                             </label>
                         </form>  
                     </div>              
-                    <div class=" flex justify-between  " >
+                    <div class=" flex justify-between mx-8  " >
                         <!-- filter  -->
                         <button
                         data-dropdown-toggle="dropdown" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button"
@@ -174,7 +174,7 @@
                                         </a> 
 
                                         <!-- view -->
-                                        <a href="../patient/appointement_details.html"  data-tooltip-target="tooltip-view"   class="text-white  w-25 text-sm  mx-2 text-center mb-2" type="button">
+                                        <a href="{{route('patient.appointement_details')}}"  data-tooltip-target="tooltip-view"   class="text-white  w-25 text-sm  mx-2 text-center mb-2" type="button">
                                             <i class="fas fa-eye text-green-700 text-xl p-1"></i>
                                         </a> 
                                         <!-- delete -->

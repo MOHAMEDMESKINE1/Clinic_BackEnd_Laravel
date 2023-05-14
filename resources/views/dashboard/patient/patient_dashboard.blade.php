@@ -67,7 +67,7 @@
                 </a>
                 <div role="menu" x-show="open" class="mt-5 space-y-5 px-5" aria-label="Dashboards">
                   <a
-                    href="#"
+                    href="{{route('patient.statistics')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -77,7 +77,7 @@
                  
                 
                   <a
-                    href="#"
+                    href="{{route('patient.appointements')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -85,7 +85,7 @@
                     Appointements
                   </a>
                   <a
-                    href="#"
+                    href="{{route('patient.transactions')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -94,7 +94,7 @@
                   </a>
 
                   <a
-                  href="#"
+                  href="{{route('patient.reviews')}}"
                   role="menuitem"
                   class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
@@ -104,7 +104,7 @@
                 </a>
 
                   <a
-                    href="#"
+                    href="{{route('patient.visits')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -113,7 +113,7 @@
                   </a>
                 
                   <a
-                    href="#"
+                    href="{{route('patient.live_consultations')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >

@@ -72,7 +72,7 @@
                 </a>
                 <div role="menu" x-show="open" class="mt-2 space-y-3 px-5" aria-label="Dashboards">
                   <a
-                    href="#"
+                    href="{{route('admin.statistics')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -80,7 +80,7 @@
                     Dashboard
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.doctors')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -88,7 +88,7 @@
                     Doctors
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.patients')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4  hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -96,7 +96,7 @@
                     Patients
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.appointements')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -104,7 +104,7 @@
                     Appointements
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.transactions')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -113,7 +113,7 @@
                   </a>
                  
                   <a
-                    href="#"
+                    href="{{route('admin.visits')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -121,7 +121,7 @@
                     Visits
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.services')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -130,7 +130,7 @@
                   Services
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.specializations')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -139,7 +139,7 @@
                   Specializations
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.subscribers')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -147,7 +147,7 @@
                   Subscribers
                   </a>
                   <a
-                    href="#"
+                    href="{{route('admin.settings')}}"
                     role="menuitem"
                     class="block hover:border shadow-md  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
@@ -204,7 +204,7 @@
 
               <!-- Brand -->
               <a
-                href="index.html"
+                href="{{route('admin.statistics')}}"
                 class="inline-block text-2xl  font-light tracking-wider capitalize text-cyan-900 dark:text-light"
               >
               Admin Dashboard 
@@ -410,89 +410,100 @@
                         </a>
                         <div role="menu" x-show="open" class="mt-2 space-y-2 px-5" aria-label="Dashboards">
                           <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-gauge p-1"></i>
-                            Dashboard
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light  p-1 fa-user-doctor"></i>
-                            Doctors
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4  hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas p-1 fa-light fa-hospital-user"></i>
-                            Patients
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-calendar-check p-1"></i>
-                            Appointements
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-money-bill p-1"></i>
-                            Transactions
-                          </a>
-                         
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-bed  p-1"></i>
-                            Visits
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-solid fa-fax p-1"></i>
+                          href="{{route('admin.statistics')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-gauge p-1"></i>
+                          Dashboard
+                        </a>
+                        <a
+                          href="{{route('admin.doctors')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light  p-1 fa-user-doctor"></i>
+                          Doctors
+                        </a>
+                        <a
+                          href="{{route('admin.patients')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4  hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas p-1 fa-light fa-hospital-user"></i>
+                          Patients
+                        </a>
+                        <a
+                          href="{{route('admin.appointements')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-calendar-check p-1"></i>
+                          Appointements
+                        </a>
+                        <a
+                          href="{{route('admin.transactions')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-money-bill p-1"></i>
+                          Transactions
+                        </a>
+                       
+                        <a
+                          href="{{route('admin.visits')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-bed  p-1"></i>
+                          Visits
+                        </a>
+                        <a
+                          href="{{route('admin.services')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-solid fa-fax p-1"></i>
+                        
+                        Services
+                        </a>
+                        <a
+                          href="{{route('admin.specializations')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-user-shield p-1"></i>
+                        
+                        Specializations
+                        </a>
+                        <a
+                          href="{{route('admin.subscribers')}}"
+                          role="menuitem"
+                          class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-sharp fa-solid fa-s p-1"></i>                  
+                        Subscribers
+                        </a>
+                        <a
+                          href="{{route('admin.settings')}}"
+                          role="menuitem"
+                          class="block hover:border shadow-md  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                        >
+                        <i class="fas fa-light fa-gears p-1"></i>
+                        
+                        Settings
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+        
+                          <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                           
-                          Services
+                           :href="route('logout')"
+                                  onclick="event.preventDefault();
+                                              this.closest('form').submit();">
+                              <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
                           </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-user-shield p-1"></i>
-                          
-                          Specializations
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-sharp fa-solid fa-s p-1"></i>                  
-                          Subscribers
-                          </a>
-                          <a
-                            href="#"
-                            role="menuitem"
-                            class="block hover:border   hover:shadow-md border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                          >
-                          <i class="fas fa-light fa-gears p-1"></i>
-                          
-                          Settings
-                          </a>
+                      </form> 
                          
                         </div>
                       </div>

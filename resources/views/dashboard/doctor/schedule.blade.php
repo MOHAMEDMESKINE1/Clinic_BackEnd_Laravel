@@ -7,7 +7,6 @@
     <title>Document</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../node_modules/flowbite/dist/flowbite.min.css">
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
 
        <!--  poppins font -->
@@ -28,12 +27,12 @@
      
     @extends('dashboard.doctor.doctor_dashboard')
     @section('content')
-    <div class="container my-5 mx-5">
-      <h1 class="text-2xl mb-2  ">
+    <div class="container ">
+      <h1 class="text-2xl mb-2 mx-5 mt-5  ">
          My Schedule
       </h1>
       <form action="" >
-         <div class="grid grid-col-1 md:grid-cols-2 gap-3 bg-white rounded-lg p-5 ">
+         <div class="grid grid-col-1 md:grid-cols-2 gap-3 bg-white rounded-lg p-5 m-5 ">
          
                <!-- doctor -->
                <div class="w-full  group mb-6">
@@ -113,12 +112,12 @@
 
          </div>
 
-         <div class="grid grid-col-1 p-5 mt-5 rounded-md  border-gray-500 border-2 ">
+         <div class="grid grid-col-1 p-3 mt-5  ">
            <!-- Search -->
-           <div class=" container m-5">
-            <div class="">
+           <div class=" container">
+            <div class=" ">
                 <div class="flex justify-between sm\:flex-row ">
-                <div>
+                <div class=" mb-5">
                     <form action="">
                         <label class="relative block">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">

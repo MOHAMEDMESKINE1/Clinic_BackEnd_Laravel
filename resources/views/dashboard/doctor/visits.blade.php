@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Visit Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
@@ -128,7 +128,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                 <!-- view -->
-                                <a href="{{route('visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('doctor.visits_details')}}"  data-tooltip-target="tooltip-view"  class="text-white   px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a> 
                                 <!-- edit -->

@@ -37,4 +37,40 @@ class AdminController extends Controller
         return    view('dashboard.admin.statistics');
 
     }
+    public function subscribers(){
+        return    view('dashboard.admin.subscribers');
+
+    }
+    public function visits(){
+        return    view('dashboard.admin.visits');
+
+    }
+    public function visits_details(){
+        return    view('dashboard.admin.visits_details');
+
+    }
+    public function transactions(){
+        return    view('dashboard.admin.transactions');
+
+    }
+    public function transactions_details(){
+        return    view('dashboard.admin.transactions_details');
+
+    }
+    public function staff(){
+        return    view('dashboard.admin.staff');
+
+    }
+    public function specializations(){
+        return    view('dashboard.admin.specializations');
+
+    }
+    public function services(){
+        return    view('dashboard.admin.services');
+
+    }
+    public function settings(){
+        return    view('dashboard.admin.settings');
+
+    }
 }

@@ -105,7 +105,7 @@
                             <div class="flex justify-center">
                                 <img src="../admin/imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
                                 <p class="mx-3">
-                                    <a href="../doctor/patient_details.html">James Sam</a>
+                                    <a href="{{route('doctor.patient_details')}}">James Sam</a>
                                 </p>
                                </div>
                                 <div class="flex justify-center" >
@@ -130,7 +130,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                               
-                                <a href="{{route('transactions_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('doctor.transactions_details')}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a>                                
                                
