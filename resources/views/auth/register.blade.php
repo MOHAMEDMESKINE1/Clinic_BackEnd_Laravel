@@ -38,12 +38,27 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        {{-- add recaptcha --}}
+        <div class="mt-4">
+            <div>
+                <x-input-label for="password_confirmation" :value="__('Recaptcha ')" />
 
-        <div class="flex items-center justify-end mt-4">
+                    {!! htmlFormSnippet() !!}
+            </div>
+            @if ($errors->has('g-recaptcha-response'))
+            <span class="text-orange-700" >
+                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+            </span>
+        @endif
+        
+        
+        </div>
+
+        <div class="flex items-center justify-end my-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
+           
             <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>

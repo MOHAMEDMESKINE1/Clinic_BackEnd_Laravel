@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Doctors</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
@@ -334,7 +335,7 @@
 
                                             <!-- Image preview or placeholder -->
                                             <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                                <img src="../patient/profile.svg" class="w-8 h-8 p-2" alt="">
+                                                <img src="{{asset('storage/img/profile.svg')}}" class="w-8 h-8 p-2" alt="">
 
                                             
                                             </div>
@@ -352,15 +353,14 @@
                                     </label>
                                </div>
                         </div>
+                        <button data-modal-hide="addDoctor" type="submit" class="text-white  mt-5 mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                        <button data-modal-hide="addDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+
                     </form>
                             
                    
                 </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="addDoctor" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="addDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+                
                 </div>
             </div>
         </div>

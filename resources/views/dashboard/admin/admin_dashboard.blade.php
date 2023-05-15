@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
 
     {{-- <link rel="stylesheet" href="../node_modules/flowbite/dist/flowbite.min.css"> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>

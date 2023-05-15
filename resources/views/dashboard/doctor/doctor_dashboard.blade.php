@@ -9,6 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
+
     <script src="https://cdn.tailwindcss.com"></script>
     {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
