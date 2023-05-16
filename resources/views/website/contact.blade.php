@@ -67,7 +67,7 @@
               <img src="{{asset('storage/img/contact.svg')}}"  alt="">
             </div>
             <div class="container  mx-auto md:px-4  m-5">
-              <form class="bg-transparent m-5  md:px-8 pt-6 pb-8 mb-4 " action="./thankyou.html">
+              <form class="bg-transparent m-5  md:px-8 pt-6 pb-8 mb-4 " method="POST"  action="#">
                     <div class="mb-4 ">
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 mt-10">
                           
@@ -82,6 +82,13 @@
       
                             </div>
                             
+                           
+                            
+                          </div>
+                          <div class="mb-8">
+                            <label for="number" class="block mb-2 text-sm font-medium  dark:text-white">Number Phone <b class="text-orange-600">*</b></label>
+                            <input type="number" name="number" id="number" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="+212 00 00 00 00 " required />
+    
                           </div>
                           <div class="mb-8">
                             <label for="message" class="block mb-2 text-sm font-medium  dark:text-white">Message <b class="text-orange-600">*</b></label>
@@ -89,11 +96,14 @@
                                                           
                           </div>
                           <div class="justify-end">
-                            <!-- <div class="g-recaptcha" data-sitekey="6LcWl9IlAAAAAJa1PpTYSY-oPMrk-hOhCYnNKnZq"></div> -->
-                            <!-- 
-                              git push origin main
-                             -->
+                           
+                              {!! htmlFormSnippet() !!}
                           </div>
+                          @if ($errors->has('g-recaptcha-response'))
+                          <span class="text-red-700" >
+                              <strong>Invalid recpatcha !</strong>
+                          </span>
+                          @endif
                       </div>
        
                     <div class="flex justify-center  md:justify-end  mt-10">

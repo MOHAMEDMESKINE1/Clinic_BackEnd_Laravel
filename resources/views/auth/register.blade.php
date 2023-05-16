@@ -49,7 +49,7 @@
             <span class="text-orange-700" >
                 <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
             </span>
-        @endif
+            @endif
         
         
         </div>
