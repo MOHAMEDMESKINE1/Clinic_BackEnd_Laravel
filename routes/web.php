@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,20 @@ Route::get('/', function () {
 });
 
 // website
-route::view('/team','website.ourteam')->name('ourteam');
-route::view('/contact','website.contact')->name('contact');
-route::view('/about','website.about')->name('about');
-route::view('/services','website.services')->name('services');
-route::view('/appointement','website.appointement')->name('appointement');
-route::view('/thankyou','website.thankyou');
+
+
+Route::controller(WebsiteController::class)->group(function(){
+
+    route::get('/team','team')->name('ourteam');
+    route::get('/contact','contact')->name('contact');
+    route::get('/about','about')->name('about');
+    route::get('/services','services')->name('services');
+    route::get('/appointement','appointement')->name('appointement');
+    route::get('/thankyou','thankyou');
+
+    // store contact
+    route::post('/contact','StoreContact')->name('store.contact');
+});
 
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
         

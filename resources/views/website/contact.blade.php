@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
 
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,7 +68,18 @@
               <img src="{{asset('storage/img/contact.svg')}}"  alt="">
             </div>
             <div class="container  mx-auto md:px-4  m-5">
-              <form class="bg-transparent m-5  md:px-8 pt-6 pb-8 mb-4 " method="POST"  action="#">
+              @if ($errors->any())
+              <div class="text-yellow-500 mx-5">
+                 <strong>Errors!</strong> <br>
+                 <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                 </ul>
+              </div>
+              @endif
+              <form class="bg-transparent m-5  md:px-8 pt-6 pb-8 mb-4 " method="POST"  action="{{route('store.contact')}}">
+                    @csrf
                     <div class="mb-4 ">
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 mt-10">
                           
@@ -92,18 +104,15 @@
                           </div>
                           <div class="mb-8">
                             <label for="message" class="block mb-2 text-sm font-medium  dark:text-white">Message <b class="text-orange-600">*</b></label>
-                            <textarea id="message" rows="4" class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="Message"></textarea>
+                            <textarea id="message" name="message" rows="4" class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="Message"></textarea>
                                                           
                           </div>
-                          <div class="justify-end">
-                           
-                              {!! htmlFormSnippet() !!}
+                          <div class="mb-8">
+                            <strong>Google recaptcha :</strong>
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
                           </div>
-                          @if ($errors->has('g-recaptcha-response'))
-                          <span class="text-red-700" >
-                              <strong>Invalid recpatcha !</strong>
-                          </span>
-                          @endif
+                      
                       </div>
        
                     <div class="flex justify-center  md:justify-end  mt-10">

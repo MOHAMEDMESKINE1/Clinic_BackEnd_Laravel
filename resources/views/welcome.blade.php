@@ -6,7 +6,6 @@
 
         <title>{{ config('app.name', 'WeCare') }}</title>
         <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
-        {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
 
         <script src="https://cdn.tailwindcss.com"></script>
@@ -432,7 +431,7 @@
           <div>
               <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">Book An Appointment</h1>
               <div class="container mx-auto px-4">
-                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " method="post" onclick="AppointementMail()">
+                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " method="POST" >
                       <div class="mb-4 ">
                         <div class="flex justify-between">
                           <div class="w-1/2 pr-2">
