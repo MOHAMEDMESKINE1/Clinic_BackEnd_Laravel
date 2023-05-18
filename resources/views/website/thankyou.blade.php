@@ -7,12 +7,10 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-    <style>
-       
-    </style>
 </head>
-<body class="bg-amber-50">
+<body class="bg-amber-50 headline">
     
  
     <img src="{{asset("storage/img/thankyou.png")}}" class="img" alt="">
@@ -26,6 +24,9 @@
             </a>        
         </div>
       </div>
-      
+      <script >
+        ScrollReveal().reveal('.headline')
+        ScrollReveal().reveal('.headline', { delay: 500 });
+      </script>
 </body>
 </html>

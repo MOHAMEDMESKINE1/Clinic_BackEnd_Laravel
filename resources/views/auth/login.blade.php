@@ -44,6 +44,11 @@
                 {{ __('Log in') }}
             </x-primary-button>
             <div class="mt-3   ">
+                <a href="{{ url('/redirect') }}" class=" 
+                 text-white hover:text-cyan-500  font-medium  text-sm text-center 
+                  ">Login With Google</a>
+            </div>
+            <div class="mt-3   ">
                 <a href="{{ route('register') }}" class=" 
                  text-white hover:text-cyan-500  font-medium  text-sm text-center 
                   ">Create an Account</a>

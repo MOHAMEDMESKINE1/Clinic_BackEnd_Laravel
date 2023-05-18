@@ -11,7 +11,8 @@
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
     <!-- fontawesome -->
-   
+    <script src="https://unpkg.com/scrollreveal"></script>
+
    <!-- email js -->
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
@@ -21,12 +22,8 @@
       emailjs.init("870rIKwVrqYwt_f4F");
     })();
     </script>
+    
    <!-- email js -->
-
-    <!-- recaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <!-- recaptcha -->
-
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
      <!--  poppins font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +49,7 @@
 <!-- navbar -->
  
     <!-- appointement -->
-    <section id="appointement"  class="container mx-auto  ">
+    <section id="appointement"  class="container mx-auto headline  ">
 
         <h1 class="text-center text-4xl  font-bold mb-4 text-cyan-800 mt-32 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Book Appointement</h1>
         <h3 class="text-center text-cyan-800"> <a href="/">Home</a> / Book Appointment</h3>
@@ -129,7 +126,11 @@ shadow-lg overflow-hidden   md:p-5 my-5 md:mx-10  " style="border-bottom: 40px !
     <!-- footer -->   
     @extends('layouts.footer')
     <!-- footer -->
+    <script >
+        ScrollReveal().reveal('.headline')
+        ScrollReveal().reveal('.headline', { delay: 500 });
 
+      </script>
     
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 

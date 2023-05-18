@@ -12,7 +12,9 @@
         "laravel/breeze": "^1.20",
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.2",
+        "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.8",
+        "stichoza/google-translate-php": "^5.1",
         "symfony/http-client": "*",
         "symfony/mailgun-mailer": "*",
         "twilio/sdk": "*"

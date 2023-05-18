@@ -20,6 +20,7 @@
     }
     </style>
     @include('layouts.scripts')
+    <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
 <body>
@@ -27,7 +28,7 @@
         @extends('layouts.navbar')
         <!-- navbar -->
           
-    <section class="  bg-cyan-50 p-5">
+    <section class="  bg-cyan-50 p-5 headline">
         <section class="mb-32  text-center">
     
             <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Services</h2>
@@ -69,8 +70,11 @@
   <!-- footer -->   
   @extends('layouts.footer')
   <!-- footer -->
+  <script >
+    ScrollReveal().reveal('.headline')
+    ScrollReveal().reveal('.headline', { delay: 500 });
 
-  <script src="../js/script.js"></script>
+  </script>
   <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

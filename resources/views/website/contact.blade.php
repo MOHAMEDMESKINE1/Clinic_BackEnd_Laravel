@@ -7,9 +7,9 @@
     <title>Contact</title>
     {{-- {!! ReCaptcha::htmlScriptTagJsApi() !!} --}}
 
+    <script src="https://unpkg.com/scrollreveal"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../style.css">
 
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
@@ -54,7 +54,7 @@
 
     <!-- navbar -->
       
-    <section class="bg-cyan-50 py-5 my-10">
+    <section class="bg-cyan-50 py-5 my-10 headline">
         <div class="container  mx-auto">
             <div class="flex flex-col pt-5 items-center text-cyan-800 mx-auto ">
                 <h1 class="text-center text-4xl text-cyan-800  font-bold mb-4 mt-10 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Contact Us</h1>
@@ -64,13 +64,14 @@
         <div class="grid grid-col-1 md:grid-cols-2  md:rounded-tr-3xl md:rounded-bl-3xl bg-gradient-to-r to-emerald-800 from-sky-400 shadow-lg overflow-hidden   md:p-5 my-5 md:mx-10  " style="border-bottom: 40px !important;">
           
         
-            <div class=" hidden md:block ">
+            <div class=" hidden md:block mt-24">
               <img src="{{asset('storage/img/contact.svg')}}"  alt="">
             </div>
+
             <div class="container  mx-auto md:px-4  m-5">
               @if ($errors->any())
               <div class="text-yellow-500 mx-5">
-                 <strong>Errors!</strong> <br>
+                 {{-- <strong>Errors!</strong> <br> --}}
                  <ul>
                     @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -108,7 +109,7 @@
                                                           
                           </div>
                           <div class="mb-8">
-                            <strong>Google recaptcha :</strong>
+                            <span  class="block mb-2 text-sm font-medium  dark:text-white">Recaptcha <b class="text-orange-600">*</b></span>
                             {!! NoCaptcha::renderJs() !!}
                             {!! NoCaptcha::display() !!}
                           </div>
@@ -150,7 +151,11 @@
   @extends('layouts.footer')
   <!-- footer -->
   
+  <script >
+    ScrollReveal().reveal('.headline')
+    ScrollReveal().reveal('.headline', { delay: 500 });
 
+  </script>
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

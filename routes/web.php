@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\API\SocialAuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\Lang\LangController;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +24,14 @@ use App\Http\Controllers\WebsiteController;
 */
 
 Route::get('/', function () {
+    
     return view('welcome');
 });
 
-// website
 
 
+
+// Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\Lang\LangController@switchLang']);
 Route::controller(WebsiteController::class)->group(function(){
 
     route::get('/team','team')->name('ourteam');
@@ -127,5 +133,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';

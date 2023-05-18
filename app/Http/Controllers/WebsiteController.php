@@ -23,7 +23,7 @@ class WebsiteController extends Controller
         return redirect('/');
     }
     public function team(){
-        return view ('website.team');
+        return view ('website.ourteam');
     }
     public function contact(){
         return view ('website.contact');

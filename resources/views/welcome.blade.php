@@ -119,7 +119,6 @@
 
     <!-- navbar -->
 
-  
   <!-- ====== Hero Section Start -->
     <div class="relative bg-cyan-50 pt-[120px] pb-[110px] lg:pt-[150px] ">
     <div class="container mx-auto">
@@ -130,13 +129,21 @@
              <div>
               
                 <div  class="wow slideInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
+                 
                   <h1 class=" capitalize text-center md:text-left text-4xl md:text-5xl font-bold 
                   darkblue
                   
                   mt-10"
                   >
-                    <span class="   text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 wow backInDown">  Feel Better</span> About Finding HealtCare
+                 
+
+                      <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 wow backInDown">
+                       Feel Better
+                      </span>
+                        About Finding HealtCare
                   </h1>
+                  
+
                   <p class=" mt-8 text-center md:text-left  md:text-2xl   text-gray-500 font-light ">Experience quality healthcare at our hospital.  Our team of dedicated  professionals 
                     is ready to serve you
                   </p>

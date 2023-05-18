@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
-  
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <!--  poppins font -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
     @extends('layouts.navbar')
 
   <!-- navbar -->
-    <section id="clients" class="" >
+    <section id="clients" class=" headline" >
       <div class="flex flex-col pt-5 items-center text-cyan-800 mx-auto">
           <h1 class="text-center text-4xl text-cyan-800  font-bold mt-20  wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Our Team</h1>
           <h3 class="text-center "> <a href="/">Home</a> / <a href="#">Team</a></h3>
@@ -79,14 +79,11 @@
   </section> 
    <!-- footer -->   
    @extends('layouts.footer')
-   <!-- footer -->
-{{-- <script src="../js/wow.min.js"></script>
-<script>
-new WOW().init();
-</script> --}}
+   <script >
+    ScrollReveal().reveal('.headline')
+    ScrollReveal().reveal('.headline', { delay: 500 });
 
-{{-- <script src="../js/jquery.min.js"></script>
-<script src="../js/script.js"></script> --}}
+  </script>
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
 </body>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <script src="https://cdn.tailwindcss.com"></script> 
-    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
    
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -24,15 +23,10 @@
     
   <!-- animate css-->
 
-  @vite(['./resources/js/app.js','./resources/css/animate.css',
-                './resources/js/wow.min.js','./resources/css/style.css',
-                './resources/js/script.js',
-                './resources/js/ckeditor.js',
-        ])
-        <script>
-          new WOW().init();
-        </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <!-- animate css-->
+  {{-- <script type="module" defer src="node_modules/scrollreveal/dist/scrollreveal.min.js"></script> --}}
+
 </head>
 <body>
       <!-- navbar -->
@@ -41,7 +35,7 @@
     <!-- navbar -->
       
     <!-- about -->
-    <section class=" bg-cyan-50 mx-auto  " >
+    <section class=" bg-cyan-50 mx-auto headline " >
         <div class="text-center py-5 ">
             <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounceInDown" data-wow-duration="3s" data-wow-delay=".2s">About Us</h2>
             <h3 class="text-center text-cyan-800"> <a href="/">Home</a> / <a href="#">About Us</a></h3>
@@ -288,7 +282,11 @@
   @extends('layouts.footer')
   <!-- footer -->
 
+  <script >
+    ScrollReveal().reveal('.headline')
+    ScrollReveal().reveal('.headline', { delay: 500 });
 
+  </script>
 
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 

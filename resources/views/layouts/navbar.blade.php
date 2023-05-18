@@ -35,10 +35,11 @@
             <li>
                 <a href="{{route('about')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">About Us </a>
             </li>
-            
             <li>
-                <a href="{{route('contact')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Contact</a>
+                <a href="{{route('contact')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Contact </a>
             </li>
+            
+           
             </ul>
             <div class="mx-4 flex flex-col   md:flex-row justify-between text-center">
                
@@ -49,8 +50,23 @@
                     <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Log in</a>
                     @endauth
                     <a href="{{route('appointement')}}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">Make appointement</a>
+                    
+                    {{-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                            @endif
+                        @endforeach
+                        </div>
+                </li> --}}
+                      
 
             </div>
+           
         </div>
 
     </nav>
