@@ -43,16 +43,22 @@
             <x-primary-button class=" w-full">
                 {{ __('Log in') }}
             </x-primary-button>
-            <div class="mt-3   ">
-                <a href="{{ url('/redirect') }}" class=" 
-                 text-white hover:text-cyan-500  font-medium  text-sm text-center 
-                  ">Login With Google</a>
-            </div>
-            <div class="mt-3   ">
-                <a href="{{ route('register') }}" class=" 
-                 text-white hover:text-cyan-500  font-medium  text-sm text-center 
-                  ">Create an Account</a>
-                
+            
+           
+            <x-linkButton url="{{ route('register') }}" class="w-full ">
+                Create an Account
+            </x-linkButton>
+            <div class="mt-3 flex   ">
+                    
+                <div class=" flex justify-start mx-auto">
+                    <img src="{{asset('storage/img/gmail.svg')}}" class="w-10 h-10 mr-5 bg-white p-2 rounded-full " alt="">
+                    <a href="{{ url('/redirect') }}" class=" 
+                    text-white hover:text-cyan-500 mt-3 font-medium  text-sm text-center 
+                     ">
+                    
+                     Login With Google</a>
+                </div>
+        </div>
             </div>
         </div>
     </form>
