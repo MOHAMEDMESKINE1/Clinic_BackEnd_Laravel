@@ -31,7 +31,8 @@ Route::get('/', function () {
 
 
 
-// Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\Lang\LangController@switchLang']);
+Route::get('locale/{lang}', [LangController::class,'switchLang']);
+
 Route::controller(WebsiteController::class)->group(function(){
 
     route::get('/team','team')->name('ourteam');

@@ -61,105 +61,49 @@
        
 
     <!-- navbar -->
-        {{-- <nav class="bg-white   border-gray-200 dark:bg-cyan-50   fixed w-full z-20 top-0 left-0 nav ">
-            <div class=" flex flex-wrap items-center justify-between mx-auto p-4  ">
-            <a href="#home" class="flex items-center">
-                <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="h-10 w-10 mx-5 " alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">WeCare</span>
-            </a>
-
-            <div class="flex flex-row md:order-2">
-               
-                <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none focus:ring-2 focus:ring-gray-100 dark:text-cyan-500 hover:bg-cyan-900 dark:focus:ring-cyan-50" aria-controls="navbar-cta" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                </button>
-            </div>
-
-
-            
-            <div class="items-center justify-center hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0   ">
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cyan-700 rounded md:bg-transparent md:text-cyan-700 md:p-0 md:dark:text-cyan-700" aria-current="page">Home</a>
-                </li>
-                
-                <li>
-                    <a href="{{route('ourteam')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Our Team</a>
-                </li>
-                <li>
-                    <a href="{{route('services')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Services</a>
-                </li>
-                <li>
-                    <a href="{{route('about')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">About Us</a>
-                </li>
-                
-                <li>
-                    <a href="{{route('contact')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Contact</a>
-                </li>
-                </ul>
-                <div class="mx-4 flex flex-col   md:flex-row justify-between text-center">
-                    @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold  text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Log in</a>
-    
-                    @endauth 
-                    @endif
-        
-                    <a href="#appointement" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">Make appointement</a>
-
-                </div>
-            
-            </div>
-
-        </nav> --}}
+     
         @extends('layouts.navbar')
 
     <!-- navbar -->
 
   <!-- ====== Hero Section Start -->
-    <div class="relative bg-cyan-50 pt-[120px] pb-[110px] lg:pt-[150px] ">
+    <div class="relative bg-cyan-50 py-24">
     <div class="container mx-auto">
       <div class=" flex flex-wrap">
-        <div class="w-full px-4 lg:w-5/12">
+        <div class="w-full lg:w-5/12">
           <div class=" grid grid-cols-1 md:grid-col-2  ">
   
-             <div>
-              
-                <div  class="wow slideInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
+            <div  class="wow slideInLeft" data-wow-duration="3s" data-wow-delay="0.2s">
                  
-                  <h1 class=" capitalize text-center md:text-left text-4xl md:text-5xl font-bold 
-                  darkblue
-                  
-                  mt-10"
-                  >
-                 
-
-                      <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 wow backInDown">
-                       Feel Better
-                      </span>
-                        About Finding HealtCare
-                  </h1>
-                  
-
-                  <p class=" mt-8 text-center md:text-left  md:text-2xl   text-gray-500 font-light ">Experience quality healthcare at our hospital.  Our team of dedicated  professionals 
-                    is ready to serve you
-                  </p>
-                  <div class="flex items-end md:justify-start justify-center mt-10 ">
-                    <a href="#appointement" class="  md:block font-semibold  p-3 px-6 text-white  rounded-full shadow-md hover:bg-cyan-600 baseline bg-cyan-700">Make appointement</a>
-                  </div>
-                </div>
-  
-                
+              <h1 class=" capitalize text-center md:text-left text-3xl md:text-5xl font-bold 
+              darkblue
               
-             </div>
+              mt-10"
+              >
+             
+
+                  <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 wow backInDown">
+                  @lang('messages.hero.welcome')
+                  </span>
+                  @lang('messages.hero.about')
+              </h1>
+              
+
+              <p class=" mt-8 text-center md:text-left  md:text-2xl   text-gray-500 font-light ">
+                @lang('messages.hero.paragraph')
+              </p>
+              <div class="flex items-end md:justify-start justify-center mt-10 ">
+                <a href="#appointement" class="  md:block font-semibold  p-3 px-6 text-white  rounded-full shadow-md hover:bg-cyan-600 baseline bg-cyan-700">          
+                  
+                  @lang('messages.hero.appointement')
+                </a>
+              </div>
+            </div>
            
           </div>
         </div>
         <div class="hidden px-4 lg:block lg:w-1/12"></div>
-        <div class="w-full px-4 lg:w-6/12">
+        <div class="w-full px-4 lg:w-6/12 mt-24">
           <div class="lg:ml-auto lg:text-right">
             <div class="relative z-10 inline-block pt-11 lg:pt-0 
                 wow bounceInDown" data-wow-duration="3s" data-wow-delay="0.2s" >
@@ -221,19 +165,18 @@
             </div>
   
             <div class="my-10 mx-10 max-w-full  wow fadeInRight " data-wow-duration="3s" data-wow-delay="1s">
-              <h1 class=" text-gray-700 capitalize text-2xl md:my-5 text-center md:text-left ">About us</h1>
-              <h1 class="text-cyan-900 text-center  text-xl  md:text-left md:text-3xl my-5 capitalize">Book your clinic appointment with an ease</h1>
+              <h1 class=" text-gray-700 capitalize text-2xl md:my-5 text-center md:text-left ">@lang('messages.about.title')</h1>
+              <h1 class="text-cyan-900 text-center  text-xl  md:text-left md:text-3xl my-5 capitalize">@lang('messages.about.book')</h1>
               <p class="font-light mb-3 text-justify">
-                A feature rich and comprehensive medical appointment scheduling software solution to deliver fast and reliable appointment booking experience to patients.
-              </p>
+                @lang('messages.about.feature')</p>
               <ol class="flex flex-col mx-5  md:flex-row md:justify-between md:items-center  list-disc   font-bold text-xs">
-                <li class="mb-2  " > Emergency Help</li>
-                <li class="mb-2 " >Qualified Doctors</li>
-                <li class="mb-2 " >Best Professionals</li>
-                <li class="mb-2 " >Medical Treatment</li>
+                <li class="mb-2  " > @lang('messages.about.services.0')</li>
+                <li class="mb-2 " >@lang('messages.about.services.1')</li>
+                <li class="mb-2 " >@lang('messages.about.services.2')</li>
+                <li class="mb-2 " >@lang('messages.about.services.3')</li>
               </ol>
               <div class="flex items-end md:justify-start sm:justify-center mt-10">
-                <a href="./website/contact.html" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">Contact Us</a>
+                <a href="{{route('contact')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">  @lang('messages.about.contact')</a>
               </div>
             </div>
            
@@ -242,11 +185,11 @@
       </section>
       <!-- about us -->
   
-      <!-- working progress -->
+      <!-- working process -->
       <div class="p-5 md:p-20 bg-cyan-50 w-full  ">
         <div class="text-center">
-            <h1 class="text-xl md:text-2xl text-cyan-800"> Working Process</h1>
-            <h2 class="text-3xl md:text-5xl text-cyan-700 mt-5">How we works?</h2>
+            <h1 class="text-xl md:text-2xl text-cyan-800">@lang('messages.working.title') </h1>
+            <h2 class="text-3xl md:text-5xl text-cyan-700 mt-5">@lang('messages.working.work')</h2>
         </div>
           <div class="grid grid-col-1 md:grid-cols-3 gap-5 my-5     ">
   
@@ -254,22 +197,22 @@
               <h3>
                 <img src="{{asset('storage/img/onesvg.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">Registration</h4>
-              <p class="font-light ">Patient can do registration from here with basic information.</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.regsitration.0')</h4>
+              <p class="font-light ">@lang('messages.working.regsitration.1')</p>
             </div>
             <div class="text-center bg-white  shadow-lg p-8 rounded-tr-none rounded-r-3xl " >
               <h3>
                 <img src="{{asset('storage/img/two.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">Make Appointment</h4>
-              <p class="font-light ">Patient can book an appointment with doctor from landing page or from his login panel.</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.appointment.0')</h4>
+              <p class="font-light ">@lang('messages.working.appointment.1')</p>
             </div>
             <div class="text-center bg-white  shadow-lg p-8 rounded-tr-none rounded-r-3xl " >
               <h3>
                 <img src="{{asset('storage/img/threee.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">Take Treatment</h4>
-              <p class="font-light ">Doctors can interact with patients and do related treatment.</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.treatement.0')</h4>
+              <p class="font-light ">@lang('messages.working.treatement.1')</p>
             </div>
   
            
@@ -286,23 +229,26 @@
                   </div>
                   
                   <div class="m-5 md:mt-40 wow slideInDown"  data-wow-duration="2s" data-wow-delay=".2s">
-                          <h1 class="text-cyan-900 text-3xl md:text-4xl mb-5 font-bold text-left   ">Find the right doctor right at your fingertips</h1>
+                          <h1 class="text-cyan-900 text-3xl md:text-4xl mb-5 font-bold text-left   ">@lang('messages.doctorSection.title')</h1>
                           <p class="text-gray-500 font-light  ">
-                          It really matters and then like it really doesn’t matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn’t matter. Because it's about motivating the doers. Because I’m here to follow my dreams and inspire other people to follow their dreams, too.
+                            @lang('messages.doctorSection.paragraph')
+                          
                           </p>
                      
                       <div class="flex justify-start">
                           <a href="#appointement" class=" bg-cyan-700 text-center   mt-5   p-3 px-6 text-white  rounded-full baseline "  id="appointement-btn">
-                              Make appointement
+                            @lang('messages.hero.appointement')
                           </a>
                       </div>
                   </div>        
           </div>
           <div class="grid grid-col-1 md:grid-cols-2  ">
               <div class="container  p-5 ">
-                  <h1 class="text-cyan-900 text-3xl md:text-4xl font-bold  pb-5 md:text-justify ">Why people choose us</h1>
+                  <h1 class="text-cyan-900 text-3xl md:text-4xl font-bold  pb-5 md:text-justify ">
+                    @lang('messages.doctorSection.title2')
+                  </h1>
                   <p class="text-gray-500 font-light max-w-lg">
-                      Pain is what we go through as we become older. We get insulted by others, lose trust for those others. We get back stabbed by friends. It becomes harder for us to give others a hand.
+                    @lang('messages.doctorSection.paragraph2')
                   </p>
               </div>
   
@@ -311,21 +257,21 @@
                           
                   <i class="fas fa-ship  bg-cyan-900 p-2 rounded-full text-white" aria-hidden="true"></i>
                   <p class="text-gray-500 font-light ">
-                      It becomes harder for us to give others a hand. 
+                    @lang('messages.doctorSection.icon1')
                   </p>
               </div>
               <div class="my-2">
                   <i class="fa-solid fa-handshake  bg-cyan-900 p-2 rounded-full text-white"></i>
   
                   <p class="text-gray-500 font-light  ">
-                      Pain is what we go through as we become older. We get insulted by others, lose trust for those others. We get back stabbed by friends. It becomes harder for us to give others a hand.
+                    @lang('messages.doctorSection.icon2')
                   </p>
               </div>
               <div class="my-2">
                   <i class="fa-solid fa-hourglass-start  bg-cyan-900 p-2 rounded-full text-white"></i>
                   <p class="text-gray-500 font-light ">
-                      When we lose family over time. <br>
-                      What else could rust the heart more over time? Blackgold.
+                    @lang('messages.doctorSection.icon3')
+
                   </p>
               
               </div>
@@ -338,9 +284,9 @@
   
      <!-- testimonials-->
      <div class="flex flex-col  p-5 items-center mx-auto">
-        <h1 class="text-center text-xl pt-7  ">Testimonial</h1>
+        <h1 class="text-center text-xl pt-7  ">@lang('messages.testimonial.title') </h1>
         <p class="text-center text-3xl md:text-4xl mt-5 text-cyan-900">
-          See What Are The Patients Saying About us
+          @lang('messages.testimonial.paragraph') 
         </p>
       </div>
      <div class="antialiased sans-serif bg-gray-200 text-gray-600">
@@ -352,9 +298,7 @@
     
           <div class="relative text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
             <div class="md:block text-center">
-              <span>What Our</span>
-              <span>Patients</span>
-              <span> Are Saying!</span>
+              @lang('messages.testimonial.patients') 
             </div>
             
           </div>
@@ -436,32 +380,32 @@
           </div>
           
           <div>
-              <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">Book An Appointment</h1>
+              <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">@lang('messages.appointement.title') </h1>
               <div class="container mx-auto px-4">
                 <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " method="POST" >
                       <div class="mb-4 ">
                         <div class="flex justify-between">
                           <div class="w-1/2 pr-2">
                             <label class="block text-white font-bold mb-2" for="last-name">
-                              First Name
+                              @lang('messages.appointement.firstname')
                             </label>
-                            <input  type="text"  id="firstname" name="firstname" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
+                            <input  type="text"  id="firstname" name="firstname" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.firstname') " required />
   
                           </div>
                           <div class="w-1/2 pl-2">
                             <label class="block text-white font-bold mb-2" for="last-name">
-                              Last Name
+                              @lang('messages.appointement.lastname')
                             </label>
-                            <input  type="text" id="lastname" name="lastname"  class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
+                            <input  type="text" id="lastname" name="lastname"  class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.lastname')" required />
   
                           </div>
                         </div>
                       </div>
                       <div class="mb-4">
                         <label class="block text-white font-bold mb-2" for="email">
-                          Email
+                          @lang('messages.appointement.email')
                         </label>
-                        <input  type="email" name="email" id="email" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
+                        <input  type="email" name="email" id="email" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.email')" required />
   
                       </div>
                       
@@ -469,7 +413,7 @@
                         <div class="flex justify-between">
                           <div class="w-1/2 pr-2">
                             <label class="block text-white font-bold mb-2" for="select">
-                              Doctor
+                              @lang('messages.appointement.doctor')
                             </label>
                             <select id="doctor"  name="doctor" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
                               <option>Dr.Teddy Thomas</option>
@@ -478,14 +422,15 @@
                           </div>
                           <div class="w-1/2 pl-2">
                             <label class="block text-white font-bold mb-2" for="datetime">
-                              Date 
+                              @lang('messages.appointement.date')
+
                             </label>
                             <input id="date" class="block mt-1 py-4  px-4  w-full text-sm text-white  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime" type="datetime-local">
                           </div>
                         </div>
                       </div>
                       <div class="flex justify-center sm:justify-center mt-10">
-                        <button type="submit"  class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">Appointement Now</button>
+                        <button type="submit"  class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">@lang('messages.appointement.appointement_now')  </button>
                       </div>
   
                 </form>
@@ -499,11 +444,13 @@
     </section>
     <!--location -->
     <section class=" py-5  ">
-      <h1 class="text-3xl text-center my-5 text-cyan-800 wow bounceInLeft">Location</h1>
+      <h1 class="text-3xl text-center my-5 text-cyan-800 wow bounceInLeft">@lang('messages.appointement.date')
+        @lang('messages.map.title')
+      </h1>
       <div class="flex justify-end">
         <div class=" flex-row justify-between">
           
-          <button id="btn-map" class="mx-2 bg-gray-900 text-white px-3 mb-1 rounded-sm hover:bg-gray-800">Dark Map</button>
+          <button id="btn-map" class="mx-2 bg-gray-900 text-white px-3 mb-1 rounded-sm hover:bg-gray-800">@lang('messages.map.btn')</button>
           
         </div>
         
@@ -518,7 +465,7 @@
    <!-- our sponsores -->
    <section class="container mx-auto ">
     <h1 class="text-center text-3xl my-5  text-cyan-800 wow bounceInLeft">
-       Sponsors
+      @lang('messages.sponsors.title')
     </h1>
     <div class="slider flex flex-col">
       <div class="slide-track">

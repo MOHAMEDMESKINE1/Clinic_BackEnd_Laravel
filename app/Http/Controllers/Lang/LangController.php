@@ -16,16 +16,11 @@ class LangController extends Controller
      *
      * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function switchLang($locale)
     {
-        return view('lang');
-    }
-  
-    public function switchLang($lang)
-    {
-        if (array_key_exists($lang, Config::get('languages'))) {
-            Session::put('applocale', $lang);
-        }
+       
+        App::setlocale($locale);
+        Session::put('locale', $locale);
         return redirect()->back();
     }
 }

@@ -23,20 +23,20 @@
         <div class="items-center justify-center hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0   ">
             <li>
-                <a href="/" class="block py-2 pl-3 pr-4 text-white bg-cyan-700 rounded md:bg-transparent md:text-cyan-700 md:p-0 md:dark:text-cyan-700" aria-current="page">Home</a>
+                <a href="/" class="block py-2 pl-3 pr-4 text-white bg-cyan-700 rounded md:bg-transparent md:text-cyan-700 md:p-0 md:dark:text-cyan-700" aria-current="page">@lang('messages.navbar.home')</a>
             </li>
             
             <li>
-                <a href="{{route('ourteam')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Our Team</a>
+                <a href="{{route('ourteam')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">@lang('messages.navbar.team')</a>
             </li>
             <li>
-                <a href="{{route('services')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Services</a>
+                <a href="{{route('services')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">@lang('messages.navbar.services')</a>
             </li>
             <li>
-                <a href="{{route('about')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">About Us </a>
+                <a href="{{route('about')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">@lang('messages.navbar.about') </a>
             </li>
             <li>
-                <a href="{{route('contact')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">Contact </a>
+                <a href="{{route('contact')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 md:p-0 md:dark:hover:text-cyan-500   dark:hover:text-cyan-900 md:dark:hover:bg-transparent ">@lang('messages.navbar.contact') </a>
             </li>
             
            
@@ -44,25 +44,45 @@
             <div class="mx-4 flex flex-col   md:flex-row justify-between text-center">
                
                     @auth
-                    <a href="{{ url('/home') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Dashboard</a>
+                    <a href="{{ url('/home') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">@lang('messages.navbar.dashboard')</a>
                     @else
                     
-                    <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">Log in</a>
+                    <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 hover:text-cyan-900  font-medium   ">@lang('messages.navbar.login')</a>
                     @endauth
-                    <a href="{{route('appointement')}}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">Make appointement</a>
+                    <a href="{{route('appointement')}}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">@lang('messages.hero.appointement')</a>
                     
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
-                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
-                            @endif
-                        @endforeach
-                        </div>
-                </li> --}}
+                    
+                    <button id="dropdownOffsetButton" data-dropdown-toggle="dropdownOffset" data-dropdown-offset-distance="35" data-dropdown-offset-skidding="0" class="text-cyan-900   font-medium  text-sm  text-center inline-flex items-center py-4  mx-auto md:mx-0 md:py-0  " type="button">@lang('messages.navbar.languages') <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownOffset" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-cyan-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                        <li>
+                            <a href="{{url('locale/en')}}" class="block px-4 py-2 hover:bg-cyan-100 dark:hover:bg-cyan-600 dark:hover:text-white">
+                               <div class="flex ">
+                                <img src="{{asset('storage/img/united-kingdom.png')}}" class="w-10 h-10" alt="uk" srcset="">
+                                <span class="mt-4 mx-4">
+                                    English
+                                </span>
+                               </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('locale/es')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              <div class="flex ">
+                                <img src="{{asset('storage/img/espana.png')}}"  class="w-10 h-10" alt="espana" srcset="">
+
+                                <span class="mt-4 mx-4">
+                                    Spanish
+                                </span>
+                              </div>
+                               
+
+                            </a>
+                        </li>
+                       
+                        </ul>
+                    </div>
+
                       
 
             </div>
