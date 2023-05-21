@@ -85,12 +85,12 @@
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 mt-10">
                           
                             <div class="mb-8 ">
-                              <label for="name" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.name') <b class="text-orange-600">*</b></label>
+                              <label for="name" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.name') <b class="text-orange-600">*</b></label>
                               <input type="text" name="name" id="name" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder=" @lang('messages.contact.name') " required />
   
                             </div>
                             <div class="mb-8">
-                              <label for="email" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.email') <b class="text-orange-600">*</b></label>
+                              <label for="email" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.email') <b class="text-orange-600">*</b></label>
                               <input type="email" name="email" id="email" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="example@gmail.com " required />
       
                             </div>
@@ -99,17 +99,17 @@
                             
                           </div>
                           <div class="mb-8">
-                            <label for="number" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.phone')<b class="text-orange-600">*</b></label>
+                            <label for="number" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.phone')<b class="text-orange-600">*</b></label>
                             <input type="number" name="number" id="number" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="+212 00 00 00 00 " required />
     
                           </div>
                           <div class="mb-8">
-                            <label for="message" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.message') <b class="text-orange-600">*</b></label>
+                            <label for="message" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.message') <b class="text-orange-600">*</b></label>
                             <textarea id="message" name="message" rows="4" class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.contact.message')"></textarea>
                                                           
                           </div>
                           <div class="mb-8">
-                            <span  class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.recaptcha') <b class="text-orange-600">*</b></span>
+                            <span  class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.recaptcha') <b class="text-orange-600">*</b></span>
                             {!! NoCaptcha::renderJs() !!}
                             {!! NoCaptcha::display() !!}
                           </div>

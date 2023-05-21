@@ -30,9 +30,9 @@ return [
     'working'=>[
             'title' => "Processus de fonctionnement",
             'work' => 'Comment ça fonctionne ?',
-            'registration' => ['Inscription','Le patient peut s\'inscrire ici avec des informations de base.'],
+            'regsitration' => ['Inscription','Le patient peut s\'inscrire ici avec des informations de base.'],
             'appointment' => ['Prendre rendez-vous','Le patient peut prendre rendez-vous avec un médecin depuis la page d\'accueil ou depuis son espace de connexion.'],
-            'treatment' => ['Traitement','Les médecins peuvent interagir avec les patients et effectuer les traitements associés.'],
+            'treatement' => ['Traitement','Les médecins peuvent interagir avec les patients et effectuer les traitements associés.'],
     ],
     'doctorSection'=>[
             'title' => "Trouvez le bon médecin à portée de main",

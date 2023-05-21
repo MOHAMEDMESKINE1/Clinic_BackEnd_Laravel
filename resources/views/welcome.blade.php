@@ -197,8 +197,8 @@
               <h3>
                 <img src="{{asset('storage/img/onesvg.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.registration.0')</h4>
-              <p class="font-light ">@lang('messages.working.registration.1')</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.regsitration.0')</h4>
+              <p class="font-light ">@lang('messages.working.regsitration.1')</p>
             </div>
             <div class="text-center bg-white  shadow-lg p-8 rounded-tr-none rounded-r-3xl " >
               <h3>
@@ -211,8 +211,8 @@
               <h3>
                 <img src="{{asset('storage/img/threee.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.treatment.0')</h4>
-              <p class="font-light ">@lang('messages.working.treatment.1')</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.treatement.0')</h4>
+              <p class="font-light ">@lang('messages.working.treatement.1')</p>
             </div>
   
            

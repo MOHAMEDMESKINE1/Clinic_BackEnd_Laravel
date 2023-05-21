@@ -13,7 +13,7 @@
               <div class="grid grid-col-1 md:grid-cols-3    sm:grid-col-3">
                 <!-- contact us -->
                 <div class="mb-6 ">
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900  uppercase dark:text-white"> @lang('messages.footer.contact')</h2>
+                  <h2 class="mb-6 font-semibold text-gray-900  uppercase dark:text-white"> @lang('messages.footer.contact')</h2>
                   <ul class="text-gray-600 dark:text-gray-400 font-medium">
                       <li class="mb-4">
                           <i class="fas fa-solid fa-phone text-xl text-white px-2 py-1  md:mr-2 rounded-md bg-transparent border border-white "></i>
@@ -32,25 +32,25 @@
                 </div>
                 
               <div class="">
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">@lang('messages.footer.links.0') </h2>
+                  <h2 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">@lang('messages.footer.links.0') </h2>
                   <ul class="text-gray-600 space-y-4 dark:text-gray-400 font-medium">
                       <li>
-                          <a href="#home" class="hover:underline">@lang('messages.footer.links.1') </a>
+                          <a href="{{url('/')}}" class="hover:underline">@lang('messages.footer.links.1') </a>
                       </li>
                       <li>
-                          <a href="#about" class="hover:underline">@lang('messages.footer.links.2') </a>
+                          <a href="{{route('about')}}" class="hover:underline">@lang('messages.footer.links.2') </a>
                       </li>
                       <li>
                           <a href="#terms" class="hover:underline">@lang('messages.footer.links.3') </a>
                       </li>
                       <li>
-                          <a href="#terms" class="hover:underline">@lang('messages.footer.links.4') </a>
+                          <a href="#privacy" class="hover:underline">@lang('messages.footer.links.4') </a>
                       </li>
                   </ul>
               </div>
                  
               <div class="">
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 mt-5 md:mt-0 uppercase dark:text-white">@lang('messages.footer.subscribe') </h2>
+                  <h2 class="mb-6 font-semibold text-gray-900 mt-5 md:mt-0 uppercase dark:text-white">@lang('messages.footer.subscribe') </h2>
                   <div class="flex items-stretch mt-5 ">
                     <input   id="email"  type="email" name="email" class="bg-gray-100 rounded-lg rounded-r-none text-base leading-none p-2 w-36 md:p-3 text-gray-800  md:w-auto  border border-transparent focus:outline-none focus:border-gray-500"  placeholder="@lang('messages.footer.palceholder_email')" />
                     <button onclick="Subscriber()"  class="w-24 md:w-28 rounded-l-none hover:bg-cyan-600 bg-cyan-700 rounded text-base font-medium leading-none text-white p-2 capitalize focus:outline-none focus:ring-2  focus:ring-cyan-500">@lang('messages.footer.subscribe')</button>

@@ -2,7 +2,7 @@
     <nav class="bg-white   border-gray-200 dark:bg-cyan-50   fixed w-full z-20 top-0 left-0 nav ">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4  ">
         <a href="#home" class="flex items-center">
-            <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="h-10 w-10 mx-5 " alt="Flowbite Logo" />
+            <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="h-10 w-10 mx-3 " alt="Flowbite Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">WeCare</span>
         </a>
 
@@ -52,8 +52,9 @@
                     <a href="{{route('appointement')}}" class="block py-2 pl-3 pr-4 text-transparent  bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400  hover:text-cyan-900  ">@lang('messages.hero.appointement')</a>
                     
                     
-                    <button id="dropdownOffsetButton" data-dropdown-toggle="dropdownOffset" data-dropdown-offset-distance="35" data-dropdown-offset-skidding="0" class="text-cyan-900   font-medium  text-sm  text-center inline-flex items-center py-4  mx-auto md:mx-0 md:py-0  " type="button">@lang('messages.navbar.languages') <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                    <!-- Dropdown menu -->
+                    <button id="dropdownOffsetButton" data-dropdown-toggle="dropdownOffset" data-dropdown-offset-distance="35" data-dropdown-offset-skidding="0" class="text-cyan-900   font-medium    text-center inline-flex items-center py-4  mx-auto md:mx-0 md:py-0  " type="button">@lang('messages.navbar.languages') <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                   
+                    <!-- Languages dropdown -->
                     <div id="dropdownOffset" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-cyan-700"
                   
                     >

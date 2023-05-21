@@ -35,7 +35,7 @@ return [
             'work' => '¿Cómo funcionamos?',
             'regsitration' => ['Registro','El paciente puede registrarse desde aquí con la información básica.'],
             'appointment' =>['Concertar cita','El paciente puede concertar una cita con el médico desde la página de inicio o desde su panel de acceso.'],
-            'treatement' => ['Recibir tratamiento','Los médicos pueden interactuar con los pacientes y realizar tratamientos relacionados'],
+            'treatement' => ['Recibir tratamiento','Los médicos pueden interactuar con los pacientes y realizar tratamientos relacionados']
         ],
         'doctorSection'=>[
             'title' => "Encuentra el médico adecuado al alcance de tu mano",

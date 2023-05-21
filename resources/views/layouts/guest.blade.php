@@ -16,16 +16,26 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         {!! ReCaptcha::htmlScriptTagJsApi() !!}
+
+        <style>
+            .background{
+                background: url("/storage/img/background.jpg") !important;
+                background-repeat: no-repeat !important;
+                object-fit: contain !important ;
+               
+               
+            }
+        </style>
     </head>
     <body class="font-sans text-gray-900 antialiased ">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6  sm:pt-0 bg-gray-100 dark:bg-cyan-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        <div class="min-h-screen background flex flex-col sm:justify-center text-gray-900 items-center pt-6  sm:pt-0 bg-white ">
+            <div  class="mx-32">
+                <a href="/" title="Home">
+                    <x-application-logo class="w-20 h-20  mx-auto  text-gray-500" />
                 </a>
             </div>
 
-            <div class="w-full  sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full  sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>
