@@ -31,8 +31,8 @@
     <section class="  bg-cyan-50 p-5 headline">
         <section class="mb-32  text-center">
     
-            <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Services</h2>
-            <h3 class="text-center text-cyan-800"> <a href="/">Home</a> / <a href="#">Services</a></h3>
+            <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">@lang('messages.services.title')</h2>
+            <h3 class="text-center text-cyan-800 "> <a href="/">@lang('messages.navbar.home')</a> / <a href="#">@lang('messages.services.services')</a></h3>
             <div class="grid md:grid-cols-3 gap-x-4 gap-y-4 xl:gap-x-12 mt-5">
                     <!-- service 1 -->
                     <div class="bg-white p-5 rounded-tr-lg rounded-bl-lg shadow-md transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100 cursor-pointer">

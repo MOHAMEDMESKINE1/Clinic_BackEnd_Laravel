@@ -54,7 +54,9 @@
                     
                     <button id="dropdownOffsetButton" data-dropdown-toggle="dropdownOffset" data-dropdown-offset-distance="35" data-dropdown-offset-skidding="0" class="text-cyan-900   font-medium  text-sm  text-center inline-flex items-center py-4  mx-auto md:mx-0 md:py-0  " type="button">@lang('messages.navbar.languages') <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownOffset" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-cyan-700">
+                    <div id="dropdownOffset" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-cyan-700"
+                  
+                    >
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                         <li>
                             <a href="{{url('locale/en')}}" class="block px-4 py-2 hover:bg-cyan-100 dark:hover:bg-cyan-600 dark:hover:text-white">
@@ -73,6 +75,46 @@
 
                                 <span class="mt-4 mx-4">
                                     Spanish
+                                </span>
+                              </div>
+                               
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('locale/fr')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              <div class="flex ">
+                                <img src="{{asset('storage/img/france.png')}}"  class="w-10 h-10" alt="espana" srcset="">
+
+                                <span class="mt-4 mx-4">
+                                    France
+                                </span>
+                              </div>
+                               
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('locale/de')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              <div class="flex ">
+                                <img src="{{asset('storage/img/germany.png')}}"  class="w-10 h-10" alt="espana" srcset="">
+
+                                <span class="mt-4 mx-4">
+                                    Deutch
+                                </span>
+                              </div>
+                               
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('locale/ar')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              <div class="flex ">
+                                <img src="{{asset('storage/img/morocco.png')}}"  class="w-10 h-10" alt="espana" srcset="">
+
+                                <span class="mt-4 mx-4">
+                                    Arabic
                                 </span>
                               </div>
                                

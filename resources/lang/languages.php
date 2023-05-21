@@ -3,14 +3,17 @@
 return [
     'en' => [
         'display' => 'English',
-        'flag-icon' => 'us'
     ],
     'fr' => [
         'display' => 'Français',
-        'flag-icon' => 'fr'
     ],
     'es' => [
         'display' => 'Spanish',
-        'flag-icon' => 'es'
+    ],
+    'ar' => [
+        'display' => 'Arabic',
+    ],
+    'de' => [
+        'display' => 'Deutch',
     ],
 ];

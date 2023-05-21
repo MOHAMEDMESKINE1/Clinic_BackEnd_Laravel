@@ -33,8 +33,8 @@
   <!-- navbar -->
     <section id="clients" class=" headline" >
       <div class="flex flex-col pt-5 items-center text-cyan-800 mx-auto">
-          <h1 class="text-center text-4xl text-cyan-800  font-bold mt-20  wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Our Team</h1>
-          <h3 class="text-center "> <a href="/">Home</a> / <a href="#">Team</a></h3>
+          <h1 class="text-center text-4xl text-cyan-800  font-bold mt-20  wow bounce" data-wow-duration="3s" data-wow-delay=".2s">@lang('messages.team.title')</h1>
+          <h3 class="text-center "> <a href="/">@lang('messages.team.home')</a> / <a href="#">@lang('messages.team.team')</a></h3>
       </div>
      
       <div class="grid grid-col-1 md:grid-cols-2 gap-5 lg:grid-cols-3 px-4 py-4 mt-8 mb-8 ">

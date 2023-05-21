@@ -37,8 +37,8 @@
     <!-- about -->
     <section class=" bg-cyan-50 mx-auto headline " >
         <div class="text-center py-5 ">
-            <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounceInDown" data-wow-duration="3s" data-wow-delay=".2s">About Us</h2>
-            <h3 class="text-center text-cyan-800"> <a href="/">Home</a> / <a href="#">About Us</a></h3>
+            <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounceInDown" data-wow-duration="3s" data-wow-delay=".2s">@lang('messages.about.title')</h2>
+            <h3 class="text-center text-cyan-800"> <a href="/">@lang('messages.navbar.home')</a> / <a href="#">@lang('messages.about.title')</a></h3>
         </div>
        
         <div class="grid grid-col-1 md:grid-cols-2 m-5 wow fadeInRight" data-wow-duration="3s" data-wow-delay=".2s">
@@ -62,7 +62,7 @@
                                 20 
                             </h1>
                             <p class="text-xl text-center font-bold " >
-                                Year Experience
+                              @lang('messages.about.experience')
                             </p>
                         </div> 
                        
@@ -76,19 +76,20 @@
             </div>
 
             <div class="my-10 mx-10 ">
-              <h1 class=" text-gray-700 capitalize text-2xl md:my-5 text-center md:text-left ">About us</h1>
-              <h1 class="text-cyan-900 text-center  text-xl  md:text-left md:text-3xl my-5 capitalize">Book your clinic appointment with an ease</h1>
+              <h1 class=" text-gray-700 capitalize text-2xl md:my-5 text-center md:text-left ">@lang('messages.about.title')</h1>
+              <h1 class="text-cyan-900 text-center  text-xl  md:text-left md:text-3xl my-5 capitalize">@lang('messages.about.book')</h1>
               <p class="font-light mb-3 text-justify">
-                A feature rich and comprehensive medical appointment scheduling software solution to deliver fast and reliable appointment booking experience to patients.
+                @lang('messages.about.feature')
               </p>
-              <ol class="flex flex-col mx-5  md:flex-row md:justify-between md:items-center  list-disc   font-bold text-xs">
-                <li class="mb-2  " > Emergency Help</li>
-                <li class="mb-2 " >Qualified Doctors</li>
-                <li class="mb-2 " >Best Professionals</li>
-                <li class="mb-2 " >Medical Treatment</li>
+              <ol class="flex flex-col mx-5  md:flex-row justify-between md:items-center  list-disc   font-bold text-xs">
+                <li class="mb-2  " >@lang('messages.about.services.0')</li>
+                <li class="mb-2  " >@lang('messages.about.services.1')</li>
+                <li class="mb-2  " >@lang('messages.about.services.2')</li>
+                <li class="mb-2  " >@lang('messages.about.services.3')</li>
+              
               </ol>
               <div class="flex items-end md:justify-start sm:justify-center mt-10">
-                <a href="{{route('contact')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">Contact Us</a>
+                <a href="{{route('contact')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.contact.title')</a>
               </div>
             </div>
 
@@ -103,33 +104,33 @@
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
                     ">32</h1>
-                    <p class="text-xl text-cyan-900 mb-4">Specializations</p>
+                    <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.specializations')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 md:border-r border-r-gray-300">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
                     ">38</h1>
-                    <p class="text-xl text-cyan-900 mb-4">Services</p>
+                    <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.services')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 md:border-r border-r-gray-300">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
                     ">40</h1>
-                    <p class="text-xl text-cyan-900 mb-4">Doctors</p>
+                    <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.doctors')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 ">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
                     ">100</h1>
-                    <p class="text-xl text-cyan-900 mb-4">Satisfied Patient</p>
+                    <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.satisfied')</p>
             </div>
         </div>
     </section>
     <!-- doctors -->
     <section class="bg-cyan-50 py-10 wow bounceInDown" data-wow-duration="4s" data-wow-delay=".3s">
         <div class="text-center my-10">
-          <h1 class="text-2xl text-cyan-700"> Our Doctors</h1>
-          <div class="text-4xl font-semibold text-cyan-500 mb-5">Meet Best Doctors</div>
+          <h1 class="text-2xl text-cyan-700">@lang('messages.statistics.our_doctors')</h1>
+          <div class="text-4xl font-semibold text-cyan-500 mb-5">@lang('messages.statistics.title_doctors')</div>
         </div>
         <div class="container mx-auto ">
             <div class="grid grid-col-1 m-5 md:grid-cols-3 gap-x-2 mt-5">
@@ -146,7 +147,7 @@
                             <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
                         </div>
                         <div class="flex items-center  justify-center mt-5">
-                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">Book An Appointement</a>
+                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
                         </div>
                     </div>
 
@@ -163,7 +164,7 @@
                             <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
                         </div>
                         <div class="flex items-center  justify-center mt-5">
-                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">Book An Appointement</a>
+                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
                         </div>
                     </div>
 
@@ -179,7 +180,7 @@
                             <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
                         </div>
                         <div class="flex items-center  justify-center mt-5">
-                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">Book An Appointement</a>
+                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
                         </div>
                     </div>
                    
@@ -188,95 +189,92 @@
         </div>
     </section>
      <!-- testimonials-->
-   <div class="flex flex-col  p-5 items-center mx-auto">
-    <h1 class="text-center text-xl pt-7  ">Testimonial</h1>
-    <p class="text-center text-3xl md:text-4xl mt-5 text-cyan-900">
-      See What Are The Patients Saying About us
-    </p>
-  </div>
- <div class="antialiased sans-serif bg-gray-200 text-gray-600">
-
-  <div class="my-10 md:my-24 container mx-auto flex flex-col md:flex-row shadow-sm overflow-hidden" x-data="{ testimonialActive: 2 }" x-cloak>
-    <div class="relative w-full py-2 md:py-24 bg-cyan-700 md:w-1/2 flex flex-col item-center justify-center">
-
-      <div class="absolute top-0 left-0 z-10 grid-indigo w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
-
-      <div class="relative text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
-        <div class="block md:block">
-            <span >What Our</span>
-            <span >Patients</span>
-            <span>Are Saying!</span>
-
-        </div>
-      </div>
-
-      <div class="absolute right-0 bottom-0 mr-4 mb-4 hidden md:block">
-        <button class="rounded-l-full border-r bg-gray-100 text-gray-500 focus:outline-none hover:text-indigo-500 font-bold w-12 h-10" x-on:click="testimonialActive = testimonialActive === 1 ? 3 : testimonialActive - 1">
-          &#8592;
-        </button><button class="rounded-r-full bg-gray-100 text-gray-500 focus:outline-none hover:text-indigo-500 font-bold w-12 h-10" x-on:click="testimonialActive = testimonialActive >= 3 ? 1 : testimonialActive + 1">
-          &#8594;
-        </button>
-      </div>
+     <div class="flex flex-col  p-5 items-center mx-auto">
+      <h1 class="text-center text-xl pt-7  ">@lang('messages.testimonial.title') </h1>
+      <p class="text-center text-3xl md:text-4xl mt-5 text-cyan-900">
+        @lang('messages.testimonial.paragraph') 
+      </p>
     </div>
+   <div class="antialiased sans-serif bg-gray-200 text-gray-600">
 
-    <div class="bg-gray-100 md:w-1/2">
-      <div class="flex flex-col h-full relative">
-
-        <div class="absolute top-0 left-0 mt-3 ml-4 md:mt-5 md:ml-12">
-          <svg xmlns="http://www.w3.org/2000/svg" class="text-indigo-200 fill-current w-12 h-12 md:w-16 md:h-16" viewBox="0 0 24 24">
-            <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L9.758 4.03c0 0-.218.052-.597.144C8.97 4.222 8.737 4.278 8.472 4.345c-.271.05-.56.187-.882.312C7.272 4.799 6.904 4.895 6.562 5.123c-.344.218-.741.4-1.091.692C5.132 6.116 4.723 6.377 4.421 6.76c-.33.358-.656.734-.909 1.162C3.219 8.33 3.02 8.778 2.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C2.535 17.474 4.338 19 6.5 19c2.485 0 4.5-2.015 4.5-4.5S8.985 10 6.5 10zM17.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L20.758 4.03c0 0-.218.052-.597.144-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.317.143-.686.238-1.028.467-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162C14.219 8.33 14.02 8.778 13.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C13.535 17.474 15.338 19 17.5 19c2.485 0 4.5-2.015 4.5-4.5S19.985 10 17.5 10z" /></svg>
-        </div>
-
-        <div class="h-full relative z-10">
-          <div x-show.immediate="testimonialActive === 1">
-            <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 1">
-              Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-            </p>
+    <div class="my-10 md:my-24 container mx-auto flex flex-col md:flex-row shadow-sm overflow-hidden" x-data="{ testimonialActive: 2 }" x-cloak>
+        <div class="relative w-full py-2 md:py-24 bg-cyan-700 md:w-1/2 flex flex-col item-center justify-center">
+    
+          <div class="absolute top-0 left-0 z-10 grid-indigo w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
+    
+          <div class="relative text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
+            <div class="md:block text-center">
+              @lang('messages.testimonial.patients') 
+            </div>
+            
           </div>
-
-          <div x-show.immediate="testimonialActive === 2">
-            <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 2">
-              Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
-            </p>
-          </div>
-
-          <div x-show.immediate="testimonialActive === 3">
-            <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 3">
-              Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
-            </p>
+    
+          <div class="absolute right-0 bottom-0 mr-4 mb-4 hidden md:block">
+            <button class="rounded-l-full border-r bg-gray-100 text-gray-500 focus:outline-none hover:text-indigo-500 font-bold w-12 h-10" x-on:click="testimonialActive = testimonialActive === 1 ? 3 : testimonialActive - 1">
+              &#8592;
+            </button><button class="rounded-r-full bg-gray-100 text-gray-500 focus:outline-none hover:text-indigo-500 font-bold w-12 h-10" x-on:click="testimonialActive = testimonialActive >= 3 ? 1 : testimonialActive + 1">
+              &#8594;
+            </button>
           </div>
         </div>
-
-        <div class="flex my-4 justify-center items-center">
-          <button @click.prevent="testimonialActive = 1" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline inline-block rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 1, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 1 }">JD</button>
-          <button @click.prevent="testimonialActive = 2" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-16 w-16 inline-block bg-indigo-600 rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 2, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 2 }">WD</button>
-          <button @click.prevent="testimonialActive = 3" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-12 w-12 inline-block bg-indigo-600 rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 3, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 3 }">JW</button>
+    
+        <div class="bg-gray-100 md:w-1/2">
+          <div class="flex flex-col h-full relative">
+    
+            <div class="absolute top-0 left-0 mt-3 ml-4 md:mt-5 md:ml-12">
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-indigo-200 fill-current w-12 h-12 md:w-16 md:h-16" viewBox="0 0 24 24">
+                <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L9.758 4.03c0 0-.218.052-.597.144C8.97 4.222 8.737 4.278 8.472 4.345c-.271.05-.56.187-.882.312C7.272 4.799 6.904 4.895 6.562 5.123c-.344.218-.741.4-1.091.692C5.132 6.116 4.723 6.377 4.421 6.76c-.33.358-.656.734-.909 1.162C3.219 8.33 3.02 8.778 2.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C2.535 17.474 4.338 19 6.5 19c2.485 0 4.5-2.015 4.5-4.5S8.985 10 6.5 10zM17.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35.208-.086.39-.16.539-.222.302-.125.474-.197.474-.197L20.758 4.03c0 0-.218.052-.597.144-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.317.143-.686.238-1.028.467-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162C14.219 8.33 14.02 8.778 13.81 9.221c-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539.017.109.025.168.025.168l.026-.006C13.535 17.474 15.338 19 17.5 19c2.485 0 4.5-2.015 4.5-4.5S19.985 10 17.5 10z" /></svg>
+            </div>
+    
+            <div class="h-full relative z-10">
+              <div x-show.immediate="testimonialActive === 1">
+                <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 1">
+                  Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+                </p>
+              </div>
+    
+              <div x-show.immediate="testimonialActive === 2">
+                <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 2">
+                  Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+                </p>
+              </div>
+    
+              <div x-show.immediate="testimonialActive === 3">
+                <p class="text-gray-600 serif font-normal italic px-6 py-6 md:px-16 md:py-10 text-xl md:text-2xl" x-show.transition="testimonialActive == 3">
+                  Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+                </p>
+              </div>
+            </div>
+    
+            <div class="flex my-4 justify-center items-center">
+              <button @click.prevent="testimonialActive = 1" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline inline-block rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 1, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 1 }">JD</button>
+              <button @click.prevent="testimonialActive = 2" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-16 w-16 inline-block bg-indigo-600 rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 2, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 2 }">WD</button>
+              <button @click.prevent="testimonialActive = 3" class="text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-12 w-12 inline-block bg-indigo-600 rounded-full mx-2" :class="{'h-12 w-12 opacity-25 bg-indigo-300 text-gray-600': testimonialActive != 3, 'h-16 w-16 opacity-100 bg-indigo-600 text-white': testimonialActive == 3 }">JW</button>
+            </div>
+    
+            <div class="flex justify-center px-6 pt-2 pb-6 md:py-6">
+              <div class="text-center" x-show="testimonialActive == 1">
+                <img src="{{asset('storage/img/client-3.jpg')}}" class="rounded-full w-20 h-20 mx-auto mb-3" alt="">
+                <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">John Doe</h2>
+                <small class="text-gray-500 text-xs md:text-sm truncate">CEO, ABC Inc.</small>
+              </div>
+    
+              <div class="text-center" x-show="testimonialActive == 2">
+                <img src="{{asset('storage/img/client-2.jpg')}}" class="rounded-full w-20 h-20 mx-auto mb-3" alt="">
+                <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">Winter Doe</h2>
+                <small class="text-gray-500 text-xs md:text-sm truncate">CTO, XYZ Corp.</small>
+              </div>
+    
+              <div class="text-center" x-show="testimonialActive == 3">
+                <img src="{{asset('storage/img/client-4.jpg')}}" class="rounded-full w-20 h-20 mx-auto mb-3" alt="">
+                <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">John Wick</h2>
+                <small class="text-gray-500 text-xs md:text-sm truncate">Product Manager, Fake Corp.</small>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="flex justify-center px-6 pt-2 pb-6 md:py-6">
-          <div class="text-center" x-show="testimonialActive == 1">
-            <img src="{{asset('storage/img/client-1.jpg')}}" class="rounded-full w-20 h-20 mx-auto object-fill mb-3" alt="">
-            <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">John Doe</h2>
-            <small class="text-gray-500 text-xs md:text-sm truncate">CEO, ABC Inc.</small>
-          </div>
-
-          <div class="text-center" x-show="testimonialActive == 2">
-            <img src="{{asset('storage/img/client-3.jpg')}}" class="rounded-full w-20 h-20 mx-auto object-fill mb-3" alt="">
-            <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">Winter Doe</h2>
-            <small class="text-gray-500 text-xs md:text-sm truncate">CTO, XYZ Corp.</small>
-          </div>
-
-          <div class="text-center" x-show="testimonialActive == 3">
-            <img src="{{asset('storage/img/client-4.jpg')}}" class="rounded-full w-20 h-20 mx-auto object-fill mb-3" alt="">
-            <h2 class="text-sm md:text-base font-bold text-gray-700 leading-tight">John Wick</h2>
-            <small class="text-gray-500 text-xs md:text-sm truncate">Product Manager, Fake Corp.</small>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-
-</div>
+    </div>
  <!-- testimonials-->
   <!-- footer -->   
   @extends('layouts.footer')

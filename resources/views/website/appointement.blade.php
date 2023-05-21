@@ -49,79 +49,74 @@
 <!-- navbar -->
  
     <!-- appointement -->
-    <section id="appointement"  class="container mx-auto headline  ">
-
-        <h1 class="text-center text-4xl  font-bold mb-4 text-cyan-800 mt-32 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Book Appointement</h1>
-        <h3 class="text-center text-cyan-800"> <a href="/">Home</a> / Book Appointment</h3>
-
-        <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1  md:rounded-tr-3xl md:rounded-bl-3xl bg-gradient-to-r to-emerald-800 from-sky-400 
-shadow-lg overflow-hidden   md:p-5 my-5 md:mx-10  " style="border-bottom: 40px !important;">
-            <div >
-                <img src="{{asset('storage/img/appointment.png')}}" class="h-auto max-w-full  hidden md:block " alt="">
-            </div>
-            
-            <div>
-                <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">Book An Appointment</h1>
-                <div class="container md:mx-auto px-4">
-                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 "  >
-                        <div class="mb-4 ">
+ <section id="appointement"  class="container my-20 mx-auto ">
+      <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1  md:rounded-tr-3xl md:rounded-bl-3xl bg-gradient-to-r to-emerald-800 from-sky-400 shadow-lg overflow-hidden   p-5 my-5 md:mx-10  " style="border-bottom: 40px !important;">
+          <div >
+              <img src="{{asset('storage/img/appointment.png')}}" class="h-auto max-w-full  hidden md:block " alt="">
+          </div>
+          
+          <div>
+              <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">@lang('messages.appointement.title') </h1>
+              <div class="container mx-auto px-4">
+                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " method="POST" >
+                      <div class="mb-4 ">
                         <div class="flex justify-between">
-                            <div class="w-1/2 pr-2">
+                          <div class="w-1/2 pr-2">
                             <label class="block text-white font-bold mb-2" for="last-name">
-                                First Name
+                              @lang('messages.appointement.firstname')
                             </label>
-                            <input type="text"  id="firstname" name="firstname" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
-
-                            </div>
-                            <div class="w-1/2 pl-2">
+                            <input  type="text"  id="firstname" name="firstname" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.firstname') " required />
+  
+                          </div>
+                          <div class="w-1/2 pl-2">
                             <label class="block text-white font-bold mb-2" for="last-name">
-                                Last Name
+                              @lang('messages.appointement.lastname')
                             </label>
-                            <input type="text" id="lastname" name="lastname"  class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
-
-                            </div>
+                            <input  type="text" id="lastname" name="lastname"  class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.lastname')" required />
+  
+                          </div>
                         </div>
-                        </div>
-                        <div class="mb-4">
+                      </div>
+                      <div class="mb-4">
                         <label class="block text-white font-bold mb-2" for="email">
-                            Email
+                          @lang('messages.appointement.email')
                         </label>
-                        <input type="email" name="email" id="email" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="First Name " required />
-
-                        </div>
-                        
-                        <div class="mb-4">
+                        <input  type="email" name="email" id="email" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.email')" required />
+  
+                      </div>
+                      
+                      <div class="mb-4">
                         <div class="flex justify-between">
-                            <div class="w-1/2 pr-2">
+                          <div class="w-1/2 pr-2">
                             <label class="block text-white font-bold mb-2" for="select">
-                                Doctor
+                              @lang('messages.appointement.doctor')
                             </label>
                             <select id="doctor"  name="doctor" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
-                                <option>Dr.Teddy Thomas</option>
-                                <option>Dr.Smith Franky</option>
+                              <option>Dr.Teddy Thomas</option>
+                              <option>Dr.Smith Franky</option>
                             </select>
-                            </div>
-                            <div class="w-1/2 pl-2">
+                          </div>
+                          <div class="w-1/2 pl-2">
                             <label class="block text-white font-bold mb-2" for="datetime">
-                                Date 
+                              @lang('messages.appointement.date')
+
                             </label>
                             <input id="date" class="block mt-1 py-4  px-4  w-full text-sm text-white  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime" type="datetime-local">
-                            </div>
+                          </div>
                         </div>
-                        </div>
-                        
-                        <div class="flex justify-center sm:justify-center mt-10">
-                        <button type="button" onclick="AppointementMail()" class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">Appointement Now</button>
-                        </div>
-
+                      </div>
+                      <div class="flex justify-center sm:justify-center mt-10">
+                        <button type="submit"  class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">@lang('messages.appointement.appointement_now')  </button>
+                      </div>
+  
                 </form>
-                </div>
+              </div>
         
-                
-            </div>
-
-        </div>
-
+              
+          </div>
+  
+      </div>
+  
     </section>
     <!-- footer -->   
     @extends('layouts.footer')

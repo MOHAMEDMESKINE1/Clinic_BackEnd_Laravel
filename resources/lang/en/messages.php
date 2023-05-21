@@ -1,6 +1,7 @@
 <?php
 
 return [
+     // welcome page
     'navbar'=>[
         'home'=>'Home',
         'team'=>'Our Team',
@@ -11,7 +12,8 @@ return [
         'languages'=>'Languages',
         'Dashbaord'=>'Languages',
     ],
-    'hero'=>[ 'welcome' => "Feel Better",
+    'hero'=>[ 
+        'welcome' => "Feel Better",
         'about' => 'About Finding HealtCare!',
         'paragraph' => 'Experience quality healthcare at our hospital.  Our team of dedicated  professionals 
                         is ready to serve you',
@@ -23,7 +25,9 @@ return [
             'book' => 'Book your clinic appointment with an ease',
             'feature' => ' A feature rich and comprehensive medical appointment scheduling software solution to deliver fast and reliable appointment booking experience to patients.            ',
             'contact' => ' Contact Us',
-            'services'=> ['Emergency Help','Qualified Doctors','Best Professionals','Medical Treatment']
+            'services'=> ['Emergency Help','Qualified Doctors','Best Professionals','Medical Treatment'],
+            'experience'=> 'Year Experience'
+
     ],
     'working'=>[
             'title' => "Working Process",
@@ -72,6 +76,68 @@ return [
         'palceholder_email' => "Your Email",
         'rights' => "All Rights Reserved.",
     ],
+
+    // team page
+    'team'=>[
+        'title' => "Our Team",
+        'home' => "Home ",
+        'team' => " Team",
+    ],
+    // services page
+    'services'=>[
+        'title' => "Our Service",
+        'home' => "Home",
+        'services' => " services",
+    ],
+    // statistics page
+     'statistics'=>[
+        'specializations' => "Specializations",
+        'services' => "Services ",
+        'doctors' => " Doctors",
+        'satisfied' => " Satisfied Patient",
+        'our_doctors' => " Our Doctors",
+        'title_doctors' => " Meet Best Doctors",
+    ],
+    // contact page
+    'contact'=>[
+        'title' => " Contact Us",
+        'home' => "Home ",
+        'name' => " First Name",
+        'email' => " Email",
+        'address' => " Address",
+        'phone' => " Number Phone",
+        'message' => " Message",
+        'recaptcha' => "Recaptcha",
+        'btn' => "Send Message",
+       
+    ],
+    
+    // login page
+    'login'=>[
+        'title' => " Log In",
+        'create' => "Create an Account ",
+        'home' => "Home ",
+        'name' => " First Name",
+        'email' => " Email",
+        'remember' => " Remember me",
+        'forgot_password' => " Forgot Password ?",
+        'phone' => " Number Phone",
+        'message' => " Message",
+        'google' => " Connect With Gmail",
+        'recaptcha' => "Recaptcha",
+        'btn' => "Send Message",
+    ],
+     // register page
+     'register'=>[
+        'name' => " Name",
+        'email' => " Email",
+        'password' => "Password ",
+        'confirm_password' => "Confirm Password ",
+        'registred' => " Already Registred ?",
+        'title' => "Register",
+    ],
+    
+    
 ];
  
 

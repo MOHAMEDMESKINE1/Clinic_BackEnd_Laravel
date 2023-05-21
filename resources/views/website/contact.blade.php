@@ -54,11 +54,11 @@
 
     <!-- navbar -->
       
-    <section class="bg-cyan-50 py-5 my-10 headline">
+    <section class="bg-cyan-50 py-5 mt-10 headline">
         <div class="container  mx-auto">
             <div class="flex flex-col pt-5 items-center text-cyan-800 mx-auto ">
-                <h1 class="text-center text-4xl text-cyan-800  font-bold mb-4 mt-10 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">Contact Us</h1>
-                <h3 class="text-center "> <a href="/">Home</a> / <a href="#">Contact</a></h3>
+                <h1 class="text-center text-4xl text-cyan-800  font-bold mb-4 mt-10 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">@lang('messages.contact.title')</h1>
+                <h3 class="text-center "> <a href="/">@lang('messages.contact.home')</a> / <a href="#">@lang('messages.contact.title')</a></h3>
             </div>
         </div>
         <div class="grid grid-col-1 md:grid-cols-2  md:rounded-tr-3xl md:rounded-bl-3xl bg-gradient-to-r to-emerald-800 from-sky-400 shadow-lg overflow-hidden   md:p-5 my-5 md:mx-10  " style="border-bottom: 40px !important;">
@@ -85,12 +85,12 @@
                           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-2 mt-10">
                           
                             <div class="mb-8 ">
-                              <label for="name" class="block mb-2 text-sm font-medium  dark:text-white">Name <b class="text-orange-600">*</b></label>
-                              <input type="text" name="name" id="name" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder=" Name " required />
+                              <label for="name" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.name') <b class="text-orange-600">*</b></label>
+                              <input type="text" name="name" id="name" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder=" @lang('messages.contact.name') " required />
   
                             </div>
                             <div class="mb-8">
-                              <label for="email" class="block mb-2 text-sm font-medium  dark:text-white">Email <b class="text-orange-600">*</b></label>
+                              <label for="email" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.email') <b class="text-orange-600">*</b></label>
                               <input type="email" name="email" id="email" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="example@gmail.com " required />
       
                             </div>
@@ -99,17 +99,17 @@
                             
                           </div>
                           <div class="mb-8">
-                            <label for="number" class="block mb-2 text-sm font-medium  dark:text-white">Number Phone <b class="text-orange-600">*</b></label>
+                            <label for="number" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.phone')<b class="text-orange-600">*</b></label>
                             <input type="number" name="number" id="number" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="+212 00 00 00 00 " required />
     
                           </div>
                           <div class="mb-8">
-                            <label for="message" class="block mb-2 text-sm font-medium  dark:text-white">Message <b class="text-orange-600">*</b></label>
-                            <textarea id="message" name="message" rows="4" class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="Message"></textarea>
+                            <label for="message" class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.message') <b class="text-orange-600">*</b></label>
+                            <textarea id="message" name="message" rows="4" class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.contact.message')"></textarea>
                                                           
                           </div>
                           <div class="mb-8">
-                            <span  class="block mb-2 text-sm font-medium  dark:text-white">Recaptcha <b class="text-orange-600">*</b></span>
+                            <span  class="block mb-2 text-sm font-medium  dark:text-white">@lang('messages.contact.recaptcha') <b class="text-orange-600">*</b></span>
                             {!! NoCaptcha::renderJs() !!}
                             {!! NoCaptcha::display() !!}
                           </div>
@@ -117,7 +117,7 @@
                       </div>
        
                     <div class="flex justify-center  md:justify-end  mt-10">
-                      <input  type="submit" class="   font-semibold py-3 px-8  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-200 hover:scale-110 " value="Send Message"/>
+                      <input  type="submit" class="hover:cursor-pointer   font-semibold py-3 px-8  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-200 hover:scale-110 " value="@lang('messages.contact.btn')"/>
                     </div>
 
               </form>
@@ -126,22 +126,22 @@
        
     </section>
   <!-- contacts -->
-  <section class="bg-gray-50 my-10">
-    <div class="container mx-auto my-5">
-        <div class="grid grid-col-1 md:grid-cols-3 gap-2 m-5">
-            <div class="bgw-white shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
+  <section class="">
+    <div class="container mx-auto ">
+        <div class="grid grid-col-1 md:grid-cols-3 gap-2 my-5">
+            <div class="bg-white border border-gray-100 shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
               <i class="fas fa-solid fa-phone text-3xl text-cyan-900 mb-2  p-2 py-1 md:mr-2 bg-cyan-50 rounded-full border border-cyan-500 "></i>
-              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">Contact Number</h1>
+              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">@lang('messages.contact.phone')</h1>
               <span>+212 7 04 28 29 27</span>
             </div>
-            <div class="bgw-white shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
+            <div class="bg-white border border-gray-100 shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
               <i class="fas fa-solid fa-envelope text-3xl text-cyan-900 mb-2  p-2 py-1 md:mr-2 bg-cyan-50 rounded-full border border-cyan-500 "></i>
-              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">Email Address</h1>
+              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">@lang('messages.contact.email')</h1>
               <span>wecare@gmail.com</span>
             </div>
-            <div class="bgw-white shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
+            <div class="bg-white border border-gray-100 shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
               <i class=" fa-solid fa-location-dot text-3xl text-cyan-900 mb-2  p-2 py-1 md:mr-2 bg-cyan-50 rounded-full border border-cyan-500 "></i>
-              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">Address</h1>
+              <h1 class="text-2xl font-semibold text-cyan-800 mb-3">@lang('messages.contact.address')</h1>
               <span>C-303, Atlanta Shopping Mall, Nr. Sudama Chowk, Mota Varachha, Surat, Gujarat, India.</span>
             </div>
       </div>

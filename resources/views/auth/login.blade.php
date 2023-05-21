@@ -7,14 +7,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('messages.login.email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('messages.login.password')" />
 
            
             <x-text-input id="password" class="block mt-1 w-full"
@@ -23,7 +23,7 @@
                             required autocomplete="current-password" />
             @if (Route::has('password.request'))
             <a class="underline text-sm mb-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
+                {{ __('messages.login.forgot_password') }}
             </a>
             @endif
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -33,7 +33,7 @@
         <div class="block mt-4">
             <label for="remember_me" class="flex flex-start">
                 <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('messages.login.remember') }}</span>
             </label>
         </div>
 
@@ -41,12 +41,12 @@
           
 
             <x-primary-button class=" w-full">
-                {{ __('Log in') }}
+                {{ __('messages.login.title')}}
             </x-primary-button>
             
            
             <x-linkButton url="{{ route('register') }}" class="w-full ">
-                Create an Account
+                @lang('messages.login.create')
             </x-linkButton>
             <div class="mt-3 flex   ">
                     
@@ -56,7 +56,7 @@
                     text-white hover:text-cyan-500 mt-3 font-medium  text-sm text-center 
                      ">
                     
-                     Login With Google</a>
+                     @lang('messages.login.google')</a>
                 </div>
         </div>
             </div>

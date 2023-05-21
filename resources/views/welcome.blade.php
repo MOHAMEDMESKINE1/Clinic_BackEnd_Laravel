@@ -110,7 +110,7 @@
               <img
                 src="{{asset('storage/img/doctor.jpg')}}"
                 alt="hero 2"
-                class="max-w-full hidden md:block  rounded-lg lg:ml-auto"
+                class="max-w-full hidden md:block   rounded-lg lg:ml-auto"
               />
               <span class="hidden md:block absolute -left-8 -bottom-8 z-[-1]">
                 <svg
@@ -197,8 +197,8 @@
               <h3>
                 <img src="{{asset('storage/img/onesvg.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.regsitration.0')</h4>
-              <p class="font-light ">@lang('messages.working.regsitration.1')</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.registration.0')</h4>
+              <p class="font-light ">@lang('messages.working.registration.1')</p>
             </div>
             <div class="text-center bg-white  shadow-lg p-8 rounded-tr-none rounded-r-3xl " >
               <h3>
@@ -211,8 +211,8 @@
               <h3>
                 <img src="{{asset('storage/img/threee.svg')}}" class="w-20 h-20 mx-auto  mb-4" alt="">
               </h3>
-              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.treatement.0')</h4>
-              <p class="font-light ">@lang('messages.working.treatement.1')</p>
+              <h4 class="text-2xl text-cyan-900 my-5">@lang('messages.working.treatment.0')</h4>
+              <p class="font-light ">@lang('messages.working.treatment.1')</p>
             </div>
   
            
@@ -228,7 +228,7 @@
                       <img src="{{asset('storage/img/doctor-preview.png')}}" class="h-auto max-w-full   mx-auto" alt="doctor">
                   </div>
                   
-                  <div class="m-5 md:mt-40 wow slideInDown"  data-wow-duration="2s" data-wow-delay=".2s">
+                  <div class="m-5 md:mt-40 wow slideInDown"  data-wow-duration="1.5s" data-wow-delay=".2s">
                           <h1 class="text-cyan-900 text-3xl md:text-4xl mb-5 font-bold text-left   ">@lang('messages.doctorSection.title')</h1>
                           <p class="text-gray-500 font-light  ">
                             @lang('messages.doctorSection.paragraph')
@@ -442,9 +442,10 @@
       </div>
   
     </section>
+    {{-- appointement --}}
     <!--location -->
     <section class=" py-5  ">
-      <h1 class="text-3xl text-center my-5 text-cyan-800 wow bounceInLeft">@lang('messages.appointement.date')
+      <h1 class="text-3xl text-center my-5 text-cyan-800 wow bounceInLeft">
         @lang('messages.map.title')
       </h1>
       <div class="flex justify-end">

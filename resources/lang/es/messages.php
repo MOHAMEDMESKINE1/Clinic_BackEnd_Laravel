@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // welcome page
     'navbar'=>[
         'home'=>'Inicio',
         'team'=>'Nuestro Equipo',
@@ -13,7 +14,7 @@ return [
 
     ],
         'hero'=> [
-            'welcome' => '¡Bienvenido a nuestra aplicación!',
+            'welcome' => 'Sentirse mejor',
             'about' => ' ¡Acerca de cómo encontrar atención médica!',
             'paragraph' => 'Disfrute de una atención médica de calidad en nuestro hospital. Nuestro equipo de profesionales dedicados está listo para servirle',
             'appointement'=> 'Concertar cita'
@@ -25,7 +26,8 @@ return [
             'book' => 'Reserve su cita en la clínica con facilidad',
             'feature' => ' Una solución de software de programación de citas médicas completa y repleta de funciones para ofrecer a los pacientes una experiencia de reserva de citas rápida y fiable.           ',
             'contact' => ' Contacto            ',
-            'services'=>['Ayuda de emergencia','Médicos cualificados','Los mejores profesionales','Tratamiento médico']
+            'services'=>['Ayuda de emergencia','Médicos cualificados','Los mejores profesionales','Tratamiento médico'],
+            'experience'=> 'Año Experiencia'
 
         ],
         'working'=>[
@@ -77,5 +79,58 @@ return [
             'rights' => "Reservados todos los derechos.",
 
         ],
-       
+        // team page
+        'team'=>[
+            'title' => "Nuestro equipo",
+            'home' => "Inicio ",
+            'team' => " Equipo",
+        ],
+        // services page
+        'services'=>[
+            'title' => "Nuestros servicios",
+            'home' => "Inicio ",
+            'services' => " servicios",
+        ],
+        // statistics page
+        'statistics'=>[
+            'specializations' => "Especializaciones",
+            'services' => "Servicios",
+            'doctors' => " Doctores",
+            'satisfied' => " Paciente Satisfecho",
+            'our_doctors' => "Nuestros Doctores",
+            'title_doctors' => " Conozca a los mejores médicos",
+        ],
+        // contact
+        'contact'=>[
+            'title' => "Contáctenos",
+            'home' => "Inicio",
+            'name' => "Nombre",
+            'email' => "Correo electrónico",
+            'address' => "Dirección",
+            'phone' => "Teléfono",
+            'message' => "Mensaje",
+            'recaptcha' => "Recaptcha",
+            'btn' => "Enviar Mensaje",
+            ],
+         // login page
+         'login' => [
+            'title' => "Iniciar sesión",
+            'email' => "Correo electrónico",
+            'password' => "Contraseña",
+            'forgot_password' => "¿Olvidaste tu contraseña?",
+            'remember' => "Recordarme",
+            'create' => "Crear una cuenta",
+            'google' => "Iniciar sesión con Google",
+        ],
+        // register page
+        'register' => [
+            'title' => "Registro",
+            'name' => "Nombre",
+            'email' => "Correo electrónico",
+            'password' => "Contraseña",
+            'confirm_password' => "Confirmar contraseña",
+            'registred' => "¿Ya registrado?",
+        ],
+        
+        
 ];

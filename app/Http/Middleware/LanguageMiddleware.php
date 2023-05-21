@@ -19,7 +19,10 @@ class LanguageMiddleware
             Session::put('locale','en');
             App::setLocale(Session::get('locale') );
 
+
         }
+        
+
         return $next($request);
     }
 }
