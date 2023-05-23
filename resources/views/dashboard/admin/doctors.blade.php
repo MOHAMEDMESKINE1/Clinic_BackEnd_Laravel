@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctors</title>
-    
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
@@ -151,9 +152,7 @@
                         </td>
                         <td>
                             <div class="flex items-center mt-5">
-                                <a href="#" data-tooltip-target="tooltip-qualification" data-modal-target="addQualification" data-modal-toggle="addQualification" class="text-white px-5 py-2 text-center mb-2" type="button">
-                                    <i class="fas fa-plus text-xl text-gray-700"></i>
-                                </a>                                
+                                                         
                                 <a href="#"  data-tooltip-target="tooltip-edit"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-edit text-xl text-green-700"></i>
                                 </a>                                
@@ -233,9 +232,9 @@
                     <span class=" border border-b-0 w-full inline-block  border-gray-100 mt-2"></span>
 
                 <!-- modal body -->
-                <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
+                <div class="grid grid-col-1 md:grid-col-2 m-5">
                     <form method="post"  enctype="multipart/form-data" action="#">
-                     
+                 
                         <!-- firstname & lastname -->
                         <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                                 <!-- firstname -->
@@ -294,7 +293,7 @@
                                 <!-- Blood Group   -->
                                 <div class="w-full  group">
                                     <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                    <select id="groupB" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                         <option value="" disabled>--Select Blood Group--</option>
                                         <option value="A+">A+</option>
                                         <option value="A-">A-</option>
@@ -306,9 +305,44 @@
                                         <option value="O-">O-</option>
                                     </select>                                
                                 </div>
-                                <!-- gender  -->
-                                <div class="w-full  group  ">
-                                    <div class="  mt-5">
+                                <!-- profile -->
+                                <div class="w-full group">
+                                    <label class="block mb-2 text-sm font-medium " for="photo">Profile </label>
+
+                                    <input class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
+                                    <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                                    <img src="./imgs/hospital.png" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
+                                
+                                </div>
+                              
+                                 <!-- degree -->
+                                 <div class="w-full  mb-4 group">
+                                    <label for="doctor" class="font-medium ">Degree:<span class="text-red-500 font-medium">*</span></label>
+                                    <input type="text" name="degree" id="degree" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                                </div>
+                                <!-- University -->
+                                <div class="w-full  mb-4 group">
+                                    <label for="university" class="font-medium ">University:<span class="text-red-500 font-medium">*</span></label>
+                                    <input type="text" name="university" id="university" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                                </div>
+                                <!-- Year -->
+                                <div class="w-full mb-4 group">
+                                    <label for="year" class="font-medium ">Year:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                    <select id="year" name="year" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                        <option selected disabled class="font-medium">Select a Year</option>
+                                        <?php
+                                            $start_year = 1970;
+                                            $current_year = date('Y');
+                                            for ($year = $start_year; $year <= $current_year; $year++) {
+                                            echo '<option value="' . $year . '">' . $year . '</option>';
+                                            }
+                                        ?>
+                                                                
+                                    </select>                                
+                                </div>
+                                  <!-- gender  -->
+                                  <div class="w-full  group  ">
+                                    <div class="">
                                         <label for="gender" class=" flex-col font-medium ">Gender:<span class="text-red-500 font-medium mb-1">*</span><br></label> <br>
                                     </div>
                                     <div class="flex">
@@ -325,39 +359,23 @@
                                     </div>
   
                                 </div>
-                               <!-- profile -->
-                                <div class="w-full group">
-                                    <label for="birthdate" class="font-medium ">Profile:</label>
-                                    <div class="flex items-start justify-start">
-                                        <!-- Button to open the file dialog -->
-                                        <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                            <input type="file" name="profile" class="hidden" id="image-input">
-
-                                            <!-- Image preview or placeholder -->
-                                            <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                                <img src="{{asset('storage/img/profile.svg')}}" class="w-8 h-8 p-2" alt="">
-
-                                            
-                                            </div>
-                        
-                                        </label>
-                                    </div>
-                                </div>
+                              
                                 <!-- status -->
-                               <div class="w-full group">    
+                               <div class="w-full group mt-3">    
                                 <label class="block mb-2 text-sm font-medium " for="photo">Status:<b class="text-red-400">*</b> </label>
                                 
-                                    <label class="relative inline-flex items-start cursor-pointer">
+                                    <label class="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none pe rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
                                     </label>
                                </div>
                         </div>
-                        <button data-modal-hide="addDoctor" type="submit" class="text-white  mt-5 mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                        <button data-modal-hide="addDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                        <div class="flex items-start justify-start mt-5 mb-2 rounded-b dark:border-gray-600">
+                            <button data-modal-hide="addDoctor" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                            <button data-modal-hide="addDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                        </div>
 
                     </form>
-                            
                    
                 </div>
                 
@@ -445,7 +463,7 @@
                                     <!-- Blood Group   -->
                                     <div class="w-full  group">
                                         <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                        <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                        <select id="groupB" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                             <option value="" disabled>--Select Blood Group--</option>
                                             <option value="A+">A+</option>
                                             <option value="A-">A-</option>
@@ -459,17 +477,41 @@
                                     </div>
                                     <!-- profile -->
                                     <div class="w-full group">
-                                    <div class="">
-                                    
                                         <label class="block mb-2 text-sm font-medium " for="photo">Profile </label>
     
                                         <input class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
                                         <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                                         <img src="./imgs/hospital.png" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
+                                    
                                     </div>
+                                   
+                                     <!-- degree -->
+                                     <div class="w-full  mb-4 group">
+                                        <label for="doctor" class="font-medium ">Degree:<span class="text-red-500 font-medium">*</span></label>
+                                        <input type="text" name="degree" id="degree" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
                                     </div>
-                                    <!-- gender  -->
-                                    <div class="w-full  group  ">
+                                    <!-- University -->
+                                    <div class="w-full  mb-4 group">
+                                        <label for="university" class="font-medium ">University:<span class="text-red-500 font-medium">*</span></label>
+                                        <input type="text" name="university" id="university" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                                    </div>
+                                    <!-- Year -->
+                                    <div class="w-full mb-4 group">
+                                        <label for="year" class="font-medium ">Year:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                        <select id="year" name="year" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                            <option selected disabled class="font-medium">Select a Year</option>
+                                            <?php
+                                                $start_year = 1970;
+                                                $current_year = date('Y');
+                                                for ($year = $start_year; $year <= $current_year; $year++) {
+                                                echo '<option value="' . $year . '">' . $year . '</option>';
+                                                }
+                                            ?>
+                                                                    
+                                        </select>                                
+                                    </div>
+                                     <!-- gender  -->
+                                     <div class="w-full  group  ">
                                         <div class="">
                                             <label for="gender" class=" flex-col font-medium ">Gender:<span class="text-red-500 font-medium mb-1">*</span><br></label> <br>
                                         </div>
@@ -499,124 +541,7 @@
                                    </div>
                             </div>
                         </form>
-                        <!-- accordion -->
-                        <div class="mt-5 py-5">
-                            <div id="accordion-arrow-icon" data-accordion="open">
-                                    <h2 id="accordion-arrow-icon-heading-1">
-                                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left   bg-gray-800 text-white border border-b-0 border-gray-100 rounded-t-xl dark:text-white dark:border-gray-700  " data-accordion-target="#accordion-arrow-icon-body-1" aria-expanded="true" aria-controls="accordion-arrow-icon-body-1">
-                                        <span>Add Qualification</span>
-                                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"></path></svg>
-                                    </button>
-                                    </h2>
-
-                                    <div id="accordion-arrow-icon-body-1" aria-labelledby="accordion-arrow-icon-heading-1">
-                                        <div class="p-5 border border-b-0 border-gray-200 ">
-                                            <!-- form edit qualification -->
-                                            <form method="post"  enctype="multipart/form-data" action="#">
-                            
-                                                <!-- degree -->
-                                                <div class="w-full  mb-4 group">
-                                                    <label for="doctor" class="font-medium ">Degree:<span class="text-red-500 font-medium">*</span></label>
-                                                    <input type="text" name="degree" id="degree" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
-                                                </div>
-                                                <!-- University -->
-                                                <div class="w-full  mb-4 group">
-                                                    <label for="university" class="font-medium ">University:<span class="text-red-500 font-medium">*</span></label>
-                                                    <input type="text" name="university" id="university" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
-                                                </div>
-                                                <!-- Year -->
-                                                <div class="w-full mb-4 group">
-                                                    <label for="year" class="font-medium ">Year:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                                    <select id="year" name="year" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                                        <option selected disabled class="font-medium">Select a Year</option>
-                                                        <?php
-                                                            $start_year = 1970;
-                                                            $current_year = date('Y');
-                                                            for ($year = $start_year; $year <= $current_year; $year++) {
-                                                            echo '<option value="' . $year . '">' . $year . '</option>';
-                                                            }
-                                                        ?>
-                                                                                
-                                                    </select>                                
-                                                </div>
-                                                <!-- buttons  -->
-                                                <div class="flex items-cente justify-start mx-2  mb-2 rounded-b dark:border-gray-600">
-                                                    <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save </button>
-                                                    <button  type="reset" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Reset</button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                               
-                            </div>
-                        </div>
-                        <!-- qualification table -->
-                        <div class="">
-                            <table class="w-full text-sm  text-center   overflow-hidden rounded-md ">
-                                <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
-                                    <tr class=" ">
-                                        <th scope="col" class="px-6 py-3">
-                                             SR NO
-                                        </th>
-                                       
-                                        <th scope="col" class="px-6 py-3">
-                                         DEGREE
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                          UNIVERSITY
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                          YEAR
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                          ACTION
-                                        </th>
-                                      
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
-                                       
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>
-                                          
-                                        </td>
-                                        <td>
-                                            <div class="flex justify-center mt-5">
-                                                                             
-                                                <a href="#"  data-tooltip-target="tooltip-edit"  class="text-white  px-5 py-2 text-center mb-2" type="button">
-                                                    <i class="fas fa-edit text-blue-700 text-xl"></i>
-                                                </a>                                
-                                                <a href="#"  data-tooltip-target="tooltip-delete" data-modal-target="deleteQualification" data-modal-toggle="deleteQualification"   class="text-white mx-2  px-5 py-2 text-center mb-2" type="button">
-                                                    <i class="fas fa-trash text-red-700 text-xl"></i>
-                                                </a>   
-                                                 
-                                                <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                     edit qualification
-                                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                                </div> 
-                                                <div id="tooltip-delete" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                                     delete qualification
-                                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                                </div> 
-                                           </div> 
-                                        </td>
-                                    </tr>
-                                 
-                                   
-                                </tbody>
-                            </table>
-                        </div>
+                     
                     </div>
                 </div>
                 <!-- modal footer -->
@@ -659,7 +584,7 @@
     </div>
 
     <!-- ---------------------------Add Qualification--------------------------- -->
-     <!-- Add qualification -->
+     {{-- <!-- Add qualification -->
      <div id="addQualification" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-md">
             <!-- Modal content -->
@@ -743,7 +668,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
     
     @endsection
    

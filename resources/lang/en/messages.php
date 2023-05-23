@@ -10,7 +10,7 @@ return [
         'contact'=>'Contact',
         'login'=>'Log in',
         'languages'=>'Languages',
-        'Dashbaord'=>'Languages',
+        'dashboard'=>'Dashboard',
     ],
     'hero'=>[ 
         'welcome' => "Feel Better",
@@ -119,6 +119,7 @@ return [
         'home' => "Home ",
         'name' => " First Name",
         'email' => " Email",
+        'password' => " Password",
         'remember' => " Remember me",
         'forgot_password' => " Forgot Password ?",
         'phone' => " Number Phone",

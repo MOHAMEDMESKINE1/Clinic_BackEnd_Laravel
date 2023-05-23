@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
@@ -204,7 +204,7 @@
                     <form method="post"  enctype="multipart/form-data" action="#">
                         <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                             
-                            <!-- Visit Date password -->
+                            <!-- Visit Date  -->
                             <div class="w-full   group">
                                 <label for="" class="font-medium ">Name:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 

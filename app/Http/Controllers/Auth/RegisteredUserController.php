@@ -55,22 +55,22 @@ class RegisteredUserController extends Controller
 
         // notify
         // $user->notify(new SuccessfulRegistration($user->name));
-        $basic  = new Basic("b05fff58", "39vWH4Ij3bTKB5hp");
-        $client = new Client($basic);
-        $response = $client->sms()->send(
-            new SMS("212704282927", 'WeCare', 'Welcome To WeCare Hospital Website ! Mr '.$user->name)
-        );
+        // $basic  = new Basic("b05fff58", "39vWH4Ij3bTKB5hp");
+        // $client = new Client($basic);
+        // $response = $client->sms()->send(
+        //     new SMS("212704282927", 'WeCare', 'Welcome To WeCare Hospital Website ! Mr '.$user->name)
+        // );
         
-        $message = $response->current();
+        // $message = $response->current();
         
-        if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
-        }
+        // if ($message->getStatus() == 0) {
+        //     echo "The message was sent successfully\n";
+        // } else {
+        //     echo "The message failed with status: " . $message->getStatus() . "\n";
+        // }
     
         
-        // vonage
+        
         Auth::login($user);
 
          return redirect(RouteServiceProvider::HOME);

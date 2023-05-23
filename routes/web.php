@@ -122,7 +122,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
 
 
 
-Route::get('/home',[AuthController::class,'index']);
+Route::get('/home',[AuthController::class,'index'])->middleware(['auth','verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

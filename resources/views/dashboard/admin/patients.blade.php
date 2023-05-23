@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patients</title>
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -253,35 +254,11 @@
                                     <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
                                     <input type="date" name="birthdate" id="birthdate" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
                                 </div>
-                              
-                                <!-- password -->
-                                <div class="w-full mb-6  group ">
-                                    <label for="password" class="font-medium ">Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <input type="password"  name="password" id="password" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="*****" required />
-                                </div>
-                                <!-- confirm password -->
-                                <div class="w-full mb-6  group ">
-
-                                   
-                                      <div class="">
-                                        <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                        <input type="password"  name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="*****" required />
-                                      </div>
-                                     
-                                   
-
-                                </div>
-                                <!-- phone -->
+                                                              <!-- phone -->
                                 <div class="w-full mb-6  group ">
                                     <label for="phone" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                     <input id="phone" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
-                                </div>
-                              
-                             <!-- Birhtdate -->
-                             <div class="w-full mb-6 group">
-                                <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
-                                <input type="date" name="birthdate" id="birthdate" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                            </div>
+                                </div>                            
                              <!-- gender  -->
                              <div class="w-full  group  ">
                                 <label for="gender" class=" flex-col font-medium ">Gender:<span class="text-red-500 font-medium">*</span><br></label> <br>
