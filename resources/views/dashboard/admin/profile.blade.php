@@ -7,7 +7,7 @@
         <title>Profile </title>
         <script src="https://cdn.tailwindcss.com"></script>
     
-        <link href="../node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
@@ -30,7 +30,7 @@
 <body class="bg-gray-100">
     <div class="container m-5  mx-auto">
       <h1 class="text-gray-500 mt-10 mx-1 text-xl">
-        Edit Profile
+         Profile
       </h1>
      
 
@@ -58,7 +58,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <!-- firstname -->
+                            <!-- fulname -->
                             <label for="" class="font-medium ">FullName :<span class="text-red-500 font-medium">*</span></label>
 
                             <div class=" flex justify-around items-center flex-col md:flex-row   mb-6">
@@ -78,9 +78,9 @@
                       </div>
                      
                       <!-- phone -->
-                      <div class="w-full mb-6  group ">
+                      <div class="w-full mb-6  group " style="width: 800px;">
                           <label for="phone" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                          <input id="phone" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
+                          <input id="phone" type="tel"   name="phone"  class="block mt-1 p-2.5 w-full lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
                       </div>
                      
                   

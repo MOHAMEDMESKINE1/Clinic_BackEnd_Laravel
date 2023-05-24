@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->enum('status', ['booked', 'checkin', 'checkout','cancelled']);
+            $table->enum('payment', ['booked', 'pending']);
+            // fk
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
+          
             $table->timestamps();
         });
     }

@@ -302,9 +302,11 @@
                             <div class="w-full mb-6 group">
                                 <label for="paiment" class="font-medium ">Payment:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                     <select  id="order-filter" name="payment" class="bg-white border w-full  border-gray-100 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:border-gray-200 dark:placeholder-gray-400 ">
-                                        <option value="0">Manually</option>
-                                        <option value="1">payment Method</option>
-                                     
+                                        <option value="" selected disabled>Please Select a Method</option>
+                                        <option value="manually">Manually</option>
+                                        <option value="stripe">Stripe</option>
+                                        <option value="paypal">Paypal</option>
+                                                                          
     
                                     </select>      
                             </div>       

@@ -81,6 +81,14 @@
                     Dashboard
                   </a>
                   <a
+                    href="{{route('admin.staff')}}"
+                    role="menuitem"
+                    class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                  >
+                  <i class="fas fa-user  p-1 fa-user-doctor"></i>
+                    Staff
+                  </a>
+                  <a
                     href="{{route('admin.doctors')}}"
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
@@ -271,7 +279,7 @@
                     aria-label="User menu"
                   >
                     <a
-                      href="../admin/profile.html"
+                      href="{{route('admin.profile')}}"
                       role="menuitem"
                       class="block  hover:shadow-sm px-4 py-2 text-sm  text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
                     >
@@ -418,6 +426,14 @@
                         <i class="fas fa-light fa-gauge p-1"></i>
                           Dashboard
                         </a>
+                        <a
+                        href="{{route('admin.staff')}}"
+                        role="menuitem"
+                        class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                      >
+                      <i class="fas fa-user  p-1 fa-user-doctor"></i>
+                        Staff
+                      </a>
                         <a
                           href="{{route('admin.doctors')}}"
                           role="menuitem"

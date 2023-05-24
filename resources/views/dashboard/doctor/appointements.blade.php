@@ -154,7 +154,7 @@
                        
                         <td>
                             <select id="payment" name="payment" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                <option value="booked">Pending</option>
+                                <option value="pending">Pending</option>
                                 <option value="paid">Paid</option>
                                 
                             </select>     

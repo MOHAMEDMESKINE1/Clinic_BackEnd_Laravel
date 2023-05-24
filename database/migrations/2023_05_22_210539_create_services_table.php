@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('name');
+            $table->string('category');
+            $table->integer('charge');
+            $table->integer('status')->default(0);      
+            $table->text('photo');
+
+            // fk
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

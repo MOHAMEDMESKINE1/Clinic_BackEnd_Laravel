@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->enum('payment_method', ['manually', 'stripe','paypal']);
+            $table->integer('amount')->default(100);
+            $table->date('date');
+            // fk patient
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade')->onUpdate('cascade');
+           
             $table->timestamps();
         });
     }

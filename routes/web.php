@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         
     Route::controller(AdminController::class)->group(function (){
         Route::get('/statistics', 'statistics')->name('admin.statistics');
+        Route::get('/staff', 'staff')->name('admin.staff');
         Route::get('/patients', 'patients')->name('admin.patients');
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/appointements', 'appointements')->name('admin.appointements');
@@ -70,7 +71,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 });
 
 
-// Routes for the doctor dashboard
+// Routes doctor dashboard
 
 Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], function () {
     
@@ -95,7 +96,7 @@ Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], funct
 
 });
 
-// Routes for the Patient dashboard
+// Routes Patient dashboard
 
 Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], function () {
     

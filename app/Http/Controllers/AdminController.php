@@ -19,6 +19,11 @@ class AdminController extends Controller
         return    view('dashboard.admin.doctors');
 
     }
+    public function staff(){
+        
+        return    view('dashboard.admin.staff');
+
+    }
     public function appointements(){
         
         return    view('dashboard.admin.appointements');
@@ -57,10 +62,7 @@ class AdminController extends Controller
         return    view('dashboard.admin.transactions_details');
 
     }
-    public function staff(){
-        return    view('dashboard.admin.staff');
-
-    }
+    
     public function specializations(){
         return    view('dashboard.admin.specializations');
 

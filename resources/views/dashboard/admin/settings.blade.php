@@ -7,16 +7,15 @@
     <title>Settings</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
     
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
     {{-- <script src="/editortext/ckeditor.js"></script> --}}
     <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
   <!-- flags -->
     {{-- <link rel="stylesheet" href="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -130,7 +129,7 @@
                             </div>
                         </div>
                         <!-- currency -->
-                        <div class="flex flex-wrap mb-6">
+                        {{-- <div class="flex flex-wrap mb-6">
                             <label for="email" class="w-full lg:w-4/12 form-label required">Currency: <b class="text-red-600">*</b></label>
                             <div class="w-full lg:w-8/12">
                                 <select id="currency" name="currency" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
@@ -141,7 +140,7 @@
                                 </select>     
                             
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- buttons -->
                         <div class="flex justify-start mt-6">
                             <input class="px-4 py-2 font-bold text-white bg-cyan-500 rounded hover:bg-cyan-600 cursor-pointer" id="settingSubmitBtn" type="submit" value="Save Changes">
@@ -162,14 +161,15 @@
                         </div>
                     
                         <!-- country -->
-                        <div class="flex flex-wrap mb-6">
-                            <!-- <label for="email" class="w-full lg:w-4/12 form-label required">Country: <b class="text-red-600">*</b></label>
-                            <div class="w-full lg:w-8/12">
+                        <div class="flex flex-wrap mb-6 w-full">
+                            <label for="email" class="w-full lg:w-4/12 form-label required">Country: <b class="text-red-600">*</b></label>
+                            <div class="w-full ">
                                 <select id="country" data-default="MA" data-flag="true"  name="country" 
                                 class=" selectpicker  countrypicker  mt-1 p-2.5 text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">                                                        
                                 </select>
-                            </div> -->
-                                <label for="email" class="w-full lg:w-4/12 form-label required">Country: <b class="text-red-600">*</b></label>
+                            </div> 
+                                
+                            {{-- <label for="email" class="w-full lg:w-4/12 form-label required">Country: <b class="text-red-600">*</b></label>
 
                             <div class="w-full lg:w-8/12">
                                     <select id="country"
@@ -177,7 +177,7 @@
                                     class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" 
                                     
                                     ></select>
-                            </div>
+                            </div> --}}
                             
                         </div>
                         <!-- state -->
@@ -274,17 +274,17 @@
  
        
     </script> 
+     --}}
      <script>
         const phoneInputField = document.getElementById("phone");
-
+  
         const phoneInput = window.intlTelInput(phoneInputField, {
         utilsScript:
             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
-    </script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-
+    </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
     <!-- flags -->
     {{-- <script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
