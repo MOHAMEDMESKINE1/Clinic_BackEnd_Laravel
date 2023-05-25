@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 
     <!-- phone flag country -->
     <link
@@ -36,7 +37,7 @@
     <div class="grid grid-col-1 md:grid-col-2">
          
         <!-- Search -->
-                <div class=" container ">
+                <div class=" container m-5">
                     <div class="">
                        <div class="flex justify-between sm\:flex-row ">
                         <div>
@@ -57,7 +58,7 @@
                                 </label>
                             </form>  
                         </div>              
-                        <div class="  " >
+                        <div class="  mx-8" >
                             <!-- add staff -->
                             <!-- <button  type="button"  class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Staff</button> -->
                             <button data-modal-target="addModal" data-modal-toggle="addModal" class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
@@ -193,9 +194,9 @@
                                 </div>
                                 <!-- confirm password -->
                                 <div class="w-full mb-6  group">
-                                    <label for="" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                    <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
-                                    <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
+                                    <input type="text" name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                                 </div>
                                 <!-- Role   -->
                                 <div class="w-full  group">
@@ -236,14 +237,14 @@
                                     
                                         <!-- Button to open the file dialog -->
                                         <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                            <input type="file" name="profile" class="hidden" id="image-input">
+                                            <input type="file" name="photo" class="hidden" id="image-input">
 
                                             <!-- Image preview or placeholder -->
                                             <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
                                                 <!-- <svg class="w-8 h-8 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path d="M12 5v14M5 12h14"></path>
                                                 </svg> -->
-                                                <img src="../patient/profile.svg" class="w-8 h-8 " alt="">
+                                                <img src="{{asset('storage/img/profile.svg')}}" class="w-8 h-8 " alt="">
 
                                             </div>
                         
@@ -254,11 +255,12 @@
                                 </div>
                         </div>
                  </div>
-                 <!-- modal footer -->
-                 <div class="flex items-center justify-start  mt-5 mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="addModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+                        <!-- modal footer -->
+                        <div class="flex items-center justify-start  mt-5 mb-2 rounded-b dark:border-gray-600">
+                            <button data-modal-hide="addModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                            <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                        </div>
+                </form>
               </div>
           </div>
       </div>
@@ -310,9 +312,9 @@
                               </div>
                               <!-- confirm password -->
                               <div class="w-full mb-6  group">
-                                  <label for="" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                  <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
-                                  <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
+                                  <input type="text" name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                               </div>
                               <!-- Role   -->
                               <div class="w-full  group">
@@ -350,7 +352,7 @@
   
                                       <input class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
                                       <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
-                                       <img src="./imgs/hospital.png" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
+                                       <img src="{{asset('storage/img/patient.svg')}}" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
                                   </div>
                                 </div>
                         </div>
@@ -395,7 +397,7 @@
     </div>
     </div>
     @endsection
-    <script src="script.js"></script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

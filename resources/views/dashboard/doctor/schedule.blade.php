@@ -60,7 +60,7 @@
             <!-- end time -->
             <div class="w-full  group mb-6">
                <label for="end_time" class="font-medium ">End Time:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-               <select id="end_time" required name="end_time" onchange="selecteValue()" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+               <select id="end_time" required name="end_time"  class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                   <option selected disabled>Select an end  Time</option>
                   <option value="8:00 AM">8:00 AM</option>
                   <option value="8:15 AM">8:15 AM</option>

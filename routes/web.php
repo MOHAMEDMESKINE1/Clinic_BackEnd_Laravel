@@ -46,6 +46,7 @@ Route::controller(WebsiteController::class)->group(function(){
     route::post('/contact','StoreContact')->name('store.contact');
 });
 
+// Routes Admin Dashboard
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
         
     Route::controller(AdminController::class)->group(function (){

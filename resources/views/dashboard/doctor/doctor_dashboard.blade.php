@@ -275,13 +275,17 @@
               <h4>Translate</h4>
               <div class="" id="languages" ></div>
               </a>
-              <a
-                href="#"
-                role="menuitem"
-                class="block  hover:shadow-sm px-4 py-2 text-sm  transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-              >
-                Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                
+                 :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
+                </a>
+            </form>   
 
                 </div>
               </div>
@@ -342,13 +346,18 @@
                   >
                     Settings
                   </a>
-                  <a
-                    href="#"
-                    role="menuitem"
-                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                  >
-                    Logout
-                  </a>
+                  <!-- Logout links -->
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+  
+                    <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                    
+                     :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
+                    </a>
+                </form>   
                 </div>
               </div>
             </nav>
@@ -471,14 +480,17 @@
                   
       
                     <!-- Logout links -->
-                    <a
-                    href="#logout"
-                    class="flex items-center p-2 hover:font-semibold hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 active:bg-gray-50 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary"
-                  >
-                  <i class="fas fa-light fa-right-from-bracket p-1"></i>
-                    <span class="ml-2 text-sm"> LogOut </span>
-                  </a>
-                   
+                    <form method="POST" action="{{ route('logout') }}">
+                      @csrf
+    
+                      <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                      
+                       :href="route('logout')"
+                              onclick="event.preventDefault();
+                                          this.closest('form').submit();">
+                          <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
+                      </a>
+                  </form>   
                   </nav>
                 </div>
               </div>
