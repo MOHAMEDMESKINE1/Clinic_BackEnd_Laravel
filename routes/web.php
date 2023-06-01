@@ -53,7 +53,10 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/statistics', 'statistics')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
         Route::get('/patients', 'patients')->name('admin.patients');
+        
         Route::get('/doctors', 'doctors')->name('admin.doctors');
+        // Route::get('/search', 'search')->name('admin.search');
+
         Route::get('/appointements', 'appointements')->name('admin.appointements');
         Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
         Route::get('/profile', 'profile')->name('admin.profile');
@@ -66,6 +69,12 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/visits_details', 'visits_details')->name('admin.visits_details');
         Route::get('/settings', 'settings')->name('admin.settings');
     
+        // crud
+        Route::post('/doctors/create', 'store')->name('admin.store');
+        Route::get('/doctors/{id}', 'edit')->name('admin.edit');
+        Route::put('/doctors/edit/{id}', 'update')->name('admin.update');
+        Route::delete('{id}', 'delete')->name('admin.delete');
+
     });
 
 

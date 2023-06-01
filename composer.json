@@ -19,7 +19,8 @@
         "symfony/http-client": "*",
         "symfony/mailgun-mailer": "*",
         "twilio/sdk": "*",
-        "vonage/client": "^4.0"
+        "vonage/client": "^4.0",
+        "yajra/laravel-datatables-oracle": "^10.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

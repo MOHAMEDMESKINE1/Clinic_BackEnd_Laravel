@@ -25,18 +25,7 @@ class AuthenticatedSessionController extends Controller
      */
     protected function redirectTo()
     {
-    // if (auth()->user()->role === 'admin') {
-        
-    //     return redirect('/admin/dashboard');
-
-    // } elseif (auth()->user()->role === 'doctor') {
-
-    //     return redirect('/doctor/dashboard');
-
-    // } elseif (auth()->user()->role === 'patient') {
-
-    //     return redirect('/patient/dashboard');
-    // }
+    
 
     return redirect('/dashboard');
     }

@@ -2,23 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Doctor\DoctorRequest;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\DoctorRepository;
+use Yajra\DataTables\Facades\DataTables;
+
+// use DataTables;
 
 class AdminController extends Controller
 {
+    public $doctors ; 
+    public function __construct(DoctorRepository $doctorRepository)
+    {
+        $this->doctors = $doctorRepository ;
+    }
+    public function doctors(Request $request){
+
+        $doctors = $this->doctors->all();
+       
+        return    view('dashboard.admin.doctors',compact('doctors'));
+
+     }
+     public function store (Request $request){
+        
+        
+        $this->doctors->store($request->all());
     
+
+       
+
+
+       return  redirect()->route('admin.doctors');
+     }
+     public function edit ($id){
+        
+        $doctor = $this->doctors->getById($id);
+
+        return  view('dashboard.admin.edit.edit',compact("doctor"));
+
+     }
+     public function update ($id,DoctorRequest $request){
+        
+
+        $this->doctors->update($id,$request->validated());
+    
+        return redirect()->route("admin.doctors");
+
+       
+
+
+     }
+     public function delete(Request $request){
+
+       $this->doctors->delete($request->id);
+       return redirect()->route("admin.doctors");
+
+    //    return  redirect()->route('admin.doctors');
+
+    }
+    // public function search(Request $request){
+
+    //     $query  =$request->input('query');
+      
+      
+
+    //     if($query){
+
+    //        $doctors = $this->doctors->search($request->search);;
+
+    //     }else{
+            
+           
+    //        $doctors =  $this->doctors->all();
    
+    //     }
+
+    //     return response()->json($doctors);
+    // }
     public function patients(){
         
         return    view('dashboard.admin.patients');
     }
 
-    public function doctors(){
-        
-        return    view('dashboard.admin.doctors');
-
-    }
+  
     public function staff(){
         
         return    view('dashboard.admin.staff');

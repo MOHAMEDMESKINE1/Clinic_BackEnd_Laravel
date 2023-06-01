@@ -1,9 +1,12 @@
 import './bootstrap.js';
 
-import Alpine from 'alpinejs';
+import Alpine from 'alpinejs/src/alpine.js';
 window.Alpine = Alpine;
 Alpine.start();
 
+import Swal from 'sweetalert2';
+
+window.Swal = Swal;
 
 import './script.js'
 import './app.js'

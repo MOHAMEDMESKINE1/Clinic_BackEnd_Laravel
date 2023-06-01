@@ -2,20 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\DoctorRepository;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    public function patient_details(){
-        
-        return    view('dashboard.doctor.patient_details');
+    public $doctors ;
+
+    public function __construct(DoctorRepository $doctorRepository)
+    {
+        $this->doctors = $doctorRepository ;
     }
 
     public function doctors(){
+
+        $doctors =   $this->doctors->all();
         
-        return    view('dashboard.doctor.doctors');
+         return  view('dashboard.doctor.doctors',compact("doctors"));
+ 
+ 
+     }
+    
+    public function patient_details(){
+        
+       
+        return    view('dashboard.doctor.patient_details');
 
     }
+
+ 
     public function appointements(){
         
         return    view('dashboard.doctor.appointements');

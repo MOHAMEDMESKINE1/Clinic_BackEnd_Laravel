@@ -34,10 +34,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
-
+                
+    
+    // login wth google
     Route::get('/redirect', [SocialAuthController::class, 'redirectToProvider']);
     Route::get('/auth/google/callback', [SocialAuthController::class, 'HandleCallback']);
-            
+       
+    // login with facebook
+    
 });
 
 Route::middleware('auth')->group(function () {

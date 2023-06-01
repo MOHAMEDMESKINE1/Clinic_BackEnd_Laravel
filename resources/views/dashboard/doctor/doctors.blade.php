@@ -63,35 +63,29 @@
                                         </th>
                                     </tr>
                                 </thead>
+                                @foreach ($doctors as $doctor)
+                                    
+                               
                                 <tbody>
                                     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     
                                         <td class="px-6 py-4">
-                                        1
+                                        {{$doctor->firstname}}
                                         </td>
                                         <td class="px-6 py-4">
-                                        Steve Tim
+                                        {{$doctor->lastname}}
                                         </td>
                                         <td class="px-6 py-4">
-                                            Silver@gmail.com
+                                        {{$doctor->email}}
                                         </td>
-                                        <td class="px-6 py-4">
-                                            NEW YORK
-
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <img src="" alt="image" class="rounded-full w-5 h-5">
-
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            Cardiology
-                                        </td>
+                                        
                                         <td class="px-6 py-4">
                                             <a href="#"   data-modal-target="editModal" data-modal-toggle="editModal"  class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                             <a href="#"  data-modal-target="deleteModal" data-modal-toggle="deleteModal" class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2">Delete</a>
                                         </td>
                                     </tr>
                                 </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>
