@@ -47,58 +47,52 @@
     @extends('dashboard.admin.admin_dashboard')
 
     @section('content')
-    <div class="grid grid-col-1 md:grid-col-2">
+   <div class="container m-5">
+     <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container m-5">
-            
-              
-                 <div class="flex justify-between sm\:flex-row ">
-                <div>
-                   
-                        <label class="relative block">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
-                                    height="30" viewBox="0 0 30 30">
-                                    <path
-                                        d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <input
-                                id="searchInput"
-                                name="search"
-                                class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
-                                placeholder="Search" type="text" />
-                        </label>
-                     
-                </div>    
-                         
-                <div class=" flex justify-end mx-8  " >
-                    <!-- add staff -->
-                    <select  id="order-filter" name="filter_doctor" class="  bg-cyan-500 text-white border-0  focus:outline-none font-medium rounded-lg text-sm px-5  text-center mr-2 mb-2">
+       
+        <div class="flex flex-col sm:flex-row justify-between mx-8">
+            <form method="GET" action="{{ route('admin.search') }}" class="flex items-center mb-4 sm:mb-0">
+                <label class="relative block">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                            <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"></path>
+                        </svg>
+                    </span>
+                    <input id="searchInput" name="search" value="" class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none" placeholder="Search" type="search" />
+                </label>
+                <button type="submit" class="text-white bg-gradient-to-br from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm py-1 px-4 ml-2 mt-2 sm:mt-0">
+                    Search
+                </button>
+            </form>
+        
+            <div class="flex items-center">
+               
+                <form action="{{ route('admin.filter') }}" method="GET" class="flex items-center">
+                    <select id="order-filter" name="filter" class="bg-cyan-500 text-white border-0 focus:outline-none font-medium rounded-lg text-sm py-0.5 px-4 mr-2 mb-2">
                         <option disabled selected>
                             <i class="fas fa-light fa-filter"></i>
                             Filter Status
                         </option>
-                        <option value="all">All</option>
-                        <option value="active">Active</option>
-                        <option value="deactive">Deactive</option>
-                      
+                        <option >All</option>
+                        <option value="1">Active</option>
+                        <option value="0">Deactive</option>
                     </select>
-                    
-                    <button data-modal-target="addDoctor"  data-modal-toggle="addDoctor" class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
-                        Add Doctor
+        
+                    <button type="submit" class="text-white bg-gradient-to-br from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm py-1 px-4 mr-2 mb-2">
+                        Filter
                     </button>
-                        
-
-                </div>
-           
+                </form>
+            </div>
         </div>
 
     </div>
+   </div>
     <div class="grid grid-cols-1 ">
         <div class=" col-span-2 bg-white mx-4 p-4 shadow text-center rounded-md dark:bg-darker relative overflow-x-auto">
-
+            <button data-modal-target="addDoctor" data-modal-toggle="addDoctor" class="text-white bg-gradient-to-br from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm py-1 px-4 mr-2 mb-2">
+                Add Doctor
+            </button>
             <table  class="w-full text-sm  text-center   overflow-hidden rounded-md data-table ">
                 <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
                     <tr class=" ">
@@ -136,88 +130,93 @@
                
                
                 <tbody>
-                      @foreach ($doctors as $doctor)
-                    
-                    <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
-                        <td>
-                            {{$doctor->id}}
-                        </td>
-                        <td>
-                            <div class="flex justify-center">
-                                <img src="{{asset('/storage/photos/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-7 h-7 rounded-full border border-gray-100 "><br>
-                                <p class="mx-3">{{$doctor->firstname}} {{$doctor->lastname}}  </p>
-                               </div>
-                                <div class="flex justify-center" >
-                                    <p class="mx-15">{{$doctor->email}} </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <span>{{$doctor->phone}}</span>
-                        </td>
-                        <td>
-                           @if ($doctor->status == 0)
-                            <span class="bg-red-500 p-1 text-white rounded">
-                                Not Availaible
-                            </span>
-                            @else
-                            <span class="bg-green-500 p-1 text-white rounded">
-                                 Availaible
-                            </span>
-                           @endif
-                        </td>
-                        <td>
-                            {{$doctor->birthdate}}
-                        </td>
-                       
-                        <td>
-                            {{$doctor->university}}
-                        </td>
-                        <td>
-                            {{$doctor->year}}
-                        </td>
-                        <td>
-                            {{$doctor->degree}}
-                        </td> 
-                        <td>
-                            <div class="flex items-center mt-5">
-                                                         
-                                {{-- 
-                                data-tooltip-target="tooltip-edit"  data-modal-target="editDoctor" data-modal-toggle="editDoctor"    
-                                --}}
-                                <a href=" {{route("admin.edit",$doctor->id)}}"   class="text-white  px-5 py-2 text-center mb-2" type="button">
-                                    <i class="fas fa-edit text-xl text-green-700"></i>
-                                </a>                                
-                                {{-- <a href="{{route("admin.delete",$doctor->id)}}"  data-tooltip-target="tooltip-delete"   data-modal-target="deleteDoctor" data-modal-toggle="deleteDoctor" class="text-white mx-2  px-5 py-2 text-center mb-2" type="button">
-                                    <i class="fas fa-trash text-xl text-red-700"></i>
-                                </a>     --}}
-                                <form id="deleteForm"  action="{{route("admin.delete",$doctor->id)}}"  class="text-white mx-2  px-5 py-2 text-center mb-2"  method="POST">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="bg-transparent" onclick="deleteConfirmation('deleteForm')">
-                                        <i class="fas fa-trash text-xl text-red-700 mx-2"></i>
-                                        
-                                    </button>
-                                </form>    
-                                <div id="tooltip-qualification" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                     add qualification
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div> 
-                                <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                     edit doctor
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div> 
-                                <div id="tooltip-delete" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                     delete doctor
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div> 
-                           </div> 
-                        </td>
-                    </tr> 
-                 
+
+                
+                        
                    
-                </tbody>
-                @endforeach
+                            @foreach ($doctors as $doctor)
+                            
+                            <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
+                                <td>
+                                    {{$doctor->id}}
+                                </td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <img src="{{asset('/storage/photos/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                        <p class="mx-3">{{$doctor->firstname}} {{$doctor->lastname}}  </p>
+                                    </div>
+                                        <div class="flex justify-center" >
+                                            <p class="mx-15">{{$doctor->email}} </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>{{$doctor->phone}}</span>
+                                </td>
+                                <td>
+                                @if ($doctor->status === 0)
+                                    <span class="bg-red-500 p-1 text-white rounded">
+                                        Deactive
+                                    </span>
+                                    @elseif($doctor->status === 1)
+                                    <span class="bg-green-500 p-1 text-white rounded">
+                                        Active
+                                    </span>
+                                    @else
+                                @endif
+                                </td>
+                                <td>
+                                    {{$doctor->birthdate}}
+                                </td>
+                            
+                                <td>
+                                    {{$doctor->university}}
+                                </td>
+                                <td>
+                                    {{$doctor->year}}
+                                </td>
+                                <td>
+                                    {{$doctor->degree}}
+                                </td> 
+                                <td>
+                                    <div class="flex items-center mt-5">
+                                                                
+                                        {{-- 
+                                        data-tooltip-target="tooltip-edit"  data-modal-target="editDoctor" data-modal-toggle="editDoctor"    
+                                        --}}
+                                        <a href=" {{route("admin.edit",$doctor->id)}}"   class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                            <i class="fas fa-edit text-xl text-green-700"></i>
+                                        </a>                                
+                                        {{-- <a href="{{route("admin.delete",$doctor->id)}}"  data-tooltip-target="tooltip-delete"   data-modal-target="deleteDoctor" data-modal-toggle="deleteDoctor" class="text-white mx-2  px-5 py-2 text-center mb-2" type="button">
+                                            <i class="fas fa-trash text-xl text-red-700"></i>
+                                        </a>     --}}
+                                        <form id="deleteForm"  action="{{route("admin.delete",$doctor->id)}}"  class="text-white mx-2  px-5 py-2 text-center mb-2"  method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="bg-transparent" onclick="deleteConfirmation('deleteForm')">
+                                                <i class="fas fa-trash text-xl text-red-700 mx-2"></i>
+                                                
+                                            </button>
+                                        </form>    
+                                        <div id="tooltip-qualification" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            add qualification
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                        <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            edit doctor
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                        <div id="tooltip-delete" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            delete doctor
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                </div> 
+                                </td>
+                            </tr> 
+                        
+                            </tbody>
+                            @endforeach
+                  
             </table>
            <div class="flex items-between">
              <!-- show result -->
@@ -426,7 +425,7 @@
         </div>
     </div>
     <!-- Edit Doctor -->
-    <div id="editDoctor" data-modal-target="editDoctor" tabindex="-1" aria-hidden="true" class="fixed top-0   left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+    {{-- <div id="editDoctor" data-modal-target="editDoctor" tabindex="-1" aria-hidden="true" class="fixed top-0   left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full m-6">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow ">
@@ -555,7 +554,6 @@
                                             @endphp
                                               
                                             
-                                            {{-- <option value='{{ $doctor->$year }}' {{ $year == $doctor->year  ? selected : '' }}>{{ $doctor->year }}</option> --}}
 
 
                                                                     
@@ -604,7 +602,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Delete Doctor -->
     {{-- <div id="deleteDoctor" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-2xl md:h-auto">

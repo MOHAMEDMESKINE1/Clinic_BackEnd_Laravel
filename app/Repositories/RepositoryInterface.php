@@ -12,7 +12,7 @@
 
     public function store($params);
 
-    public function update($id,$params);
+    public function update(array  $params,$id);
 
     public function delete($id);
 }

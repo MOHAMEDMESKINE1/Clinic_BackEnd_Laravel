@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Doctor\DoctorRequest;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\DoctorRepository;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Doctor\DoctorRequest;
 
 // use DataTables;
 
@@ -21,21 +22,47 @@ class AdminController extends Controller
     public function doctors(Request $request){
 
         $doctors = $this->doctors->all();
-       
+         // Check for search input
+        // if (request('search')) {
+        //      $doctors = Doctor::where('firstname', 'like', '%' . request('search') . '%')->get();
+        //  } else {
+        //     $doctors = $this->doctors->all();
+        //  }
+
+        return    view('dashboard.admin.doctors',compact('doctors'));
+
+     }
+
+     public function search(Request $request){
+
+        $query = $request->search;
+        $doctors = $this->doctors->search($query);
+
+        if ($doctors->isEmpty()) {
+
+           
+            $doctors = $this->doctors->all();
+
+         }
+        return    view('dashboard.admin.doctors',compact('doctors'));
+
+     }
+     public function filter(Request $request){
+
+        $query = $request->filter;
+
+        $doctors = $this->doctors->filter($query);
+
         return    view('dashboard.admin.doctors',compact('doctors'));
 
      }
      public function store (Request $request){
         
-        
         $this->doctors->store($request->all());
-    
-
-       
-
 
        return  redirect()->route('admin.doctors');
      }
+
      public function edit ($id){
         
         $doctor = $this->doctors->getById($id);
@@ -43,11 +70,47 @@ class AdminController extends Controller
         return  view('dashboard.admin.edit.edit',compact("doctor"));
 
      }
-     public function update ($id,DoctorRequest $request){
+     public function update (DoctorRequest $request){
         
 
-        $this->doctors->update($id,$request->validated());
     
+        // $doctor = $this->doctors->getById($request->id);
+
+        // $doctor->update($request->validated());
+
+        $doctor = $this->doctors->getById($request->id);
+        // Check if a new photo was provided
+        if (isset($data['photo'])) {
+            // Delete the old photo if it exists
+            if ($doctor->photo) {
+                Storage::disk('public')->delete($doctor->photo);
+            }
+
+            // Upload and update the new photo
+            $photoPath = $data['photo']->store('storage/photos', 'public');
+            $doctor->photo = $photoPath;
+        }
+        $doctor->update([
+            'firstname'=> $request->firstname,
+            'lastname'=> $request->lastname,
+            'phone'=> $request->phone,
+            'email'=> $request->email,
+            'year'=> $request->year,
+            'status'=> $request->status,
+            'photo'=>$doctor->photo ??= null,
+            'birthdate'=> $request->birthdate,
+            'exprience'=> $request->exprience,
+            'bloodGroup'=> $request->bloodGroup,
+            'university'=> $request->university,
+            'gender'=> $request->gender,
+            'linkedin'=> $request->linkedin,
+            'twitter'=> $request->twitter,
+            'instagram'=> $request->instagram,
+            'degree'=> $request->degree,
+            'specialization'=> $request->specialization,
+        ]);
+        
+
         return redirect()->route("admin.doctors");
 
        

@@ -99,7 +99,7 @@
                     <div class="w-full group">
                         <label class="block mb-2 text-sm font-medium " for="photo">Profile </label>
 
-                        <input class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
+                        <input name="photo" id="photo" type="file" class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" >
                         <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                         <img src="{{asset('storage/photos/'.$doctor->photo)}}" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
                     

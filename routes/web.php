@@ -72,6 +72,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         // crud
         Route::post('/doctors/create', 'store')->name('admin.store');
         Route::get('/doctors/{id}', 'edit')->name('admin.edit');
+        Route::get('/search', 'search')->name('admin.search');
+        Route::get('/filter', 'filter')->name('admin.filter');
         Route::put('/doctors/edit/{id}', 'update')->name('admin.update');
         Route::delete('{id}', 'delete')->name('admin.delete');
 

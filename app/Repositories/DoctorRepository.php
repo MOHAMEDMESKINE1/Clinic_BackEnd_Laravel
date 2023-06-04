@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Doctor;
+use Illuminate\Support\Facades\Storage;
 
 
 class DoctorRepository implements RepositoryInterface {
@@ -24,6 +25,20 @@ class DoctorRepository implements RepositoryInterface {
         $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->get();
 
         return $doctors ;
+        
+    }
+    public function filter($filter)
+    {
+        if($filter==="0"){
+
+            return $this->doctor->where('status', '=',0)->get();
+
+        }elseif($filter==="1"){
+            return $this->doctor->where('status', '=',1)->get();
+
+        }
+      
+        return $this->doctor->all() ;
         
     }
         
@@ -76,63 +91,22 @@ class DoctorRepository implements RepositoryInterface {
         // return $doctor ; 
     }
 
-    public function update($id,$params){
+    public function update($params,$id){
         
-            // $doctor = Doctor::where('id',$id)->first();
+        $doctor = $this->getById($id);
 
-            // $doctor->firstname = $params["firstname"];
-            // $doctor->lastname = $params["lastname"];
-            // $doctor->phone = $params["phone"];
-            // $doctor->email = $params["email"];
-            // $doctor->birthdate = $params["birthdate"];
-            // $doctor->exprience = $params["exprience"];
-            // $doctor->year = $params["year"];
-            // $doctor->bloodGroup = $params["bloodGroup"];
-            // $doctor->university = $params["university"];
-            // $doctor->degree = $params["degree"];
-            // $doctor->specialization = $params["specialization"];
+        // Update the doctor's data
+        $doctor->update($params);
 
-            // if (isset($params['gender'])) {
-            //     $doctor->gender = $params['gender'];
-            // }
-            // if (isset($params['status'])) {
-            //     $doctor->status = $params['status'];
-            // }
+       
 
-            // if(request()->hasfile('photo'))
-            // {
-            //     $file = request()->file('photo');
-            //     $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
-            //     $file->move("storage/photos", $filename);
-                
-            //     $doctor["photo"] = $filename;
-            // }
-
-            // $doctor->linkedin = $params["linkedin"];
-            // $doctor->twitter = $params["twitter"];
-            // $doctor->instagram = $params["instagram"];
-        
-            // $doctor->save();
-
-            $filename=null;
-
-            $doctor = $this->getById($id);
-
-            if (request()->hasFile('photo')) {
-
-                $file = request()->file('photo');
-                $filename = date('YmdHis') . "." . $file->getClientOriginalExtension();
-                $file->move("storage/photos", $filename);
-            }
           
-
-            $doctor->update($params);
-
           
 
             
 
     }
+
 
     public function delete($id){
 
