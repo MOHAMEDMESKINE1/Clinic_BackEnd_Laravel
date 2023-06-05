@@ -56,7 +56,17 @@
                     <!-- specialization -->
                     <div class="w-full mb-6  group ">
                         <label for="specialization" class="font-medium ">Specialization:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                        <input type="text"  name="specialization" id="specialization" value="{{$doctor->specialization}}" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="" required />
+                        {{-- <input type="text"  name="specialization" id="specialization" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="" required /> --}}
+                        <select  name="specialization" id="specialization" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                            <option  disabled>--Select specialization --</option>
+                            
+                            @foreach ($specializations as $specialization)
+
+                                <option value="{{$specialization->id}}" >{{$specialization->name}}</option>
+
+                            @endforeach
+
+                        </select>                   
                     </div>
                     <!-- Experience year -->
                     <div class="w-full mb-6  group ">

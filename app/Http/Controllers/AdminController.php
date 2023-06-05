@@ -2,40 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use toastr;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\DoctorRepository;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Doctor\DoctorRequest;
+use App\Models\Specialization;
+use App\Repositories\SpecializationRepository;
 
 // use DataTables;
 
 class AdminController extends Controller
 {
     public $doctors ; 
-    public function __construct(DoctorRepository $doctorRepository)
+    public $specializations ; 
+    
+    public function __construct(DoctorRepository $doctorRepository,SpecializationRepository $specializationRepository)
     {
         $this->doctors = $doctorRepository ;
-    }
+        $this->specializations = $specializationRepository ;
+        
+    }   
+
+
+
     public function doctors(Request $request){
 
         $doctors = $this->doctors->all();
-         // Check for search input
-        // if (request('search')) {
-        //      $doctors = Doctor::where('firstname', 'like', '%' . request('search') . '%')->get();
-        //  } else {
-        //     $doctors = $this->doctors->all();
-        //  }
+        
+       $specializations = $this->specializations->all();
 
-        return    view('dashboard.admin.doctors',compact('doctors'));
+        return    view('dashboard.admin.doctors',compact(['doctors','specializations']));
+
+     }
+    public function doctor_details($id){
+
+        $doctor = $this->doctors->getById($id);
+        $specialization = $this->specializations->getById($id);
+  
+        return    view('dashboard.admin.doctor_details',compact(['doctor','specialization']));
 
      }
 
      public function search(Request $request){
 
         $query = $request->search;
+
         $doctors = $this->doctors->search($query);
 
         if ($doctors->isEmpty()) {
@@ -60,56 +76,29 @@ class AdminController extends Controller
         
         $this->doctors->store($request->all());
 
+        // /Alert::success('Registration', ' Doctor Registred Successfully !');
+        
+        
+        // just igonre this error it still working 
+
+        toastr()->success('Doctor has been saved successfully!', 'Saving ');
+
        return  redirect()->route('admin.doctors');
      }
 
      public function edit ($id){
         
         $doctor = $this->doctors->getById($id);
+        $specializations = $this->specializations->all();
 
-        return  view('dashboard.admin.edit.edit',compact("doctor"));
+        return  view('dashboard.admin.edit.edit',compact(["doctor","specializations"]));
 
      }
-     public function update (DoctorRequest $request){
+     public function update (DoctorRequest $params,$id){
         
+        $this->doctors->update($params,$id);
 
-    
-        // $doctor = $this->doctors->getById($request->id);
-
-        // $doctor->update($request->validated());
-
-        $doctor = $this->doctors->getById($request->id);
-        // Check if a new photo was provided
-        if (isset($data['photo'])) {
-            // Delete the old photo if it exists
-            if ($doctor->photo) {
-                Storage::disk('public')->delete($doctor->photo);
-            }
-
-            // Upload and update the new photo
-            $photoPath = $data['photo']->store('storage/photos', 'public');
-            $doctor->photo = $photoPath;
-        }
-        $doctor->update([
-            'firstname'=> $request->firstname,
-            'lastname'=> $request->lastname,
-            'phone'=> $request->phone,
-            'email'=> $request->email,
-            'year'=> $request->year,
-            'status'=> $request->status,
-            'photo'=>$doctor->photo ??= null,
-            'birthdate'=> $request->birthdate,
-            'exprience'=> $request->exprience,
-            'bloodGroup'=> $request->bloodGroup,
-            'university'=> $request->university,
-            'gender'=> $request->gender,
-            'linkedin'=> $request->linkedin,
-            'twitter'=> $request->twitter,
-            'instagram'=> $request->instagram,
-            'degree'=> $request->degree,
-            'specialization'=> $request->specialization,
-        ]);
-        
+        toastr()->success('Doctor has been updated successfully!', 'Update');
 
         return redirect()->route("admin.doctors");
 
@@ -118,32 +107,19 @@ class AdminController extends Controller
 
      }
      public function delete(Request $request){
+        // toastr()->warning('Are you sure you want to proceed ?');
+       
+        // Alert::warning('Warning Title', 'Warning Message');
 
        $this->doctors->delete($request->id);
+
+       toastr()->success('Doctor has been deleted successfully!', 'Deletion');
+
        return redirect()->route("admin.doctors");
 
-    //    return  redirect()->route('admin.doctors');
 
     }
-    // public function search(Request $request){
-
-    //     $query  =$request->input('query');
-      
-      
-
-    //     if($query){
-
-    //        $doctors = $this->doctors->search($request->search);;
-
-    //     }else{
-            
-           
-    //        $doctors =  $this->doctors->all();
-   
-    //     }
-
-    //     return response()->json($doctors);
-    // }
+    
     public function patients(){
         
         return    view('dashboard.admin.patients');

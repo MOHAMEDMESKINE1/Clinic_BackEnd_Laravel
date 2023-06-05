@@ -43,6 +43,7 @@
          font-family: 'Poppins', sans-serif;
        }
     </style>
+    @include('sweetalert::alert')
   </head>
   <body >
 

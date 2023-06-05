@@ -26,9 +26,13 @@ class Doctor extends Model
         'twitter',
         'instagram',
         'degree',
-        'specialization',
+        'specialization_id',
         'remember_token',
     ];
+    public function specializations() {
+        
+        return $this->belongsTo(Specialization::class);
+    }
 
     public function getCreatedAtAttribute($value)
     {
@@ -38,4 +42,5 @@ class Doctor extends Model
     {
             return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired
     }
+   
 }

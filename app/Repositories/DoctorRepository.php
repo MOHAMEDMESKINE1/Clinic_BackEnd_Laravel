@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class DoctorRepository implements RepositoryInterface {
@@ -17,12 +18,12 @@ class DoctorRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->doctor->select('*')->get() ; 
+        return  $this->doctor->select("*")->paginate(5) ; 
     }
 
     public function search($query)
     {
-        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->get();
+        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->paginate(5);
 
         return $doctors ;
         
@@ -31,21 +32,21 @@ class DoctorRepository implements RepositoryInterface {
     {
         if($filter==="0"){
 
-            return $this->doctor->where('status', '=',0)->get();
+            return $this->doctor->where('status', '=',0)->paginate();
 
         }elseif($filter==="1"){
-            return $this->doctor->where('status', '=',1)->get();
+            return $this->doctor->where('status', '=',1)->paginate();
 
         }
       
-        return $this->doctor->all() ;
+        return  $this->all();
         
     }
         
     public function getById($id){
        
 
-        return $this->doctor->findOrFail($id);
+        return $this->doctor->with("specializations")->find($id);
     }
 
     public function store($params){
@@ -62,7 +63,13 @@ class DoctorRepository implements RepositoryInterface {
             $doctor->bloodGroup = $params["bloodGroup"];
             $doctor->university = $params["university"];
             $doctor->degree = $params["degree"];
-            $doctor->specialization = $params["specialization"];
+            // $doctor->specialization_id = intval($params["specialization"]);
+
+            if (isset($params['specialization'])) {
+                $doctor->specialization_id = intval($params["specialization"]);
+            
+               
+            }
 
             if (isset($params['gender'])) {
                 $doctor->gender = $params['gender'];
@@ -92,11 +99,42 @@ class DoctorRepository implements RepositoryInterface {
     }
 
     public function update($params,$id){
-        
+
+
         $doctor = $this->getById($id);
 
-        // Update the doctor's data
-        $doctor->update($params);
+        $doctor->firstname = $params["firstname"];
+        $doctor->lastname = $params["lastname"];
+        $doctor->phone = $params["phone"];
+        $doctor->email = $params["email"];
+        $doctor->birthdate = $params["birthdate"];
+        $doctor->exprience = $params["exprience"];
+        $doctor->year = $params["year"];
+        $doctor->bloodGroup = $params["bloodGroup"];
+        $doctor->university = $params["university"];
+        $doctor->degree = $params["degree"];
+        $doctor->specialization_id = $params["specialization"];
+
+        if (isset($params['gender'])) {
+            $doctor->gender = $params['gender'];
+        }
+        if (isset($params['status'])) {
+            $doctor->status = $params['status'];
+        }
+
+        if (request()->hasfile('photo')) {
+            $file = request()->file('photo');
+            $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
+            $file->move("storage/photos", $filename);
+            
+            $doctor->photo = $filename; // Update the 'photo' attribute
+        }
+
+        $doctor->linkedin = $params["linkedin"];
+        $doctor->twitter = $params["twitter"];
+        $doctor->instagram = $params["instagram"];
+
+        $doctor->save();
 
        
 
@@ -110,14 +148,16 @@ class DoctorRepository implements RepositoryInterface {
 
     public function delete($id){
 
-        $doctor = Doctor::find($id) ;
-         // Delete the existing image file
+        $doctor =$this->getById($id) ;
+     
+        // Delete the existing image file
          $photo_path = $doctor->photo;
 
          if ($photo_path && file_exists(public_path('storage/photos/' . $photo_path))) {
             unlink(public_path('storage/photos/' . $photo_path));
         }
         $doctor->delete();
+        
         $this->all();
     }
 

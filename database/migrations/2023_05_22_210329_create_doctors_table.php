@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("phone")->nullable();
             $table->date("birthdate")->nullable();
-            $table->string("specialization")->nullable();
             $table->integer("exprience")->default(0);
             $table->string("bloodGroup")->nullable();
             $table->string("university")->nullable();
@@ -31,6 +30,8 @@ return new class extends Migration
             $table->text("twitter")->nullable();
             $table->text("instagram")->nullable();
 
+            // fk
+            $table->foreignId("specialization_id")->constrained("specializations")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

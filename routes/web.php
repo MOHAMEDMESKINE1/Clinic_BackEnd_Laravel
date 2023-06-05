@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/patients', 'patients')->name('admin.patients');
         
         Route::get('/doctors', 'doctors')->name('admin.doctors');
-        // Route::get('/search', 'search')->name('admin.search');
+        Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
 
         Route::get('/appointements', 'appointements')->name('admin.appointements');
         Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
