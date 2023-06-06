@@ -18,12 +18,12 @@ class DoctorRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->doctor->select("*")->paginate(5) ; 
+        return  $this->doctor->select("*")->with("specializations")->paginate() ; 
     }
 
     public function search($query)
     {
-        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->paginate(5);
+        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->paginate();
 
         return $doctors ;
         
@@ -46,7 +46,7 @@ class DoctorRepository implements RepositoryInterface {
     public function getById($id){
        
 
-        return $this->doctor->with("specializations")->find($id);
+        return $this->doctor->findOrFail($id);
     }
 
     public function store($params){

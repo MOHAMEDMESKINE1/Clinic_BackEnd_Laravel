@@ -31,7 +31,7 @@ class Doctor extends Model
     ];
     public function specializations() {
         
-        return $this->belongsTo(Specialization::class);
+        return $this->belongsTo(Specialization::class,'specialization_id');
     }
 
     public function getCreatedAtAttribute($value)

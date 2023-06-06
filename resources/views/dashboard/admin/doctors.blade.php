@@ -30,7 +30,7 @@
 
 @extends('layouts.scripts')
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
     @extends('dashboard.admin.admin_dashboard')
 
     @section('content')
@@ -46,7 +46,7 @@
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
+                    <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
                     <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
                 </div>
             </form>
@@ -54,10 +54,13 @@
         
             <div class="flex items-center">
                
+               {{--
+                data-modal-target="addDoctor" data-modal-toggle="addDoctor"
+                --}}
                
-                <button data-modal-target="addDoctor" data-modal-toggle="addDoctor" class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                <a href="{{route("admin.create")}}"  class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                     Add Doctor
-                </button>
+                </a>
             </div>
         </div>
 
@@ -125,17 +128,17 @@
                                 {{$doctor->id}}
                             </td>
                             <td>
-                                <div class="flex justify-center">
-                                    <img src="{{asset('/storage/photos/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                <div class="flex justify-center  p-1.5">
+                                    <img src="{{asset('/storage/photos/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-10 h-10 rounded-full border border-gray-100 "><br>
                                     <p class="mx-3">
-                                    <a href="{{route('admin.doctor_details',$doctor->id)}}">
+                                    <a class="text-cyan-700 hover:text-cyan-800" href="{{route('admin.doctor_details',$doctor->id)}}">
                                         {{$doctor->firstname}} 
                                         {{$doctor->lastname}}
                                     </a>  
                                     </p>
                                 </div>
                                     <div class="flex justify-center" >
-                                        <p class="mx-15">{{$doctor->email}} </p>
+                                        <p class="mx-15 my-2">{{$doctor->email}} </p>
                                     </div>
                                 </div>
                             </td>
@@ -259,12 +262,16 @@
                                     {{-- <input type="text"  name="specialization" id="specialization" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="" required /> --}}
                                     <select  name="specialization" id="specialization" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                         <option  disabled>--Select specialization --</option>
-                                        
-                                        @foreach ($specializations as $specialization)
+                                                                            
+                                        @if ($doctor->specialization)
+
+                                            @foreach ($specializations as $specialization)
 
                                             <option value="{{$specialization->id}}" >{{$specialization->name}}</option>
 
-                                        @endforeach
+                                            @endforeach
+                                        @endif 
+                                       
 
                                     </select>                   
                                 </div>

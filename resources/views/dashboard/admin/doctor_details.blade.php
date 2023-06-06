@@ -137,7 +137,12 @@
                             <div class="flex flex-col">
                                 <p class="font-light text-white text-center text-xs mt-1 bg-indigo-500  rounded-md">
 
-                                    
+                                    @if ($doctor->specializations)
+                                        {{$doctor->specializations->name}}
+                                    @else
+                                        <span>-</span>
+                                    @endif
+                                   
                                 </p>
                                 {{-- <p class="font-light text-white text-center text-xs mt-1 bg-yellow-500  rounded-md">Paediatrics</p>
                                 <p class="font-light text-white text-center text-xs mt-1 bg-green-500  rounded-md">Hydrafacial</p>
@@ -150,7 +155,7 @@
                         <!-- experience -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Experience In Year</h1>
-                            <p class="font-semibold">{{$doctor->exprience}} Year</p>
+                            <p class="font-semibold">{{$doctor->exprience}}</p>
                         </div>
                         <!-- registred -->
                         <div class="my-4">

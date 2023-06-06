@@ -9,10 +9,11 @@ class Specialization extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'name'];
+      'name'
+    ];
 
 
     public function doctors() {
-        return $this->hasMany(Doctor::class);
+        return $this->hasMany(Doctor::class,'doctor_id');
       }
 }

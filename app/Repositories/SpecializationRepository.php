@@ -17,9 +17,9 @@ class SpecializationRepository implements RepositoryInterface {
     }
      
     public function all() {
-
+        // $specializations = $this->specialization->all()->paginate();
        
-        return  $this->specialization->select("*")->paginate(5) ; 
+        return  $this->specialization->all(); 
     }
 
     public function search($query)
@@ -29,6 +29,7 @@ class SpecializationRepository implements RepositoryInterface {
         return $specializations ;
         
     }
+
   
         
     public function getById($id){
@@ -37,6 +38,7 @@ class SpecializationRepository implements RepositoryInterface {
         return $this->specialization->findOrFail($id);
     }
 
+    
     public function store($params){
 
        

@@ -30,21 +30,20 @@ class AdminController extends Controller
 
 
 
-    public function doctors(Request $request){
+    public function doctors(){
 
         $doctors = $this->doctors->all();
         
-       $specializations = $this->specializations->all();
-
-        return    view('dashboard.admin.doctors',compact(['doctors','specializations']));
+      
+        
+        return    view('dashboard.admin.doctors',compact("doctors"));
 
      }
     public function doctor_details($id){
 
         $doctor = $this->doctors->getById($id);
-        $specialization = $this->specializations->getById($id);
   
-        return    view('dashboard.admin.doctor_details',compact(['doctor','specialization']));
+        return    view('dashboard.admin.doctor_details',compact('doctor'));
 
      }
 
@@ -72,6 +71,13 @@ class AdminController extends Controller
         return    view('dashboard.admin.doctors',compact('doctors'));
 
      }
+
+     public function create(){
+        
+        $specializations = $this->specializations->all();
+        return view('dashboard.admin.create.create',compact("specializations"));
+    }
+
      public function store (Request $request){
         
         $this->doctors->store($request->all());
