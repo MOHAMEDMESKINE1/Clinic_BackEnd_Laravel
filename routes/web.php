@@ -10,6 +10,8 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
+use App\Http\Controllers\Specialization\SpecializationController;
+use App\Models\Specialization;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 /*
@@ -61,7 +63,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
         Route::get('/profile', 'profile')->name('admin.profile');
         Route::get('/services', 'services')->name('admin.services');
-        Route::get('/specializations', 'specializations')->name('admin.specializations');
+        // Route::get('/specializations', 'specializations')->name('admin.specializations');
         Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
         Route::get('/transactions', 'transactions')->name('admin.transactions');
         Route::get('/transactions_details', 'transactions_details')->name('admin.transactions_details');
@@ -69,7 +71,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/visits_details', 'visits_details')->name('admin.visits_details');
         Route::get('/settings', 'settings')->name('admin.settings');
     
-        // crud
+        // crud doctor
         Route::get('/doctors/create', 'create')->name('admin.create');
         Route::get('/doctors/{id}', 'edit')->name('admin.edit');
         Route::get('/search', 'search')->name('admin.search');
@@ -79,8 +81,27 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::put('/doctors/edit/{id}', 'update')->name('admin.update');
         Route::delete('{id}', 'delete')->name('admin.delete');
 
+
+
     });
 
+    Route::controller(SpecializationController::class)->group(function (){
+
+
+        Route::get('/specializations', 'all')->name('admin.specializations');
+
+        // crud specialization
+        // Route::get('/specialization/{id}', 'edit')->name('admin.edit_specialization');
+        Route::get('/specialization/search', 'search')->name('admin.search_specialization');
+        Route::get('/specialization/filter', 'filter')->name('admin.filter_specialization');
+        
+        Route::post('/specialization/create', 'store')->name('admin.store_specialization');
+        // Route::put('/specialization/edit/{id}', 'edit')->name('admin.update_specialization');
+        Route::put('/specialization/edit/{id}', 'update')->name('admin.update_specialization');
+        Route::delete('/specialization/{id}', 'delete')->name('admin.delete_specialization');
+
+
+    });
 
 });
 

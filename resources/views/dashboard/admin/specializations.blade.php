@@ -39,7 +39,7 @@
         <!-- Search -->
         <div class=" container ">
             <div class="m-5">
-                <div class="flex justify-between sm\:flex-row ">
+                {{-- <div class="flex justify-between sm\:flex-row ">
                     <form action="">
                         <label class="relative block">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -55,16 +55,38 @@
                                 class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
                                 placeholder="Search" type="text" />
                         </label>
-                    </form>    
-                <div class="  " >
-                    <!-- add staff -->
-                    <!-- <button  type="button"  class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Staff</button> -->
-                    <button data-modal-target="addModal" data-modal-toggle="addModal" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
-                        Add Specialization
-                        </button>
+                    </form>  
 
-                </div>
-                </div>
+                    <div class="  " >
+                        <!-- add staff -->
+                        <!-- <button  type="button"  class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Staff</button> -->
+                        <button data-modal-target="addModal" data-modal-toggle="addModal" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
+                            Add Specialization
+                            </button>
+
+                    </div>
+                </div> --}}
+                <div class="flex flex-col sm:flex-row justify-between mx-8">
+                    <div class="flex justify-start">
+                     <form method="GET" action="{{ route('admin.search_specialization') }}" class="flex items-center mb-4 sm:mb-0">
+                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                         <div class="relative">
+                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                             </div>
+                             <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
+                             <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
+                         </div>
+                     </form>
+                    </div>
+                    <div class="  " >
+                        <!-- add staff -->
+                        <!-- <button  type="button"  class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Staff</button> -->
+                        <button data-modal-target="addModal" data-modal-toggle="addModal" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
+                            Add Specialization
+                            </button>
+
+                    </div>
             </div>
         </div>
 
@@ -86,21 +108,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($specializations as $specialization)
                     <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                         <td>
-                            Odontologia
+                            {{$specialization->name}}
                         </td>
                         <td>
                             <div class="flex justify-center mt-5">
                                 <a href="#" data-modal-target="editModal" data-modal-toggle="editModal" class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-edit text-xl text-blue-700 "></i>
                                 </a>                                
-                                <a href="#" data-modal-target="deleteModal" data-modal-toggle="deleteModal" class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                <button type="buttton" data-modal-target="deleteModal" data-modal-toggle="deleteModal" class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-trash text-xl text-red-700 "></i>
-                                </a>     
-                           </div> 
+                                </button>     
+                        </div> 
                         </td>
                     </tr>
+                    @endforeach
+                   
                  
                    
                 </tbody>
@@ -121,22 +146,29 @@
                 <!-- modal body -->
                 <div class="pt-4 px-2">
                             
-                    <form method="post"  enctype="multipart/form-data" action="#">
+                    <!-- Specialization -->
+                    <div class="grid grid-col-1 ">
+                        <form method="POST" action="{{route("admin.store_specialization")}}">
+                            @csrf
+                            @method("POST")
+                            <!-- Specialization -->
+                            <div class="w-full  mb-6 group">
+                                <label for="Specialization" class="font-medium ">Specialization :<span class="text-red-500 font-medium">*</span></label>
+                                <input type="text" name="specialization" id="specialization" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                            </div>
+
+                             <!-- modal footer -->
+                            <div class="flex items-center justify-center  mb-2 rounded-b dark:border-gray-600">
+                                <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                                <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div>      
+                        </form>
+                    </div>
                         
-                        <!-- Specialization -->
-                        <div class="grid grid-col-1 ">
-                                <!-- Specialization -->
-                                <div class="w-full  mb-6 group">
-                                    <label for="Specialization" class="font-medium ">Specialization :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="specialization" id="specialization" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
-                                </div>
-                        </div>
+                        
                 </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="addModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+               
+            
                 </div>
             </div>
         </div>
@@ -155,22 +187,27 @@
                 <!-- modal body -->
                 <div class="pt-4 px-2">
                             
-                    <form method="post"  enctype="multipart/form-data" action="#">
-                        
+                    <form method="post"  action="{{route("admin.update_specialization",$specialization->id)}}">
+                        @csrf
+                        @method("PUT")
                         <!-- Specialization -->
                         <div class="grid grid-col-1 ">
                                 <!-- Specialization -->
                                 <div class="w-full  mb-6 group">
+                                    {{-- <input type="hidden" id="id" name="id" value="{{$specialization->id}}"> --}}
+
                                     <label for="Specialization" class="font-medium ">Specialization :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="specialization" id="specialization" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                                    <input type="text" name="specialization" id="specialization"  value="{{$specialization->name}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
                                 </div>
                         </div>
+                         <!-- modal footer -->
+                            <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
+                                <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                                <button data-modal-hide="editModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div>
+                    </form>
                 </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="editModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="editModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+               
                 </div>
             </div>
         </div>
@@ -194,12 +231,14 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
                 
-                <form>
-                <!-- Modal footer -->
-                <div class="flex items-center  space-x-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="deleteModal" type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
-                    <button data-modal-hide="deleteModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-                </div>
+                <form method="post"  action="{{route("admin.delete_specialization",$specialization->id)}}">
+                    @csrf
+                    @method("DELETE")
+                     <!-- modal footer -->
+                    <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
+                        <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                        <button data-modal-hide="deleteModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                    </div>
                 </form>
             </div>
         </div>

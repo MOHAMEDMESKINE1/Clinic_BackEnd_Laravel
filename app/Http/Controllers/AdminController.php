@@ -75,7 +75,7 @@ class AdminController extends Controller
      public function create(){
         
         $specializations = $this->specializations->all();
-        return view('dashboard.admin.create.create',compact("specializations"));
+        return view('dashboard.admin.doctor.create',compact("specializations"));
     }
 
      public function store (Request $request){
@@ -97,7 +97,7 @@ class AdminController extends Controller
         $doctor = $this->doctors->getById($id);
         $specializations = $this->specializations->all();
 
-        return  view('dashboard.admin.edit.edit',compact(["doctor","specializations"]));
+        return  view('dashboard.admin.doctor.edit',compact(["doctor","specializations"]));
 
      }
      public function update (DoctorRequest $params,$id){
@@ -173,11 +173,6 @@ class AdminController extends Controller
     }
     public function transactions_details(){
         return    view('dashboard.admin.transactions_details');
-
-    }
-    
-    public function specializations(){
-        return    view('dashboard.admin.specializations');
 
     }
     public function services(){

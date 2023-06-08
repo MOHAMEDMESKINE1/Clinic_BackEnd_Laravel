@@ -41,14 +41,8 @@ class SpecializationRepository implements RepositoryInterface {
     
     public function store($params){
 
-       
-            $specialization =new specialization ;
-            $specialization->name = $params["name"];
-            $specialization->save();
-      
-
-
-       
+            $this->specialization->name = $params["specialization"];
+            $this->specialization->save();       
     }
 
     public function update($params,$id){
@@ -56,9 +50,10 @@ class SpecializationRepository implements RepositoryInterface {
 
         $specialization = $this->getById($id);
 
-        $specialization =new Specialization ;
-        $specialization->name = $params["name"];
+        // $specialization =new Specialization ;
+        $specialization->name = $params["specialization"];
         $specialization->save();
+        // $specialization->update($params,$id);
 
     }
 
@@ -69,7 +64,7 @@ class SpecializationRepository implements RepositoryInterface {
         
         $specialization->delete();
         
-        $this->all();
+       return  $this->all();
     }
 
 
