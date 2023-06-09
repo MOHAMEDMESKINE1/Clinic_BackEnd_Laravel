@@ -1,18 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\API\SocialAuthController;
 use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
-use App\Http\Controllers\Specialization\SpecializationController;
-use App\Models\Specialization;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use App\Http\Controllers\API\SocialAuthController;
+use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\Specialization\SpecializationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +53,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     Route::controller(AdminController::class)->group(function (){
         Route::get('/statistics', 'statistics')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
-        Route::get('/patients', 'patients')->name('admin.patients');
+        // Route::get('/patients', 'patients')->name('admin.patients');
         
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
@@ -63,7 +62,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
         Route::get('/profile', 'profile')->name('admin.profile');
         Route::get('/services', 'services')->name('admin.services');
-        // Route::get('/specializations', 'specializations')->name('admin.specializations');
         Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
         Route::get('/transactions', 'transactions')->name('admin.transactions');
         Route::get('/transactions_details', 'transactions_details')->name('admin.transactions_details');
@@ -91,17 +89,33 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/specializations', 'all')->name('admin.specializations');
 
         // crud specialization
-        // Route::get('/specialization/{id}', 'edit')->name('admin.edit_specialization');
         Route::get('/specialization/search', 'search')->name('admin.search_specialization');
         Route::get('/specialization/filter', 'filter')->name('admin.filter_specialization');
         
         Route::post('/specialization/create', 'store')->name('admin.store_specialization');
-        // Route::put('/specialization/edit/{id}', 'edit')->name('admin.update_specialization');
+        Route::get('/specialization/{id}', 'edit')->name('admin.edit_specialization');
         Route::put('/specialization/edit/{id}', 'update')->name('admin.update_specialization');
         Route::delete('/specialization/{id}', 'delete')->name('admin.delete_specialization');
 
 
     });
+    Route::controller(PatientController::class)->group(function (){
+
+
+        Route::get('/patients', 'patients')->name('admin.patients');
+
+        // crud patient
+        Route::get('/patients/search', 'search')->name('admin.search_patients');
+        
+        Route::post('/patients/create', 'store')->name('admin.store_patients');
+        Route::get('/patients/{id}', 'edit')->name('admin.edit_patients');
+        Route::put('/patients/edit/{id}', 'update')->name('admin.update_patients');
+        Route::delete('/patients/{id}', 'delete')->name('admin.delete_patients');
+
+
+    });
+
+
 
 });
 

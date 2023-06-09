@@ -27,12 +27,22 @@ class SpecializationController extends Controller
 
        $this->specialization->store($request->all());
 
+       toastr()->success('Specialization has been saved successfully!', 'Saving ');
+
         return redirect()->route('admin.specializations');
     }
+    public function edit ($id){
+        
+        $specialization = $this->specialization->getById($id);
+        $specializations = $this->specialization->all();
 
-    public function update(Request $request ,$id){
+        return  view('dashboard.admin.specialization.edit',compact(["specialization","specializations"]));
 
-       $this->specialization->update($request->all(),$id);
+     }
+    public function update(Request $request){
+
+       $this->specialization->update($request->all(),$request->id);
+       toastr()->success('Specialization has been updated successfully!', 'Saving ');
 
         return redirect()->route('admin.specializations');
     }
@@ -58,6 +68,8 @@ class SpecializationController extends Controller
     public function delete(Request $request ){
 
        $this->specialization->delete($request->id);
+
+       toastr()->success('Specialization has been deleted successfully!', 'Deletion');
 
         return redirect()->route('admin.specializations');
     }

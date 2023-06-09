@@ -115,7 +115,7 @@
                         </td>
                         <td>
                             <div class="flex justify-center mt-5">
-                                <a href="#" data-modal-target="editModal" data-modal-toggle="editModal" class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('admin.edit_specialization',$specialization->id)}}" class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-edit text-xl text-blue-700 "></i>
                                 </a>                                
                                 <button type="buttton" data-modal-target="deleteModal" data-modal-toggle="deleteModal" class="text-white  px-5 py-2 text-center mb-2" type="button">
@@ -174,6 +174,7 @@
         </div>
     </div>
     <!-- Edit modal -->
+    {{-- 
     <div id="editModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative ">
             <!-- Modal content -->
@@ -194,10 +195,9 @@
                         <div class="grid grid-col-1 ">
                                 <!-- Specialization -->
                                 <div class="w-full  mb-6 group">
-                                    {{-- <input type="hidden" id="id" name="id" value="{{$specialization->id}}"> --}}
 
                                     <label for="Specialization" class="font-medium ">Specialization :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="specialization" id="specialization"  value="{{$specialization->name}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
+                                    <input type="text" name="specialization" id="specialization"  value="" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
                                 </div>
                         </div>
                          <!-- modal footer -->
@@ -212,7 +212,7 @@
             </div>
         </div>
     </div>
-
+    --}}
     <!-- Delete Modal -->
     <div id="deleteModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">

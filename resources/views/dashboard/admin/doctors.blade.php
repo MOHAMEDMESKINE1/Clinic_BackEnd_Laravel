@@ -54,9 +54,7 @@
         
             <div class="flex items-center">
                
-               {{--
-                data-modal-target="addDoctor" data-modal-toggle="addDoctor"
-                --}}
+            
                
                 <a href="{{route("admin.create")}}"  class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                     Add Doctor

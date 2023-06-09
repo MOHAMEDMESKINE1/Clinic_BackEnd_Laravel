@@ -41,30 +41,28 @@
     <div class="container">
         <div class="grid grid-col-1 md:grid-col-2">
             <!-- Search -->
-            <div class=" container m-5">
-                <div class="">
-                    <div class="flex justify-between sm\:flex-row mx-8">
-                        <form action="">
-                            <label class="relative block">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
-                                        height="30" viewBox="0 0 30 30">
-                                        <path
-                                            d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <input
-                                    name="search"
-                                    class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
-                                    placeholder="Search" type="text" />
-                            </label>
-                        </form>
-    
-                    <button  data-modal-target="addPatient" data-modal-toggle="addPatient" class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-10 mb-2" type="button">
-                        Add Patient
-                    </button>
+           
+            <div class="flex flex-col sm:flex-row justify-between mx-8">
+               <div class="flex justify-start my-5">
+                <form method="GET" action="{{ route('admin.search_patients') }}" class="flex items-center mb-4 sm:mb-0">
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
+                        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
                     </div>
+                </form>
+               </div>
+            
+                <div class="flex items-center">
+                   
+                
+                   
+                    <a href="#"  data-modal-target="addPatient" data-modal-toggle="addPatient" class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                        Add Patient
+                    </a>
                 </div>
             </div>
     
@@ -99,111 +97,84 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-white font-medium dark:border-gray-100">
-                            <td>
-                               
-                                <div class="flex items-center mx-2">
-                                    <a href="#">
-                                        <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
-                                            <img src="../patient/profile.svg" alt="user" class="w-full h-full rounded-full">
-                                        </div>
-                                    </a>
-                                    <div class="flex flex-col">
-                                        <a href="#" class="mb-1 text-base font-medium text-gray-800">
-                                            Steve Adam
-                                        </a>
-                                        <span class="text-base font-medium text-gray-600">steve@gmail.com</span>
-                                    </div>
-                                </div>
+                        @foreach ($patients as $patient)
+                            <tr class="bg-white border-b dark:bg-white font-medium dark:border-gray-100">
+                                <td>
                                 
-                            </td>
-                            <td>
-                                <span class="bg-red-500  text-sm font-semibold  p-0.5  rounded-full mr-2 text-white">
-                                    <b>10</b>
-                                  </span>
-                            </td>
-                            <td>
-                                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                                </label>
-                            </td>
-                            <td>
-                                <span class="bg-cyan-500 p-1 text-white rounded">
-                                    Impersonate
-                                </span>
-                            </td>
-                            <td>
-                                <span class="bg-cyan-500 p-1 text-white text-sm rounded">
-                                    06 Apr 2023 07:25 PM
-                                </span>
-                            </td>
-                            <td>
-                                <div class="flex justify-center mt-2">
-                                                          
-                                    <a href="#"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
-                                        <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i>
-                                    </a>                                
-                                    <a href="#"  data-tooltip-target="tooltip-edit"  data-modal-target="editPatient" data-modal-toggle="editPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
-                                        <i class="fas fa-edit text-blue-700 text-xl"></i>
-                                    </a>                                
-                                    <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-target="deletePatient" data-modal-toggle="deletePatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
-                                        <i class="fas fa-trash text-red-700 text-xl"></i>
-                                    </a>    
-                                    <div id="tooltip-email" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                         Resend Email Verification
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                    </div> 
-                                    <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                         edit patient
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                    </div> 
-                                    <div id="tooltip-delete" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                         delete patient
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                    </div> 
-                               </div> 
-                            </td>
-                        </tr>
+                                    <div class="flex items-center mx-2">
+                                        <a href="#">
+                                            <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                                <img src="../patient/profile.svg" alt="user" class="w-full h-full rounded-full">
+                                            </div>
+                                        </a>
+                                        <div class="flex flex-col">
+                                            <a href="#" class="mb-1 text-base font-medium text-gray-800">
+                                                {{$patient->firstname}}  {{$patient->lastname}} 
+                                            </a>
+                                            <span class="text-base font-medium text-gray-600"> {{$patient->email}} </span>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    <span class="bg-red-500  text-sm font-semibold  p-0.5  rounded-full mr-2 text-white">
+                                        <b>10</b>
+                                    </span>
+                                </td>
+                                <td>
+                                    <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <span class="bg-cyan-500 p-1 text-white rounded">
+                                        Impersonate
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="bg-cyan-500 p-1 text-white text-sm rounded">
+                                        {{$patient->created_at}} 
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="flex justify-center mt-2">
+                                                            
+                                        <a href="#"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                            <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i>
+                                        </a>                                
+                                        <a href="#"  data-tooltip-target="tooltip-edit"  data-modal-target="editPatient" data-modal-toggle="editPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                            <i class="fas fa-edit text-blue-700 text-xl"></i>
+                                        </a>                                
+                                        <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-target="deletePatient" data-modal-toggle="deletePatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                            <i class="fas fa-trash text-red-700 text-xl"></i>
+                                        </a>    
+                                        <div id="tooltip-email" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            Resend Email Verification
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                        <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            edit patient
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                        <div id="tooltip-delete" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            delete patient
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div> 
+                                </div> 
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                <div class="flex items-between">
-                 <!-- show result -->
-                 <div class="mt-4">
-                    <b class="mx-5 text-sm mb-1 text-gray-500">Show Result</b>
-                    <select  id="order-filter" class="bg-white border  border-gray-100 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mx-5 p-2.5  dark:border-gray-200 dark:placeholder-gray-400 ">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
-                 <!-- show result -->
-                <!-- navigation -->
-                <nav class="flex items-start justify-between  mt-2 pt-4" aria-label="Table navigation">
-                    <ul class="inline-flex items-center -space-x-px">
-                        <li>
-                            <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-cyan-100 hover:text-gray-200  dark:border-gray-200  dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Previous</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-200 hover:bg-cyan-100 hover:text-gray-700  dark:border-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-200 hover:bg-cyan-100 hover:text-gray-700  dark:border-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                        </li>
-                       
-                        <li>
-                            <a href="#" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-cyan-100 hover:text-gray-200  dark:border-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span class="sr-only">Next</span>
-                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- navigation -->
+                
+                <!-- pagination -->           
+                    <div class="mt-5 mx-4">
+                        {{ $patients->links() }}
+                    </div>
+                 <!-- pagination -->
+           </div>
                </div>
             </div>
         <div>
@@ -223,8 +194,10 @@
 
                 <!-- modal body -->
                 <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                    <form method="post"  enctype="multipart/form-data" action="#">
+                    <form method="POST"  enctype="multipart/form-data" action="{{route('admin.store_patients')}}">
                      
+                        @csrf
+                        @method("POST")
                         <!-- firstname & lastname -->
                         <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                                 <!-- firstname -->
@@ -242,7 +215,17 @@
                                 <div class=" w-full mb-6  group ">
                                     <label for="unique_id" class=" font-medium">Patient Unique ID:<span class="text-red-500 font-medium">*</span></label>
   
-                                    <input type="text" name="unique_id" id="unique_id" value="" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
+
+                                    @php
+                                        $id = '';
+                                        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                        for ($i = 0; $i < 8; $i++) {
+                                        $id .= $characters[mt_rand(0, strlen($characters) - 1)];
+                                        }
+
+                                        echo '<input type="text" name="unique_id" id="unique_id" value="' . $id . '" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />'
+                                    @endphp
+
                                 </div>
                                 <!-- email -->
                                 <div class="w-full mb-6 group">
@@ -278,8 +261,8 @@
                             </div>
                             <!-- Blood Group   -->
                             <div class="w-full  group">
-                                <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                <label for="bloodGroup" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                <select id="bloodGroup" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                     <option value="" disabled>--Select Blood Group--</option>
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>
@@ -311,17 +294,17 @@
 
 
                             </div>
-                          
+                            <!-- modal footer -->
+                            <div class="flex  justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
+                                <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                                <input type="reset" data-modal-hide="addPatient"  class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</input>
+                            </div>
                         </div>
                     </form>
                             
                    
                 </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="addModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="addPatient" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+                
                 </div>
             </div>
         </div>
@@ -394,8 +377,8 @@
                                
                             <!-- Blood Group   -->
                             <div class="w-full  group">
-                                <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                                <label for="bloodGroup" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                <select id="bloodGroup" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                     <option value="" disabled>--Select Blood Group--</option>
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>

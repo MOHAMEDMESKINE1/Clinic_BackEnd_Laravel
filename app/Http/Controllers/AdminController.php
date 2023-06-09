@@ -107,10 +107,6 @@ class AdminController extends Controller
         toastr()->success('Doctor has been updated successfully!', 'Update');
 
         return redirect()->route("admin.doctors");
-
-       
-
-
      }
      public function delete(Request $request){
         // toastr()->warning('Are you sure you want to proceed ?');
