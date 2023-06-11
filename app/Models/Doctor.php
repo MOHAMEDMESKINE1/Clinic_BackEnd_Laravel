@@ -34,13 +34,13 @@ class Doctor extends Model
         return $this->belongsTo(Specialization::class,'specialization_id');
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired
-    }
-    public function getUpdatedAtAttribute($value)
-    {
-            return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired
-    }
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired
+    // }
+    // public function getUpdatedAtAttribute($value)
+    // {
+    //         return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired
+    // }
    
 }

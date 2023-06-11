@@ -23,51 +23,45 @@
             </div>
         @endif
     
-        <form method="post"  enctype="multipart/form-data" action="#">
-             
+        <form method="post"  enctype="multipart/form-data" action="{{route("admin.update_patients",$patient->id)}}">
+             @csrf
+             @method("PUT")
             <!-- firstname & lastname -->
             <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                     <!-- firstname -->
                     <div class=" w-full mb-6 group">
                         <label for="" class="font-medium ">First Name :<span class="text-red-500 font-medium">*</span></label>
-                        <input type="text" name="firstname" id="firstname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
+                        <input type="text" name="firstname" id="firstname" value="{{$patient->firstname}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
                     </div>
                     <!-- lastname -->
                     <div class=" w-full mb-6  group ">
                         <label for="" class=" font-medium">Last Name :<span class="text-red-500 font-medium">*</span></label>
 
-                        <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
+                        <input type="text" name="lastname" id="lastname" value="{{$patient->lastname}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
                     </div>
                     <!-- Patient Unique ID -->
                     <div class=" w-full mb-6  group ">
                         <label for="unique_id" class=" font-medium">Patient Unique ID:<span class="text-red-500 font-medium">*</span></label>
 
+                       <input type="text" name="unique_id" id="unique_id" value="{{$patient->unique_id}}"  class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
 
-                        @php
-                            $id = '';
-                            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                            for ($i = 0; $i < 8; $i++) {
-                            $id .= $characters[mt_rand(0, strlen($characters) - 1)];
-                            }
-
-                            echo '<input type="text" name="unique_id" id="unique_id" value="' . $id . '" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />'
-                        @endphp
+                       
 
                     </div>
                     <!-- email -->
                     <div class="w-full mb-6 group">
                         <label for="" class="font-medium ">Email:<span class="text-red-500 font-medium">*</span></label>
-                        <input type="email" name="email" id="email" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
+                        <input type="email" name="email" id="email" value="{{$patient->email}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
                     </div>
                     <!-- Birhtdate -->
                     <div class="w-full mb-6 group">
                         <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
-                        <input type="date" name="birthdate" id="birthdate" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
+                        <input type="date" name="birthdate" id="birthdate" value="{{$patient->birthdate}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
                     </div>
                                                   <!-- phone -->
                     <div class="w-full mb-6  group ">
                         <label for="phone" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                        <input id="phone" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
+                        <input id="phone" type="tel"  name="phone"  value="{{$patient->phone}}" class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
                     </div>                            
                  <!-- gender  -->
                  <div class="w-full  group  ">
@@ -75,11 +69,11 @@
                 <div class="flex mt-0">
 
                     <div class="flex items-start mr-4">
-                        <input id="female" type="radio" value="Female" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input id="female" type="radio" value="Female" name="gender" {{ old('gender', $patient->gender) == 'Female' ? 'checked' : '' }} class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="female" class="ml-2 text-sm font-medium ">Female</label>
                     </div>
                     <div class="flex items-start mr-4">
-                        <input id="male" type="radio" value="Male" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input id="male" type="radio" value="Male" name="gender" {{ old('gender', $patient->gender) == 'Male' ? 'checked' : '' }} class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="male" class="ml-2 text-sm font-medium ">Male</label>
                     </div>
                    
@@ -91,14 +85,15 @@
                     <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                     <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                         <option value="" disabled>--Select Blood Group--</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
+                        <option value="A+" {{ $patient->BloodGroup === 'A+' ? 'selected' : '' }}>A+</option>
+                        <option value="A-" {{ $patient->BloodGroup === 'A-' ? 'selected' : '' }}>A-</option>
+                        <option value="B+" {{ $patient->BloodGroup === 'B+' ? 'selected' : '' }}>B+</option>
+                        <option value="B-" {{ $patient->BloodGroup === 'B-' ? 'selected' : '' }}>B-</option>
+                        <option value="AB+" {{ $patient->BloodGroup === 'AB+' ? 'selected' : '' }}>AB+</option>
+                        <option value="AB-" {{ $patient->BloodGroup === 'AB-' ? 'selected' : '' }}>AB-</option>
+                        <option value="O+" {{ $patient->BloodGroup === 'O+' ? 'selected' : '' }}>O+</option>
+                        <option value="O-" {{ $patient->BloodGroup === 'O-' ? 'selected' : '' }}>O-</option>
+
                     </select>                                
                 </div>
                
@@ -108,12 +103,12 @@
                     <div class="flex items-start justify-start">
                         <!-- Button to open the file dialog -->
                         <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                            <input type="file" name="profile" class="hidden" id="image-input">
+                            <input type="file" name="photo" class="hidden" id="image-input">
 
                             <!-- Image preview or placeholder -->
                             <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                <img src="../patient/profile.svg" class="w-8 h-8 " alt="">
-                               
+                                <img src="{{asset('storage/patients/'.$patient->photo)}}" class="w-8 h-8 " alt="">
+                              
                             </div>
           
                         </label>

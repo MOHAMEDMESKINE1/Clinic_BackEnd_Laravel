@@ -55,7 +55,13 @@ class PatientController extends Controller
         return  view('dashboard.admin.patient.edit',compact("patient"));
 
      }
+     public function patients_details($id){
 
+        $patient = $this->patient->getById($id);
+
+        return    view('dashboard.admin.patient_details',compact("patient"));
+
+    }
      public function update (Request $params,$id){
         
         $this->patient->update($params,$id);
@@ -71,7 +77,7 @@ class PatientController extends Controller
 
        toastr()->success('Patient has been deleted successfully!', 'Deletion');
 
-       return redirect()->route("admin.doctors");
+       return redirect()->route("admin.patients");
 
     }
 

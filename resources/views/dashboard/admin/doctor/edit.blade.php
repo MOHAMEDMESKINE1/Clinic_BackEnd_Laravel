@@ -97,14 +97,14 @@
                         <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                         <select id="groupB" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                             <option value="" disabled>--Select Blood Group--</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+                            <option value="A+" {{ $doctor->BloodGroup === 'A+' ? 'selected' : '' }}>A+</option>
+                            <option value="A-" {{ $doctor->BloodGroup === 'A-' ? 'selected' : '' }}>A-</option>
+                            <option value="B+" {{ $doctor->BloodGroup === 'B+' ? 'selected' : '' }}>B+</option>
+                            <option value="B-" {{ $doctor->BloodGroup === 'B-' ? 'selected' : '' }}>B-</option>
+                            <option value="AB+" {{ $doctor->BloodGroup === 'AB+' ? 'selected' : '' }}>AB+</option>
+                            <option value="AB-" {{ $doctor->BloodGroup === 'AB-' ? 'selected' : '' }}>AB-</option>
+                            <option value="O+" {{ $doctor->BloodGroup === 'O+' ? 'selected' : '' }}>O+</option>
+                            <option value="O-" {{ $doctor->BloodGroup === 'O-' ? 'selected' : '' }}>O-</option>
                         </select>                                
                     </div>
                     <!-- profile -->
@@ -113,7 +113,7 @@
 
                         <input name="photo" id="photo" type="file" class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" >
                         <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
-                        <img src="{{asset('storage/photos/'.$doctor->photo)}}" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
+                        <img src="{{asset('storage/doctors/'.$doctor->photo)}}" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
                     
                     </div>
                    

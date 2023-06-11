@@ -43,8 +43,8 @@
 <body class="bg-gray-100">
     
    <div class="m-5 ml-10 flex justify-between ">
-    <h1 class="text-gray-900 text-xl md\:flex-col flex-row font-bold">Doctor Details</h1>
-    <a href="{{route('admin.doctors')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
+    <h1 class="text-gray-900 text-xl md\:flex-col flex-row font-bold">Patient Details</h1>
+    <a href="{{route('admin.patients')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
             Back
         </span>
@@ -53,19 +53,19 @@
     <div class="container rounded-lg shadow-md m-5 bg-white font-semibold mx-auto text-gray-800 p-10">
         <div class="grid grid-cols-1   md:grid-cols-2 gap-2 p-5">
            
-            <!-- doctor -->
+            <!-- patient -->
             <div class="flex flex-col sm:flex-row items-start sm:items-start mb-5 mb-xxl-0 text-center sm:text-sm-start ">
                 <div class="w-32 h-32 rounded-full overflow-hidden mx-auto">
-                    <img src="{{asset('/storage/doctors/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-full h-full ">
+                    <img src="{{asset('/storage/patients/'.$patient->photo)}}" alt="{{$patient->firstname}}" class="w-full h-full ">
                 </div>
                 <div class="mt-5 sm:mt-0 sm:ms-10 mx-auto">
-                    <span class="text-green-500 mb-2 block">Doctor</span>
-                    <h2 class="text-xl font-bold">{{$doctor->firstname}} {{$doctor->lastname}}</h2>
+                    <span class="text-green-500 mb-2 block">Patient</span>
+                    <h2 class="text-xl font-bold">{{$patient->firstname}} {{$patient->lastname}}</h2>
                     <a href="mailto:patient@infycare.com" class="text-gray-500  text-lg block mt-2">
-                        {{$doctor->email}}
+                        {{$patient->email}}
                     </a>
-                    <a href="tel:{{$doctor->phone}}" class="text-gray-500  text-lg block mt-2">
-                        {{$doctor->phone}}
+                    <a href="tel:{{$patient->phone}}" class="text-gray-500  text-lg block mt-2">
+                        {{$patient->phone}}
                     </a>
                 </div>
             </div> 
@@ -109,6 +109,11 @@
                             <span class="text-gray-700">Overview</span>
                         </button>
                     </li>
+                    <li class="mr-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="appointement-tab" data-tabs-target="#appointement" type="button" role="tab" aria-controls="appointement" aria-selected="false">
+                            <span class="text-gray-700">Appointments</span>
+                        </button>
+                    </li>
                     
                     
                 </ul>
@@ -118,64 +123,83 @@
                 
                 <div class="hidden p-7 rounded-lg  bg-white shadow-md" id="general" role="tabpanel" aria-labelledby="general-tab">
                     
-                  <div class="grid grid-col-1 md:grid-cols-4  place-items-baseline">
+                  <div class="grid grid-col-1 md:grid-cols-3  place-items-center">
                     
                         <!-- blood group-->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Blood Group</h1>
-                            <p class="font-semibold">{{$doctor->bloodGroup}}</p>
+                            <p class="font-semibold">{{$patient->bloodGroup}}</p>
                         </div>
                         <!-- gender -->
                         <div class="my-4">
-                            <h1 class="font-medium text-gray-500 ">{{$doctor->gender}}</h1>
-                            <p class="font-semibold">Male</p>
+                            <h1 class="font-medium text-gray-500 ">Gender</h1>
+                            <p class="font-semibold">{{$patient->gender}}</p>
                         </div>
-                        <!-- specialization -->
+                       
+                     
+                        <!-- uniqueID -->
                         <div class="my-4">
-                            <h1 class="font-medium text-gray-500 ">Specialization</h1>
-                            <div class="flex flex-col">
-                                <p class="font-light text-white text-center text-xs mt-1 bg-indigo-500  rounded-md">
+                            <h1 class="font-medium text-gray-500 ">Unique Id</h1>
+                            <p class=" text-white text-center text-xs mt-1 bg-green-500 font-semibold rounded-md">{{$patient->unique_id}}</p>
 
-                                    @if ($doctor->specializations)
-                                        {{$doctor->specializations->name}}
-                                    @else
-                                        <span>-</span>
-                                    @endif
-                                   
-                                </p>
-                                {{-- <p class="font-light text-white text-center text-xs mt-1 bg-yellow-500  rounded-md">Paediatrics</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-green-500  rounded-md">Hydrafacial</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-red-600  rounded-md">Laser</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-black rounded-md">Dentist</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-red-600 rounded-md">Nuclear Medicine</p>
-                                --}}
-                            </div>
-                        </div>
-                        <!-- experience -->
-                        <div class="my-4">
-                            <h1 class="font-medium text-gray-500 ">Experience In Year</h1>
-                            <p class="font-semibold">{{$doctor->exprience}}</p>
                         </div>
                         <!-- registred -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Registered On</h1>
-                            <p class="font-semibold">{{$doctor->created_at}}</p>
+                            <p class="font-semibold">{{$patient->created_at}}</p>
                         </div>
                         <!-- updated -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Last Updated</h1>
-                            <p class="font-semibold">{{$doctor->updated_at}} </p>
+                            <p class="font-semibold">{{$patient->updated_at}} </p>
                         </div>
                         <!-- dob -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">DOB</h1>
-                            <p class="font-semibold">{{$doctor->birthdate}}</p>
+                            <p class="font-semibold">{{$patient->birthdate}}</p>
                         </div>
-                        <!-- adress -->
+                        
+                </div>
+
+                {{-- appointement --}}
+                <div class="hidden p-7 rounded-lg  bg-white shadow-md" id="appointement" role="tabpanel" aria-labelledby="appointement-tab">
+                    
+                  <div class="grid grid-col-1 md:grid-cols-3  place-items-center">
+                    
+                        <!-- blood group-->
                         <div class="my-4">
-                            <h1 class="font-medium text-gray-500">University</h1>
-                            <p class="font-semibold">{{$doctor->university}}</p>
+                            <h1 class="font-medium text-gray-500 ">Blood Group</h1>
+                            <p class="font-semibold">{{$patient->bloodGroup}}</p>
                         </div>
+                        <!-- gender -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">{{$patient->gender}}</h1>
+                            <p class="font-semibold">Male</p>
+                        </div>
+                       
+                     
+                        <!-- uniqueID -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">Unique Id</h1>
+                            <p class=" text-white text-center text-xs mt-1 bg-green-500 font-semibold rounded-md">{{$patient->unique_id}}</p>
+
+                        </div>
+                        <!-- registred -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">Registered On</h1>
+                            <p class="font-semibold">{{$patient->created_at}}</p>
+                        </div>
+                        <!-- updated -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">Last Updated</h1>
+                            <p class="font-semibold">{{$patient->updated_at}} </p>
+                        </div>
+                        <!-- dob -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">DOB</h1>
+                            <p class="font-semibold">{{$patient->birthdate}}</p>
+                        </div>
+                        
                 </div>
             </div>
         </div>

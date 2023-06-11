@@ -21,7 +21,6 @@
      <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
    
     <!-- editor text -->
-    <script src="../editortext/ckeditor.js"></script>
        <!--  poppins font -->
        <link rel="preconnect" href="https://fonts.googleapis.com">
        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +59,7 @@
                    
                 
                    
-                    <a href="#"  data-modal-target="addPatient" data-modal-toggle="addPatient" class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                    <a href="#" type="button" onclick="UniqueId()" data-modal-target="addPatient" data-modal-toggle="addPatient" class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                         Add Patient
                     </a>
                 </div>
@@ -83,9 +82,7 @@
                             <th scope="col" class="px-6 py-3">
                                 EMAIL VERIFIED
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                              IMPERSONATE
-                            </th>
+                          
                             <th scope="col" class="px-6 py-3">
                               REGISTRED ON
                             </th>
@@ -100,16 +97,21 @@
                         @foreach ($patients as $patient)
                             <tr class="bg-white border-b dark:bg-white font-medium dark:border-gray-100">
                                 <td>
-                                
+                                {{-- 
+                                C:\xampp\htdocs\PROJECTS\LARAVEL\wecare\public\storage\photos\patients\20230611130501.jpg    
+                                --}}
                                     <div class="flex items-center mx-2">
                                         <a href="#">
                                             <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
-                                                <img src="../patient/profile.svg" alt="user" class="w-full h-full rounded-full">
+                                                <img src="{{asset('/storage/patients/'.$patient->photo)}}" alt="{{$patient->firstname}}" class="w-full h-full rounded-full">
                                             </div>
                                         </a>
                                         <div class="flex flex-col">
-                                            <a href="#" class="mb-1 text-base font-medium text-gray-800">
-                                                {{$patient->firstname}}  {{$patient->lastname}} 
+                                            <a class="mb-1 text-base font-medium text-gray-800"
+                                            href="{{route("admin.patients_details",$patient->id)}}" 
+                                            >
+                                                {{$patient->firstname}}  
+                                                {{$patient->lastname}} 
                                             </a>
                                             <span class="text-base font-medium text-gray-600"> {{$patient->email}} </span>
                                         </div>
@@ -122,16 +124,18 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                                   @if ($patient->email_verified_at)
+                                     <i class="fas fa-solid fa-badge-check text-green-500"></i>
+                                   @else 
+                                    {{-- <label class="relative inline-flex items-center mr-5 cursor-pointer">
                                         <input type="checkbox" value="" class="sr-only peer" checked>
                                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                                    </label>
+                                    </label> --}}
+                                    <i class="fas fa-solid fa-cancel font-bold text-xl text-red-500"></i>
+
+                                @endif
                                 </td>
-                                <td>
-                                    <span class="bg-cyan-500 p-1 text-white rounded">
-                                        Impersonate
-                                    </span>
-                                </td>
+                               
                                 <td>
                                     <span class="bg-cyan-500 p-1 text-white text-sm rounded">
                                         {{$patient->created_at}} 
@@ -139,20 +143,34 @@
                                 </td>
                                 <td>
                                     <div class="flex justify-center mt-2">
-                                                            
-                                        <a href="#"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                        @if (!$patient->email_verified_at)               
+                                        {{-- <a href="{{route("verification.send")}}"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
                                             <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i>
-                                        </a>                                
-                                        <a href="#"  data-tooltip-target="tooltip-edit"  data-modal-target="editPatient" data-modal-toggle="editPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                        </a>     --}}
+                                        <form method="POST" action="{{ route('verification.send') }}">
+                                            @csrf
+                                            <div>
+                                                <x-primary-button>
+                                                    {{-- <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i> --}}
+                                                    {{ __('Resend Verification Email') }}
+
+                                                </x-primary-button>
+                                            </div>
+                                        </form>
+                                
+                                        @endif                            
+                                        <a href=" {{route("admin.edit_patients",$patient->id)}}"   data-tooltip-target="tooltip-edit"  data-modal-target="editPatient" data-modal-toggle="editPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
                                             <i class="fas fa-edit text-blue-700 text-xl"></i>
                                         </a>                                
                                         <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-target="deletePatient" data-modal-toggle="deletePatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
                                             <i class="fas fa-trash text-red-700 text-xl"></i>
                                         </a>    
+                                      
                                         <div id="tooltip-email" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                             Resend Email Verification
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div> 
+                                    
                                         <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                             edit patient
                                             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -214,9 +232,9 @@
                                 <!-- Patient Unique ID -->
                                 <div class=" w-full mb-6  group ">
                                     <label for="unique_id" class=" font-medium">Patient Unique ID:<span class="text-red-500 font-medium">*</span></label>
-  
+                                    <input type="text" name="unique_id" id="unique_id" value="" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
 
-                                    @php
+                                    {{-- @php
                                         $id = '';
                                         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                                         for ($i = 0; $i < 8; $i++) {
@@ -224,7 +242,7 @@
                                         }
 
                                         echo '<input type="text" name="unique_id" id="unique_id" value="' . $id . '" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />'
-                                    @endphp
+                                    @endphp --}}
 
                                 </div>
                                 <!-- email -->
@@ -239,8 +257,8 @@
                                 </div>
                                                               <!-- phone -->
                                 <div class="w-full mb-6  group ">
-                                    <label for="phone" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <input id="phone" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
+                                    <label for="tel" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
+                                    <input id="tel" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
                                 </div>                            
                              <!-- gender  -->
                              <div class="w-full  group  ">
@@ -248,11 +266,11 @@
                             <div class="flex mt-0">
 
                                 <div class="flex items-start mr-4">
-                                    <input id="female" type="radio" value="Female" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="female" type="radio"  value="Female" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="female" class="ml-2 text-sm font-medium ">Female</label>
                                 </div>
                                 <div class="flex items-start mr-4">
-                                    <input id="male" type="radio" value="Male" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="male" type="radio" checked value="Male" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="male" class="ml-2 text-sm font-medium ">Male</label>
                                 </div>
                                
@@ -281,7 +299,7 @@
                                 <div class="flex items-start justify-start">
                                     <!-- Button to open the file dialog -->
                                     <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                        <input type="file" name="profile" class="hidden" id="image-input">
+                                        <input type="file" name="photo" class="hidden" id="image-input">
 
                                         <!-- Image preview or placeholder -->
                                         <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
@@ -309,152 +327,9 @@
             </div>
         </div>
     </div>
-    <!-- Edit Patient -->
-    <div id="editPatient" tabindex="-1" aria-hidden="true" class="fixed top-0   left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-        <div class="relative w-full h-full m-6">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow ">
-                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="editPatient">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="px-6 py-2 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-cyan-900 mt-5 mx-6 text-left">
-                        Edit Patient
-
-                    </h3>
-                    <span class=" border border-b-0 w-full inline-block  border-gray-100 mt-2"></span>
-
-                <!-- modal body -->
-                <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                    <form method="post"  enctype="multipart/form-data" action="#">
-                     
-                        <!-- firstname & lastname -->
-                        <div class="grid grid-col-1 md:grid-cols-2 gap-2">
-                                <!-- firstname -->
-                                <div class=" w-full mb-6 group">
-                                    <label for="" class="font-medium ">First Name :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="firstname" id="firstname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
-                                </div>
-                                <!-- lastname -->
-                                <div class=" w-full mb-6  group ">
-                                    <label for="" class=" font-medium">Last Name :<span class="text-red-500 font-medium">*</span></label>
   
-                                    <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
-                                </div>
-                                <!-- Patient Unique ID -->
-                                <div class=" w-full mb-6  group ">
-                                    <label for="unique_id" class=" font-medium">Patient Unique ID:<span class="text-red-500 font-medium">*</span></label>
-  
-                                    <input type="text" name="unique_id" id="unique_id" value="" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
-                                </div>
-                                <!-- email -->
-                                <div class="w-full mb-6 group">
-                                    <label for="" class="font-medium ">Email:<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="email" name="email" id="email" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                                </div>
-                                <!-- Birhtdate -->
-                                <div class="w-full mb-6 group">
-                                    <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="date" name="birthdate" id="birthdate" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                                </div>
-                              
-                                <!-- password -->
-                                <div class="w-full mb-6  group ">
-                                    <label for="password" class="font-medium ">Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <input type="password"  name="password" id="password" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="*****" required />
-                                </div>
-                                <!-- confirm password -->
-                                <div class="w-full mb-6  group ">
-                                    <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <input type="password"  name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none w-full dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="*****" required />
-                                </div>
-                                <!-- phone -->
-                                <div class="w-full mb-6  group ">
-                                    <label for="phone" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                    <input id="phone" type="tel"  name="phone"  class="block mt-1 p-2.5 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+212 00 00 00 00" required />
-                                </div>
-                               
-                            <!-- Blood Group   -->
-                            <div class="w-full  group">
-                                <label for="bloodGroup" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                                <select id="bloodGroup" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                    <option value="" disabled>--Select Blood Group--</option>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </select>                                
-                            </div>
-                            <!-- gender  -->
-                            <div class="w-full  group  ">
-                                <label for="gender" class=" flex-col font-medium ">Gender:<span class="text-red-500 font-medium">*</span><br></label> <br>
-                            <div class="flex mt-0">
-
-                                <div class="flex items-start mr-4">
-                                    <input id="female" type="radio" value="Female" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="female" class="ml-2 text-sm font-medium ">Female</label>
-                                </div>
-                                <div class="flex items-start mr-4">
-                                    <input id="male" type="radio" value="Male" name="gender" class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="male" class="ml-2 text-sm font-medium ">Male</label>
-                                </div>
-                               
-                            </div>
-
-                            </div>
-                            <!-- Birhtdate -->
-                            <div class="w-full mb-6 group">
-                                <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
-                                <input type="date" name="birthdate" id="birthdate" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                            </div>
-                            <!-- message
-                            <div class="w-full mb-6 group">
-                                <textarea  name="editor"  id="editor">comment</textarea>
-                            </div> -->
-                            <!-- profile -->
-                            <div class="w-full group">
-                                <label for="birthdate" class="font-medium ">Profile:<span class="text-red-500 font-medium">*</span></label>
-                                <div class="flex items-start justify-start ">
-                                  
-                                 
-                                    <!-- Button to open the file dialog -->
-                                    <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                        <input type="file" name="profile" class="hidden" id="image-input">
-
-                                        <!-- Image preview or placeholder -->
-                                        <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                            <!-- <svg class="w-8 h-8 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path d="M12 5v14M5 12h14"></path>
-                                            </svg> -->
-                                            <img src="../patient/profile.svg" class="w-8 h-8 " alt="">
-                                           
-                                        </div>
-                      
-                                    </label>
-                                </div>
 
 
-                            </div>
-                          
-                        </div>
-                    </form>
-                            
-                   
-                </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-start mx-6 mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="editPatient" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="editPatient" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Delete Patient -->
     <div id="deletePatient" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
@@ -473,12 +348,16 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
                 
-                <form>
-                <!-- Modal footer -->
-                <div class="flex items-center  space-x-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="deletePatient" type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
-                    <button data-modal-hide="deletePatient" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-                </div>
+                <div class="space-y-6">
+                    <form id="delete-form"  action="{{route("admin.delete_patient",$patient->id)}}"  class="text-white mx-2  px-5 py-2 text-center mb-2"  method="POST">
+                        @csrf
+                        @method("DELETE")
+                       
+                    <!-- Modal footer -->
+                    <div class="flex justify-start   rounded-b dark:border-gray-600">
+                        <button  type="submit" class="text-white bg-red-700 mr-2 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
+                        <button data-modal-hide="deleteDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -486,28 +365,9 @@
     </div>
 
     @endsection     
- 
-
-    <!-- select year -->
-    <script >
-        var select = document.getElementById("year");
-        var selectqal = document.getElementById("yearqal");
-        var startYear = 1960;
-        var endYear = new Date().getFullYear(); // get current year as end year
-        
-        for (var year = startYear; year <= endYear; year++) {
-            var option = document.createElement("option");
-            option.value = year;
-            option.text = year;
-            select.add(option);
-            selectqal.add(option);
-        }
-      
-    </script>
-    <!-- select year -->
     <!-- country flag -->
     <script>
-        const phoneInputField = document.getElementById("phone");
+        const phoneInputField = document.getElementById("tel");
 
         const phoneInput = window.intlTelInput(phoneInputField, {
         utilsScript:
@@ -516,22 +376,24 @@
     </script>
     <!-- unique  id -->
     <script>
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const length = 8;
-        let result = '';
+        function UniqueId(){
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const length = 8;
+            let result = '';
 
-        for (let i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        // Get the input element by its ID
-        const input = document.getElementById('unique_id');
-    
-        // Generate a unique ID using the Date.now() function
-        // const uniqueId = `id-${Date.now()}`;
-        const uniqueId = result;
-    
-        // Set the value of the input element to the unique ID
-        input.value = uniqueId;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            // Get the input element by its ID
+            const input = document.querySelector("#unique_id");
+        
+            // Generate a unique ID using the Date.now() function
+            // const uniqueId = `id-${Date.now()}`;
+            const uniqueId = result;
+        
+            // Set the value of the input element to the unique ID
+            input.value = uniqueId;
+            }
     </script>
 
     {{-- <script defer src="script.js"></script> --}}

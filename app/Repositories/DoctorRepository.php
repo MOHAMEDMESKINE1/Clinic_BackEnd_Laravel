@@ -18,12 +18,14 @@ class DoctorRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->doctor->select("*")->with("specializations")->paginate() ; 
+        return  $this->doctor->select("*")->with("specializations:name")->paginate() ; 
     }
 
     public function search($query)
     {
-        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')->paginate();
+        $doctors = $this->doctor->where('lastname', 'like', '%' . $query . '%')
+        ->orWhere('firstname', 'like', '%' . $query . '%')
+        ->paginate();
 
         return $doctors ;
         
@@ -82,7 +84,7 @@ class DoctorRepository implements RepositoryInterface {
             {
                 $file = request()->file('photo');
                 $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
-                $file->move("storage/photos", $filename);
+                $file->move("storage/doctors", $filename);
                 
                 $doctor["photo"] = "$filename";
             }
@@ -125,7 +127,7 @@ class DoctorRepository implements RepositoryInterface {
         if (request()->hasfile('photo')) {
             $file = request()->file('photo');
             $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
-            $file->move("storage/photos", $filename);
+            $file->move("storage/doctors", $filename);
             
             $doctor->photo = $filename; // Update the 'photo' attribute
         }
@@ -153,8 +155,8 @@ class DoctorRepository implements RepositoryInterface {
         // Delete the existing image file
          $photo_path = $doctor->photo;
 
-         if ($photo_path && file_exists(public_path('storage/photos/' . $photo_path))) {
-            unlink(public_path('storage/photos/' . $photo_path));
+         if ($photo_path && file_exists(public_path('storage/doctors/' . $photo_path))) {
+            unlink(public_path('storage/doctors/' . $photo_path));
         }
         $doctor->delete();
         

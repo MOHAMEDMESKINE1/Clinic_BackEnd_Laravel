@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Patient extends Model
+ class Patient extends Model 
 {
     use HasFactory;
 
@@ -20,6 +21,7 @@ class Patient extends Model
         'gender',
         'photo',
     ];
+   
     public function appointements(){
 
         return $this->hasMany(Appointement::class,'appointement_id');

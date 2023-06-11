@@ -127,7 +127,7 @@
                             </td>
                             <td>
                                 <div class="flex justify-center  p-1.5">
-                                    <img src="{{asset('/storage/photos/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-10 h-10 rounded-full border border-gray-100 "><br>
+                                    <img src="{{asset('/storage/doctors/'.$doctor->photo)}}" alt="{{$doctor->firstname}}" class="w-10 h-10 rounded-full border border-gray-100 "><br>
                                     <p class="mx-3">
                                     <a class="text-cyan-700 hover:text-cyan-800" href="{{route('admin.doctor_details',$doctor->id)}}">
                                         {{$doctor->firstname}} 
@@ -171,7 +171,7 @@
                             <td>
                                 <div class="flex items-center mt-5">
                                     
-                                    <a href=" {{route("admin.edit",$doctor->id)}}"   class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                    <a href="{{route("admin.edit",$doctor->id)}}"   class="text-white  px-5 py-2 text-center mb-2" type="button">
                                         <i class="fas fa-edit text-xl text-green-700"></i>
                                     </a>                                
                                     <a href="#" data-modal-target="deleteDoctor" data-modal-toggle="deleteDoctor"  class="text-white  px-5 py-2 text-center mb-2" type="button">

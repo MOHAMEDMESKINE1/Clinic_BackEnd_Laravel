@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
 
         Route::get('/patients', 'patients')->name('admin.patients');
+        Route::get('/patients/details/{id}', 'patients_details')->name('admin.patients_details');
 
         // crud patient
         Route::get('/patients/search', 'search')->name('admin.search_patients');
@@ -110,7 +111,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::post('/patients/create', 'store')->name('admin.store_patients');
         Route::get('/patients/{id}', 'edit')->name('admin.edit_patients');
         Route::put('/patients/edit/{id}', 'update')->name('admin.update_patients');
-        Route::delete('/patients/{id}', 'delete')->name('admin.delete_patients');
+        Route::delete('/patients/{id}', 'delete')->name('admin.delete_patient');
 
 
     });

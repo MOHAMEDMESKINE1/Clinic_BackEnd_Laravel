@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Patient;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -62,12 +63,16 @@ class PatientRepository implements RepositoryInterface {
             {
                 $file = request()->file('photo');
                 $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
-                $file->move("storage/photos/patients", $filename);
+                $file->move("storage/patients", $filename);
                 
-                $patient["photo"] = "$filename";
+                $this->patient->photo = "$filename";
             }        
         
             $this->patient->save();
+            
+            // event(new Registered($this->patient));
+
+            // $this->patient->sendEmailVerificationNotification();
     }
 
     public function update($params,$id){
@@ -93,7 +98,7 @@ class PatientRepository implements RepositoryInterface {
         {
             $file = request()->file('photo');
             $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
-            $file->move("storage/photos/patients", $filename);
+            $file->move("storage/patients", $filename);
             
             $patient->photo = $filename;
         }        
@@ -108,8 +113,8 @@ class PatientRepository implements RepositoryInterface {
         // Delete the existing image file
          $photo_path = $patient->photo;
 
-         if ($photo_path && file_exists(public_path('storage/photos/patients' . $photo_path))) {
-            unlink(public_path('storage/photos/patients' . $photo_path));
+         if ($photo_path && file_exists(public_path('storage/patients/' . $photo_path))) {
+            unlink(public_path('storage/patients/' . $photo_path));
         }
         $patient->delete();
         
