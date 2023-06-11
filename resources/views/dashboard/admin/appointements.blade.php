@@ -272,34 +272,36 @@
                                     <div class=" w-full mb-6 group">
                                         <label for="" class="font-medium ">Doctor:<span class="text-red-500 font-medium">*</span></label>
                                         <select  id="order-filter" name="doctor" class="bg-white border w-full border-gray-100 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:border-gray-200 dark:placeholder-gray-400 ">
-                                            <option value="5">Alex</option>
-                                            <option value="10">Smith</option>
-                                            <option value="15">Fred</option>
-                                            <option value="20">Ted</option>
+                                            <option disabled selected value="">Select a Doctor</option>
+                                            @foreach ($doctors as $doctor)
+                                            <option value="{{$doctor->id}}">{{$doctor->firtsname." ".$doctor->lastname}}</option>
+                                            @endforeach
+                                            
                                         </select>
                                     </div>
                                     <!-- date -->
-                                    <div class="w-full mb-6 group">
+                                    {{-- <div class="w-full mb-6 group">
                                         <label for="birthdate" class="font-medium ">Birth Date:<span class="text-red-500 font-medium">*</span></label>
                                         <input type="date" name="birthdate" id="birthdate" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                                    </div>
+                                    </div> --}}
                                   
                                     <!-- services -->
-                                    <div class="w-full mb-6  group ">
+                                    {{-- <div class="w-full mb-6  group ">
                                         <label for="services" class="font-medium ">Services:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                         <select  id="order-filter" name="services" class="bg-white border w-full  border-gray-100 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:border-gray-200 dark:placeholder-gray-400 ">
                                             <option value="5">Consultation</option>
                                          
     
                                         </select>                                
-                                    </div>
+                                    </div> --}}
                                     <!-- Patient -->
                                     <div class="w-full mb-6  group ">
                                         <label for="patient" class="font-medium ">Patient:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                         <select  id="order-filter" name="patient" class="bg-white border w-full  border-gray-100 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:border-gray-200 dark:placeholder-gray-400 ">
-                                            <option value="5">Thomas Smith</option>
-                                            <option value="5">Thomas Smith</option>
-                                         
+                                            <option disabled selected value="">Select a Patient</option>
+                                            @foreach ($patients as $patient)
+                                            <option value="{{$patient->id}}">{{$patient->firtsname." ".$patient->lastname}}</option>
+                                            @endforeach
     
                                         </select>                                    
                                     </div>

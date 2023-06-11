@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Appointement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -33,7 +34,11 @@ class Doctor extends Model
         
         return $this->belongsTo(Specialization::class,'specialization_id');
     }
+    public function appointements(){
 
+        return $this->hasMany(Appointement::class,'appointement_id');
+    }
+    
     // public function getCreatedAtAttribute($value)
     // {
     //     return Carbon::parse($value)->format('Y-m-d'); // Change the format as desired

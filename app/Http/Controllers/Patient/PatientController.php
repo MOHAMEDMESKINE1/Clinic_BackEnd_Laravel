@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Patient;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Repositories\PatientRepository;
 
 class PatientController extends Controller
@@ -42,7 +45,7 @@ class PatientController extends Controller
             $this->patient->store($request->all());            
             
             // just igonre this error it still working 
-
+                    
             toastr()->success('Patient has been saved successfully!', 'Saving ');
 
         return  redirect()->route('admin.patients');
@@ -80,7 +83,6 @@ class PatientController extends Controller
        return redirect()->route("admin.patients");
 
     }
-
 
     public function appointements(){
         
@@ -130,5 +132,48 @@ class PatientController extends Controller
     public function visits_details(){
         return    view('dashboard.patient.visits_details');
 
+    }
+
+
+    public function verify(Request $request)
+    {
+        // Assuming the patient's email is stored in the session
+        $email = $request->session()->get('email');
+
+        // Get the patient's record from the database
+        $patient = DB::table('patients')->where('email', $email)->first();
+
+        // Check if the email_verification_token is not null and matches the provided token
+        if ($patient && $patient->email_verification_token && $patient->email_verification_token === $request->input('token')) {
+            // Update the patient's record to mark the email as verified
+            DB::table('patients')->where('id', $patient->id)->update(['email_verified' => true]);
+
+            return redirect()->route('admin.patients');
+        } else {
+            // Return an error message
+            return redirect()->route('verification.resend')->withErrors(['token' => 'The verification link is invalid. Please try again.']);
+        }
+    }
+    public function resend(Request $request)
+    {
+        // Assuming the patient's email is stored in the session
+        $email = $request->session()->get('email');
+
+        // Generate a unique token for this patient
+        $token = Str::random(60);
+
+        // Save the token to the patient's record in the database
+        DB::table('patients')->where('email', $email)->update(['email_verification_token' => $token]);
+
+        // Send the verification link to the patient
+        Mail::send('auth.verify-email', ['token' => $token], function ($message) use ($email) {
+            $message->to($email)
+                ->subject('Email Verification');
+        });
+
+        // Clear the token from the patient's record in the database
+        DB::table('patients')->where('email', $email)->update(['email_verification_token' => null]);
+
+        return redirect()->route('verification.verify', ['token' => $token]);;
     }
 }

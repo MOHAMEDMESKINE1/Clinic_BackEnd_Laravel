@@ -10,6 +10,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use App\Http\Controllers\API\SocialAuthController;
+use App\Http\Controllers\Appointement\AppointementController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Specialization\SpecializationController;
 
@@ -53,7 +54,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     Route::controller(AdminController::class)->group(function (){
         Route::get('/statistics', 'statistics')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
-        // Route::get('/patients', 'patients')->name('admin.patients');
         
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
@@ -113,6 +113,24 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::put('/patients/edit/{id}', 'update')->name('admin.update_patients');
         Route::delete('/patients/{id}', 'delete')->name('admin.delete_patient');
 
+        // Route::get('/resend-verification', 'resend')->name('resend-verification');
+        // Route::post('/verification/verify', 'verify')->name('verification.verify');
+
+    });
+    Route::controller(AppointementController::class)->group(function (){
+
+
+        Route::get('/appointements', 'appointements')->name('admin.appointements');
+        Route::get('/appointements/details/{id}', 'appointements_details')->name('admin.appointements_details');
+
+        // crud appointement
+        Route::get('/appointements/search', 'search')->name('admin.search_appointements');
+        Route::get('/appointements/filter', 'filter')->name('admin.filter_appointements');
+        
+        Route::post('/appointements/create', 'store')->name('admin.store_appointements');
+        Route::get('/appointements/details/{id}', 'appointement_details')->name('admin.appointement_details');
+        Route::delete('/appointements/{id}', 'delete')->name('admin.delete_patient');
+
 
     });
 
@@ -157,7 +175,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::get('/appointement_details', 'appointement_details')->name('patient.appointement_details');
         Route::get('/doctor_details', 'doctor_details')->name('patient.doctor_details');
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
-        Route::get('/patients', 'patients')->name('patient.patients');
+        Route::get('/appointements', 'patients')->name('patient.patients');
         Route::get('/profile', 'profile')->name('patient.profile');
         Route::get('/reviews', 'reviews')->name('patient.reviews');
         Route::get('/transactions', 'transactions')->name('patient.transactions');

@@ -127,10 +127,11 @@
                                    @if ($patient->email_verified_at)
                                      <i class="fas fa-solid fa-badge-check text-green-500"></i>
                                    @else 
-                                    {{-- <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                        <input type="checkbox" value="" class="sr-only peer" checked>
-                                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700   peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                                    </label> --}}
+                                   {{-- <form action="{{ route('verification.verify',$token)}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="token" value="{{ $token }}">
+                                        <button type="submit">Verify Email</button>
+                                    </form> --}}
                                     <i class="fas fa-solid fa-cancel font-bold text-xl text-red-500"></i>
 
                                 @endif
@@ -143,22 +144,15 @@
                                 </td>
                                 <td>
                                     <div class="flex justify-center mt-2">
-                                        @if (!$patient->email_verified_at)               
-                                        {{-- <a href="{{route("verification.send")}}"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
+                                                    
+                                        <a href="#"  data-tooltip-target="tooltip-email"  data-modal-target="emailPatient" data-modal-toggle="emailPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
                                             <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i>
-                                        </a>     --}}
-                                        <form method="POST" action="{{ route('verification.send') }}">
+                                        </a>    
+                                        {{-- <form action="{{ route('verification.verify',$token)}}" method="POST">
                                             @csrf
-                                            <div>
-                                                <x-primary-button>
-                                                    {{-- <i class="fas fa-solid fa-envelope text-gray-700 text-xl"></i> --}}
-                                                    {{ __('Resend Verification Email') }}
-
-                                                </x-primary-button>
-                                            </div>
-                                        </form>
-                                
-                                        @endif                            
+                                            <input type="hidden" name="token" value="{{ $token }}">
+                                            <button type="submit">Verify Email</button>
+                                        </form>  --}}
                                         <a href=" {{route("admin.edit_patients",$patient->id)}}"   data-tooltip-target="tooltip-edit"  data-modal-target="editPatient" data-modal-toggle="editPatient" class="text-white  px-4 py-1 text-center mb-2" type="button">
                                             <i class="fas fa-edit text-blue-700 text-xl"></i>
                                         </a>                                

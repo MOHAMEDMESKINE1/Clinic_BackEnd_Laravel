@@ -10,7 +10,7 @@
 <body>
     @extends('dashboard.admin.admin_dashboard')
     @section('content')
-   <div class="container bg-white ">
+   <div class="container bg-white p-5 ">
     <div class="grid grid-col-1 md:grid-col-2">
 
         @if ($errors->any())
@@ -83,16 +83,16 @@
                 <!-- Blood Group   -->
                 <div class="w-full  group">
                     <label for="groupB" class="font-medium ">Group Blood:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                    <select id="groupB" name="groupB" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                    <select id="groupB" name="bloodGroup" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                         <option value="" disabled>--Select Blood Group--</option>
-                        <option value="A+" {{ $patient->BloodGroup === 'A+' ? 'selected' : '' }}>A+</option>
-                        <option value="A-" {{ $patient->BloodGroup === 'A-' ? 'selected' : '' }}>A-</option>
-                        <option value="B+" {{ $patient->BloodGroup === 'B+' ? 'selected' : '' }}>B+</option>
-                        <option value="B-" {{ $patient->BloodGroup === 'B-' ? 'selected' : '' }}>B-</option>
-                        <option value="AB+" {{ $patient->BloodGroup === 'AB+' ? 'selected' : '' }}>AB+</option>
-                        <option value="AB-" {{ $patient->BloodGroup === 'AB-' ? 'selected' : '' }}>AB-</option>
-                        <option value="O+" {{ $patient->BloodGroup === 'O+' ? 'selected' : '' }}>O+</option>
-                        <option value="O-" {{ $patient->BloodGroup === 'O-' ? 'selected' : '' }}>O-</option>
+                        <option value="A+" {{ $patient->bloodGroup === 'A+' ? 'selected' : '' }}>A+</option>
+                        <option value="A-" {{ $patient->bloodGroup === 'A-' ? 'selected' : '' }}>A-</option>
+                        <option value="B+" {{ $patient->bloodGroup === 'B+' ? 'selected' : '' }}>B+</option>
+                        <option value="B-" {{ $patient->bloodGroup === 'B-' ? 'selected' : '' }}>B-</option>
+                        <option value="AB+" {{ $patient->bloodGroup === 'AB+' ? 'selected' : '' }}>AB+</option>
+                        <option value="AB-" {{ $patient->bloodGroup === 'AB-' ? 'selected' : '' }}>AB-</option>
+                        <option value="O+" {{ $patient->bloodGroup === 'O+' ? 'selected' : '' }}>O+</option>
+                        <option value="O-" {{ $patient->bloodGroup === 'O-' ? 'selected' : '' }}>O-</option>
 
                     </select>                                
                 </div>
