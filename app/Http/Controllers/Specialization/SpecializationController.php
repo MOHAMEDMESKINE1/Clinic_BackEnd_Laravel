@@ -51,7 +51,6 @@ class SpecializationController extends Controller
 
         $query = $request->search;
 
-        $$query = $request->search;
 
         $specializations = $this->specialization->search($query);
 

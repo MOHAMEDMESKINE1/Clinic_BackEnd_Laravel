@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Doctor;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Appointement extends Model
 {
     use HasFactory;
+    protected $table = 'appointments'; 
 
 
     public function patients(){
@@ -17,5 +19,10 @@ class Appointement extends Model
     
     public function doctors(){
         return $this->belongsTo(Doctor::class,'doctor_id');
+    }
+
+    public function services()
+    {
+        return $this->belongsTo(Service::class,'service_id');
     }
 }

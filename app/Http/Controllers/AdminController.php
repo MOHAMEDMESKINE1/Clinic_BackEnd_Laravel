@@ -133,20 +133,20 @@ class AdminController extends Controller
         return    view('dashboard.admin.staff');
 
     }
-    public function appointements(){
+    // public function appointements(){
         
-        return    view('dashboard.admin.appointements');
-    }
+    //     return    view('dashboard.admin.appointements');
+    // }
     public function profile(){
 
         return    view('dashboard.admin.profile');
 
     }
-    public function appointement_details(){
+    // public function appointement_details(){
 
-        return    view('dashboard.admin.appointement_details');
+    //     return    view('dashboard.admin.appointement_details');
 
-    }
+    // }
     public function statistics(){
         return    view('dashboard.admin.statistics');
 

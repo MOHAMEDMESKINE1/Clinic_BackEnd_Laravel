@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\Appointement;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -26,20 +28,30 @@ class AppointementRepository implements RepositoryInterface {
         $results = [];
 
         // Search in doctors
-        $doctors = $this->appointement->whereHas('doctors', function ($_query) use ($query) {
-            $_query->where('firstname', $query)
-            ->orWhere('lastname', $query)
-            ;
-        })
+        // $doctors = $this->appointement->whereHas('doctors', function ($_query) use ($query) {
+        //     $_query->where('firstname', $query)
+        //     ->orWhere('lastname', $query)
+        //     ;
+        // })
+        // ->paginate();
+
+        // // Search in patients
+        // $patients = $this->appointement->whereHas('patients', function ($_query) use ($query) {
+        //     $_query->where('firstname', $query)
+        //     ->orWhere('lastname', $query)
+        //     ;
+        // })
+        // ->paginate();
+         // Search in doctors
+        $doctors = Doctor::where('firstname', $query)
+        ->orWhere('lastname', $query)
         ->paginate();
 
-        // Search in patients
-        $patients = $this->appointement->whereHas('patients', function ($_query) use ($query) {
-            $_query->where('firstname', $query)
-            ->orWhere('lastname', $query)
-            ;
-        })
+    // Search in patients
+    $patients = Patient::where('firstname', $query)
+        ->orWhere('lastname', $query)
         ->paginate();
+
     
         // Combine the results
         $results['doctors'] = $doctors;
@@ -63,14 +75,15 @@ class AppointementRepository implements RepositoryInterface {
             return $this->appointement->where('status', '=',"cancelled")->paginate();
 
         }
-        return  $this->all();
+
+       return $this->all();
         
     }
         
     public function getById($id){
        
 
-        return $this->appointement->findOrFail($id);
+        return $this->appointement->with(["doctors","patients","services"])->findOrFail($id);
     }
 
     public function store($params){
@@ -78,6 +91,11 @@ class AppointementRepository implements RepositoryInterface {
             $this->appointement->status = $params["status"];
             $this->appointement->payment = $params["payment"];
             $this->appointement->patient_id = $params["patient"];
+            $this->appointement->service_id = $params["services"];
+            $this->appointement->charge = $params["charge"];
+            $this->appointement->extra_fees = $params["extra_fees"];
+            $this->appointement->total_payment = $params["total_payment"];
+            $this->appointement->date = $params["date"];
             $this->appointement->doctor_id = $params["doctor"];
             $this->appointement->save();
         
@@ -90,6 +108,11 @@ class AppointementRepository implements RepositoryInterface {
         $appointement->status = $params["status"];
         $appointement->payment = $params["payment"];
         $appointement->patient_id = $params["patient"];
+        $appointement->service_id = $params["services"];
+        $appointement->charge = $params["charge"];
+        $appointement->extra_fees = $params["extra_fees"];
+        $appointement->total_payment = $params["total_payment"];
+        $appointement->date = $params["date"];
         $appointement->doctor_id = $params["doctor"];
         $appointement->save();
        
@@ -100,7 +123,6 @@ class AppointementRepository implements RepositoryInterface {
 
         $appointement =$this->getById($id) ;
         $appointement->delete();
-        $this->all();
     }
 
 

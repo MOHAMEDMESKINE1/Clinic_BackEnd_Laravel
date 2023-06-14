@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -8,8 +7,6 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
-use Stichoza\GoogleTranslate\GoogleTranslate;
-use App\Http\Controllers\API\SocialAuthController;
 use App\Http\Controllers\Appointement\AppointementController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Specialization\SpecializationController;
@@ -58,8 +55,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
 
-        Route::get('/appointements', 'appointements')->name('admin.appointements');
-        Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
+        // Route::get('/appointements', 'appointements')->name('admin.appointements');
+        // Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
         Route::get('/profile', 'profile')->name('admin.profile');
         Route::get('/services', 'services')->name('admin.services');
         Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
@@ -77,7 +74,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         
         Route::post('/doctors/create', 'store')->name('admin.store');
         Route::put('/doctors/edit/{id}', 'update')->name('admin.update');
-        Route::delete('{id}', 'delete')->name('admin.delete');
+        Route::delete('/doctors/{id}', 'delete')->name('admin.delete');
 
 
 
@@ -128,8 +125,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/appointements/filter', 'filter')->name('admin.filter_appointements');
         
         Route::post('/appointements/create', 'store')->name('admin.store_appointements');
-        Route::get('/appointements/details/{id}', 'appointement_details')->name('admin.appointement_details');
-        Route::delete('/appointements/{id}', 'delete')->name('admin.delete_patient');
+        Route::get('/appointements/details/{id}', 'appointements_details')->name('admin.appointements_details');
+        Route::delete('appointements/{id}', 'delete')->name('admin.delete_appointements');
 
 
     });

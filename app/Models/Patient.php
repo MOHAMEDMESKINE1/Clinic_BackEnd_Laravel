@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  class Patient  extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
-
+    protected $table = 'patients'; 
     protected $fillable = [
         'firstname',
         'lastname',
@@ -27,6 +27,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
    
     public function appointements(){
 
-        return $this->hasMany(Appointement::class,'appointement_id');
+        return $this->hasMany(Appointement::class,'appointment_id');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\AppointementRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
+use App\Repositories\ServiceRepository;
 use Illuminate\Http\Request;
 
 class AppointementController extends Controller
@@ -13,20 +14,33 @@ class AppointementController extends Controller
     public $appointement ;
     public $doctors ;
     public $patients ;
+    public $services ;
 
-    public function __construct(AppointementRepository $appointementRepository,PatientRepository $patientRepository,DoctorRepository $doctorRepository) {
+    public function __construct(AppointementRepository $appointementRepository,
+    PatientRepository $patientRepository,
+    DoctorRepository $doctorRepository,
+    ServiceRepository $serviceRepository,
+    ) {
        
         $this->appointement = $appointementRepository;
         $this->doctors = $doctorRepository;
         $this->patients = $patientRepository;
+        $this->services = $serviceRepository;
     }
     public function appointements(){
         
-        $appointements = $this->appointement->all();
+        $appointments = $this->appointement->all();
         $doctors = $this->doctors->all();
         $patients = $this->patients->all();
+        $services = $this->services->all();
 
-        return view('dashboard.admin.appointements',compact(["appointements","doctors","patients"]));
+        return view('dashboard.admin.appointements',compact(
+            [
+                "appointments",
+                "doctors",
+                "patients",
+                "services"
+            ]));
 
     }
 
@@ -34,26 +48,31 @@ class AppointementController extends Controller
 
         $query = $request->search;
 
-        $appointements = $this->appointement->search($query);
+        $appointments = $this->appointement->search($query);
 
-        if ($appointements === "") {
+        // $appointments = $this->appointement->all();
 
-           
-            $appointements = $this->appointement->all();
-
-         }
-        return    view('dashboard.admin.appointements',compact('appointements'));
+         
+        return    view('dashboard.admin.appointements',compact('appointments'));
 
      }
      public function filter(Request $request){
 
         $query = $request->filter;
 
-        $appointements = $this->appointement->filter($query);
+        $appointments = $this->appointement->filter($query);
+        $doctors = $this->doctors->all();
+        $patients = $this->patients->all();
+        $services = $this->services->all();
 
-        return    view('dashboard.admin.appointements',compact('appointements'));
-
-     }
+        return view('dashboard.admin.appointements',compact(
+            [
+                "appointments",
+                "doctors",
+                "patients",
+                "services"
+            ]));
+    }
     public function store (Request $request){
             
             $this->appointement->store($request->all());            
@@ -64,6 +83,7 @@ class AppointementController extends Controller
 
         return  redirect()->route('admin.appointements');
     }
+
      public function appointements_details($id){
 
         $appointement = $this->appointement->getById($id);
