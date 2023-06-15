@@ -196,16 +196,9 @@
                         @endforeach
                   
             </table>
-           <div class="flex items-between ">
-            
-            <!-- pagination -->
-           
-           <div class="mt-5 mx-4">
-            {{ $doctors->links() }}
-           </div>
-          
-            <!-- pagination -->
-           </div>
+            <div class="mt-5 mx-4">
+                {{ $doctors->links() }}
+            </div>
         </div>
     <div>
     <!-- Add Doctor -->

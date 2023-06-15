@@ -20,44 +20,25 @@ class AppointementRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->appointement->select("*")->with(["doctors","patients"])->paginate() ; 
+        return  $this->appointement->select("*")->with(["doctors","patients"])->paginate(5) ; 
     }
 
     public function search($query)
     {
-        $results = [];
-
-        // Search in doctors
-        // $doctors = $this->appointement->whereHas('doctors', function ($_query) use ($query) {
-        //     $_query->where('firstname', $query)
-        //     ->orWhere('lastname', $query)
-        //     ;
-        // })
-        // ->paginate();
-
-        // // Search in patients
-        // $patients = $this->appointement->whereHas('patients', function ($_query) use ($query) {
-        //     $_query->where('firstname', $query)
-        //     ->orWhere('lastname', $query)
-        //     ;
-        // })
-        // ->paginate();
-         // Search in doctors
-        $doctors = Doctor::where('firstname', $query)
-        ->orWhere('lastname', $query)
-        ->paginate();
-
-    // Search in patients
-    $patients = Patient::where('firstname', $query)
-        ->orWhere('lastname', $query)
-        ->paginate();
-
-    
-        // Combine the results
-        $results['doctors'] = $doctors;
-        $results['patients'] = $patients;
         
-        return $results;
+        $appointments =$this->appointement
+            ->whereHas('doctors', function ($subQuery) use ($query) {
+                $subQuery->where('firstname', 'like', '%' . $query . '%')
+                ->orWhere('lastname', 'like', '%' . $query . '%');                
+            })
+            ->orWhereHas('patients', function ($subQuery) use ($query) {
+                $subQuery->where('firstname', 'like', '%' . $query . '%')
+                ->orWhere('lastname', 'like', '%' . $query . '%');
+            })
+        ->with(['doctors', 'patients'])
+        ->paginate();
+
+       return $appointments;
         
     }
     public function filter($filter)

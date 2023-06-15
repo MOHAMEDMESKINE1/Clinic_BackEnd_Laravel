@@ -18,7 +18,7 @@ class ServiceRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->service->select("*")->with("doctors")->paginate(); 
+        return  $this->service->select("*")->with("doctors")->paginate(5); 
     }
 
     public function search($query)

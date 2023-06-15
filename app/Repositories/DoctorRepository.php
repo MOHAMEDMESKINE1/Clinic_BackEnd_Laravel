@@ -18,7 +18,7 @@ class DoctorRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->doctor->select("*")->with("specializations:name")->paginate() ; 
+        return  $this->doctor->select("*")->with("specializations:name")->paginate(5) ; 
     }
 
     public function search($query)

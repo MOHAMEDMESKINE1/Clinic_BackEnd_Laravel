@@ -103,11 +103,15 @@
                                     <div class="flex items-center mx-2">
                                         <a href="#">
                                             <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                                @if ($patient->photo)
                                                 <img src="{{asset('/storage/patients/'.$patient->photo)}}" alt="{{$patient->firstname}}" class="w-full h-full rounded-full">
+                                                @else
+                                                <img src="{{asset('/storage/img/profile.svg')}}" alt="{{$patient->firstname}}" class="w-full h-full rounded-full">
+                                                @endif
                                             </div>
                                         </a>
-                                        <div class="flex flex-col">
-                                            <a class="mb-1 text-base font-medium text-gray-800"
+                                        <div class="flex flex-col p-2.5">
+                                            <a class="mb-1 text-green-700  font-medium "
                                             href="{{route("admin.patients_details",$patient->id)}}" 
                                             >
                                                 {{$patient->firstname}}  

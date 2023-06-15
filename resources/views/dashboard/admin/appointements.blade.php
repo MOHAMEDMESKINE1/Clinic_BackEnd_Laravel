@@ -157,31 +157,50 @@
                      
                         <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                             <td>
-                                <div class="flex justify-center">
-                                    <img src="{{asset('storage/doctors/'.$appointment->doctors->photo)}}" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
-                                    <p class="mx-3">
+                                <div class="flex flex-col  p-2.5">
+                                    @if ($appointment->doctors->photo)
+                                    <div class="w-11 h-11 flex-shrink-0 object-cover  object-center rounded-full shadow mr-3">
+                                        <img src="{{asset('storage/doctors/'.$appointment->doctors->photo)}}" alt="photo" class="w-full h-full rounded-full "><br>
+                                    </div>
+                                    @else
+                                    <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                        <img src="{{asset('storage/img/profile.svg')}}" alt="photo" class="w-full h-full rounded-full "><br>
+                                    </div>
+
+                                    @endif
+                                   
                                         <a class="text-green-700" href="{{route('admin.doctor_details',$appointment->doctors->id)}}">
                                             {{$appointment->doctors->firstname}} {{$appointment->doctors->lastname}}
                                         </a>
-                                    </p>
+                                        <span class="text-base font-medium text-gray-600"> {{$appointment->doctors->email}} </span>
+
                                    </div>
-                                    <div class="flex justify-center" >
-                                        <p class="mx-15">{{$appointment->doctors->email}}</p>
-                                    </div>
+                                   
                                 </div>
                             </td>
                             <td>
-                                <div class="flex justify-center">
-                                    <img src="{{asset('storage/patients/'.$appointment->patients->photo)}}" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                <div class="flex flex-col p-2.5">
+
+                                    @if ($appointment->patients->photo)
+                                    <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                        <img src="{{asset('storage/patients/'.$appointment->patients->photo)}}" alt="photo" class="w-full h-full rounded-full"><br>
+
+                                    </div>
+                                    @else
+                                    <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                        <img src="{{asset('storage/img/profile.svg')}}" alt="photo" class="w-full h-full rounded-full "><br>
+
+                                    </div>
+                                    @endif
                                     <p class="mx-3">
                                        <a class="text-green-700" href="{{route('admin.patients_details',$appointment->patients->id)}}">
                                         {{$appointment->patients->firstname}} {{$appointment->patients->lastname}}
                                        </a>
+                                       <span class="text-base font-medium text-gray-600"> {{$appointment->patients->email}} </span>
+
                                     </p>
                                    </div>
-                                    <div class="flex justify-center" >
-                                        <p class="mx-15">{{$appointment->patients->email}}</p>
-                                    </div>
+                                    
                                 </div>
                             </td>
                             <td>
@@ -261,8 +280,9 @@
                 <div class="mt-5 mx-4">
                     {{ $appointments->links() }}
                 </div>
-              
             </div>
+           
+          
         <div>
 
         <!-- Add Appoointement -->

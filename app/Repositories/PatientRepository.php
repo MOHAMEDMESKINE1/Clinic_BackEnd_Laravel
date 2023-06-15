@@ -19,7 +19,7 @@ class PatientRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->patient->select("*")->paginate() ; 
+        return  $this->patient->select("*")->paginate(5) ; 
     }
 
     public function search($query)

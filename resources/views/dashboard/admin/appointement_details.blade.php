@@ -98,11 +98,11 @@
                     
                     <h1 class="mb-2  underline">Service : </h1>
                     <span class="text-blue-500   rounded-sm p-1 ">
-                       {{-- @if ($appointement->services->name)
+                       @if ($appointement->services->name)
                         {{$appointement->services->name}}
                         @else
                         <span>N/A</span>
-                       @endif --}}
+                       @endif
                     </span>
                 </div>
                 <div class="w-full mb-6 text-gray-500">

@@ -50,11 +50,17 @@ class AppointementController extends Controller
 
         $appointments = $this->appointement->search($query);
 
-        // $appointments = $this->appointement->all();
-
+        $doctors = $this->doctors->all();
+        $patients = $this->patients->all();
+        $services = $this->services->all();
          
-        return    view('dashboard.admin.appointements',compact('appointments'));
-
+       return view('dashboard.admin.appointements',compact(
+            [
+                "appointments",
+                "doctors",
+                "patients",
+                "services"
+            ]));
      }
      public function filter(Request $request){
 

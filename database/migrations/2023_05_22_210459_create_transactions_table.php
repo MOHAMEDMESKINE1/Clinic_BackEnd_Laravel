@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->enum('payment_method', ['manually', 'stripe','paypal']);
-            $table->integer('amount')->default(100);
-            $table->date('date');
+            $table->string('payment_method');
             // fk patient
             $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('appointment_id')->constrained('appointments')->onDelete('cascade')->onUpdate('cascade');
            
             $table->timestamps();
         });

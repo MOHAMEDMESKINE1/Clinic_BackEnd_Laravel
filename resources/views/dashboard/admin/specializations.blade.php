@@ -130,6 +130,11 @@
                    
                 </tbody>
             </table>
+             <!-- pagination -->           
+             <div class="mt-5 mx-4">
+                {{ $specializations->links() }}
+            </div>
+         <!-- pagination -->
         </div>
     <div>
     <!-- Add modal -->

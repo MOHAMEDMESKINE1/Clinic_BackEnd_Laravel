@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Transaction;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,5 +29,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
     public function appointements(){
 
         return $this->hasMany(Appointement::class,'appointment_id');
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }
