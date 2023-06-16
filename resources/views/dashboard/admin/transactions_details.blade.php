@@ -56,7 +56,7 @@
                 
                 <h1 class="mb-2 underline font-medium">Appointement ID : </h1>
                 <span class="bg-yellow-500  text-white rounded-sm p-1">
-                    US5ALTTZTL
+                   {{$transaction->id}}
                 </span>
                 
             </div>
@@ -64,43 +64,37 @@
                 
                 <h1 class="mb-2 underline font-medium">Appointement At : </h1>
                 <span class="bg-indigo-500 text-white  rounded-sm p-0.5 ">
-                    14 Apr 2023 03:00 AM - 03:05 AM
+                    {{$transaction->created_at}}
                 </span>
             </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2 underline font-medium">Transaction ID : </h1>
-                <span class="bg-indigo-500  text-white rounded-sm p-0.5">
-                    YXJWZ412S
-                </span>
-            </div>
+           
             
             <div class="w-full mb-6 text-gray-500">
                 
                 <h1 class="mb-2  underline font-medium">Patient : </h1>
                 <span class="text-blue-500   rounded-sm p-1 ">
-                    Stacey Gross
+                    {{$transaction->patients->firstname}} {{$transaction->patients->lastname}}
                 </span>
             </div>
             <div class="w-full mb-6 text-gray-500">
                 
                 <h1 class="mb-2  underline font-medium">Doctor : </h1>
                 <span class="text-blue-500  rounded-sm p-1 ">
-                   Alex Benjamin
+                    {{$transaction->doctors->firstname}} {{$transaction->doctors->lastname}}
                 </span>
             </div>
             <div class="w-full mb-6 text-gray-500">
                 
-                <h1 class="mb-2  underline font-medium">Payment Method : </h1>
+                <h1 class="mb-2  underline font-medium">Payment : </h1>
                 <span class="text-blue-500   rounded-sm p-1 ">
-                    Manually
+                    {{$transaction->payment}} 
                 </span>
             </div>
             <div class="w-full mb-6 text-gray-500">
                 
                 <h1 class="mb-2  underline font-medium">Amount : </h1>
                 <span class="text-blue-500 rounded-sm p-1 ">
-                    90.00$
+                    {{$transaction->charge}} $
                 </span>
             </div>
             <div class="w-full mb-6 text-gray-500">
@@ -110,13 +104,7 @@
                     Super Admin
                 </span>
             </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline font-medium">Payment method : </h1>
-                <span class="text-blue-500 rounded-sm p-1 ">
-                    Manually
-                </span>
-            </div>
+           
             
            
         </div>

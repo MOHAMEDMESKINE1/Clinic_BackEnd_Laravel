@@ -23,49 +23,15 @@ class ServiceRepository implements RepositoryInterface {
 
     public function search($query)
     {
-        $results = [];
-
-        // Search in doctors
-        $doctors = $this->service->whereHas('doctors', function ($_query) use ($query) {
-            $_query->where('firstname', $query)
-            ->orWhere('lastname', $query)
-            ;
-        })
+       
+        $services = $this->service
+        ->where('name', 'like', '%' . $query . '%')
+        ->orWhere('category', 'like', '%' . $query . '%')
         ->paginate();
-
-        // Search in patients
-        $patients = $this->service->whereHas('patients', function ($_query) use ($query) {
-            $_query->where('firstname', $query)
-            ->orWhere('lastname', $query)
-            ;
-        })
-        ->paginate();
-    
-        // Combine the results
-        $results['doctors'] = $doctors;
-        $results['patients'] = $patients;
-        
-        return $results;
+        return $services;
         
     }
-    public function filter($filter)
-    {
-        if($filter==="booked"){
-            return $this->service->where('status', '=',"booked")->paginate();
-
-        }elseif($filter==="checkin"){
-            return $this->service->where('status', '=',"checkin")->paginate();
-
-        }elseif($filter==="checkout"){
-            return $this->service->where('status', '=',"checkout")->paginate();
-
-        }elseif($filter==="cancelled"){
-            return $this->service->where('status', '=',"cancelled")->paginate();
-
-        }
-        return  $this->all();
-        
-    }
+  
         
     public function getById($id){
        
@@ -75,32 +41,71 @@ class ServiceRepository implements RepositoryInterface {
 
     public function store($params){
            
-            $this->service->status = $params["status"];
-            $this->service->payment = $params["payment"];
-            $this->service->patient_id = $params["patient"];
-            $this->service->service_id = $params["services"];
+            $this->service->name = $params["name"];
+            $this->service->category = $params["category"];
+            $this->service->charge = $params["charge"];
             $this->service->doctor_id = $params["doctor"];
+            $this->service->description = $params["description"];
+            $this->service->status = $params["status"];
+
+            if (isset($params['status'])) {
+                $this->service->status = $params['status'];
+            }
+
+            if(request()->hasfile('photo'))
+            {
+                $file = request()->file('photo');
+                $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
+                $file->move("storage/services/", $filename);
+                
+                $this->service["photo"] = "$filename";
+            }
+
+
             $this->service->save();
         
     }
 
     public function update($params,$id){
 
-        $service = $this->getById($id);
+            $service = $this->getById($id);
 
-        $service->status = $params["status"];
-        $service->payment = $params["payment"];
-        $service->patient_id = $params["patient"];
-        $service->doctor_id = $params["doctor"];
-        $service->save();
+            $service->name = $params["name"];
+            $service->category = $params["category"];
+            $service->charge = $params["charge"];
+            $service->doctor_id = $params["doctor"];
+            $service->description = $params["description"];
+            if (isset($params['status'])) {
+            $service->status = $params['status'];
+        }
+
+        if (request()->hasfile('photo')) {
+            $file = request()->file('photo');
+            $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
+            $file->move("storage/services", $filename);
+            
+            $service->photo = $filename; // Update the 'photo' attribute
+        }
+           
+           
+            $service->save();
        
     }
 
 
     public function delete($id){
 
-        $appointement =$this->getById($id) ;
-        $appointement->delete();
+        $service =$this->getById($id) ;
+
+         // Delete the existing image file
+         $photo_path = $service->photo;
+
+         if ($photo_path && file_exists(public_path('storage/services/' . $photo_path))) {
+            unlink(public_path('storage/services/' . $photo_path));
+        }
+
+        $service->delete();
+        
         $this->all();
     }
 

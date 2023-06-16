@@ -185,7 +185,7 @@
                   
                     <!-- status -->
                    <div class="w-full group mt-3">    
-                    <label class="block mb-2 text-sm font-medium " for="photo">Status:<b class="text-red-400">*</b> </label>
+                    <label class="block mb-2 text-sm font-medium " for="status">Status:<b class="text-red-400">*</b> </label>
                     
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input name="status" id="status" type="checkbox" value="0" class="sr-only peer">

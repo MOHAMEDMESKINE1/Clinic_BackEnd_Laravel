@@ -36,33 +36,30 @@
     @section('content')
     <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container ">
-            <div class="m-5">
-                <div class="flex justify-between sm\:flex-row ">
-
-                    <form action="">
-                        <label class="relative block">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
-                                    height="30" viewBox="0 0 30 30">
-                                    <path
-                                        d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <input
-                                name="search"
-                                class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
-                                placeholder="Search" type="text" />
-                        </label>
-                    </form>  
-                    <button data-modal-target="addService" data-modal-toggle="addService" class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
-                        Add Service
-                    </button>
-                </div>              
-                
+           
+        <div class="flex flex-col sm:flex-row justify-between mx-8">
+            <div class="flex justify-start my-5">
+             <form method="GET" action="{{ route('admin.search_services') }}" class="flex items-center mb-4 sm:mb-0">
+                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                 <div class="relative">
+                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                     </div>
+                     <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
+                     <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
+                 </div>
+             </form>
             </div>
-        </div>
+         
+             <div class="flex items-center">
+                
+             
+                
+                 <a href="#" type="button" data-modal-target="addService" data-modal-toggle="addService" class="text-white flex justify-start  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 mb-5 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                     Add Service
+                 </a>
+             </div>
+         </div>
 
     </div>
     <div class="grid grid-cols-1 ">
@@ -94,35 +91,46 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($services as $service)                   
                     <tr class="bg-white  border-b dark:bg-white font-medium dark:border-gray-100">
                         <td>
-                            <div class="flex justify-center">
-                                <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>                              
+                            <div class="flex items-center mx-2">
+                               
+                                <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                    @if ($service->photo)
+                                    <img src="{{asset('/storage/services/'.$service->photo)}}" alt="{{$service->name}}" class="w-full h-full rounded-full">
+                                    @else
+                                    <img src="{{asset('/storage/img/profile.svg')}}" alt="{{$service->name}}" class="w-full h-full rounded-full">
+                                    @endif
+                                </div>
                             </div>
+                            
                         </td>
                         <td>
-                           <span>Smith Alex</span>
+                           <span>{{$service->name}}</span>
                         </td>
                         
                         <td>
-                           <span>Thearpy</span>
+                           <span>{{$service->category}}</span>
                         </td>
                         <td>
-                           <span>1237$.00</span>
+                           <span>{{$service->charge}}</span>
                         </td>
                        
                         <td>
-                            <label class="relative inline-flex items-start cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer">
-                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none pe rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                            </label>
+                            @if ($service->status === 0)
+                            <span>Availabe</span>
+                            @else
+                            <span>Not Availabe</span>
+
+                            @endif
                         </td>
                       
                         <td>
                             <div class="flex justify-center mt-5">
                                 
                                 <!-- edit -->
-                                <a href="#"  data-tooltip-target="tooltip-edit"   data-modal-target="editService" data-modal-toggle="editService" class="text-white  px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route("admin.edit_services",$service->id)}}"  data-tooltip-target="tooltip-edit"   class="text-white  px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-edit text-blue-700 text-xl"></i>
                                 </a>    
                                 <!-- trash -->
@@ -142,8 +150,7 @@
                            </div> 
                         </td>
                     </tr>
-                 
-                   
+                    @endforeach
                 </tbody>
             </table>
            <div class="flex items-between">
@@ -201,11 +208,12 @@
 
                 <!-- modal body -->
                 <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                    <form method="post"  enctype="multipart/form-data" action="#">
-
+                    <form method="POST"  enctype="multipart/form-data" action="{{route("admin.store_services")}}">
+                        @method("POST")
+                        @csrf
                         <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                             
-                            <!-- Visit Date  -->
+                            
                             <div class="w-full   group">
                                 <label for="" class="font-medium ">Name:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
@@ -222,7 +230,7 @@
                                 <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded dark:border-gray-200">
                                    $
                                 </span>
-                                <input type="text" name="charge" id="charge" class="block p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="0$">
+                                <input type="number" name="charge" id="charge" class="block p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="0$">
                                 </div>
                             </div>   
                             <!-- category   -->
@@ -236,27 +244,27 @@
                                 <label for="doctor" class="font-medium ">Doctors:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                 <select id="doctor" name="doctor" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                     <option selected disabled>Select a doctor</option>
-                                    <option value="smith">smith</option>
-                                    <option value="smith">smith</option>
-                                    <option value="smith">smith</option>
+                                    @foreach ($doctors as $doctor)
+                                    <option value="{{$doctor->id}}">{{$doctor->firstname }}  {{$doctor->lastname}} </option>
+                                    {{-- <option value="{{ $doctor->id }}" {{ $doctor->name }}>
+                                        {{ $doctor->name }}
+                                    </option> --}}
+
+                                    @endforeach
                                 
                                 </select>                                
                             </div>
                            
                        
                             <!-- status -->
-                            <div class="w-full group">
-                                <label for="birthdate" class="font-medium ">Status:<span class="text-red-500 font-medium">*</span></label>
-
-                                <div  data-tooltip-target="tooltip-status"  class="flex justify-start mt-5">
-                                                            
-                                    <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                        <input type="checkbox" value="" class="sr-only peer" checked>
-                                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                                    </label>                             
-                                </div> 
-                        
-                            </div>
+                            <div class="w-full group mt-3">    
+                                <label class="block mb-2 text-sm font-medium " for="status">Status:<b class="text-red-400">*</b> </label>
+                                
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input name="status" id="status" type="checkbox" value="0" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none pe rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
+                                    </label>
+                               </div>
                             <!-- profile -->
                             <div class="w-full group">
                                 <label for="photo" class="font-medium ">Icon:<span class="text-red-500 font-medium">*</span></label>
@@ -282,22 +290,24 @@
                         <label for="description" class="font-medium ">Description:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                         <textarea name="description" class="w-full block mt-1 p-2.5   text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" id="editor" cols="30" rows="10"></textarea>
                     </div>
-                    </form>
+
+                     <!-- modal footer -->
+                    <div class="flex  justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
+                        <button type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                        <button data-modal-hide="addService" type="reset" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                    </div>
+                </form>
                             
                    
                 </div>
-                <!-- modal footer -->
-                <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
-                    <button data-modal-hide="addService" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                    <button data-modal-hide="addService" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                </div>
+               
                 </div>
             </div>
         </div>
     </div>
    
     <!-- Edit service -->
-    <div id="editService" tabindex="-1" aria-hidden="true" class="fixed top-0   left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+    {{-- <div id="editService" tabindex="-1" aria-hidden="true" class="fixed top-0   left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full m-6">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow ">
@@ -307,7 +317,7 @@
                 </button>
                 <div class="px-6 py-2 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-cyan-900 mt-5 mx-6 text-left">
-                        Edit Visit
+                        Edit Service
 
                     </h3>
                     <span class=" border border-b-0 w-full inline-block  border-gray-100 "></span>
@@ -411,7 +421,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
        
     <!-- Delete service -->
         <div id="deleteService" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
@@ -444,22 +454,7 @@
     </div>
     @endsection
 
-    <script>
-        ClassicEditor
-       .create( document.querySelector('#editor') )
-       .catch( error => {
-           console.error( error );
-       } );
-        ClassicEditor
-       .create( document.querySelector('#editortextarea') )
-       .catch( error => {
-           console.error( error );
-       } );
-    </script> 
-
-
-    <script type="text/javascript" defer src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 
 

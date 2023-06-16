@@ -9,7 +9,9 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
 use App\Http\Controllers\Appointement\AppointementController;
 use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\Service\ServiceController;
 use App\Http\Controllers\Specialization\SpecializationController;
+use App\Http\Controllers\Transaction\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +57,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
 
-        // Route::get('/appointements', 'appointements')->name('admin.appointements');
-        // Route::get('/appointement_details', 'appointement_details')->name('admin.appointement_details');
         Route::get('/profile', 'profile')->name('admin.profile');
-        Route::get('/services', 'services')->name('admin.services');
         Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
-        Route::get('/transactions', 'transactions')->name('admin.transactions');
-        Route::get('/transactions_details', 'transactions_details')->name('admin.transactions_details');
         Route::get('/visits', 'visits')->name('admin.visits');
         Route::get('/visits_details', 'visits_details')->name('admin.visits_details');
         Route::get('/settings', 'settings')->name('admin.settings');
@@ -130,8 +127,29 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
 
     });
+   
+    Route::controller(TransactionController::class)->group(function (){
+
+        Route::get('/transactions', 'transactions')->name('admin.transactions');
+        Route::get('/transactions/details/{id}', 'transactions_details')->name('admin.transactions_details');
+        Route::get('/transactions/search', 'search')->name('admin.search_transactions');
+    });
+
+    Route::controller(ServiceController::class)->group(function (){
 
 
+        Route::get('/services', 'services')->name('admin.services');
+
+        // crud appointement
+        Route::get('/services/search', 'search')->name('admin.search_services');
+        Route::get('/services/edit/{id}', 'update')->name('admin.edit_services');
+        Route::post('/services/create', 'store')->name('admin.store_services');
+        Route::put('/services', 'update')->name('admin.update_services');
+
+        Route::delete('services/{id}', 'delete')->name('admin.delete_services');
+
+
+    });
 
 });
 

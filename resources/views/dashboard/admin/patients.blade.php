@@ -97,9 +97,7 @@
                         @foreach ($patients as $patient)
                             <tr class="bg-white border-b dark:bg-white font-medium dark:border-gray-100">
                                 <td>
-                                {{-- 
-                                C:\xampp\htdocs\PROJECTS\LARAVEL\wecare\public\storage\photos\patients\20230611130501.jpg    
-                                --}}
+                               
                                     <div class="flex items-center mx-2">
                                         <a href="#">
                                             <div class="w-10 h-10 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">

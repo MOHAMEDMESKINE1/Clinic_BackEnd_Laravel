@@ -27,8 +27,10 @@ class Appointement extends Model
         return $this->belongsTo(Service::class,'service_id');
     }
     
-    public function transaction()
+    public function transactions()
     {
         return $this->hasOne(Transaction::class);
     }
+
+   
 }

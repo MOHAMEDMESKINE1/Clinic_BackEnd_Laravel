@@ -11,11 +11,11 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    public function patient()
+    public function patients()
     {
         return $this->belongsTo(Patient::class);
     }
-    public function appointment()
+    public function appointments()
     {
         return $this->belongsTo(Appointement::class);
     }

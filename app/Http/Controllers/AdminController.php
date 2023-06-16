@@ -163,18 +163,7 @@ class AdminController extends Controller
         return    view('dashboard.admin.visits_details');
 
     }
-    public function transactions(){
-        return    view('dashboard.admin.transactions');
-
-    }
-    public function transactions_details(){
-        return    view('dashboard.admin.transactions_details');
-
-    }
-    public function services(){
-        return    view('dashboard.admin.services');
-
-    }
+  
     public function settings(){
         return    view('dashboard.admin.settings');
 

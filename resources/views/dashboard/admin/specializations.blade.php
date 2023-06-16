@@ -178,46 +178,7 @@
             </div>
         </div>
     </div>
-    <!-- Edit modal -->
-    {{-- 
-    <div id="editModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-        <div class="relative ">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow ">
-                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="editModal">
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="px-6 py-2 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-cyan-900 mt-5 text-left">Edit Specialization</h3>
-                <!-- modal body -->
-                <div class="pt-4 px-2">
-                            
-                    <form method="post"  action="{{route("admin.update_specialization",$specialization->id)}}">
-                        @csrf
-                        @method("PUT")
-                        <!-- Specialization -->
-                        <div class="grid grid-col-1 ">
-                                <!-- Specialization -->
-                                <div class="w-full  mb-6 group">
-
-                                    <label for="Specialization" class="font-medium ">Specialization :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="specialization" id="specialization"  value="" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Specialization " required />
-                                </div>
-                        </div>
-                         <!-- modal footer -->
-                            <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
-                                <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                                <button data-modal-hide="editModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                            </div>
-                    </form>
-                </div>
-               
-                </div>
-            </div>
-        </div>
-    </div>
-    --}}
+ 
     <!-- Delete Modal -->
     <div id="deleteModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">

@@ -10,7 +10,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Service extends Model
 {
     use HasFactory;
-
+    protected $table = 'services'; 
+    protected $fillable = [
+        'name',
+        'category',
+        'photo',
+        'status',
+        'charge',
+        'description',
+       
+    ];
     public function doctors()
     {
         return $this->belongsTo(Doctor::class,"doctor_id");
