@@ -36,7 +36,7 @@
                         <div class="w-full   group">
                             <label for="" class="font-medium ">Name:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
-                            <input type="text" name="name" id="name" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Name" required />
+                            <input type="text" name="name" value="{{$service->name}}" id="name" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Name" required />
                         </div>
  
                          <!-- charge -->
@@ -49,14 +49,14 @@
                             <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded dark:border-gray-200">
                                $
                             </span>
-                            <input type="text" name="charge" id="charge" class="block p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="0$">
+                            <input type="number" name="charge" value="{{$service->charge}}" id="charge" class="block p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="0$">
                             </div>
                         </div>   
                         <!-- category   -->
                         <div class="w-full mb-6  group">
                             <label for="category" class="font-medium ">Category :<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
-                            <input type="text" name="category" id="category" class="block mt-1 p-2.5  w-full text-sm text-gray-900  border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Category"  required />
+                            <input type="text" name="category" value="{{$service->category}}" id="category" class="block mt-1 p-2.5  w-full text-sm text-gray-900  border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Category"  required />
                         </div>    
                         <!-- doctors   -->
                         <div class="w-full  group">
@@ -64,7 +64,7 @@
                             <select id="doctor" name="doctor" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                 <option selected disabled>Select a doctor</option>
                                 @foreach ($doctors as $doctor)
-                                <option value="{{$doctor->id}}" {{$doctor->doctor_id === $doctor->doctor_id ? 'selected' :  ''}}>{{$doctor->firstname }}  {{$doctor->lastname}} </option>
+                                <option value="{{$doctor->id}}" {{$doctor->id == $service->doctor_id ? 'selected' : ''}}>{{$doctor->firstname }}  {{$doctor->lastname}} </option>
                                 @endforeach
                             
                             </select>                                
@@ -73,12 +73,13 @@
                    
                         <!-- status -->
                         <div class="w-full group">
-                            <label for="birthdate" class="font-medium ">Status:<span class="text-red-500 font-medium">*</span></label>
+                            <label for="status" class="font-medium ">Status:<span class="text-red-500 font-medium">*</span></label>
 
                             <div  data-tooltip-target="tooltip-status"  class="flex justify-start mt-5">
                                                         
                                 <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <input type="checkbox" value="1" name="status" @if($service->status===1) checked @endif class="sr-only peer" >
+                                   
                                     <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
                                 </label>                             
                             </div> 
@@ -89,13 +90,13 @@
                             <label for="photo" class="font-medium ">Icon:<span class="text-red-500 font-medium">*</span></label>
                             <div class="flex items-start w-full justify-start">
                                 <!-- Button to open the file dialog -->
-                                <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                    <input type="file" name="photo" class="hidden w-full" id="image-input">
+                                <label for="image-input" class="cursor-pointer flex-col  justify-start border-2 border-gray-500 p-5  rounded-lg">
+                                    <input type="file" name="photo" onchange="previewImage(event)" class="hidden w-full" id="image-input">
 
                                     <!-- Image preview or placeholder -->
                                     <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                        <img src="../patient/profile.svg" class="w-8 h-8 " alt="">
-                                    
+                                        <img src="#" class="w-8 h-8  "id="imagePreview"  style="display: none;" alt="">
+                                        
                                     </div>
                 
                                 </label>
@@ -107,7 +108,7 @@
                 <!-- description -->
                 <div class=" w-full group">
                     <label for="description" class="font-medium ">Description:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                    <textarea name="description" class="w-full block mt-1 p-2.5   text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" id="editor" cols="30" rows="10"></textarea>
+                    <textarea name="description" value="{{$service->description}}" class="w-full block mt-1 p-2.5   text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" id="editor" cols="30" rows="10"></textarea>
                 </div>
 
                  <!-- modal footer -->
@@ -123,5 +124,26 @@
    
    </div>
    @endsection
+   <script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('imagePreview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = '#';
+            preview.style.display = 'none';
+        }
+        }
+
+   </script>
 </body>
 </html>

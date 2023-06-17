@@ -26,6 +26,7 @@ class ServiceController extends Controller
 
         $doctors= $this->doctors->all();
 
+      
         $services= $this->services->all();
        
 

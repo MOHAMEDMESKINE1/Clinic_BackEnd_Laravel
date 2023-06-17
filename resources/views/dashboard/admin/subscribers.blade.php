@@ -71,35 +71,37 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($subscribers as $subscriber)
+                            
+                      
                         <tr class="bg-white border-b  hover:bg-gray-100 dark:hover:bg-gray-200">
                         
                         
                         
                             <td class="px-6 py-4">
-                                ted@gmail.com
+                                {{$subscriber->subscriber}}
                             </td>
                             <td class="px-6 py-4 ">
                             <div class="flex justify-center">
-                                <a href="#" class=" ">
+                                <form action="{{route("admin.delete_subscribers",$subscriber->id)}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button   type="submit" onclick="confirm('are u sure ?')" >
                                     
-                                    <i class="fas fa-trash text-red-600 text-xl"></i>
-                                </a>
+                                        <i class="fas fa-trash text-red-600 text-xl"></i>
+                                    </button>
+                                </form>
+                                
                             </div>
                             </td>
                         </tr>
-                    
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             <!-- show result -->
-            <div class="mt-4">
-                <b class="mx-5 text-sm mb-1 text-gray-500">Show Result</b>
-                <select  id="order-filter" name="filter_result" class="bg-white border w-50  border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mx-5 p-2.5  dark:border-gray-600 dark:placeholder-gray-400 ">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                </select>
+            <div class="mt-5 mx-4">
+                {{ $subscribers->links() }}
             </div>
         </div>
       </div>

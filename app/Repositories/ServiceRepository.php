@@ -17,8 +17,9 @@ class ServiceRepository implements RepositoryInterface {
      
     public function all() {
 
-       
+    
         return  $this->service->select("*")->with("doctors")->paginate(5); 
+         
     }
 
     public function search($query)
@@ -46,10 +47,9 @@ class ServiceRepository implements RepositoryInterface {
             $this->service->charge = $params["charge"];
             $this->service->doctor_id = $params["doctor"];
             $this->service->description = $params["description"];
-            $this->service->status = $params["status"];
 
-            if (isset($params['status'])) {
-                $this->service->status = $params['status'];
+            if (!isset($params['status'])) {
+                $this->service->status = 0;
             }
 
             if(request()->hasfile('photo'))
@@ -73,10 +73,14 @@ class ServiceRepository implements RepositoryInterface {
             $service->name = $params["name"];
             $service->category = $params["category"];
             $service->charge = $params["charge"];
-            $service->doctor_id = $params["doctor"];
-            $service->description = $params["description"];
+           
+            if (isset($params['doctor'])) { // Check if 'doctor' value is present in $params array
+                $service->doctor_id = $params["doctor"];
+            }           
+             $service->description = $params["description"];
+
             if (isset($params['status'])) {
-            $service->status = $params['status'];
+            $service->status = 0;
         }
 
         if (request()->hasfile('photo')) {
@@ -88,7 +92,7 @@ class ServiceRepository implements RepositoryInterface {
         }
            
            
-            $service->save();
+        $service->save();
        
     }
 

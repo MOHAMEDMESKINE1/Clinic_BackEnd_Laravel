@@ -11,6 +11,7 @@ use App\Http\Controllers\Appointement\AppointementController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Service\ServiceController;
 use App\Http\Controllers\Specialization\SpecializationController;
+use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
 
 /*
@@ -45,7 +46,9 @@ Route::controller(WebsiteController::class)->group(function(){
 
     // store contact
     route::post('/contact','StoreContact')->name('store.contact');
+
 });
+Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_subscribers');
 
 // Routes Admin Dashboard
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
@@ -142,11 +145,23 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
         // crud appointement
         Route::get('/services/search', 'search')->name('admin.search_services');
-        Route::get('/services/edit/{id}', 'update')->name('admin.edit_services');
+        Route::get('/services/edit/{id}', 'edit')->name('admin.edit_services');
         Route::post('/services/create', 'store')->name('admin.store_services');
-        Route::put('/services', 'update')->name('admin.update_services');
+        Route::put('/services/{id}', 'update')->name('admin.update_services');
 
         Route::delete('services/{id}', 'delete')->name('admin.delete_services');
+
+
+    });
+    Route::controller(SubscriberController::class)->group(function (){
+
+
+        Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
+
+        // crud appointement
+        Route::get('/services/search', 'search')->name('admin.search_subscribers');
+
+        Route::delete('subscribers/{id}', 'delete')->name('admin.delete_subscribers');
 
 
     });

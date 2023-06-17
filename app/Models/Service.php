@@ -17,6 +17,7 @@ class Service extends Model
         'photo',
         'status',
         'charge',
+        'doctor_id',
         'description',
        
     ];

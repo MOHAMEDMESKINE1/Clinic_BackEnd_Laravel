@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model
-{
+{ protected $fillable = [
+    'subscriber',
+];
+
     use HasFactory;
 }
