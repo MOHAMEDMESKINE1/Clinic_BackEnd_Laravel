@@ -24,6 +24,17 @@ class SubscriberController extends Controller
 
          return view("dashboard.admin.subscribers",compact("subscribers"));
     }
+    public function search(Request $request){
+
+        $query = $request->search;
+
+
+        $subscribers = $this->subscribers->search($query);
+            
+         return    view('dashboard.admin.subscribers',compact('subscribers'));
+        
+        }
+
     public function store(Request $request){
 
         $request->validate([
@@ -35,7 +46,7 @@ class SubscriberController extends Controller
 
         $this->subscribers->store($data);
 
-        toastr()->success('Thank you for your subscribe !', 'Subscription ');
+        toastr()->success('Thank you for your subscription !', 'Subscription ');
 
          return view("welcome");
     }
@@ -43,7 +54,10 @@ class SubscriberController extends Controller
 
         $this->subscribers->delete($request->id);
 
+        toastr()->success('Subscriber has been deleted successfully!', 'Deletion');
+
+        return redirect()->route("admin.subscribers");
         
-         return view("dashboard.admin.subscribers");
+         
     }
 }

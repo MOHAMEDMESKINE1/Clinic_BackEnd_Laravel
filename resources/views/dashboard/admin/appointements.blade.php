@@ -46,54 +46,12 @@
                     <div class="flex justify-between sm\:flex-row ">
                    
                     <div class="flex justify-start">
-                        <form method="GET" action="{{ route('admin.search_appointements') }}" class="flex items-center mb-4 sm:mb-0">
-                            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                </div>
-                                <input type="search" name="search" id="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
-                                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
-                            </div>
-                        </form>
-                        
-                       </div>
+                        <!-- Search -->
+                            <x-search route="admin.search_appointements"></x-search>
+                        <!-- Search -->
+                    </div>
                     <div class=" flex justify-between  mx-8" >
-                         <!-- filter  -->
-                         {{-- <button
-                         data-dropdown-toggle="dropdown" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button"
-                         >Filter
-                         <i class="fas fa-light fa-filter ml-2"></i>
-                         </button> --}}
-                         
-                         {{-- <div id="dropdown" class="z-10 hidden   bg-white divide-y divide-gray-100 rounded-lg shadow w-44 p-5 m-5 " aria-labelledby="dropdownDefaultButton">
-                             
-                             <!-- date -->
-                             <label for="" class=" font-medium">Date :</label>
-     
-                             <input type="date" name="date" id="date" class="block mb-3 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
- 
-                             <!-- pending -->
-                             <label for="" class=" font-medium">Paiment :</label>
-                             <select id="payment" name="payment" class="block mt-5 p-2.5 mb-3  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                 <option selected disabled>Select a payment</option>
-                                 <option value="paid">Paid</option>
-                                 <option value="pending">Pending</option>
-                               
-                                 
-                             </select>  
- 
-                             <!-- status -->
-                             <label for="" class=" font-medium">Status :</label>
-                             <select id="status" name="status" class="block mt-5 ml-2 p-2.5 mb-3  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                                 <option value="booked">booked</option>
-                                 <option value="checkin">Check In</option>
-                                 <option value="checkout">Check Out</option>
-                                 <option value="cancelled">Cancelled</option>
-                                 
-                             </select>      
- 
-                         </div>  --}}
+                       
                         
                         <button data-modal-target="addAppointement" data-modal-toggle="addAppointement" class="text-white bg-gradient-to-br  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
                             Add Appointemet

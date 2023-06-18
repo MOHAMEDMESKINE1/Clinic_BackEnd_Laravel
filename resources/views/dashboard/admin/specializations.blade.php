@@ -10,9 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 
      <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
-<!-- wow js -->
-    <!-- <style rel="stylesheet" href="../node_modules/animate.css/animate.css"></style>     -->
-<!-- wow js -->
+
    <!--  poppins font -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,45 +37,16 @@
         <!-- Search -->
         <div class=" container ">
             <div class="m-5">
-                {{-- <div class="flex justify-between sm\:flex-row ">
-                    <form action="">
-                        <label class="relative block">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
-                                    height="30" viewBox="0 0 30 30">
-                                    <path
-                                        d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <input
-                                name="search"
-                                class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
-                                placeholder="Search" type="text" />
-                        </label>
-                    </form>  
+                <div class="flex justify-between sm\:flex-row ">
 
-                    <div class="  " >
-                        <!-- add staff -->
-                        <!-- <button  type="button"  class="text-white bg-gradient-to-br w-40  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Staff</button> -->
-                        <button data-modal-target="addModal" data-modal-toggle="addModal" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
-                            Add Specialization
-                            </button>
-
-                    </div>
-                </div> --}}
+                   
+                </div>
                 <div class="flex flex-col sm:flex-row justify-between mx-8">
                     <div class="flex justify-start">
-                     <form method="GET" action="{{ route('admin.search_specialization') }}" class="flex items-center mb-4 sm:mb-0">
-                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                         <div class="relative">
-                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                             </div>
-                             <input type="search" name="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" >
-                             <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Search</button>
-                         </div>
-                     </form>
+                     
+                    <!-- Search -->
+                        <x-search route="admin.search_specialization"></x-search>
+                    <!-- Search -->
                     </div>
                     <div class="  " >
                         <!-- add staff -->

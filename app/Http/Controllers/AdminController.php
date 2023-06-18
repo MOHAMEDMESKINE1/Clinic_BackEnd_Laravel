@@ -122,10 +122,10 @@ class AdminController extends Controller
 
     }
     
-    public function patients(){
+    // public function patients(){
         
-        return    view('dashboard.admin.patients');
-    }
+    //     return    view('dashboard.admin.patients');
+    // }
 
   
     public function staff(){
@@ -151,18 +151,18 @@ class AdminController extends Controller
         return    view('dashboard.admin.statistics');
 
     }
-    public function subscribers(){
-        return    view('dashboard.admin.subscribers');
+    // public function subscribers(){
+    //     return    view('dashboard.admin.subscribers');
 
-    }
-    public function visits(){
-        return    view('dashboard.admin.visits');
+    // }
+    // public function visits(){
+    //     return    view('dashboard.admin.visits');
 
-    }
-    public function visits_details(){
-        return    view('dashboard.admin.visits_details');
+    // }
+    // public function visits_details(){
+    //     return    view('dashboard.admin.visits_details');
 
-    }
+    // }
   
     public function settings(){
         return    view('dashboard.admin.settings');

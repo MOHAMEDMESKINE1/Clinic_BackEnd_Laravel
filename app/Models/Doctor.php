@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Visit;
 use App\Models\Appointement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,6 +44,10 @@ class Doctor extends Model
     public function appointements(){
 
         return $this->hasMany(Appointement::class,'appointment_id');
+    }
+    public function visits()
+    {
+        return $this->hasMany(Visit::class,"visit_id");
     }
     
     

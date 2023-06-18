@@ -29,7 +29,7 @@
     <!-- Search -->
     <div class=" container  ">
       <div class="m-5">
-        <div class="flex justify-between sm\:flex-row  ">
+        {{-- <div class="flex justify-between sm\:flex-row  ">
             <div>
                 <form action="">
                     <label class="relative block">
@@ -49,7 +49,10 @@
                 </form>  
             </div>              
             
-        </div>
+        </div> --}}
+         <!-- Search -->
+            <x-search route="admin.search_subscribers"></x-search>
+        <!-- Search -->
         <div class="grid grid-col-1 mt-5">
             
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

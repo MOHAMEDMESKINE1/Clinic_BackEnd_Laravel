@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Visit;
 use App\Models\Transaction;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,6 +33,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
     }
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class,"transaction_id");
+    }
+    public function visits()
+    {
+        return $this->hasMany(Visit::class,"visit_id");
     }
 }

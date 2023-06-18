@@ -13,6 +13,7 @@ use App\Http\Controllers\Service\ServiceController;
 use App\Http\Controllers\Specialization\SpecializationController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
+use App\Http\Controllers\Visit\VisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_s
 Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function () {
         
     Route::controller(AdminController::class)->group(function (){
+        
         Route::get('/statistics', 'statistics')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
         
@@ -61,9 +63,6 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
 
         Route::get('/profile', 'profile')->name('admin.profile');
-        Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
-        Route::get('/visits', 'visits')->name('admin.visits');
-        Route::get('/visits_details', 'visits_details')->name('admin.visits_details');
         Route::get('/settings', 'settings')->name('admin.settings');
     
         // crud doctor
@@ -159,13 +158,27 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::get('/subscribers', 'subscribers')->name('admin.subscribers');
 
         // crud appointement
-        Route::get('/services/search', 'search')->name('admin.search_subscribers');
+        Route::get('/subscribers/search', 'search')->name('admin.search_subscribers');
 
         Route::delete('subscribers/{id}', 'delete')->name('admin.delete_subscribers');
 
 
     });
+    Route::controller(VisitController::class)->group(function (){
 
+
+        Route::get('/visits', 'visits')->name('admin.visits');
+
+        // crud visits
+        Route::get('/visits/search', 'search')->name('admin.search_visits');
+        Route::get('/visits/details/{id}', 'visits_details')->name('admin.visits_details');
+        Route::post('/visits/create', 'store')->name('admin.store_visits');
+        Route::get('/visits/{id}', 'edit')->name('admin.edit_visits');
+        Route::put('/visits/edit/{id}', 'update')->name('admin.update_visits');
+        Route::delete('visits/{id}', 'delete')->name('admin.delete_visits');
+
+
+    });
 });
 
 

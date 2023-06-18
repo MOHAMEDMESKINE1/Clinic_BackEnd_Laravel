@@ -27,7 +27,7 @@ class SubscribeRepository implements RepositoryInterface {
     {
        
         $services = $this->subscribers
-        ->where('email', 'like', '%' . $query . '%')
+        ->where('subscriber', 'like', '%' . $query . '%')
         ->paginate();
         return $services;
         
@@ -49,14 +49,12 @@ class SubscribeRepository implements RepositoryInterface {
     
    }
    
-
-
     public function delete($id){
 
         $subscriber =$this->getById($id) ;
         $subscriber->delete();
         
-        $this->all();
+        return  $this->all();
     }
 
 

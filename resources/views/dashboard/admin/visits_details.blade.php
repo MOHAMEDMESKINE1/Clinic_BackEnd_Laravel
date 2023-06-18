@@ -73,26 +73,36 @@
                 
                 <h1 class="mb-2 text-gray-800 underline">Patient Name : </h1>
                 <span class="text-blue-500 font-medium text-xl ">
-                  Thomas Seteve
+                 {{$visit->patients->firstname}}  {{$visit->patients->lastname}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Profile : </h1>
-               <img src="../patient/profile.svg" class="w-12 h-12" alt="">
+                @if ($visit->patients->photo)
+
+                    <div class="w-16 h-16 flex-shrink-0 object-cover  object-center rounded-full shadow mr-3">
+                        <img src="{{asset('storage/patients/'.$visit->patients->photo)}}" alt="photo" class="w-full h-full rounded-full "><br>
+                    </div>
+                    @else
+                    <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                        <img src="{{asset('storage/img/profile.svg')}}" alt="photo" class="w-full h-full rounded-full "><br>
+                    </div>
+                @endif
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Email: </h1>
                 <span class="text-blue-500 font-medium text-xl ">
-                  Thomas@gmail.com
+                    {{$visit->patients->email}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Doctor : </h1>
                 <span class="text-blue-500 font-medium text-xl ">
-                  Thomas Alberto
+                    {{$visit->doctors->firstname}}  {{$visit->doctors->lastname}}
+
                 </span>
             </div>
           
@@ -100,21 +110,21 @@
                 
                 <h1 class="mb-2 text-gray-800  underline">Visit Date : </h1>
                 <span class=" text-blue-500 rounded-sm p-1 text-xl ">
-                    22 April 2023
+                    {{$visit->date}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Created At : </h1>
                 <span class=" text-blue-500 rounded-sm p-1 text-xl ">
-                    14 hours ago
+                    {{$visit->patients->created_at}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Updated at : </h1>
                 <span class=" text-blue-500 rounded-sm p-1 text-xl ">
-                    7 hours ago
+                    {{$visit->patients->updated_at}}
                 </span>
             </div>
           
