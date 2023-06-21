@@ -1,7 +1,9 @@
 <?php
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,11 +16,28 @@ class DoctorRepository implements RepositoryInterface {
     {
         return $this->doctor = $doctors ;
     }
-     
+    public function doctorsChart(){
+   
+    
+        $today = Carbon::now();
+        $startDate = Carbon::create(date('Y'), 1, 1); // Start from January 1st of the current year
+
+        $doctors = $this->doctor->select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as date"))
+            ->whereBetween('created_at', [$startDate, $today])
+            ->groupBy('date')
+            ->pluck('count', 'date');
+        
+        return $doctors;
+       }
     public function all() {
 
        
         return  $this->doctor->select("*")->with("specializations:name")->paginate(5) ; 
+    }
+    public function doctors_count() {
+
+       
+        return  $this->doctor->count() ;
     }
 
     public function search($query)
@@ -30,6 +49,7 @@ class DoctorRepository implements RepositoryInterface {
         return $doctors ;
         
     }
+
     public function filter($filter)
     {
         if($filter==="0"){

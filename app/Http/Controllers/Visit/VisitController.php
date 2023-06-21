@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Visit;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Excel\ExportVisit;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\VisitRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
-use App\Repositories\VisitRepository;
+use App\Http\Controllers\Excel\ExportVisits;
 
 class VisitController extends Controller
 {
@@ -105,5 +108,9 @@ class VisitController extends Controller
        return redirect()->route("admin.visits");
 
 
+    }
+    public function export_visits()
+    {
+        return Excel::download( new ExportVisits(), 'visits.xlsx');
     }
 }

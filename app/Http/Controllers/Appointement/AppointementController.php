@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Appointement;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\AppointementRepository;
+use App\Http\Controllers\Excel\ExportAppointements;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\ServiceRepository;
-use Illuminate\Http\Request;
+use App\Repositories\AppointementRepository;
 
 class AppointementController extends Controller
 {
@@ -106,5 +108,9 @@ class AppointementController extends Controller
 
        return redirect()->route("admin.appointements");
 
+    }
+    public function export_appointments()
+    {
+        return Excel::download( new ExportAppointements(), 'appointments.xlsx');
     }
 }

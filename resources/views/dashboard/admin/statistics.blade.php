@@ -24,6 +24,10 @@
        font-family: 'Poppins', sans-serif;
      }
   </style>
+  {{-- ChartScript --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
 </head>
 
 <body class="bg-gray-100">
@@ -36,17 +40,22 @@
       <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4 ">
           <!-- Doctors card -->
           <div class="flex items-center shadow-md  justify-between p-4 bg-white rounded-md dark:bg-darker">
-            <div class=" ">
+            <a href="{{route("admin.doctors")}}" >
               <h6
                 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
               >
                 Doctors
               </h6>
-              <span class=" font-semibold">Total Doctors</span>
+              <span class=" font-semibold">
+                
+                Total Doctors
+                </span>
+
               <span class="inline-block px-2 py-px ml-2 text-xl text-green-500 bg-green-100 rounded-md">
-                14
+               
+                {{$doctors_count}}
               </span>
-            </div>
+            </a>
             <div>
               <span>
                 <i class=" fas fa-light fa-user-doctor text-4xl w-12 text-cyan-500 dark:text-primary-dark"></i>
@@ -57,7 +66,7 @@
 
           <!-- Patient card -->
           <div class="flex items-center shadow-md  justify-between p-4 bg-white rounded-md dark:bg-darker">
-            <div>
+            <a href="{{route("admin.patients")}}">
               <h6
                 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
               >
@@ -65,9 +74,9 @@
               </h6>
               <span class=" font-semibold">Total Patients</span>
               <span class="inline-block px-2 py-px ml-2 text-xl text-green-500 bg-green-100 rounded-md">
-                20
+                {{$patients_count}}
               </span>
-            </div>
+            </a>
             <div>
               <span>
                 <i class="fas fa-light fa-hospital-user  text-4xl w-12 text-cyan-500 dark:text-primary-dark"></i>
@@ -76,36 +85,36 @@
           </div>
            <!-- Appointements card -->
            <div class="flex items-center shadow-md  justify-between p-4 bg-white rounded-md dark:bg-darker">
-            <div>
+            <a href="{{route("admin.appointements")}}">
               <h6
                 class=" font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
               >
                 Appointements
               </h6>
               <span class="font-semibold">Total Appointements</span>
-              <span class="inline-block px-2 py-px ml-2 text-xl text-green-500 bg-green-100 rounded-md">
-                25
+              <span class="inline-block px-2  text-xl text-green-500 bg-green-100 rounded-md">
+                {{$appointments_count}}
               </span>
-            </div>
+            </a>
             <div>
               <span>
-                <i class="fas fa-sharp fa-regular fa-calendar-days text-4xl w-12 text-cyan-500 dark:text-primary-dark"></i>
+                <i class="fas fa-sharp fa-regular ml-2 fa-calendar-days text-4xl w-12 text-cyan-500 dark:text-primary-dark"></i>
               </span>
             </div>
           </div>
            <!-- Registred patients card -->
            <div class="flex items-center shadow-md  justify-between p-4 bg-white rounded-md dark:bg-darker">
-            <div>
+            <a href="{{route("admin.patients")}}">
               <h6
                 class=" font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
               >
-                Appointements
+              Patients
               </h6>
-              <span class="font-semibold">Total Registred Patients</span>
+              <span class="font-semibold">Today Registred Patients</span>
               <span class="inline-block px-2 py-px ml-2 text-xl text-green-500 bg-green-100 rounded-md">
-                25
+                {{$registred_patients}}
               </span>
-            </div>
+            </a>
             <div>
               <span>
                 <i class="fas fa-solid fa-bed-pulse text-4xl w-12 text-cyan-500  dark:text-primary-dark"></i>
@@ -119,32 +128,92 @@
        <!-- Charts -->
       <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-4">
           <!-- Bar chart card -->
+          {{-- patients --}}
           <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
               <!-- Card header -->
               <div class="flex items-center  justify-between p-4 border-b dark:border-primary">
-                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Bar Chart</h4>
+                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Patients</h4>
                   <div class="flex items-center space-x-2">
-                  <span class="text-sm text-gray-500 dark:text-light">Last year</span>
+                  <span class="text-sm text-gray-500 dark:text-light">This year</span>
                   
-                  </div>
+                </div>
               </div>
               <!-- Chart -->
-              <div class="relative p-4 h-72">
-                  <canvas id="barChart"></canvas>
+              <div class="">
+                  <canvas id="patient_LineChart"></canvas>
               </div>
           </div>
           <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
               <!-- Card header -->
               <div class="flex items-center justify-between p-4 border-b dark:border-primary">
-                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Doughnut Chart</h4>
+                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Patients</h4>
                   <div class="flex items-center space-x-2">
-                  <span class="text-sm text-gray-500 dark:text-light">Last year</span>
+                  <span class="text-sm text-gray-500 dark:text-light">This year</span>
                   
                   </div>
               </div>
               <!-- Chart -->
-              <div class="relative p-4 h-72">
-                  <canvas id="barChart"></canvas>
+              <div class="relative p-4 h-72 flex justify-center">
+                <canvas id="patient_DoughnutChart"></canvas>
+              </div>
+          </div>
+
+          {{-- doctors --}}
+          <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
+            <!-- Card header -->
+            <div class="flex items-center  justify-between p-4 border-b dark:border-primary">
+                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Doctors</h4>
+                <div class="flex items-center space-x-2">
+                <span class="text-sm text-gray-500 dark:text-light">This year</span>
+                
+              </div>
+            </div>
+            <!-- Chart -->
+            <div class="">
+                <canvas id="doctors_LineChart"></canvas>
+            </div>
+        </div>
+          <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
+            <!-- Card header -->
+            <div class="flex items-center  justify-between p-4 border-b dark:border-primary">
+                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Doctors</h4>
+                <div class="flex items-center space-x-2">
+                <span class="text-sm text-gray-500 dark:text-light">This year</span>
+                
+              </div>
+            </div>
+            <!-- Chart -->
+            <div class="">
+                <canvas id="doctors_DoughnutChart"></canvas>
+            </div>
+        </div>
+
+          <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
+              <!-- Card header -->
+              <div class="flex items-center justify-between p-4 border-b dark:border-primary">
+                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Appointements</h4>
+                  <div class="flex items-center space-x-2">
+                  <span class="text-sm text-gray-500 dark:text-light">This year</span>
+                  
+                  </div>
+              </div>
+              <!-- Appointement Chart -->
+              <div class="relative p-4 h-72 flex justify-center">
+                <canvas id="appointement_LineChart"></canvas>
+              </div>
+          </div>
+          <div class="col-span-2 bg-white shadow-md rounded-md dark:bg-darker">
+              <!-- Card header -->
+              <div class="flex items-center justify-between p-4 border-b dark:border-primary">
+                  <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Registred Appointements</h4>
+                  <div class="flex items-center space-x-2">
+                  <span class="text-sm text-gray-500 dark:text-light">This year</span>
+                  
+                  </div>
+              </div>
+              <!-- Appointement Chart -->
+              <div class="relative p-4 h-72 flex justify-center">
+                <canvas id="appointement_DoughnutChart"></canvas>
               </div>
           </div>
       </div>
@@ -172,60 +241,186 @@
                       </tr>
                   </thead>
                   <tbody>
+                    @foreach ($patients as $patient)
+                        
+                  
                       <tr class="bg-white  border-b dark:bg-white dark:border-gray-400">
                           <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                              Apple MacBook Pro 17"
+                            {{$patient->firtnsame}} {{$patient->lastname}}
                           </th>
                           <td class="px-6 py-4">
-                            <span class="bg-green-200 text-green-500 px-1 rounded-sm">  Xdy5512TP</span>
+                            <span class="bg-green-200 text-green-500 px-1 rounded-sm">  {{$patient->unique_id}}</span>
                           </td>
                           <td class="px-6 py-4">
-                              <span class="bg-red-200  text-red-500 px-1 rounded-sm">  0</span>
+                            <span class="bg-red-200  text-red-500 px-1 rounded-sm">{{$patient->appointements_count}}</span>
                           </td>
                           <td class="px-6 py-4">
-                              $2999
+                          
+                           <span class="bg-blue-200  text-blue-900 px-1 rounded-sm"> {{$patient->created_at}}</span>
+
                           </td>
-                      </tr>
-                      <tr class="bg-white  border-b dark:bg-white dark:border-gray-400">
-                          <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                              Apple MacBook Pro 17"
-                          </th>
-                          <td class="px-6 py-4">
-                            <span class="bg-green-200 text-green-500 px-1 rounded-sm">  Xdy5512TP</span>
-                          </td>
-                          <td class="px-6 py-4">
-                              <span class="bg-red-200  text-red-500 px-1 rounded-sm">  0</span>
-                          </td>
-                          <td class="px-6 py-4">
-                              $2999
-                          </td>
-                      </tr>
-                      <tr class="bg-white  dark:bg-white dark:border-gray-400">
-                          <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                              Apple MacBook Pro 17"
-                          </th>
-                          <td class="px-6 py-4">
-                            <span class="bg-green-200 text-green-500 px-1 rounded-sm">  Xdy5512TP</span>
-                          </td>
-                          <td class="px-6 py-4">
-                              <span class="bg-red-200  text-red-500 px-1 rounded-sm">  0</span>
-                          </td>
-                          <td class="px-6 py-4">
-                              $2999
-                          </td>
+                         
                       </tr>
                      
-                  
+                     
+                      @endforeach
                   </tbody>
+
               </table>
+              <div class="mt-4 mx-4">
+                {{$patients->links()}}
+              </div>
           </div>
       </div>
          
       </div>
-
+     
     @endsection     
-            
-  
+
+    <script type="text/javascript">
+
+    // patients charts
+    function Patients_typeChart(type,id)
+    {
+
+        document.addEventListener("DOMContentLoaded", function () {
+        var labels =  @json($patients_labels);
+        var patients =  @json($patients_data);
+        
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'Registred Patients',
+                backgroundColor: [
+                  'rgb(0,128,128)',
+                  'rgb(102,205,170)',
+                  'rgb(0,206,209)'
+                ],
+                borderColor: 'rgb(64,224,208)',
+                data: patients,
+              }]
+            };
+        
+            const config = {
+              type: type,
+              data: data,
+              options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+              }
+            };
+            let ctx=  document.getElementById(id).getContext('2d');
+            const myChart = new Chart(
+              ctx,
+              config
+            );
+        });
+    }
+
+      Patients_typeChart("line","patient_LineChart")
+      Patients_typeChart("doughnut","patient_DoughnutChart")
+
+       // Doctors charts
+      function Doctors_typeChart(type,id){
+
+        document.addEventListener("DOMContentLoaded", function () {
+        var labels =  @json($doctors_labels);
+        var doctors =  @json($doctors_data);
+
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'Registred Doctors',
+                backgroundColor: [
+                  'rgb(0,128,128)',
+                  'rgb(102,205,170)',
+                  'rgb(0,206,209)'
+                ],
+              
+                borderColor: 'rgb(64,224,208)',
+                data: doctors,
+              }]
+            };
+
+            const config = {
+              type: type,
+              data: data,
+              options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+              
+              }
+            };
+            let ctx=  document.getElementById(id).getContext('2d');
+            const myChart = new Chart(
+              ctx,
+              config
+            );
+        });
+      }
+
+      Doctors_typeChart("line","doctors_LineChart");
+      Doctors_typeChart("doughnut","doctors_DoughnutChart");
+    
+      // Apppointement charts
+      function Appointements_typeChart(type,id){
+
+        document.addEventListener("DOMContentLoaded", function () {
+        var labels =  @json($appointments_labels);
+        var Appointements =  @json($appointments_data);
+
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'Registred Appointements',
+                backgroundColor: [
+                  'rgb(0,128,128)',
+                  'rgb(102,205,170)',
+                  'rgb(0,206,209)'
+                ],
+               
+                borderColor: 'rgb(64,224,208)',
+                data: Appointements,
+              }]
+            };
+
+            const config = {
+              type: type,
+              data: data,
+              options: {
+
+                scales: {
+                    y: {
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+              }
+            };
+            let ctx=  document.getElementById(id).getContext('2d');
+            const myChart = new Chart(
+              ctx,
+              config
+            );
+        });
+      }
+      Appointements_typeChart("bar","appointement_LineChart");
+      Appointements_typeChart("pie","appointement_DoughnutChart");
+
+   
+
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

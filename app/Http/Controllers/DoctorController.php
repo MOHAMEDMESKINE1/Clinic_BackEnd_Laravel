@@ -22,7 +22,11 @@ class DoctorController extends Controller
  
  
      }
-    
+     public function statistics(){
+        // $doctors = $this->doctors->doctors_count();
+        return    view('dashboard.doctor.statistics');
+
+    }
     public function patient_details(){
         
        
@@ -46,10 +50,7 @@ class DoctorController extends Controller
         return    view('dashboard.doctor.profile');
 
     }
-    public function statistics(){
-        return    view('dashboard.doctor.statistics');
-
-    }
+   
     public function holidays(){
         return    view('dashboard.doctor.holidays');
 

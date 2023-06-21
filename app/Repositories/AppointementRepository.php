@@ -1,9 +1,11 @@
 <?php
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Appointement;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -22,7 +24,35 @@ class AppointementRepository implements RepositoryInterface {
        
         return  $this->appointement->select("*")->with(["doctors","patients"])->paginate(5) ; 
     }
+    public function appointementsChart(){
+   
+        $today = Carbon::now();
+        $startDate = Carbon::create(date('Y'), 1, 1)->startOfDay(); // Start from January 1st of the current year
+    
+        $appointments = $this->appointement->select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as date"))
+            ->whereBetween('created_at', [$startDate, $today])
+            ->groupBy(DB::raw("DATE(created_at)"))
+            ->pluck('count', 'date');
+    
+        return $appointments;
+    
+       }
+    public function appointements_count() {
 
+       
+        return  $this->appointement->count() ;
+    }
+    public function appointements_patients_count() {
+
+       
+       $appointment =  $this->appointement->with("patients")->count();
+
+        // if ($appointment) {
+        //     $patientCount = $appointment->patients->count();
+        //     return $patientCount;
+        // }
+        return  $appointment ;
+    }
     public function search($query)
     {
         

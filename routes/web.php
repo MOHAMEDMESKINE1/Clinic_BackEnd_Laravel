@@ -115,6 +115,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
     });
     Route::controller(AppointementController::class)->group(function (){
 
+        Route::get('/appointements/export', 'export_appointments')->name('admin.export_appointments');
 
         Route::get('/appointements', 'appointements')->name('admin.appointements');
         Route::get('/appointements/details/{id}', 'appointements_details')->name('admin.appointements_details');
@@ -168,6 +169,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
 
         Route::get('/visits', 'visits')->name('admin.visits');
+
+        Route::get('/visits/export', 'export_visits')->name('admin.export_visits');
 
         // crud visits
         Route::get('/visits/search', 'search')->name('admin.search_visits');

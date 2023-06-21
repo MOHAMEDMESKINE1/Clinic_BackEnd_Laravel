@@ -75,7 +75,12 @@
     </div>
     <div class="grid grid-cols-1 ">
         <div class=" col-span-2 bg-white mx-4 p-4 shadow text-center rounded-md dark:bg-darker relative overflow-x-auto">
-
+               
+            {{-- export excel --}}
+                <x-export-excel route="admin.export_visits"></x-export-excel>
+            {{-- export excel --}}
+                
+               
             <table class="w-full text-sm  text-center   overflow-hidden rounded-md ">
                 <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
                     <tr class=" ">
@@ -363,7 +368,7 @@
                         @csrf
                         @method("DELETE")
                         <!-- modal footer -->
-                        <div class="flex items-cente justify-center  mb-2 rounded-b dark:border-gray-600">
+                        <div class="flex  justify-start  mb-2 rounded-b dark:border-gray-600">
                             <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
                             <button data-modal-hide="deletVisit" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                         </div>

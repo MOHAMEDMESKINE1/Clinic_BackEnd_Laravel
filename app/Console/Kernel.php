@@ -9,6 +9,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         Commands\clear::class,
+        Commands\Run_Serve::class,
     ];
     
     /**

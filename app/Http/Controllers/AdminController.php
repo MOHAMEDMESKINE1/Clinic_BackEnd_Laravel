@@ -5,31 +5,43 @@ namespace App\Http\Controllers;
 use toastr;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Models\Specialization;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\DoctorRepository;
+use App\Repositories\PatientRepository;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Doctor\DoctorRequest;
-use App\Models\Specialization;
+use App\Models\Patient;
+use App\Repositories\AppointementRepository;
 use App\Repositories\SpecializationRepository;
 
 // use DataTables;
 
 class AdminController extends Controller
 {
+    public $patients ; 
+    public $appointments ; 
     public $doctors ; 
     public $specializations ; 
     
-    public function __construct(DoctorRepository $doctorRepository,SpecializationRepository $specializationRepository)
+    public function __construct(DoctorRepository $doctorRepository,
+    SpecializationRepository $specializationRepository,
+    PatientRepository $patientRepository,
+    AppointementRepository $appointementRepository,
+    )
     {
         $this->doctors = $doctorRepository ;
+        $this->patients = $patientRepository ;
+        $this->appointments = $appointementRepository ;
         $this->specializations = $specializationRepository ;
         
     }   
 
 
-
+   
     public function doctors(){
 
         $doctors = $this->doctors->all();
@@ -46,7 +58,49 @@ class AdminController extends Controller
         return    view('dashboard.admin.doctor_details',compact('doctor'));
 
      }
+     public function statistics(){
 
+      // doctors charts
+      $doctors_charts = $this->doctors->doctorsChart();
+      $doctors_labels =$doctors_charts->keys();
+      $doctors_data  =$doctors_charts->values();
+
+      // appointements charts
+      $appointements_charts = $this->appointments->appointementsChart();
+      $appointments_labels =$appointements_charts->keys();
+      $appointments_data  =$appointements_charts->values();
+    
+      // patients  charts
+      $Patient_charts = $this->patients->patientChart();
+      $patients_labels =$Patient_charts->keys();
+      $patients_data  =$Patient_charts->values();
+
+
+        $doctors_count = $this->doctors->doctors_count();
+        $patients_count = $this->patients->patients_count();
+        $patients = $this->patients->recent_patients();
+        $appointments_count = $this->appointments->appointements_count();
+        $registred_patients = $this->patients->registred_patients();
+       
+         return    view('dashboard.admin.statistics',compact([  
+            "doctors_count",
+            "patients_count",
+            "appointments_count",
+            "registred_patients",
+            "patients",
+
+            "patients_labels",
+            "patients_data",
+
+            "appointments_labels",
+            "appointments_data",
+
+            "doctors_labels",
+            "doctors_data"
+            
+         ]));
+
+    }
      public function search(Request $request){
 
         $query = $request->search;
@@ -122,10 +176,7 @@ class AdminController extends Controller
 
     }
     
-    // public function patients(){
-        
-    //     return    view('dashboard.admin.patients');
-    // }
+    
 
   
     public function staff(){
@@ -133,36 +184,13 @@ class AdminController extends Controller
         return    view('dashboard.admin.staff');
 
     }
-    // public function appointements(){
-        
-    //     return    view('dashboard.admin.appointements');
-    // }
+   
     public function profile(){
 
         return    view('dashboard.admin.profile');
 
     }
-    // public function appointement_details(){
-
-    //     return    view('dashboard.admin.appointement_details');
-
-    // }
-    public function statistics(){
-        return    view('dashboard.admin.statistics');
-
-    }
-    // public function subscribers(){
-    //     return    view('dashboard.admin.subscribers');
-
-    // }
-    // public function visits(){
-    //     return    view('dashboard.admin.visits');
-
-    // }
-    // public function visits_details(){
-    //     return    view('dashboard.admin.visits_details');
-
-    // }
+   
   
     public function settings(){
         return    view('dashboard.admin.settings');

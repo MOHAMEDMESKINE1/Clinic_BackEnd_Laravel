@@ -1,12 +1,9 @@
 <?php
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use App\Models\Patient;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
-
-
+use Illuminate\Support\Facades\DB;
 class PatientRepository implements RepositoryInterface {
 
     public $patient ;
@@ -16,10 +13,29 @@ class PatientRepository implements RepositoryInterface {
         return $this->patient = $patients ;
     }
      
+   public function patientChart(){
+   
+    $today = Carbon::now();
+    $startDate = Carbon::create(date('Y'), 1, 1); // Start from January 1st of the current year
+
+    $patients = $this->patient->select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as date"))
+        ->whereBetween('created_at', [$startDate, $today])
+        ->groupBy('date')
+        ->pluck('count', 'date');
+    
+    return $patients;
+
+   }
     public function all() {
 
        
-        return  $this->patient->select("*")->paginate(5) ; 
+        return  $this->patient->select("*")->orderBy("created_at","desc")->paginate(5) ; 
+    }
+
+    public function recent_patients() {
+
+       $today = Carbon::today();
+        return  $this->patient->select("*")->orderBy("created_at","desc")->whereDate("created_at",$today)->paginate(5) ; 
     }
 
     public function search($query)
@@ -38,7 +54,16 @@ class PatientRepository implements RepositoryInterface {
 
         return $this->patient->findOrFail($id);
     }
+    public function patients_count() {
 
+       
+        return  $this->patient->count() ;
+    }
+    public function registred_patients() {
+
+       $today = Carbon::today();
+        return  $this->patient->whereDate("created_at",$today)->count() ; 
+    }
     public function store($params){
 
        
