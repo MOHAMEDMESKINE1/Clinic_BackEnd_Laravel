@@ -244,10 +244,10 @@
                           </th>
                       </tr>
                   </thead>
-                   <tbody>
-                   
-                        
+                 <tbody>
                     @foreach ($patients as $patient)
+                        
+                  
                       <tr class="bg-white  border-b dark:bg-white dark:border-gray-400">
                           <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                             {{$patient->firtnsame}} {{$patient->lastname}}
@@ -256,7 +256,7 @@
                             <span class="bg-green-200 text-green-500 px-1 rounded-sm">  {{$patient->unique_id}}</span>
                           </td>
                           <td class="px-6 py-4">
-                            <span class="bg-red-200  text-red-500 px-1 rounded-sm">{{$patient->appointements_count}}</span>
+                            <span class="bg-red-200  text-red-500 px-1 rounded-sm">{{$appointments_count}}</span>
                           </td>
                           <td class="px-6 py-4">
                           
@@ -265,8 +265,10 @@
                           </td>
                          
                       </tr>
+                     
+                     
                       @endforeach 
-                  </tbody>
+                </tbody> 
 
               </table>
               <div class="mt-4 mx-4">
@@ -279,150 +281,150 @@
      
     @endsection     
 
-  <script type="text/javascript">
+     <script type="text/javascript">
 
-    // patients charts
-    function Patients_typeChart(type,id)
-    {
+      // patients charts
+      function Patients_typeChart(type,id)
+      {
 
-        document.addEventListener("DOMContentLoaded", function () {
-        var labels =  @json($patients_labels);
-        var patients =  @json($patients_data);
-        
-            const data = {
-              labels: labels,
-              datasets: [{
-                label: 'Registred Patients',
-                backgroundColor: [
-                  'rgb(0,128,128)',
-                  'rgb(102,205,170)',
-                  'rgb(0,206,209)'
-                ],
-                borderColor: 'rgb(64,224,208)',
-                data: patients,
-              }]
-            };
-        
-            const config = {
-              type: type,
-              data: data,
-              options: {
-                scales: {
-                    y: {
-                        ticks: {
-                            precision: 0
-                        }
-                    }
+          document.addEventListener("DOMContentLoaded", function () {
+          var labels =  @json($patients_labels);
+          var patients =  @json($patients_data);
+          
+              const data = {
+                labels: labels,
+                datasets: [{
+                  label: 'Registred Patients',
+                  backgroundColor: [
+                    'rgb(0,128,128)',
+                    'rgb(102,205,170)',
+                    'rgb(0,206,209)'
+                  ],
+                  borderColor: 'rgb(64,224,208)',
+                  data: patients,
+                }]
+              };
+          
+              const config = {
+                type: type,
+                data: data,
+                options: {
+                  scales: {
+                      y: {
+                          ticks: {
+                              precision: 0
+                          }
+                      }
+                  }
                 }
-              }
-            };
-            let ctx=  document.getElementById(id).getContext('2d');
-            const myChart = new Chart(
-              ctx,
-              config
-            );
-        });
-    }
-
-      Patients_typeChart("line","patient_LineChart")
-      Patients_typeChart("doughnut","patient_DoughnutChart")
-
-       // Doctors charts
-      function Doctors_typeChart(type,id){
-
-        document.addEventListener("DOMContentLoaded", function () {
-        var labels =  @json($doctors_labels);
-        var doctors =  @json($doctors_data);
-
-            const data = {
-              labels: labels,
-              datasets: [{
-                label: 'Registred Doctors',
-                backgroundColor: [
-                  'rgb(0,128,128)',
-                  'rgb(102,205,170)',
-                  'rgb(0,206,209)'
-                ],
-              
-                borderColor: 'rgb(64,224,208)',
-                data: doctors,
-              }]
-            };
-
-            const config = {
-              type: type,
-              data: data,
-              options: {
-                scales: {
-                    y: {
-                        ticks: {
-                            precision: 0
-                        }
-                    }
-                }
-              
-              }
-            };
-            let ctx=  document.getElementById(id).getContext('2d');
-            const myChart = new Chart(
-              ctx,
-              config
-            );
-        });
+              };
+              let ctx=  document.getElementById(id).getContext('2d');
+              const myChart = new Chart(
+                ctx,
+                config
+              );
+          });
       }
 
-      Doctors_typeChart("line","doctors_LineChart");
-      Doctors_typeChart("doughnut","doctors_DoughnutChart");
+        Patients_typeChart("line","patient_LineChart")
+        Patients_typeChart("doughnut","patient_DoughnutChart")
+
+        // Doctors charts
+        function Doctors_typeChart(type,id){
+
+          document.addEventListener("DOMContentLoaded", function () {
+          var labels =  @json($doctors_labels);
+          var doctors =  @json($doctors_data);
+
+              const data = {
+                labels: labels,
+                datasets: [{
+                  label: 'Registred Doctors',
+                  backgroundColor: [
+                    'rgb(0,128,128)',
+                    'rgb(102,205,170)',
+                    'rgb(0,206,209)'
+                  ],
+                
+                  borderColor: 'rgb(64,224,208)',
+                  data: doctors,
+                }]
+              };
+
+              const config = {
+                type: type,
+                data: data,
+                options: {
+                  scales: {
+                      y: {
+                          ticks: {
+                              precision: 0
+                          }
+                      }
+                  }
+                
+                }
+              };
+              let ctx=  document.getElementById(id).getContext('2d');
+              const myChart = new Chart(
+                ctx,
+                config
+              );
+          });
+        }
+
+        Doctors_typeChart("line","doctors_LineChart");
+        Doctors_typeChart("doughnut","doctors_DoughnutChart");
+      
+        // Apppointement charts
+        function Appointements_typeChart(type,id){
+
+          document.addEventListener("DOMContentLoaded", function () {
+          var labels =  @json($appointments_labels);
+          var Appointements =  @json($appointments_data);
+
+              const data = {
+                labels: labels,
+                datasets: [{
+                  label: 'Registred Appointements',
+                  backgroundColor: [
+                    'rgb(0,128,128)',
+                    'rgb(102,205,170)',
+                    'rgb(0,206,209)'
+                  ],
+                
+                  borderColor: 'rgb(64,224,208)',
+                  data: Appointements,
+                }]
+              };
+
+              const config = {
+                type: type,
+                data: data,
+                options: {
+
+                  scales: {
+                      y: {
+                          ticks: {
+                              precision: 0
+                          }
+                      }
+                  }
+                }
+              };
+              let ctx=  document.getElementById(id).getContext('2d');
+              const myChart = new Chart(
+                ctx,
+                config
+              );
+          });
+        }
+        Appointements_typeChart("bar","appointement_LineChart");
+        Appointements_typeChart("pie","appointement_DoughnutChart");
+
     
-      // Apppointement charts
-      function Appointements_typeChart(type,id){
 
-        document.addEventListener("DOMContentLoaded", function () {
-        var labels =  @json($appointments_labels);
-        var Appointements =  @json($appointments_data);
-
-            const data = {
-              labels: labels,
-              datasets: [{
-                label: 'Registred Appointements',
-                backgroundColor: [
-                  'rgb(0,128,128)',
-                  'rgb(102,205,170)',
-                  'rgb(0,206,209)'
-                ],
-               
-                borderColor: 'rgb(64,224,208)',
-                data: Appointements,
-              }]
-            };
-
-            const config = {
-              type: type,
-              data: data,
-              options: {
-
-                scales: {
-                    y: {
-                        ticks: {
-                            precision: 0
-                        }
-                    }
-                }
-              }
-            };
-            let ctx=  document.getElementById(id).getContext('2d');
-            const myChart = new Chart(
-              ctx,
-              config
-            );
-        });
-      }
-      Appointements_typeChart("bar","appointement_LineChart");
-      Appointements_typeChart("pie","appointement_DoughnutChart");
-
-   
-
-    </script> 
+    </script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

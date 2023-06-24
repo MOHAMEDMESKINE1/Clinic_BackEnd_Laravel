@@ -11,6 +11,7 @@ use App\Http\Controllers\Appointement\AppointementController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Service\ServiceController;
 use App\Http\Controllers\Specialization\SpecializationController;
+use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Visit\VisitController;
@@ -56,9 +57,10 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         
     Route::controller(AdminController::class)->group(function (){
         
-        Route::get('/statistics', 'all')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
-        
+        Route::get('/staff/search/', 'search_staff')->name('admin.search_staff');
+
+        Route::get('/statistics', 'all')->name('admin.statistics');
         Route::get('/doctors', 'doctors')->name('admin.doctors');
         Route::get('/doctors/details/{id}', 'doctor_details')->name('admin.doctor_details');
 
@@ -95,6 +97,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
 
     });
+    
     Route::controller(PatientController::class)->group(function (){
 
 

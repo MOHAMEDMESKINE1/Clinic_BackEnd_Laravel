@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use toastr;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
@@ -51,7 +52,6 @@ class AdminController extends Controller
      public function all(){
 
     
-      $patients = $this->patients->all();
 
       // doctors charts
       $doctors_charts = $this->doctors->doctorsChart();
@@ -64,6 +64,8 @@ class AdminController extends Controller
       $appointments_data  =$appointements_charts->values();
     
       // patients  charts
+      $patients = $this->patients->all();
+
       $Patient_charts = $this->patients->patientChart();
       $patients_labels =$Patient_charts->keys();
       $patients_data  =$Patient_charts->values();
@@ -73,7 +75,12 @@ class AdminController extends Controller
       $patients_count = $this->patients->patients_count();
       $appointments_count = $this->appointments->appointements_count();
       $registred_patients = $this->patients->registred_patients();
+      // $appointement_patient = $this->patients->appointement_patient($id = null);
          return  view('dashboard.admin.statistics',compact( 
+            "doctors_labels",
+            // "appointement_patient",
+            "doctors_data",
+            "registred_patients",
             "doctors_count",
             "patients_count",
             "appointments_count",
@@ -83,9 +90,11 @@ class AdminController extends Controller
             "patients_data",
             "appointments_labels",
             "appointments_data",
-            "doctors_labels",
-            "doctors_data"
+           
          ));
+ 
+         
+
 
     }
      public function search(Request $request){
@@ -167,8 +176,23 @@ class AdminController extends Controller
 
   
     public function staff(){
-        
-        return    view('dashboard.admin.staff');
+        $staffs = User::paginate();;
+        return    view('dashboard.admin.staff',compact("staffs"));
+
+    }
+    public function search_staff(Request $query){
+
+      $staffs = User::where('name', 'like', '%' . $query->search . '%')
+          ->orWhere('email', 'like', '%' . $query->search . '%')
+          ->paginate();
+
+          if ($staffs->isEmpty()) {
+
+           
+            $staffs = User::all();
+
+         }
+        return    view('dashboard.admin.staff',compact("staffs"));
 
     }
    

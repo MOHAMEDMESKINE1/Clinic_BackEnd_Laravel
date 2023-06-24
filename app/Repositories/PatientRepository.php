@@ -26,6 +26,9 @@ class PatientRepository implements RepositoryInterface {
     return $patients;
 
    }
+   public function appointement_patient($patientId = null){
+    $this->patient->findOrFail($patientId)->appointments->count();
+   }
     public function all() {
 
        
