@@ -16,8 +16,6 @@ use Vonage\Client\Credentials\Basic;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Biscolab\ReCaptcha\Facades\ReCaptcha;
-use App\Notifications\SuccessfulRegistration;
 
 class RegisteredUserController extends Controller
 {

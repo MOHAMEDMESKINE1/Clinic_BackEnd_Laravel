@@ -10,6 +10,7 @@ class AuthController extends Controller
     public function index (){
 
         if(Auth::id()){
+          
            if(auth()->user()->role === "admin"){
              return view('dashboard.admin.statistics');
 

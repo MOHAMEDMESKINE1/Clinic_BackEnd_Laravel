@@ -16,6 +16,11 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
   />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"></script> --}}
+
   <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
    <!--  poppins font -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +32,7 @@
    body{
      font-family: 'Poppins', sans-serif;
    }
+   
 </style>
 
 </head>
@@ -95,29 +101,35 @@
                             </tr>
                         </thead>
                         <tbody >
+                            @foreach ($staffs as $staff)
+                                
+                         
                             <tr class="bg-whit  border-b dark:bg-white dark:border-gray-400">
                                 <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                                        <div class="flex justify-start">
-                                        <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
-                                        <p class="mx-3">Smait Alejandro </p>
+                                        <img src="{{asset('storage/staff/'.$staff->photo)}}" alt="photo" class="w-7 h-7 rounded-full border border-gray-100 "><br>
+                                        <p class="mx-3">{{$staff->name}} </p>
                                        </div>
                                         <div class="flex justify-start" >
-                                            <p class="mx-10">smith@gmail.com</p>
+                                            <p class="mx-10">{{$staff->email}}</p>
                                         </div>
                                 </th>
                                 <td class="px-6 py-4">
-                                <span class="bg-green-200 text-green-500 px-1 rounded-sm">  Recipcionsit</span>
+                                <span class="bg-green-200 text-green-500 px-1 rounded-sm"> {{$staff->role}}</span>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                        <input type="checkbox" value="" class="sr-only peer" checked>
-                                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-cyan-300 dark:peer-focus:ring-cyan-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
-                                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">VERIFIED</span>
-                                    </label>
+                                   
+                                   <label class="relative inline-flex items-center mr-5 cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-cyan-300 dark:peer-focus:ring-cyan-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">VERIFIED</span>
+                                </label>
+                                  
+
                                 </td>
                                 <td class="px-6 py-4">
                                    <div class="flex justify-start">
-                                        <a href="#" data-modal-target="editStaff" data-modal-toggle="editStaff" class="text-white px-5 py-2 text-center mb-2" type="button">
+                                        <a href="{{route("admin.edit_staff",$staff->id)}}"  class="text-white px-5 py-2 text-center mb-2" type="button">
                                             <i class="fas fa-edit text-indigo-500 text-xl"></i>
                                         </a>                                
                                         <a href="#" data-modal-target="deleteStaff" data-modal-toggle="deleteStaff" class="text-white  px-5 py-2 text-center  mb-2" type="button">
@@ -128,9 +140,10 @@
                             </tr>
                            
                          
-                        
+                            @endforeach
                         
                         </tbody>
+                       
                     </table>
                 </div>
             <div>
@@ -161,21 +174,18 @@
                  <!-- modal body -->
                  <div class="pt-4 px-2">
                           
-                    <form method="post"  enctype="multipart/form-data" action="#">
+                    <form method="post"  enctype="multipart/form-data" action="{{route("admin.store_staff")}}">
+                        @csrf
+                        @method("POST")
                        
                         <!-- firstname & lastname -->
                         <div class="grid grid-col-1 md:grid-cols-2 gap-2">
-                                <!-- firstname -->
+                                <!-- name -->
                                 <div class=" w-full mb-6 group">
-                                    <label for="" class="font-medium ">First Name :<span class="text-red-500 font-medium">*</span></label>
-                                    <input type="text" name="firstname" id="firstname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
+                                    <label for="" class="font-medium "> Name :<span class="text-red-500 font-medium">*</span></label>
+                                    <input type="text" name="name" id="name" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
                                 </div>
-                                <!-- lastname -->
-                                <div class=" w-full mb-6  group ">
-                                    <label for="" class=" font-medium">Last Name :<span class="text-red-500 font-medium">*</span></label>
-
-                                    <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
-                                </div>
+                               
                                 <!-- email -->
                                 <div class="w-full mb-6 group">
                                     <label for="" class="font-medium ">Email:<span class="text-red-500 font-medium">*</span></label>
@@ -184,7 +194,7 @@
                                 <!-- phone -->
                                 <div class="w-full mb-6  group ">
                                     <label for="" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-
+                                    <span class="" id="flag-container"></span>
                                     <input type="tel"  name="phone" id="phone" class="block w-full mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+1" required />
                                 </div>
                                 <!-- password -->
@@ -192,18 +202,15 @@
                                     <label for="" class="font-medium ">Password:<span class="text-red-500 font-medium">*</span></label>
                                     <input type="password" name="password" id="password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                                 </div>
-                                <!-- confirm password -->
-                                <div class="w-full mb-6  group">
-                                    <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
 
-                                    <input type="text" name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
-                                </div>
                                 <!-- Role   -->
                                 <div class="w-full  group">
                                     <label for="role" class="font-medium ">Role:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                     <select id="role" name="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                         <option selected>Select a Role</option>
-                                        <option value="Recipcionist">Recipcionist</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="patient">Patient</option>
+                                        <option value="doctor">Doctor</option>
                                        
                                     </select>                                
                                 </div>
@@ -230,43 +237,38 @@
                                 <div class="w-full group">
                                     <label for="birthdate" class="font-medium ">Profile:<span class="text-red-500 font-medium">*</span></label>
                                     <div class="flex items-start justify-start">
-                                        <!-- Input field -->
-                                    
-                                            <!-- <label for="profile" class="font-medium ">Profile:<span class="text-red-500 font-medium">*</span></label><br> -->
 
                                     
                                         <!-- Button to open the file dialog -->
                                         <label for="image-input" class="cursor-pointer flex-col  justify-start border border-gray-200 p-2  rounded-lg">
-                                            <input type="file" name="photo" class="hidden" id="image-input">
+                                            <input  type="file" name="photo" class="hidden" id="image-input">
 
                                             <!-- Image preview or placeholder -->
                                             <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-start">
-                                                <!-- <svg class="w-8 h-8 text-gray-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path d="M12 5v14M5 12h14"></path>
-                                                </svg> -->
+                                                
                                                 <img src="{{asset('storage/img/profile.svg')}}" class="w-8 h-8 " alt="">
 
                                             </div>
                         
                                         </label>
                                     </div>
-
+                                   
 
                                 </div>
                         </div>
                  </div>
-                        <!-- modal footer -->
-                        <div class="flex items-center justify-start  mt-5 mb-2 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="addModal" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                            <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                        </div>
+                <!-- modal footer -->
+                <div class="flex items-center justify-start  mt-5 mb-2 rounded-b dark:border-gray-600">
+                    <button type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                    <button data-modal-hide="addModal" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                </div>
                 </form>
               </div>
           </div>
       </div>
   </div> 
 
-   <!-- Edit modal -->
+   {{-- <!-- Edit modal -->
   <div id="editStaff" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full ">
         <!-- Modal content -->
@@ -286,15 +288,10 @@
                       <div class="grid grid-col-1 md:grid-cols-2 gap-2">
                               <!-- firstname -->
                               <div class=" w-full mb-6 group">
-                                  <label for="" class="font-medium ">First Name :<span class="text-red-500 font-medium">*</span></label>
-                                  <input type="text" name="firstname" id="firstname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
+                                  <label for="" class="font-medium "> Name :<span class="text-red-500 font-medium">*</span></label>
+                                  <input type="text" name="name" id="name" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
                               </div>
-                              <!-- lastname -->
-                              <div class=" w-full mb-6  group ">
-                                  <label for="" class=" font-medium">Last Name :<span class="text-red-500 font-medium">*</span></label>
-
-                                  <input type="text" name="lastname" id="lastname" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Last Name " required />
-                              </div>
+                             
                               <!-- email -->
                               <div class="w-full mb-6 group">
                                   <label for="" class="font-medium ">Email:<span class="text-red-500 font-medium">*</span></label>
@@ -310,19 +307,16 @@
                                   <label for="" class="font-medium ">Password:<span class="text-red-500 font-medium">*</span></label>
                                   <input type="password" name="password" id="password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
                               </div>
-                              <!-- confirm password -->
-                              <div class="w-full mb-6  group">
-                                  <label for="confirm_password" class="font-medium ">Confirm Password:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-
-                                  <input type="text" name="confirm_password" id="confirm_password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
-                              </div>
+                             
                               <!-- Role   -->
                               <div class="w-full  group">
                                   <label for="role" class="font-medium ">Role:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                   <select id="role" name="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                                       <option selected>Select a Role</option>
-                                      <option value="Recipcionist">Recipcionist</option>
-                                     
+                                      <option value="admin">Admin</option>
+                                      <option value="patient">Patient</option>
+                                      <option value="doctor">Doctor</option>     
+
                                   </select>                                
                               </div>
                               <!-- gender  -->
@@ -350,7 +344,7 @@
                                   
                                       <label class="block mb-2 text-sm font-medium " for="photo">Profile </label>
   
-                                      <input class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
+                                      <input name="photo" class="block w-full text-sm text-cyan-900 border border-gray-300 rounded-lg cursor-pointer  focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="photo" id="photo" type="file">
                                       <p class="mt-1 text-sm text-gray-500 " id="photo">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                                        <img src="{{asset('storage/img/patient.svg')}}" class="w-10  h-10 border border-gray-300 rounded-md p-1 text-center " alt="">      
                                   </div>
@@ -366,7 +360,7 @@
             </div>
         </div>
     </div>
-  </div> 
+  </div>  --}}
    <!-- Delete appointement -->
    <div id="deleteStaff" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
@@ -398,6 +392,21 @@
     </div>
     @endsection
    
+    <script>
+        $(document).ready(function() {
+          $('#phone').intlTelInput({
+            separateDialCode: true,
+            utilsScript: "{{ asset('/node_modules/intl-tel-input/build/js/utils.js') }}"
+          });
+      
+          $('#phone').on('countrychange', function() {
+            var countryCode = $(this).intlTelInput('getSelectedCountryData').iso2;
+            var flagIcon = '<i class="flag-icon flag-icon-' + countryCode + '"></i>';
+            $('#flag-container').html(flagIcon);
+          });
+        });
+      </script>
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

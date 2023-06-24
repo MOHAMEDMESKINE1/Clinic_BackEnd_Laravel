@@ -36,7 +36,7 @@
    @extends('dashboard.admin.admin_dashboard')
 
     @section('content')
-      <div class="container   ">
+      <div class="container">
       <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4 ">
           <!-- Doctors card -->
           <div class="flex items-center shadow-md  justify-between p-4 bg-white rounded-md dark:bg-darker">
@@ -53,7 +53,11 @@
 
               <span class="inline-block px-2 py-px ml-2 text-xl text-green-500 bg-green-100 rounded-md">
                
+            
                 {{$doctors_count}}
+                0
+                    
+               
               </span>
             </a>
             <div>
@@ -240,10 +244,10 @@
                           </th>
                       </tr>
                   </thead>
-                  <tbody>
-                    @foreach ($patients as $patient)
+                   <tbody>
+                   
                         
-                  
+                    @foreach ($patients as $patient)
                       <tr class="bg-white  border-b dark:bg-white dark:border-gray-400">
                           <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                             {{$patient->firtnsame}} {{$patient->lastname}}
@@ -261,9 +265,7 @@
                           </td>
                          
                       </tr>
-                     
-                     
-                      @endforeach
+                      @endforeach 
                   </tbody>
 
               </table>
@@ -277,7 +279,7 @@
      
     @endsection     
 
-    <script type="text/javascript">
+  <script type="text/javascript">
 
     // patients charts
     function Patients_typeChart(type,id)
@@ -420,7 +422,7 @@
 
    
 
-    </script>
+    </script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

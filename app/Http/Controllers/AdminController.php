@@ -3,18 +3,10 @@
 namespace App\Http\Controllers;
 
 use toastr;
-use App\Models\Doctor;
 use Illuminate\Http\Request;
-use App\Models\Specialization;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
-use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Doctor\DoctorRequest;
-use App\Models\Patient;
 use App\Repositories\AppointementRepository;
 use App\Repositories\SpecializationRepository;
 
@@ -27,7 +19,8 @@ class AdminController extends Controller
     public $doctors ; 
     public $specializations ; 
     
-    public function __construct(DoctorRepository $doctorRepository,
+    public function __construct(
+    DoctorRepository $doctorRepository,
     SpecializationRepository $specializationRepository,
     PatientRepository $patientRepository,
     AppointementRepository $appointementRepository,
@@ -45,9 +38,6 @@ class AdminController extends Controller
     public function doctors(){
 
         $doctors = $this->doctors->all();
-        
-      
-        
         return    view('dashboard.admin.doctors',compact("doctors"));
 
      }
@@ -58,7 +48,10 @@ class AdminController extends Controller
         return    view('dashboard.admin.doctor_details',compact('doctor'));
 
      }
-     public function statistics(){
+     public function all(){
+
+    
+      $patients = $this->patients->all();
 
       // doctors charts
       $doctors_charts = $this->doctors->doctorsChart();
@@ -76,29 +69,23 @@ class AdminController extends Controller
       $patients_data  =$Patient_charts->values();
 
 
-        $doctors_count = $this->doctors->doctors_count();
-        $patients_count = $this->patients->patients_count();
-        $patients = $this->patients->recent_patients();
-        $appointments_count = $this->appointments->appointements_count();
-        $registred_patients = $this->patients->registred_patients();
-       
-         return    view('dashboard.admin.statistics',compact([  
+      $doctors_count = $this->doctors->doctors_count();
+      $patients_count = $this->patients->patients_count();
+      $appointments_count = $this->appointments->appointements_count();
+      $registred_patients = $this->patients->registred_patients();
+         return  view('dashboard.admin.statistics',compact( 
             "doctors_count",
             "patients_count",
             "appointments_count",
             "registred_patients",
             "patients",
-
             "patients_labels",
             "patients_data",
-
             "appointments_labels",
             "appointments_data",
-
             "doctors_labels",
             "doctors_data"
-            
-         ]));
+         ));
 
     }
      public function search(Request $request){

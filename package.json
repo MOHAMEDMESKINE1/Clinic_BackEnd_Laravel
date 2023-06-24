@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "flag-icon-css": "^4.1.7",
+        "intl-tel-input": "^18.1.6",
         "scrollreveal": "^4.0.9",
         "sweetalert2": "^11.7.10"
     }

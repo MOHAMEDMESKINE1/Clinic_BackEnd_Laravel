@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         
     Route::controller(AdminController::class)->group(function (){
         
-        Route::get('/statistics', 'statistics')->name('admin.statistics');
+        Route::get('/statistics', 'all')->name('admin.statistics');
         Route::get('/staff', 'staff')->name('admin.staff');
         
         Route::get('/doctors', 'doctors')->name('admin.doctors');
