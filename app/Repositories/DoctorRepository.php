@@ -158,11 +158,6 @@ class DoctorRepository implements RepositoryInterface {
 
         $doctor->save();
 
-       
-
-          
-          
-
             
 
     }

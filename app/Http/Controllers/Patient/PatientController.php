@@ -7,16 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
+use App\Repositories\ServiceRepository;
+use App\Repositories\AppointementRepository;
+use App\Http\Controllers\Excel\ExportAppointements;
 
 class PatientController extends Controller
 {
 
     public $patient ;
-
-    public function __construct(PatientRepository $patientRepository) {
+    public $appointements ;
+    public $doctors ;
+    public $services ;
+    public function __construct(PatientRepository $patientRepository,
+    AppointementRepository  $appointementRepository,
+    DoctorRepository $doctorRepository,
+    ServiceRepository $serviceRepository,
+    ) {
        
         $this->patient = $patientRepository;
+        $this->appointements = $appointementRepository;
+        $this->doctors = $doctorRepository;
+        $this->services = $serviceRepository;
+        
     }
     public function patients(){
         
@@ -86,15 +101,37 @@ class PatientController extends Controller
 
 
     public function appointements(){
-        
-        return    view('dashboard.patient.appointements');
+
+        $appointements = $this->appointements->all();
+        $doctors = $this->doctors->all();
+        $services = $this->services->all();
+        $patients = $this->patient->all();
+
+        return    view('dashboard.patient.appointements',compact("appointements","doctors","patients","services"));
     }
    
-    public function appointement_details(){
+    public function appointement_details($id ){
 
-        return    view('dashboard.patient.appointement_details');
+        
+        $appointement = $this->appointements->getById($id);
+
+        return    view('dashboard.patient.appointement_details',compact("appointement"));
 
     }
+    public function cancelAppointement($id ){
+
+        
+         $this->appointements->cancelAppointement($id);
+        
+
+        return    redirect()->route("patient.appointements");
+
+    }
+    public function export_appointments()
+    {
+        return Excel::download( new ExportAppointements(), 'appointments.xlsx');
+    }
+    
     public function doctor_details(){
         return    view('dashboard.patient.doctor_details');
 
@@ -135,6 +172,72 @@ class PatientController extends Controller
 
     }
 
+
+
+    // appointements
+    public function searchAppointement(Request $request){
+
+        $query = $request->search;
+
+        $appointements = $this->appointements->search($query);
+
+        $doctors = $this->doctors->all();
+        $patients = $this->patient->all();
+        $services = $this->services->all();
+
+        if ($appointements->isEmpty()) {
+
+           
+            $appointements = $this->appointements->all();
+
+         }
+       return view('dashboard.patient.appointements',compact(
+            [
+                "appointements",
+                "doctors",
+                "patients",
+                "services"
+            ]));
+     }
+    public function filterAppointement(Request $request){
+
+        $query = $request->filter;
+
+        $appointements = $this->appointements->filter($query);
+        $doctors = $this->doctors->all();
+        $patients = $this->patient->all();
+        $services = $this->services->all();
+
+        if($appointements->isEmpty()){
+            $appointements = $this->appointements->all();
+        }
+        return view('dashboard.patient.appointements',compact(
+            [
+                "appointements",
+                "doctors",
+                "patients",
+                "services"
+            ]));
+    }
+    public function storeAppointement (Request $request){
+            
+            $this->appointements->store($request->all());            
+            
+            // just igonre this error it still working 
+                    
+            toastr()->success('appointement has been saved successfully!', 'Saving ');
+
+        return  redirect()->route('patient.appointements');
+    }
+    public function deleteAppointement (Request $request){
+
+        $this->appointements->delete($request->id);
+ 
+        toastr()->success('appointement has been deleted successfully!', 'Deletion');
+ 
+        return redirect()->route("patient.appointements");
+ 
+     }
 
     public function verify(Request $request)
     {

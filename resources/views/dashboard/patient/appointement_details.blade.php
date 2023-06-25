@@ -42,93 +42,101 @@
       </style>
 </head>
 <body class="bg-gray-100">
-   <div class="m-5 ml-10 flex justify-between ">
-    <h1 class="text-gray-900 text-xl md\:flex-col flex-row">Appointement Details</h1>
-    <a href="{{route('patient.appointements')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
-        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
-            Back
-        </span>
-      </a>   
-    </div>
-    <div class="container rounded-lg shadow-md m-5 bg-white sm:text-center mx-auto text-white p-10">
-        <div class="grid  grid-cols-1  md:grid-cols-2 gap-2 p-5">
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2">Appointement ID : </h1>
-                <span class="bg-yellow-500  text-white rounded-sm p-1">
-                    US5ALTTZTL
-                </span>
-                
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2 underline">Appointement At : </h1>
-                <span class="bg-indigo-500 text-white  rounded-sm p-1 ">
-                    14 Apr 2023 03:00 AM - 03:05 AM
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Status : </h1>
-                <span class="bg-indigo-500  text-white rounded-sm p-1">
-                    Booked
-                </span>
-            </div>
-           
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Doctor : </h1>
-                <span class="text-blue-500   rounded-sm p-1 ">
-                   Alex Benjamin
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Service : </h1>
-                <span class="text-blue-500   rounded-sm p-0.5">
-                    Diagnostics
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Amount : </h1>
-                <span class="text-blue-500   rounded-sm p-0.5">
-                    90.00$
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Status : </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-0.5">
-                    Paid
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Created At : </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-0.5">
-                    6 hours ago
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Payment Method : </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-0.5">
-                    Manually
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Registered On: </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-0.5">
-                   10 hours ago
-                </span>
-            </div>
-           
+    @extends('dashboard.patient.patient_dashboard')
+        
+    @section('content')
+   <div class=" m-5">
+    <div class="ml-10 flex justify-between ">
+        <h1 class="text-gray-900 text-xl md\:flex-col flex-row">Appointement Details</h1>
+        <a href="{{route('patient.appointements')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
+                Back
+            </span>
+        </a>   
         </div>
+        <div class="container rounded-lg shadow-md  bg-white  mx-auto m-5 text-white p-10">
+            <div class="grid  grid-cols-1  md:grid-cols-2 gap-2 p-5 ">
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2">Appointement ID : </h1>
+                    <span class="bg-yellow-500  text-white rounded-sm p-1">
+                        {{$appointement->id}}
+                    </span>
+                    
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2 underline">Appointement At : </h1>
+                    <span class="bg-indigo-500 text-white  rounded-sm p-1 ">
+                        {{$appointement->created_at}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Status : </h1>
+                   @if ($appointement->status !== "cancelled")
+                    <span class="bg-indigo-500  text-white rounded-sm p-1">
+                        {{$appointement->status}}
+                    </span>
+                    @else
+                    <span class="bg-red-500  text-white rounded-sm p-1">
+                        {{$appointement->status}}
+                    </span>
+                       
+                   @endif
+                </div>
+            
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Doctor : </h1>
+                    <span class="text-blue-500   rounded-sm p-1 ">
+                        {{$appointement->doctors->firstname}}   {{$appointement->doctors->lastname}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Service : </h1>
+                    <span class="text-blue-500   rounded-sm p-0.5">
+                        {{$appointement->services->name}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Amount : </h1>
+                    <span class="text-blue-500  text-xl rounded-sm p-0.5">
+                        {{$appointement->charge}} $
+                    </span>
+                </div>
+            
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Created At : </h1>
+                    <span class="bg-green-600 text-white  rounded-sm p-0.5">
+                        6 hours ago
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Payment Method : </h1>
+                    <span class="bg-green-600 text-white  rounded-sm p-0.5">
+                        {{$appointement->payment}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Registered On: </h1>
+                    <span class="bg-gray-600 text-white  rounded-sm p-0.5">
+                        {{-- {{$appointement->created_at->diffForHumans()}} --}}
+                        {{ \Carbon\Carbon::parse($appointement->created_at)->diffForHumans() }}
+
+                    </span>
+                </div>
+            
+            </div>
        
     </div>
-
+   </div>
+    @endsection
 
 
 

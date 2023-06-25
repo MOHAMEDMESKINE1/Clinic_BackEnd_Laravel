@@ -99,6 +99,14 @@
             </div>
             <div class="w-full mb-6 text-gray-500">
                 
+                <h1 class="mb-2  underline font-medium">Regitred On : </h1>
+                <span class="text-blue-500 rounded-sm p-1 ">
+                    {{ \Carbon\Carbon::parse($transaction->created_at)->diffForHumans() }}
+
+                </span>
+            </div>
+            <div class="w-full mb-6 text-gray-500">
+                
                 <h1 class="mb-2  underline font-medium">Payment Accepted By : </h1>
                 <span class="text-blue-500 rounded-sm p-1 ">
                     Super Admin

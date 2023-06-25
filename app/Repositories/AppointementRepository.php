@@ -66,9 +66,13 @@ class AppointementRepository implements RepositoryInterface {
                 ->orWhere('lastname', 'like', '%' . $query . '%');
             })
         ->with(['doctors', 'patients'])
-        ->paginate();
+        ->paginate(5);
 
-       return $appointments;
+       
+            return $appointments;
+       
+
+      
         
     }
     public function filter($filter)
@@ -87,7 +91,8 @@ class AppointementRepository implements RepositoryInterface {
 
         }
 
-       return $this->all();
+        return $this->appointement->paginate();
+      
         
     }
         
@@ -126,6 +131,18 @@ class AppointementRepository implements RepositoryInterface {
         $appointement->date = $params["date"];
         $appointement->doctor_id = $params["doctor"];
         $appointement->save();
+       
+    }
+    public function cancelAppointement($id){
+
+        $appointement = $this->getById($id);
+
+        $appointement->status = "cancelled";   
+
+        $appointement->save();
+
+        return $this-> all();
+
        
     }
 

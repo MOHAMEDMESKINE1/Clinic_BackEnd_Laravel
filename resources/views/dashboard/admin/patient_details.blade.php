@@ -143,15 +143,25 @@
                             <p class=" text-white text-center text-xs mt-1 bg-green-500 font-semibold rounded-md">{{$patient->unique_id}}</p>
 
                         </div>
+                        <!-- created_at -->
+                        <div class="my-4">
+                            <h1 class="font-medium text-gray-500 ">Created At </h1>
+                           
+                            <p class="font-semibold">{{$patient->created_at}}</p>
+                        </div>
                         <!-- registred -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Registered On</h1>
-                            <p class="font-semibold">{{$patient->created_at}}</p>
+                           
+                            {{ \Carbon\Carbon::parse($patient->created_at)->diffForHumans() }}
+
                         </div>
                         <!-- updated -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Last Updated</h1>
-                            <p class="font-semibold">{{$patient->updated_at}} </p>
+                            <p class="font-semibold">
+                                {{ \Carbon\Carbon::parse($patient->created_at)->diffForHumans() }}    
+                            </p>
                         </div>
                         <!-- dob -->
                         <div class="my-4">

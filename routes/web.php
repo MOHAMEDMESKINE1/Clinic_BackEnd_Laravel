@@ -234,12 +234,11 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
     
     
     Route::controller(PatientController::class)->group(function (){
+
         Route::get('/statistics', 'statistics')->name('patient.statistics');
-        Route::get('/appointements', 'appointements')->name('patient.appointements');
-        Route::get('/appointement_details', 'appointement_details')->name('patient.appointement_details');
+        Route::get('/appointement_details/{id}', 'appointement_details')->name('patient.appointement_details');
         Route::get('/doctor_details', 'doctor_details')->name('patient.doctor_details');
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
-        Route::get('/appointements/patients', 'patients')->name('patient.patients');
         Route::get('/profile', 'profile')->name('patient.profile');
         Route::get('/reviews', 'reviews')->name('patient.reviews');
         Route::get('/transactions', 'transactions')->name('patient.transactions');
@@ -247,6 +246,21 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::get('/visits', 'visits')->name('patient.visits');
         Route::get('/visits_details', 'visits_details')->name('patient.visits_details');
     
+        
+        Route::get('/appointements', 'appointements')->name('patient.appointements');
+        
+        // cancel appointement
+        Route::put('/appointements/cancel/{id}', 'cancelAppointement')->name('patient.cancelAppointement');
+        
+
+        // crud appointement
+        Route::get('/appointements/search', 'searchAppointement')->name('patient.search_appointements');
+        Route::get('/appointements/filter', 'filterAppointement')->name('patient.filter_appointements');
+        Route::post('/appointements/create', 'storeAppointement')->name('patient.store_appointements');
+        Route::delete('appointements/{id}', 'deleteAppointement')->name('patient.delete_appointements');
+        Route::get('/appointements/export', 'export_appointments')->name('patient.export_appointments');
+
+
     });
 
 

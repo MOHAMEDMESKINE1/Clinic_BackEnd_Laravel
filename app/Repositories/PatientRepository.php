@@ -1,12 +1,14 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Appointement;
 use Carbon\Carbon;
 use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 class PatientRepository implements RepositoryInterface {
 
     public $patient ;
+    public $appointements;
 
     public function __construct(Patient $patients)
     {
@@ -67,6 +69,10 @@ class PatientRepository implements RepositoryInterface {
        $today = Carbon::today();
         return  $this->patient->whereDate("created_at",$today)->count() ; 
     }
+    
+
+
+
     public function store($params){
 
        
