@@ -84,9 +84,10 @@ class PatientController extends Controller
 
     }
 
+
     public function appointements(){
         
-        return    view('dashboard.admin.appointements');
+        return    view('dashboard.patient.appointements');
     }
    
     public function appointement_details(){

@@ -57,8 +57,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         
     Route::controller(AdminController::class)->group(function (){
         
-        Route::get('/staff', 'staff')->name('admin.staff');
-        Route::get('/staff/search/', 'search_staff')->name('admin.search_staff');
+        // Route::get('/staff', 'staff')->name('admin.staff');
+        // Route::get('/staff/search/', 'search_staff')->name('admin.search_staff');
 
         Route::get('/statistics', 'all')->name('admin.statistics');
         Route::get('/doctors', 'doctors')->name('admin.doctors');
@@ -77,6 +77,21 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
         Route::put('/doctors/edit/{id}', 'update')->name('admin.update');
         Route::delete('/doctors/{id}', 'delete')->name('admin.delete');
 
+
+
+    });
+
+   
+    Route::controller(StaffController::class)->group(function (){
+
+
+        Route::get('/staff', 'staff')->name('admin.staff');
+
+        // crud specialization
+        Route::get('/staff/search', 'search')->name('admin.search_staff');
+        Route::get('/staff/{id}', 'edit')->name('admin.edit_staff');
+        Route::put('/staff/edit/{id}', 'update')->name('admin.update_staff');
+        Route::delete('/staff/{id}', 'delete')->name('admin.delete_staff');
 
 
     });
@@ -224,7 +239,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::get('/appointement_details', 'appointement_details')->name('patient.appointement_details');
         Route::get('/doctor_details', 'doctor_details')->name('patient.doctor_details');
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
-        Route::get('/appointements', 'patients')->name('patient.patients');
+        Route::get('/appointements/patients', 'patients')->name('patient.patients');
         Route::get('/profile', 'profile')->name('patient.profile');
         Route::get('/reviews', 'reviews')->name('patient.reviews');
         Route::get('/transactions', 'transactions')->name('patient.transactions');

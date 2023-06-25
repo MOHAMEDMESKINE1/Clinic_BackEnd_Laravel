@@ -176,7 +176,7 @@ class AdminController extends Controller
 
   
     public function staff(){
-        $staffs = User::paginate();;
+        $staffs = User::paginate();
         return    view('dashboard.admin.staff',compact("staffs"));
 
     }

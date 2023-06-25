@@ -26,17 +26,17 @@
                 <!-- password -->
                 <div class="w-full mb-6 group">
                     <label for="" class="font-medium ">Password:<span class="text-red-500 font-medium">*</span></label>
-                    <input type="password" name="password"  id="password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** " required />
+                    <input type="password" name="password"  value="{{$staff->password}}" id="password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** "  />
                 </div>
                
                 <!-- Role   -->
                 <div class="w-full  group">
                     <label for="role" class="font-medium ">Role:<span class="text-red-500 font-medium mb-1">*</span><br></label>
-                    <select id="role" name="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
-                        <option selected>Select a Role</option>
-                        <option value="admin" {{$staff->role == "admin" ? 'selected' : ''}}>Admin</option>
-                        <option value="patient" {{$staff->role == "patient" ? 'selected' : ''}}>Patient</option>
-                        <option value="doctor" {{$staff->role == "doctor" ? 'selected' : ''}}>Doctor</option>     
+                    <select name="role"  id="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
+                        <option selected disabled>Select a Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="patient" >Patient</option>
+                        <option value="doctor">Doctor</option>     
     
                     </select>                                
                 </div>
