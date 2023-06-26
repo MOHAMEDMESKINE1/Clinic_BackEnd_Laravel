@@ -42,13 +42,16 @@
       </style>
 </head>
 <body class="bg-gray-100">
+    @extends('dashboard.patient.patient_dashboard')
+
+    @section('content')
    <div class="m-5 ml-10 flex justify-between ">
     <h1 class="text-gray-900 text-xl md\:flex-col flex-row">Visits Details</h1>
     <a href="{{route('patient.visits')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
             Back
         </span>
-      </a>    
+      </a>   
     </div>
     <div class="container rounded-lg shadow-md m-5 bg-white font-semibold mx-auto text-white p-10">
         <div class="flex justify-between">
@@ -58,63 +61,44 @@
                 </span>
               </button>   
               <div class="flex justify-end">
-                <button  class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-green-500 group-hover:from-cyan-500 group-hover:to-green-500">
-                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
-                        Export Excel 
-                    </span>
-                  </button>   
+                {{-- export excel --}}
+                <x-export-excel route="patient.export_visits"></x-export-excel>
+                {{-- export excel --}}
                
             </div>
         </div>
        
         <div class="grid grid-cols-1  md:grid-cols-2 gap-2 p-5">
             
-            <div class="w-full mb-6 ">
-                
-                <h1 class="mb-2 text-gray-800 underline">Patient Name : </h1>
-                <span class="text-blue-500 font-medium text-xl ">
-                  Thomas Seteve
-                </span>
-            </div>
-            <div class="w-full mb-6 ">
-                
-                <h1 class="mb-2 text-gray-800 underline">Profile : </h1>
-               <img src="../patient/profile.svg" class="w-12 h-12" alt="">
-            </div>
-            <div class="w-full mb-6 ">
-                
-                <h1 class="mb-2 text-gray-800 underline">Email: </h1>
-                <span class="text-blue-500 font-medium text-xl ">
-                  Thomas@gmail.com
-                </span>
-            </div>
+           
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Doctor : </h1>
                 <span class="text-blue-500 font-medium text-xl ">
-                  Thomas Alberto
+                    {{$visit->doctors->firstname}}  {{$visit->doctors->lastname}}
+
                 </span>
             </div>
           
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Visit Date : </h1>
-                <span class=" text-blue-500 font-medium rounded-sm  text-xl ">
-                    22 April 2023
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->date}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Created At : </h1>
-                <span class=" text-blue-500 font-medium rounded-sm  text-xl ">
-                    14 hours ago
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->patients->created_at}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Updated at : </h1>
-                <span class=" text-blue-500 font-medium rounded-sm  text-xl ">
-                    7 hours ago
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->patients->updated_at}}
                 </span>
             </div>
           
@@ -122,14 +106,8 @@
         </div>
        
     </div>
+    @endsection
 
-<script>
-    ClassicEditor
-   .create( document.querySelector( '#editor' ) )
-   .catch( error => {
-       console.error( error );
-   } );
-</script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

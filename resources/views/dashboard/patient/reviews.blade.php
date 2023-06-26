@@ -47,67 +47,90 @@
         
     @section('content')
     <div class="container m-5 mx-auto">
+       
         <div class="grid grid-col-1 md:grid-cols-2 gap-3 p-5 ">
+            @foreach ($reviews as $review)
             <div class="bg-white p-4 text-center rounded-md shadow-sm ">
                     <div class="flex justify-center my-2">
                         <img src="{{asset('storage/img/profile.svg')}}" class="w-32 h-32 rounded-full max-w-sm" alt="">
                     </div>
                     <div class="text-center">
+                       
                          <!-- Rats -->
                          <div class="rating-stars">
-                            <span class="star" data-value="1"><i class="fas fa-star"></i></span>
-                            <span class="star" data-value="2"><i class="fas fa-star"></i></span>
-                            <span class="star" data-value="3"><i class="fas fa-star"></i></span>
-                            <span class="star" data-value="4"><i class="fas fa-star"></i></span>
-                            <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+                            @if ($review->rate === "1")
+                                
+                                
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+
+                            @elseif($review->rate === "2")
+                                
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+
+                            @elseif($review->rate === "3")
+                                
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+
+                            @elseif($review->rate === "4")
+                                
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            <span class="star "><i class="fas fa-star"></i></span>
+
+                            @elseif($review->rate === "5")
+                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
+                            @endif
+                            {{-- <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+                            <span class="star" data-value="5"><i class="fas fa-star"></i></span> --}}
                           </div>
-                          <p id="rating-value"></p>
+                        
                         </div>
                         <h1 class="text-gray-800 mb-2 text-2xl ">Samuel Steve</h1>
                         <p class="text-gray-600">
-                            Marine Medicine, Medical Genetics, Microbiology, Nuclear Medicine, Paediatrics, Palliative Medicine, Pathology1, Pharmacology, Psychiatry, Physiology, Physical Medicine, Radiotherapy
+
+                            {{$review->review}}
                         </p>
-                        <p class="text-gray-600">nice one doctor</p>
-                       
-                    <div class="mt-5">
-                        <a href="#"  data-modal-target="createReview" data-modal-toggle="createReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                <i class="fas fa-pencil text-xl text-white mr-2"></i>
-                                Write Review 
-                            </span>
-                          </a>
+                            
+                       <div class="flex justify-center">
+                        <div class="mt-5">
+                            <a href="#"  data-modal-target="createReview" data-modal-toggle="createReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                    <i class="fas fa-pencil text-xl text-white mr-2"></i>
+                                    Write Review 
+                                </span>
+                              </a>
+                        </div>
+                        <div class="mt-5">
+                            <a href="#"  data-modal-target="deleteReview" data-modal-toggle="deleteReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-500 group-hover:from-red-600 group-hover:to-red-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-red-800">
+                                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-red-700 rounded-md group-hover:bg-opacity-0">
+                                    <i class="fas fa-trash text-xl text-white mr-2"></i>
+                                    Delete Review 
+                                </span>
+                              </a>
+                        </div>
                        </div>
+                    
             </div>
-            <div class="bg-white p-4 text-center rounded-md shadow-sm">
-                <div class="flex justify-center my-2">
-                    <img src="{{asset('storage/img/profile.svg')}}" class="w-32 h-32 rounded-full max-w-sm" alt="">
-                </div>
-                <div class="text-center">
-                     <!-- Rats -->
-                     <div class="rating-stars">
-                        <span class="star" data-value="1"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="3"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="4"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="5"><i class="fas fa-star"></i></span>
-                      </div>
-                      <p id="rating-value"></p>
-                    </div>
-                    <h1 class="text-gray-800 mb-2 text-2xl ">Samuel Steve</h1>
-                    <p class="text-gray-600">
-                        Marine Medicine, Medical Genetics, Microbiology, Nuclear Medicine, Paediatrics, Palliative Medicine, Pathology1, Pharmacology, Psychiatry, Physiology, Physical Medicine, Radiotherapy
-                    </p>
-                    <p class="text-gray-600">nice one doctor</p>
-                 
-                <div class="mt-5">
-                    <a href="#"  data-modal-target="editReview" data-modal-toggle="editReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            <i class="fas fa-edit text-xl text-white mr-2"></i>
-                            Edit Review 
-                        </span>
-                      </a>
-                   </div>
-        </div>
+            @endforeach
+           
         </div>
     </div>
 
@@ -126,8 +149,9 @@
 
             <!-- modal body -->
             <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                <form method="post"  enctype="multipart/form-data" action="#">
-                 
+                <form method="post"  enctype="multipart/form-data" action="{{route("patient.store_reviews")}}">
+                    @csrf
+                    @method("POST")
                     <!-- firstname & lastname -->
                     <div class="grid grid-col-1 gap-2">
                         <!-- textarea -->
@@ -138,121 +162,67 @@
                         </div>
                         <!-- rate -->
                         <div class="w-full group rating-stars">
-                            <span class="star" data-value="1"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="2"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="3"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="4"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="5"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
+                            <span class="star" data-value="1"> <input type="radio" value="1" name="rate" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
+                            <span class="star" data-value="2"> <input type="radio" value="2" name="rate" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
+                            <span class="star" data-value="3"> <input type="radio" value="3" name="rate" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
+                            <span class="star" data-value="4"> <input type="radio" value="4" name="rate" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
+                            <span class="star" data-value="5"> <input type="radio" value="5" name="rate" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
                         </div> 
                       
                     </div>
 
-                
-                        
-               
-            </div>
-                    <!-- modal footer -->
+                   <!-- modal footer -->
                     <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="createReview" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                        <button  type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
                         <button data-modal-hide="createReview" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                     </div>
-                </form>
+                </form>     
+               
+            </div>
+                 
+                
             </div>
         </div>
     </div>
  </div>
   <!-- editReview -->
-  <div id="editReview" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+  <div id="deleteReview" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative max-w-lg h-full m-6 ">
         <!-- Modal content -->
         <div class="relative bg-white  rounded-lg shadow ">
-            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="editReview">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="deleteReview">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-2 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-cyan-900 text-left mt-5">Edit Review </h3>
+                <h3 class="mb-4 text-xl font-medium text-cyan-900 text-left mt-5">Delete Review </h3>
                 <span class=" border border-b-0 w-full inline-block  border-gray-100 mt-2"></span>
 
             <!-- modal body -->
             <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                <form method="post"  enctype="multipart/form-data" action="#">
-                 
-                    <!-- firstname & lastname -->
-                    <div class="grid grid-col-1 gap-2">
-                        <!-- textarea -->
-                        <div class="w-full group">
-                            <label for="">Review : <span class="text-red-700">*</span></label>
-                            <textarea name="review" id="review"  class="block mt-1 p-2.5  mb-2 w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer"></textarea>
+                <form method="post"  enctype="multipart/form-data" action="{{route("patient.delete_reviews",$review->id)}}">
 
-                        </div>
-                        <!-- rate -->
-                        <div class="w-full group rating-stars">
-                            <span class="star" data-value="1"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="2"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="3"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="4"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                            <span class="star" data-value="5"> <input type="radio" name="rating" class="mr-1 w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 p-2 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> <i class="fas fa-star"></i> </span>
-                        </div> 
-                      
-                      
-                    </div>
+                    @csrf
+                    @method("DELETE")
 
+                <!-- modal footer -->
+                <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
+                    <button type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
+                    <button data-modal-hide="deleteReview" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                </div>
+                </form>
                 
                         
                
             </div>
-                    <!-- modal footer -->
-                    <div class="flex items-cente justify-start mt-3  mb-2 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="editReview" type="submit" class="text-white   mr-2 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">Save</button>
-                        <button data-modal-hide="editReview" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                    </div>
-                </form>
+                  
             </div>
         </div>
     </div>
  </div>
 @endsection
 <script>
-//     const stars = document.querySelectorAll('.star');
-// const ratingValue = document.getElementById('rating-value');
 
-// stars.forEach(star => {
-//   star.addEventListener('mouseover', function() {
-//     const value = this.getAttribute('data-value');
-//     ratingValue.innerHTML = value;
-//     resetStars();
-//     highlightStars(value);
-//   });
-  
-//   star.addEventListener('mouseout', function() {
-//     resetStars();
-//     ratingValue.innerHTML = '';
-//   });
-  
-//   star.addEventListener('click', function() {
-//     const value = this.getAttribute('data-value');
-//     ratingValue.innerHTML = `You rated ${value} stars!`;
-//     resetStars();
-//     highlightStars(value);
-//   });
-// });
-
-// function resetStars() {
-//   setTimeout(() => {
-//     stars.forEach(star => {
-//     star.classList.remove('selected');
-//   });
-//   }, 500);
-// }
-
-// function highlightStars(value) {
-//   stars.forEach(star => {
-//     if (star.getAttribute('data-value') <= value) {
-//       star.classList.add('selected');
-//     }
-//   });
-// }
 
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>

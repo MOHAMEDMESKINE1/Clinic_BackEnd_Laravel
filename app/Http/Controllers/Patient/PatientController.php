@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\VisitRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\ServiceRepository;
+use App\Http\Controllers\Excel\ExportVisits;
 use App\Repositories\AppointementRepository;
 use App\Http\Controllers\Excel\ExportAppointements;
 
@@ -21,16 +23,19 @@ class PatientController extends Controller
     public $appointements ;
     public $doctors ;
     public $services ;
+    public $visits ;
     public function __construct(PatientRepository $patientRepository,
     AppointementRepository  $appointementRepository,
     DoctorRepository $doctorRepository,
     ServiceRepository $serviceRepository,
+    VisitRepository $visitRepository,
     ) {
        
         $this->patient = $patientRepository;
         $this->appointements = $appointementRepository;
         $this->doctors = $doctorRepository;
         $this->services = $serviceRepository;
+        $this->visits = $visitRepository;
         
     }
     public function patients(){
@@ -131,7 +136,42 @@ class PatientController extends Controller
     {
         return Excel::download( new ExportAppointements(), 'appointments.xlsx');
     }
-    
+    // transactions
+    public function transactions(){
+
+        $transactions = $this->appointements->all();
+
+        return    view('dashboard.patient.transactions',compact("transactions"));
+
+    }
+    public function transactions_details($id){
+
+        $transaction = $this->appointements->getById($id);
+        return    view('dashboard.patient.transactions_details',compact("transaction"));
+
+    }
+
+    public function searchTransaction(Request $request)
+    {
+        
+
+        $query = $request->search;
+
+        $transactions = $this->appointements->search($query);
+       
+        $patients = $this->patient->all();
+
+        
+         
+       return view('dashboard.patient.transactions',compact(
+            [
+                "transactions",
+                "patients",
+               
+            ]));
+        
+    }
+
     public function doctor_details(){
         return    view('dashboard.patient.doctor_details');
 
@@ -155,23 +195,49 @@ class PatientController extends Controller
 
     }
   
-    public function transactions(){
-        return    view('dashboard.patient.transactions');
-
-    }
-    public function transactions_details(){
-        return    view('dashboard.patient.transactions_details');
-
-    }
+    //visits
     public function visits(){
-        return    view('dashboard.patient.visits');
+
+        $doctors= $this->doctors->all();
+        $patients= $this->patient->all();
+
+        $visits= $this->visits->all();
+       
+
+        return    view('dashboard.patient.visits',compact(["visits","patients","doctors"]));
+
 
     }
-    public function visits_details(){
-        return    view('dashboard.patient.visits_details');
+    public function searchVisit(Request $request){
 
-    }
+        $query = $request->search;
+        $visits = $this->visits->search($query);
 
+     
+        $patients = $this->patient->all();
+
+        $doctors= $this->doctors->all();
+        if ($patients->isEmpty()) {
+
+           
+            $visits = $this->all();
+
+         }
+       
+        return    view('dashboard.patient.visits',compact(['visits','patients','doctors']));
+
+     }
+     public function visits_details ($id){
+        
+        $visit = $this->visits->getById($id);
+        
+        return  view('dashboard.patient.visits_details',compact(["visit"]));
+
+     }
+     public function export_visits()
+     {
+         return Excel::download( new ExportVisits(), 'visits.xlsx');
+     }
 
 
     // appointements
@@ -238,7 +304,7 @@ class PatientController extends Controller
         return redirect()->route("patient.appointements");
  
      }
-
+    
     public function verify(Request $request)
     {
         // Assuming the patient's email is stored in the session

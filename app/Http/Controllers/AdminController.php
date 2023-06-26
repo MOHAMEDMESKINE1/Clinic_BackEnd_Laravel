@@ -75,10 +75,8 @@ class AdminController extends Controller
       $patients_count = $this->patients->patients_count();
       $appointments_count = $this->appointments->appointements_count();
       $registred_patients = $this->patients->registred_patients();
-      // $appointement_patient = $this->patients->appointement_patient($id = null);
          return  view('dashboard.admin.statistics',compact( 
             "doctors_labels",
-            // "appointement_patient",
             "doctors_data",
             "registred_patients",
             "doctors_count",

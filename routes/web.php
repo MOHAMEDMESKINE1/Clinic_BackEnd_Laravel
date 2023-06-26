@@ -7,14 +7,15 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Lang\LangController;
-use App\Http\Controllers\Appointement\AppointementController;
+use App\Http\Controllers\Staff\StaffController;
+use App\Http\Controllers\Visit\VisitController;
+use App\Http\Controllers\Review\ReviewController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Service\ServiceController;
-use App\Http\Controllers\Specialization\SpecializationController;
-use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
-use App\Http\Controllers\Visit\VisitController;
+use App\Http\Controllers\Appointement\AppointementController;
+use App\Http\Controllers\Specialization\SpecializationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -254,12 +255,31 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         
 
         // crud appointement
+        Route::get('/appointements/export', 'export_appointments')->name('patient.export_appointments');
         Route::get('/appointements/search', 'searchAppointement')->name('patient.search_appointements');
         Route::get('/appointements/filter', 'filterAppointement')->name('patient.filter_appointements');
+        
         Route::post('/appointements/create', 'storeAppointement')->name('patient.store_appointements');
         Route::delete('appointements/{id}', 'deleteAppointement')->name('patient.delete_appointements');
-        Route::get('/appointements/export', 'export_appointments')->name('patient.export_appointments');
 
+        // transactions
+        Route::get('/transactions', 'transactions')->name('patient.transactions');
+        Route::get('/transactions/details/{id}', 'transactions_details')->name('patient.transactions_details');
+        Route::get('/transactions/search', 'searchTransaction')->name('patient.search_transactions');
+
+        // visits
+        Route::get('/visits', 'visits')->name('patient.visits');
+        Route::get('/visits/export', 'export_visits')->name('patient.export_visits');
+        Route::get('/visits/search', 'searchVisit')->name('patient.search_visits');
+        Route::get('/visits/details/{id}', 'visits_details')->name('patient.visits_details');
+
+    });
+
+    Route::controller(ReviewController::class)->group(function (){
+
+        Route::get('/reviews', 'reviews')->name('patient.reviews');
+        Route::post('/reviews/create', 'store')->name('patient.store_reviews');
+        Route::delete('/reviews/{id}', 'delete')->name('patient.delete_reviews');
 
     });
 

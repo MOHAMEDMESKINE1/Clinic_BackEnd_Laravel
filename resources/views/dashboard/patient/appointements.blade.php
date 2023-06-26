@@ -171,7 +171,7 @@
                                             <i class="fas fa-eye text-green-700 text-xl p-1"></i>
                                         </a> 
                                         <!-- delete -->
-                                        <a href=""  data-tooltip-target="tooltip-delete" data-modal-target="deleteAppointement" data-modal-toggle="deleteAppointement"   class="text-white  w-25 text-sm  mx-2 text-center mb-2" type="button">
+                                        <a href="#"  data-tooltip-target="tooltip-delete" data-modal-target="deleteAppointement" data-modal-toggle="deleteAppointement"   class="text-white  w-25 text-sm  mx-2 text-center mb-2" type="button">
                                             <i class="fas fa-trash text-red-700 text-xl p-1"></i>
                                         </a> 
 
@@ -359,16 +359,17 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form id="delete-form"  action="{{route("patient.delete_appointements",$appointement->id)}}"  class="text-white mx-2  px-5 py-2 text-center mb-2"  method="POST">
-                    @csrf
-                    @method("DELETE")
-                   
-                <!-- Modal footer -->
-                <div class="flex justify-start   rounded-b dark:border-gray-600">
-                    <button  type="submit" class="text-white bg-red-700 mx-2 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
-                    <button data-modal-hide="deleteAppointement" type="reset" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-                </div>
-                </form>
+                <form  action="{{route("patient.delete_appointements",$appointement->id)}}" method="POST"
+                    class="text-white mx-2  px-5 py-2 text-center mb-2"  >
+                   @csrf
+                   @method("DELETE")
+                  
+               <!-- Modal footer -->
+               <div class="flex justify-start   rounded-b dark:border-gray-600">
+                   <button  type="submit" class="text-white bg-red-700 mx-2 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
+                   <button data-modal-hide="deleteAppointement" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+               </div>
+           </form>
             </div>
         </div>
     </div>

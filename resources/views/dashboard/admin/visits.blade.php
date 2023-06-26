@@ -380,18 +380,7 @@
     </div>
     @endsection
 
-    {{-- <script>
-        ClassicEditor
-       .create( document.querySelector('#editor') )
-       .catch( error => {
-           console.error( error );
-       } );
-        ClassicEditor
-       .create( document.querySelector('#editortextarea') )
-       .catch( error => {
-           console.error( error );
-       } );
-    </script>  --}}
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
