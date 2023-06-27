@@ -49,88 +49,52 @@
     <div class="container m-5 mx-auto">
        
         <div class="grid grid-col-1 md:grid-cols-2 gap-3 p-5 ">
-            @foreach ($reviews as $review)
-            <div class="bg-white p-4 text-center rounded-md shadow-sm ">
-                    <div class="flex justify-center my-2">
-                        <img src="{{asset('storage/img/profile.svg')}}" class="w-32 h-32 rounded-full max-w-sm" alt="">
-                    </div>
-                    <div class="text-center">
-                       
-                         <!-- Rats -->
-                         <div class="rating-stars">
-                            @if ($review->rate === "1")
-                                
-                                
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
 
-                            @elseif($review->rate === "2")
-                                
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-
-                            @elseif($review->rate === "3")
-                                
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-
-                            @elseif($review->rate === "4")
-                                
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            <span class="star "><i class="fas fa-star"></i></span>
-
-                            @elseif($review->rate === "5")
-                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                                <span class="star text-yellow-500"><i class="fas fa-star"></i></span>
-                            @endif
-                            {{-- <span class="star" data-value="4"><i class="fas fa-star"></i></span>
-                            <span class="star" data-value="5"><i class="fas fa-star"></i></span> --}}
-                          </div>
+          @foreach ($reviews as $review)
+                    <article class="bg-white p-5 shadow-gray-100 shadow-md rounded-md">
                         
-                        </div>
-                        <h1 class="text-gray-800 mb-2 text-2xl ">Samuel Steve</h1>
-                        <p class="text-gray-600">
+                        <div class="flex items-center mb-4 space-x-4">
+                            {{-- <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt=""> --}}
+                            <div></div>
+                            <div class="space-y-1 font-medium dark:text-gray-500">
+                                <p>{{auth()->user()->name}}</p> 
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">{{auth()->user()->email}}</p>
 
-                            {{$review->review}}
-                        </p>
-                            
-                       <div class="flex justify-center">
-                        <div class="mt-5">
-                            <a href="#"  data-modal-target="createReview" data-modal-toggle="createReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                    <i class="fas fa-pencil text-xl text-white mr-2"></i>
-                                    Write Review 
-                                </span>
-                              </a>
+                            </div>
                         </div>
-                        <div class="mt-5">
-                            <a href="#"  data-modal-target="deleteReview" data-modal-toggle="deleteReview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-500 group-hover:from-red-600 group-hover:to-red-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-red-800">
-                                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-red-700 rounded-md group-hover:bg-opacity-0">
-                                    <i class="fas fa-trash text-xl text-white mr-2"></i>
-                                    Delete Review 
-                                </span>
-                              </a>
+                        <div class="flex items-center mb-1">
+
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $review->rate)
+                                    <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <title>Star</title>
+                                        <path d="M10 1l2.472 6.472h7.528l-5.806 4.472L15.472 19 10 15.056 4.528 19l1.778-5.056L0 7.472h7.528z"/>
+                                    </svg>
+                                @else
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <title>Star</title>
+                                        <path d="M10 1l2.472 6.472h7.528l-5.806 4.472L15.472 19 10 15.056 4.528 19l1.778-5.056L0 7.472h7.528z"/>
+                                    </svg>
+                                @endif
+                            @endfor
                         </div>
-                       </div>
-                    
-            </div>
-            @endforeach
-           
+                        <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400"><p><time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Reviewd on {{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}  </time></p></p></footer>
+                        
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">{{$review->review}}</p>
+                        {{-- <p class="mb-3 text-gray-500 dark:text-gray-400">It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p> --}}
+                        {{-- <a href="#" class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a> --}}
+                        <aside>
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Joined On {{$review->created_at}}</p>
+                            <div class="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
+                                <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"  data-modal-target="createReview" data-modal-toggle="createReview">create review</a>
+                                <a href="#" data-modal-target="deleteReview" data-modal-toggle="deleteReview" class="text-white bg-white border border-gray-300 focus:outline-none hover:bg-red-200 focus:ring-4 focus:ring-white font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-red-800 hover:text-white dark:border-gray-600 dark:hover:bg-red-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">delete review</a>
+
+                            </div>
+                        </aside>
+                    </article>
+
+          @endforeach
+
         </div>
     </div>
 
@@ -149,7 +113,8 @@
 
             <!-- modal body -->
             <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                <form method="post"  enctype="multipart/form-data" action="{{route("patient.store_reviews")}}">
+                {{-- --}}
+                <form method="post"  enctype="multipart/form-data" action="{{route("patient.store_reviews")}} ">
                     @csrf
                     @method("POST")
                     <!-- firstname & lastname -->
@@ -185,7 +150,9 @@
         </div>
     </div>
  </div>
-  <!-- editReview -->
+  
+
+  <!-- deletereview -->
   <div id="deleteReview" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative max-w-lg h-full m-6 ">
         <!-- Modal content -->

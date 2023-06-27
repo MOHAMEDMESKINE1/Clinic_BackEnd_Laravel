@@ -16,7 +16,7 @@ class ReviewRepository implements RepositoryInterface {
     public function all() {
 
     
-        return  $this->reviews->select("*")->paginate(5); 
+        return  $this->reviews->select("*")->with("users")->latest()->paginate(5); 
          
     }
 

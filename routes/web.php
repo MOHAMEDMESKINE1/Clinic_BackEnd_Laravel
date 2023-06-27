@@ -241,7 +241,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::get('/doctor_details', 'doctor_details')->name('patient.doctor_details');
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
         Route::get('/profile', 'profile')->name('patient.profile');
-        Route::get('/reviews', 'reviews')->name('patient.reviews');
+        
         Route::get('/transactions', 'transactions')->name('patient.transactions');
         Route::get('/transactions_details', 'transactions_details')->name('patient.transactions_details');
         Route::get('/visits', 'visits')->name('patient.visits');
@@ -278,8 +278,9 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
     Route::controller(ReviewController::class)->group(function (){
 
         Route::get('/reviews', 'reviews')->name('patient.reviews');
-        Route::post('/reviews/create', 'store')->name('patient.store_reviews');
         Route::delete('/reviews/{id}', 'delete')->name('patient.delete_reviews');
+        Route::put('/reviews/update', 'update')->name('patient.update_reviews');
+        Route::post('/reviews/create', 'store')->name('patient.store_reviews');
 
     });
 

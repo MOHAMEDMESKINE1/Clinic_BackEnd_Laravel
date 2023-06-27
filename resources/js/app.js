@@ -1,5 +1,5 @@
 import './bootstrap.js';
-
+import '@alpinejs/route';
 import Alpine from 'alpinejs/src/alpine.js';
 window.Alpine = Alpine;
 Alpine.start();
