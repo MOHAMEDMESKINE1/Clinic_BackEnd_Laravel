@@ -107,9 +107,9 @@
                 </div>
                 <div class="w-full mb-6 text-gray-500">
                     
-                    <h1 class="mb-2  underline">Amount : </h1>
+                    <h1 class="mb-2  underline">Total Payment : </h1>
                     <span class="text-blue-500   rounded-sm p-1 ">
-                        {{$appointement->charge}}$
+                        {{$appointement->total_payment}} $
                     </span>
                 </div>
                 

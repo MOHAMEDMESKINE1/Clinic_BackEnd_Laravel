@@ -22,7 +22,7 @@ class AppointementRepository implements RepositoryInterface {
     public function all() {
 
        
-        return  $this->appointement->select("*")->with(["doctors","patients"])->paginate(5) ; 
+        return  $this->appointement->select("*")->with(["doctors","patients"])->latest()->paginate(5) ; 
     }
     public function appointementsChart(){
    
@@ -42,17 +42,51 @@ class AppointementRepository implements RepositoryInterface {
        
         return  $this->appointement->count() ;
     }
-    public function appointements_patients_count() {
+    public function today_appointements_patients_count() {
 
        
-       $appointment =  $this->appointement->with("patients")->count();
+       $appointment =  $this->appointement->with("patients")->whereDate("created_at",Carbon::today())->count();
 
-        // if ($appointment) {
-        //     $patientCount = $appointment->patients->count();
-        //     return $patientCount;
-        // }
+       
+       return  $appointment ;
+      
+       
+    }
+    public function next_appointements_patients_count() {
+
+       
+       $appointment =  $this->appointement->with("patients")->whereDate("created_at",Carbon::today()->addDay())->count();
+
+       
+       return  $appointment ;
+      
+       
+    }
+   
+    public function appointements_doctors_count() {
+
+       
+       $appointment =  $this->appointement->with("doctors")->count();
+
+        
         return  $appointment ;
     }
+    public function today_appointements_doctors() {
+
+       
+        $appointment =  $this->appointement->with("doctors")->whereDate("created_at",Carbon::today())->get();
+ 
+         
+         return  $appointment ;
+     }
+     public function upcoming_appointements_doctors() {
+ 
+        
+        $appointment =  $this->appointement->with("doctors")->whereDate("created_at",Carbon::today()->addDay())->get();
+ 
+         
+         return  $appointment ;
+     }    
     public function search($query)
     {
         
@@ -91,7 +125,7 @@ class AppointementRepository implements RepositoryInterface {
 
         }
 
-        return $this->appointement->paginate();
+        return $this->all() ;
       
         
     }
@@ -104,13 +138,14 @@ class AppointementRepository implements RepositoryInterface {
 
     public function store($params){
            
+        $total_payment  = $params["charge"] + $params["extra_fees"];
             $this->appointement->status = $params["status"];
             $this->appointement->payment = $params["payment"];
             $this->appointement->patient_id = $params["patient"];
             $this->appointement->service_id = $params["services"];
             $this->appointement->charge = $params["charge"];
-            $this->appointement->extra_fees = $params["extra_fees"];
-            $this->appointement->total_payment = $params["total_payment"];
+            $this->appointement->extra_fees = $params["extra_fees"] ;
+            $this->appointement->total_payment = $total_payment ;
             $this->appointement->date = $params["date"];
             $this->appointement->doctor_id = $params["doctor"];
             $this->appointement->save();
@@ -118,7 +153,7 @@ class AppointementRepository implements RepositoryInterface {
     }
 
     public function update($params,$id){
-
+        $total_payment  = $params["charge"] + $params["extra_fees"];
         $appointement = $this->getById($id);
 
         $appointement->status = $params["status"];
@@ -127,7 +162,7 @@ class AppointementRepository implements RepositoryInterface {
         $appointement->service_id = $params["services"];
         $appointement->charge = $params["charge"];
         $appointement->extra_fees = $params["extra_fees"];
-        $appointement->total_payment = $params["total_payment"];
+        $appointement->total_payment = $total_payment;
         $appointement->date = $params["date"];
         $appointement->doctor_id = $params["doctor"];
         $appointement->save();

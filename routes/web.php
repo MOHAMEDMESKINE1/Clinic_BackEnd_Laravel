@@ -242,10 +242,6 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
         Route::get('/profile', 'profile')->name('patient.profile');
         
-        Route::get('/transactions', 'transactions')->name('patient.transactions');
-        Route::get('/transactions_details', 'transactions_details')->name('patient.transactions_details');
-        Route::get('/visits', 'visits')->name('patient.visits');
-        Route::get('/visits_details', 'visits_details')->name('patient.visits_details');
     
         
         Route::get('/appointements', 'appointements')->name('patient.appointements');
@@ -264,7 +260,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
 
         // transactions
         Route::get('/transactions', 'transactions')->name('patient.transactions');
-        Route::get('/transactions/details/{id}', 'transactions_details')->name('patient.transactions_details');
+        Route::get('/transactions/{id}/details', 'transactions_details')->name('patient.transactions_details');
         Route::get('/transactions/search', 'searchTransaction')->name('patient.search_transactions');
 
         // visits

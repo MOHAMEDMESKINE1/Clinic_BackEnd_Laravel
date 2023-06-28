@@ -38,6 +38,21 @@ class PatientController extends Controller
         $this->visits = $visitRepository;
         
     }
+    public function statistics(){
+        
+        // patients
+        $today_appointment = $this->appointements->today_appointements_patients_count();
+        $next_appointment = $this->appointements->next_appointements_patients_count();
+        $appointment_count = $this->appointements->appointements_count();
+
+        // doctors
+        $today_doctors_appointment = $this->appointements->today_appointements_doctors();
+        $next_doctors_appointment = $this->appointements->upcoming_appointements_doctors();
+
+
+        return    view('dashboard.patient.statistics',compact('today_appointment','next_appointment','appointment_count','today_doctors_appointment','next_doctors_appointment'));
+
+    }
     public function patients(){
         
         $patients = $this->patient->all();
@@ -190,10 +205,7 @@ class PatientController extends Controller
         return    view('dashboard.patient.reviews');
 
     }
-    public function statistics(){
-        return    view('dashboard.patient.statistics');
-
-    }
+    
   
     //visits
     public function visits(){

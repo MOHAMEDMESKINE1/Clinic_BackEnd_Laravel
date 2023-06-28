@@ -54,7 +54,6 @@
                     <article class="bg-white p-5 shadow-gray-100 shadow-md rounded-md">
                         
                         <div class="flex items-center mb-4 space-x-4">
-                            {{-- <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt=""> --}}
                             <div></div>
                             <div class="space-y-1 font-medium dark:text-gray-500">
                                 <p>{{auth()->user()->name}}</p> 

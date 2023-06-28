@@ -45,8 +45,9 @@ class AdminController extends Controller
     public function doctor_details($id){
 
         $doctor = $this->doctors->getById($id);
-  
-        return    view('dashboard.admin.doctor_details',compact('doctor'));
+        $doctors_appointments = $this->appointments->appointements_doctors_count();
+
+        return    view('dashboard.admin.doctor_details',compact('doctor','doctors_appointments'));
 
      }
      public function all(){

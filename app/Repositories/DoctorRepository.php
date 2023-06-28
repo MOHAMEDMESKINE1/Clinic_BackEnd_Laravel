@@ -64,7 +64,7 @@ class DoctorRepository implements RepositoryInterface {
         return  $this->all();
         
     }
-        
+    
     public function getById($id){
        
 

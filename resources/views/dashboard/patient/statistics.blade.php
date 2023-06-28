@@ -60,7 +60,7 @@
               </div>
               <div class="">
                 <span class="flex justify-end px-2 font-bold ml-2 text-4xl ">
-                  25
+                 {{$today_appointment}}
                 </span>
                 <h6
                   class=" mt-5 flex justify-endtracking-wider text-white uppercase font-medium"
@@ -82,7 +82,7 @@
               </div>
               <div>
                 <span class="flex justify-end px-2 font-bold ml-2 text-4xl ">
-                  25
+                 {{$next_appointment}}
                 </span>
                 <h6
                   class=" mt-5  tracking-wider text-white uppercase font-medium"
@@ -105,12 +105,12 @@
               </div>
               <div>
                 <span class="flex justify-end px-2 font-bold ml-2 text-4xl ">
-                  25
+                  {{$appointment_count}}
                 </span>
                 <h6
                   class=" mt-5  flex justify-end tracking-wider text-white uppercase font-medium"
                 >
-                Completed Appointements
+                Total Appointements
               
               </h6>
                
@@ -141,25 +141,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @foreach ($today_doctors_appointment as $appointment)
+                          
+                    
                         <tr class="bg-white  border-b ">
                           <td>
-                            <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 mx-auto mt-5 rounded-full border border-gray-100 "><br>
+                            <img src="{{asset('storage/doctors/'.$appointment->doctors->photo)}}" alt="photo" class="w-7 h-7 mx-auto mt-5 rounded-full border border-gray-100 "><br>
 
                             <div class="flex justify-center">
-                              <a href="../patient/doctor_details.html" class="mx-3 text-indigo-500" >Smait Alejandro </a>
+                              <a href="../patient/doctor_details.html" class="mx-3 text-indigo-500" >{{$appointment->doctors->firstname}} {{$appointment->doctors->lastname}}</a>
                              </div>
                               <div class="flex justify-center" >
-                                  <p class="mx-10 mb-5">smith@gmail.com</p>
+                                  <p class="mx-10 mb-5">{{$appointment->doctors->email}}</p>
                               </div>
                             </div>
                           </td>
                            
                             <td class="px-6 py-4">
-                                <span class="text-white  bg-indigo-500 px-1 rounded-sm"> 05:20 PM - 06:20 PM</span>
+                                <span class="text-white  bg-indigo-500 px-1 rounded-sm"> {{$appointment->created_at}}</span>
                             </td>
                             
                         </tr>
-                    
+                        @endforeach
                     
                     </tbody>
                 </table>
@@ -186,25 +189,26 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr class="bg-white  border-b ">
-                        <td>
-                          <img src="imgs/hospital.png" alt="photo" class="w-7 h-7 mx-auto mt-5 rounded-full border border-gray-100 "><br>
+                    @foreach ($next_doctors_appointment as $appointment)
+                    <tr class="bg-white  border-b ">
+                      <td>
+                        <img src="{{asset('storage/doctors/'.$appointment->doctors->photo)}}" alt="photo" class="w-7 h-7 mx-auto mt-5 rounded-full border border-gray-100 "><br>
 
-                          <div class="flex justify-center">
-                            <a href="../patient/doctor_details.html"  class="mx-3 text-indigo-500">Smait Alejandro </a>
-                           </div>
-                            <div class="flex justify-center" >
-                                <p class="mx-10 mb-5">smith@gmail.com</p>
-                            </div>
+                        <div class="flex justify-center">
+                          <a href="../patient/doctor_details.html" class="mx-3 text-indigo-500" >{{$appointment->doctors->firstname}} {{$appointment->doctors->lastname}}</a>
+                         </div>
+                          <div class="flex justify-center" >
+                              <p class="mx-10 mb-5">{{$appointment->doctors->email}}</p>
                           </div>
+                        </div>
+                      </td>
+                       
+                        <td class="px-6 py-4">
+                            <span class="text-white  bg-indigo-500 px-1 rounded-sm"> {{$appointment->created_at}}</span>
                         </td>
-                         
-                          <td class="px-6 py-4">
-                              <span class="text-white  bg-indigo-500 px-1 rounded-sm"> 20 Apr 2023 03:50 PM - 03:55 PM
-                              </span>
-                          </td>
-                          
-                      </tr>
+                        
+                    </tr>
+                    @endforeach
                   
                   
                   </tbody>
