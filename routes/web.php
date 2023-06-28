@@ -210,12 +210,17 @@ Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], funct
     
     
     Route::controller(DoctorController::class)->group(function (){
-        
+
         Route::get('/statistics', 'statistics')->name('doctor.statistics');
         Route::get('/patient_details', 'patient_details')->name('doctor.patient_details');
         Route::get('/doctors', 'doctors')->name('doctor.doctors');
         Route::get('/appointements', 'appointements')->name('doctor.appointements');
-        Route::get('/appointement_details', 'appointement_details')->name('doctor.appointement_details');
+        Route::get('/appointement_details/{id}', 'appointements_details')->name('doctor.appointement_details');
+        Route::get('/appointements/search', 'search')->name('doctor.search_appointements');
+        Route::get('/appointements/filter', 'filter')->name('doctor.filter_appointements');
+        Route::get('/doctor_details/{id}', 'doctor_details')->name('doctor.doctor_details');
+
+
         Route::get('/profile', 'profile')->name('doctor.profile');
         Route::get('/holidays', 'holidays')->name('doctor.holidays');
         Route::get('/transactions', 'transactions')->name('doctor.transactions');
@@ -225,6 +230,13 @@ Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], funct
         Route::get('/schedule', 'schedule')->name('doctor.schedule');
         Route::get('/live_consultations', 'live_consultations')->name('doctor.live_consultations');
     
+
+        Route::get('/appointements/export', 'export_appointments')->name('doctor.export_appointments');
+
+        // crud appointement
+        Route::post('/appointements/create', 'storeAppointement')->name('doctor.store_appointements');
+        Route::delete('appointements/{id}', 'deleteAppointement')->name('doctor.delete_appointements');
+
     });
 
 

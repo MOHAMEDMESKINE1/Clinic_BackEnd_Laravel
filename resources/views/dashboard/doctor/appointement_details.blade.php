@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointement Details</title>
+    <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
     <link
@@ -42,86 +43,90 @@
       </style>
 </head>
 <body class="bg-gray-100">
-   <div class="m-5 ml-10 flex justify-between ">
-    <h1 class="text-gray-900 text-xl md\:flex-col flex-row">Appointement Details</h1>
-    <a href="{{route('appointements')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
-        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
-            Back
-        </span>
-       
-      </a>   
-    </div>
-    <div class="container rounded-lg shadow-md m-5 bg-white font-semibold mx-auto text-white p-10">
-        <div class="grid grid-cols-1  md:grid-cols-2 gap-2 p-5">
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2">Appointement ID : </h1>
-                <span class="bg-yellow-500  text-white rounded-sm p-1">
-                    US5ALTTZTL
+    @extends('dashboard.doctor.doctor_dashboard')
+
+    @section('content')
+         <div class=" container m-4 flex justify-between ">
+            <h1 class="text-gray-900 text-xl md\:flex-col flex-row">appointement Details</h1>
+            <a href="{{route("doctor.appointements")}}" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
+                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
+                    Back
                 </span>
+            </a>   
+        </div>
+        <div class=" m-5 rounded-lg shadow-md  bg-white font-semibold  text-white ">
+            <div class="grid grid-cols-1  md:grid-cols-2 gap-2 p-5 ">
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2">appointement ID : </h1>
+                    <span class="bg-yellow-500  text-white rounded-sm p-1">
+                        {{$appointement->id}}
+                    </span>
+                    
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2 underline">appointement At : </h1>
+                    <span class="bg-indigo-500 text-white  rounded-sm p-1 ">
+                        {{$appointement->created_at}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Status : </h1>
+                    <span class="bg-indigo-500  text-white rounded-sm p-1">
+                        {{$appointement->status}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Patient : </h1>
+                    <span class="text-blue-500   rounded-sm p-1 ">
+                        {{$appointement->patients->firstname}}
+                        {{$appointement->patients->lastname}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Doctor : </h1>
+                    <span class="text-blue-500   rounded-sm p-1 ">
+                        {{$appointement->doctors->firstname}}
+                        {{$appointement->doctors->lastname}}
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Service : </h1>
+                    <span class="text-blue-500   rounded-sm p-1 ">
+                       @if ($appointement->services->name)
+                        {{$appointement->services->name}}
+                        @else
+                        <span>N/A</span>
+                       @endif
+                    </span>
+                </div>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Total Payment : </h1>
+                    <span class="text-blue-500   rounded-sm p-1 ">
+                        {{$appointement->total_payment}} $
+                    </span>
+                </div>
                 
-            </div>
-            <div class="w-full mb-6 text-gray-500">
                 
-                <h1 class="mb-2 underline">Appointement At : </h1>
-                <span class="bg-indigo-500 text-white  rounded-sm p-1 ">
-                    14 Apr 2023 03:00 AM - 03:05 AM
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Status : </h1>
-                <span class="bg-indigo-500  text-white rounded-sm p-1">
-                    Booked
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Patient : </h1>
-                <span class="text-blue-500   rounded-sm p-1 ">
-                    Stacey Gross
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Doctor : </h1>
-                <span class="text-blue-500   rounded-sm p-1 ">
-                   Alex Benjamin
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Service : </h1>
-                <span class="text-blue-500   rounded-sm p-1 ">
-                    Psicanalista Clinico
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Amount : </h1>
-                <span class="text-blue-500   rounded-sm p-1 ">
-                    90.00$
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Status : </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-1 ">
-                    Paid
-                </span>
-            </div>
-            <div class="w-full mb-6 text-gray-500">
-                
-                <h1 class="mb-2  underline">Created At : </h1>
-                <span class="bg-green-600 text-white  rounded-sm p-1 ">
-                    6 hours ago
-                </span>
+                <div class="w-full mb-6 text-gray-500">
+                    
+                    <h1 class="mb-2  underline">Created At : </h1>
+                    <span class="bg-green-600 text-white  rounded-sm p-1 ">
+                        6 hours ago
+                    </span>
+                </div>
+               
             </div>
            
         </div>
-       
-    </div>
-
+    
+    @endsection
 
 
 
