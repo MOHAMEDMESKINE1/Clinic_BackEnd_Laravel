@@ -210,6 +210,7 @@ Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], funct
     
     
     Route::controller(DoctorController::class)->group(function (){
+        
         Route::get('/statistics', 'statistics')->name('doctor.statistics');
         Route::get('/patient_details', 'patient_details')->name('doctor.patient_details');
         Route::get('/doctors', 'doctors')->name('doctor.doctors');

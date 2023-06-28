@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\DoctorRepository;
 use Illuminate\Http\Request;
+use App\Repositories\DoctorRepository;
+use App\Repositories\PatientRepository;
+use App\Repositories\ServiceRepository;
+use App\Repositories\AppointementRepository;
 
 class DoctorController extends Controller
 {
+  
+
+    public $appointement ;
     public $doctors ;
+    public $patients ;
+    public $services ;
 
-    public function __construct(DoctorRepository $doctorRepository)
-    {
-        $this->doctors = $doctorRepository ;
+    public function __construct(AppointementRepository $appointementRepository,
+    PatientRepository $patientRepository,
+    DoctorRepository $doctorRepository,
+    ServiceRepository $serviceRepository,
+    ) {
+       
+        $this->appointement = $appointementRepository;
+        $this->doctors = $doctorRepository;
+        $this->patients = $patientRepository;
+        $this->services = $serviceRepository;
     }
-
     public function doctors(){
 
         $doctors =   $this->doctors->all();
