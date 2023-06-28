@@ -314,7 +314,7 @@
                                 </div>
                             </div>       
                             <!-- Total Paiemnt -->
-                            <div class="w-full mb-6 group">
+                            {{-- <div class="w-full mb-6 group">
                                 <!-- <label for="charge" class="font-medium ">Paiment:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                                 <input type="text" name="charge" id="charge" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="" required /> -->
 
@@ -325,7 +325,7 @@
                                 </span>
                                 <input type="number" name="total_payment" id="total_payment" class="block p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="0$">
                                 </div>
-                            </div>       
+                            </div>        --}}
                             
                     </div>
                     <!-- modal footer -->

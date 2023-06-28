@@ -238,7 +238,8 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
 
         Route::get('/statistics', 'statistics')->name('patient.statistics');
         Route::get('/appointement_details/{id}', 'appointement_details')->name('patient.appointement_details');
-        Route::get('/doctor_details', 'doctor_details')->name('patient.doctor_details');
+        Route::get('/doctor_details/{id}', 'doctor_details')->name('patient.doctor_details');
+       
         Route::get('/live_consultations', 'live_consultations')->name('patient.live_consultations');
         Route::get('/profile', 'profile')->name('patient.profile');
         

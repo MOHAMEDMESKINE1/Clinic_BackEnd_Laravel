@@ -187,8 +187,17 @@ class PatientController extends Controller
         
     }
 
-    public function doctor_details(){
-        return    view('dashboard.patient.doctor_details');
+    public function doctor_details($id){
+
+        $doctor = $this->appointements->getByIdDoctors($id);
+        $appointment_count = $this->appointements->appointements_count();
+
+        // doctors
+        $today_doctors_appointment = $this->appointements->today_appointements_doctors_count();
+        $next_doctors_appointment = $this->appointements->next_appointements_doctors_count();
+        $appointment_count = $this->appointements->appointements_count();
+
+        return    view('dashboard.patient.doctor_details',compact("doctor","appointment_count","today_doctors_appointment","next_doctors_appointment"));
 
     }
     public function live_consultations(){

@@ -45,7 +45,7 @@
     
    <div class="m-5 ml-10 flex justify-between ">
     <h1 class="text-gray-900 text-xl md\:flex-col flex-row font-bold">Doctor Details</h1>
-    <a href="{{route('doctor.doctors')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
+    <a href="{{route('patient.statistics')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
             Back
         </span>
@@ -56,17 +56,17 @@
            
             <!-- doctor -->
             <div class="flex flex-col sm:flex-row items-start sm:items-start mb-5 mb-xxl-0 text-center sm:text-sm-start ">
-                <div class="w-32 h-32 rounded-full overflow-hidden mx-auto">
-                    <img src="https://infycare-demo.nyc3.digitaloceanspaces.com/89/male.png" alt="user" class="w-full h-full ">
+                <div class="w-44 h-44 rounded-full overflow-hidden mx-auto">
+                    <img src="{{asset('storage/doctors/'.$doctor->doctors->photo)}}" alt="user" class="w-44 h-44 ">
                 </div>
                 <div class="mt-5 sm:mt-0 sm:ms-10 mx-auto">
                     <span class="text-green-500 mb-2 block">Doctor</span>
-                    <h2 class="text-xl font-bold">Aiko Walsh</h2>
+                    <h2 class="text-xl font-bold">{{$doctor->doctors->firstname}} {{$doctor->doctors->lastname}}</h2>
                     <a href="mailto:patient@infycare.com" class="text-gray-500  text-lg block mt-2">
-                        patient@infycare.com
+                        {{$doctor->doctors->email}}
                     </a>
                     <a href="tel:1 412-567-8941" class="text-gray-500  text-lg block mt-2">
-                        +1 412-567-8941
+                        {{$doctor->doctors->phone}}
                     </a>
                 </div>
             </div> 
@@ -80,18 +80,18 @@
       <div class="grid grid-col-1   md:grid-cols-3 gap-4  ">
 
         <div class="max-w-xl border border-gray-200 rounded-md  p-5 h-100">
-            <h2 class="text-cyan-800 mb-3 text-2xl">10</h2>
+            <h2 class="text-cyan-800 mb-3 text-2xl">{{$today_doctors_appointment}}</h2>
             <h3 class="text-gray-600 text-lg font-light mb-0">Today Appointments</h3>
         </div>
 
         <div class="max-w-xl border border-gray-200 rounded-md  p-5 h-100">
-            <h2 class="text-cyan-800 mb-3 text-2xl">5</h2>
+            <h2 class="text-cyan-800 mb-3 text-2xl">{{$appointment_count}}</h2>
             <h3 class="text-gray-600 text-lg font-light mb-0">Completed Appointments
             </h3>
         </div>
 
         <div class="max-w-xl border border-gray-200 rounded-md  p-5 h-100">
-            <h2 class="text-cyan-800 mb-3 text-2xl">2</h2>
+            <h2 class="text-cyan-800 mb-3 text-2xl">{{$next_doctors_appointment}}</h2>
             <h3 class="text-gray-600 text-lg font-light mb-0">Upcoming Appointments </h3>
         </div>
 
@@ -124,50 +124,50 @@
                         <!-- blood group-->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Blood Group</h1>
-                            <p class="font-semibold">N/A</p>
+                            <p class="font-semibold">{{$doctor->doctors->bloodGroup}}</p>
                         </div>
                         <!-- gender -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Gender</h1>
-                            <p class="font-semibold">Male</p>
+                            <p class="font-semibold">{{$doctor->doctors->gender}}</p>
                         </div>
                         <!-- specialization -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Specialization</h1>
                             <div class="flex flex-col">
-                                <p class="font-light text-white text-center text-xs mt-1 bg-indigo-500  rounded-md">Microbiology</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-yellow-500  rounded-md">Paediatrics</p>
+                                <p class="font-light text-white text-center text-xs mt-1 bg-indigo-500  rounded-md">{{$doctor->doctors->specializations->name}}</p>
+                                {{-- <p class="font-light text-white text-center text-xs mt-1 bg-yellow-500  rounded-md">Paediatrics</p>
                                 <p class="font-light text-white text-center text-xs mt-1 bg-green-500  rounded-md">Hydrafacial</p>
                                 <p class="font-light text-white text-center text-xs mt-1 bg-red-600  rounded-md">Laser</p>
                                 <p class="font-light text-white text-center text-xs mt-1 bg-black rounded-md">Dentist</p>
-                                <p class="font-light text-white text-center text-xs mt-1 bg-red-600 rounded-md">Nuclear Medicine</p>
+                                <p class="font-light text-white text-center text-xs mt-1 bg-red-600 rounded-md">Nuclear Medicine</p> --}}
     
                             </div>
                         </div>
                         <!-- experience -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Experience In Year</h1>
-                            <p class="font-semibold">1 Year</p>
+                            <p class="font-semibold">  {{$doctor->doctors->exprience }}  {{$doctor->doctors->exprience  >1 ?'Years' : 'Year'}} </p>
                         </div>
                         <!-- registred -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Registered On</h1>
-                            <p class="font-semibold">7 months ago</p>
+                            <p class="font-semibold">{{ \Carbon\Carbon::parse($doctor->doctors->created_at)->diffForHumans() }}</p>
                         </div>
                         <!-- updated -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">Last Updated</h1>
-                            <p class="font-semibold">2 months ago</p>
+                            <p class="font-semibold">{{ \Carbon\Carbon::parse($doctor->doctors->updated_at)->diffForHumans() }}   </p>
                         </div>
                         <!-- dob -->
                         <div class="my-4">
                             <h1 class="font-medium text-gray-500 ">DOB</h1>
-                            <p class="font-semibold">N/A</p>
+                            <p class="font-semibold">{{$doctor->doctors->birthdate }}</p>
                         </div>
                         <!-- adress -->
                         <div class="my-4">
-                            <h1 class="font-medium text-gray-500">Address</h1>
-                            <p class="font-semibold">478 South Milton Lane</p>
+                            <h1 class="font-medium text-gray-500 capitalize">univeristy</h1>
+                            <p class="font-semibold">{{$doctor->doctors->university }}</p>
                         </div>
                 </div>
             </div>

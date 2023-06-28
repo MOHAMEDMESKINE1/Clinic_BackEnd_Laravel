@@ -52,10 +52,30 @@ class AppointementRepository implements RepositoryInterface {
       
        
     }
+    public function today_appointements_doctors_count() {
+
+       
+       $appointment =  $this->appointement->with("doctors")->whereDate("created_at",Carbon::today())->count();
+
+       
+       return  $appointment ;
+      
+       
+    }
     public function next_appointements_patients_count() {
 
        
        $appointment =  $this->appointement->with("patients")->whereDate("created_at",Carbon::today()->addDay())->count();
+
+       
+       return  $appointment ;
+      
+       
+    }
+    public function next_appointements_doctors_count() {
+
+       
+       $appointment =  $this->appointement->with("doctors")->whereDate("created_at",Carbon::today()->addDay())->count();
 
        
        return  $appointment ;
@@ -134,6 +154,11 @@ class AppointementRepository implements RepositoryInterface {
        
 
         return $this->appointement->with(["doctors","patients","services"])->findOrFail($id);
+    }
+    public function getByIdDoctors($id){
+       
+
+        return $this->appointement->with("doctors")->findOrFail($id);
     }
 
     public function store($params){
