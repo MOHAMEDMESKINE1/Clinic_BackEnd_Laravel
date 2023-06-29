@@ -88,11 +88,12 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
         Route::get('/staff', 'staff')->name('admin.staff');
 
-        // crud specialization
+        // crud staff
         Route::get('/staff/search', 'search')->name('admin.search_staff');
         Route::get('/staff/{id}', 'edit')->name('admin.edit_staff');
         Route::put('/staff/edit/{id}', 'update')->name('admin.update_staff');
-        Route::delete('/staff/{id}', 'delete')->name('admin.delete_staff');
+        Route::put('/staff/editRole/{id}', 'updateRole')->name('admin.update_staffRole');
+        Route::delete('/staff/{id}', 'deleteStaff')->name('admin.delete_staff');
 
 
     });
@@ -214,28 +215,33 @@ Route::group(['middleware' => ['auth', 'isDoctor'], 'prefix' => 'doctor'], funct
         Route::get('/statistics', 'statistics')->name('doctor.statistics');
         Route::get('/patient_details', 'patient_details')->name('doctor.patient_details');
         Route::get('/doctors', 'doctors')->name('doctor.doctors');
-        Route::get('/appointements', 'appointements')->name('doctor.appointements');
-        Route::get('/appointement_details/{id}', 'appointements_details')->name('doctor.appointement_details');
-        Route::get('/appointements/search', 'search')->name('doctor.search_appointements');
-        Route::get('/appointements/filter', 'filter')->name('doctor.filter_appointements');
         Route::get('/doctor_details/{id}', 'doctor_details')->name('doctor.doctor_details');
+       
 
 
         Route::get('/profile', 'profile')->name('doctor.profile');
         Route::get('/holidays', 'holidays')->name('doctor.holidays');
-        Route::get('/transactions', 'transactions')->name('doctor.transactions');
-        Route::get('/transactions_details', 'transactions_details')->name('doctor.transactions_details');
         Route::get('/visits', 'visits')->name('doctor.visits');
         Route::get('/visits_details', 'visits_details')->name('doctor.visits_details');
         Route::get('/schedule', 'schedule')->name('doctor.schedule');
         Route::get('/live_consultations', 'live_consultations')->name('doctor.live_consultations');
     
 
+
+        // appointements
+        Route::get('/appointements', 'appointements')->name('doctor.appointements');
+        Route::get('/appointement_details/{id}', 'appointements_details')->name('doctor.appointement_details');
+        Route::get('/appointements/search', 'search')->name('doctor.search_appointements');
+        Route::get('/appointements/filter', 'filter')->name('doctor.filter_appointements');
         Route::get('/appointements/export', 'export_appointments')->name('doctor.export_appointments');
 
-        // crud appointement
         Route::post('/appointements/create', 'storeAppointement')->name('doctor.store_appointements');
         Route::delete('appointements/{id}', 'deleteAppointement')->name('doctor.delete_appointements');
+
+        // transactions
+        Route::get('/transactions', 'transactions')->name('doctor.transactions');
+        Route::get('/transactions/details/{id}', 'transactions_details')->name('doctor.transactions_details');
+        Route::get('/transactions/search', 'searchTransaction')->name('doctor.search_transactions');
 
     });
 

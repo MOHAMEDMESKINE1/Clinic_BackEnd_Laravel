@@ -11,7 +11,7 @@ class StaffController extends Controller
 {
     public function staff(){
 
-        $staffs = User::paginate();
+        $staffs = User::latest()->paginate();
 
         return view("dashboard.admin.staff",compact("staffs"));
     }
@@ -58,6 +58,21 @@ class StaffController extends Controller
       return redirect()->route("admin.staff");
         
     }
+    public function search(Request $query)
+    {
+        $staffs = User::where('name', 'like', '%' . $query . '%')
+        ->orWhere('email', 'like', '%' . $query . '%')
+        ->orWhere('role', 'like', '%' . $query . '%')
+        ->paginate();
+
+        if (!$staffs){
+            $staffs = $this->staff();
+        }
+        return view("dashboard.admin.staff",compact("staffs"));
+     
+        
+    }
+
     public function edit($id){
 
         $staff = User::findOrFail($id);
@@ -67,18 +82,20 @@ class StaffController extends Controller
 
     public function update(Request $request,$id)
     {
-    
+      
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|min:6',
+            'name' => 'nullable',
             'gender' => 'nullable',
             'photo' => 'nullable',
-            'phone' => 'nullable',
             'role' => 'required',
         ]);
-        // dd($request->role);
         $user =User::find($id);
+        
+        $user->name =  $request->name;
+      
+        if (isset($request->gender)) {
+            $user->gender =  $request->gender;
+        }
 
         if(request()->hasfile('photo'))
         {
@@ -86,36 +103,48 @@ class StaffController extends Controller
             $filename =  date('YmdHis') . "." . $file->getClientOriginalExtension();;
             $file->move("storage/staff", $filename);
             
-            $user->photo = $filename;
-        }  else{
-            $user->photo = null;
-
+            $user->photo = "$filename";
         }
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'gender' => $request->gender,
-            'photo' =>$filename??null,
-            'phone' => $request->phone,
-            'role' => $request->role,
-            'password' => Hash::make($request->password),
-        ]);
+        // $user->phone =  $request->phone;
+        $user->role =  $request->role;
+        $user->save();
         
+        toastr()->success('Staff has been updated successfully! to : <span class="text-orange-500">'.$request->role.'</span>' , 'Saving ');
+
+        return redirect()->route('admin.staff');
+    }
+    public function updateRole(Request $request,$id)
+    {
+      
+        $request->validate([
+           
+            'role' => 'required',
+        ]);
+        $user =User::find($id);
+       
+        $user->role =  $request->role;
+        $user->save();
+        
+        toastr()->success('Staff has been updated successfully! to : <span class="text-orange-500">'.$request->role.'</span>' , 'Saving ');
+
         return redirect()->route('admin.staff');
     }
 
-    public function delete($id){
-        $staff = User::findOrFail($id);
-      
-     
-        // Delete the existing image file
-         $photo_path = $staff->photo;
+    public function deleteStaff(Request $request){
 
-         if ($photo_path && file_exists(public_path('storage/staff/' . $photo_path))) {
+        $user =User::find($request->id);
+       
+         $photo_path = $user->photo;
+
+        if ($photo_path && file_exists(public_path('storage/staff/' . $photo_path))) {
             unlink(public_path('storage/staff/' . $photo_path));
         }
-        $staff->delete();
+        $user->delete();
+
+        toastr()->success('Staff  has been deleted successfully! ' , 'Saving ');
         
+        return redirect()->route('admin.staff');
+       
     }
 }

@@ -28,7 +28,7 @@ class SubscribeRepository implements RepositoryInterface {
        
         $services = $this->subscribers
         ->where('subscriber', 'like', '%' . $query . '%')
-        ->paginate();
+        ->paginate(5);
         return $services;
         
     }

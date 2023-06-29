@@ -7,36 +7,36 @@
         @method("PUT")
         <!-- firstname & lastname -->
         <div class="grid grid-col-1 md:grid-cols-2 gap-2 ">
-                <!-- firstname -->
+                <!-- name -->
                 <div class=" w-full mb-6 group">
                     <label for="" class="font-medium "> Name :<span class="text-red-500 font-medium">*</span></label>
                     <input type="text" name="name" id="name" value="{{$staff->name}}" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="First Name " required />
                 </div>
                
-                <!-- email -->
+                {{-- <!-- email -->
                 <div class="w-full mb-6 group">
                     <label for="" class="font-medium ">Email:<span class="text-red-500 font-medium">*</span></label>
                     <input type="email" name="email" value="{{$staff->email}}" id="email" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
-                </div>
+                </div> --}}
                 <!-- phone -->
-                <div class="w-full mb-6  group ">
+                {{-- <div class="w-full mb-6  group ">
                     <label for="" class="font-medium ">Contact No:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                     <input type="tel"  name="phone" value="{{$staff->phone}}" id="phone" class="block  w-full mt-1 p-2.5  lg\:max-w-screen-lg text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="+1" required />
-                </div>
+                </div> --}}
                 <!-- password -->
-                <div class="w-full mb-6 group">
+                {{-- <div class="w-full mb-6 group">
                     <label for="" class="font-medium ">Password:<span class="text-red-500 font-medium">*</span></label>
                     <input type="password" name="password"  value="{{$staff->password}}" id="password" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="***** "  />
-                </div>
+                </div> --}}
                
                 <!-- Role   -->
                 <div class="w-full  group">
                     <label for="role" class="font-medium ">Role:<span class="text-red-500 font-medium mb-1">*</span><br></label>
                     <select name="role"  id="role" class="block mt-1 p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer">
                         <option selected disabled>Select a Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="patient" >Patient</option>
-                        <option value="doctor">Doctor</option>     
+                        <option value="admin" {{$staff->role === 'admin' ? 'selected' :  '' }}>Admin</option>
+                        <option value="patient"  {{$staff->role === 'patient' ? 'selected' :  '' }}>Patient</option>
+                        <option value="doctor" {{$staff->role === 'doctor' ? 'selected' :  '' }}>Doctor</option>     
     
                     </select>                                
                 </div>
@@ -59,7 +59,7 @@
                     </div>
     
                 </div>
-                <!-- profile -->
+                <!-- photo -->
                 <div class="w-full group">
                        <div class="">
                     

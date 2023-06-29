@@ -154,11 +154,42 @@ class DoctorController extends Controller
         return Excel::download( new ExportAppointements(), 'appointments.xlsx');
     }
     
-    public function appointement_details(){
+    public function transactions(){
 
-        return    view('dashboard.doctor.appointement_details');
+        $transactions = $this->appointement->all();
+
+        return    view('dashboard.doctor.transactions',compact("transactions"));
 
     }
+    public function transactions_details($id){
+
+        $transaction = $this->appointement->getById($id);
+        return    view('dashboard.doctor.transactions_details',compact("transaction"));
+
+    }
+
+    public function searchTransaction(Request $request)
+    {
+        
+
+        $query = $request->search;
+
+        $transactions = $this->appointement->search($query);
+       
+        $patients = $this->patients->all();
+
+        
+         
+       return view('dashboard.doctor.transactions',compact(
+            [
+                "transactions",
+                "patients",
+               
+            ]));
+        
+    }
+
+    
     public function profile(){
 
         return    view('dashboard.doctor.profile');
@@ -169,14 +200,7 @@ class DoctorController extends Controller
         return    view('dashboard.doctor.holidays');
 
     }
-    public function transactions(){
-        return    view('dashboard.doctor.transactions');
-
-    }
-    public function transactions_details(){
-        return    view('dashboard.doctor.transactions_details');
-
-    }
+    
     public function visits(){
         return    view('dashboard.doctor.visits');
 

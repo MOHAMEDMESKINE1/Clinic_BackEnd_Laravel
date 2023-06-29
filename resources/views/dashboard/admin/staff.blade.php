@@ -75,9 +75,9 @@
                     
                     <h1 class="text-lg font-semibold text-gray-500 pt-3 pb-3 uppercase  border-b dark:border-primary dark:text-light mb-4 ">Recent registred staffs </h1>
                     
-                    <table class="w-full text-sm  overflow-hidden rounded-md ">
-                        <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
-                            <tr class=" text-left">
+                    <table class="w-full text-sm text-center  overflow-hidden rounded-md ">
+                        <thead class="text-xs  text-gray-500 font-semibold bg-gray-100 uppercase">
+                            <tr class=" ">
                                 <th scope="col" class="px-6 py-3">
                                     FULL NAME
                                 </th>
@@ -97,14 +97,21 @@
                             @foreach ($staffs as $staff)
                                 
                          
-                            <tr class="bg-whit  border-b dark:bg-white dark:border-gray-400">
-                                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                                       <div class="flex justify-start">
+                            <tr class="bg-whit   border-b dark:bg-white dark:border-gray-400">
+                                <th scope="row" class="px-6 py-4 text-center font-medium text-black whitespace-nowrap ">
+                                    <div class="w-10 h-10 p-1.5 mx-14 flex flex-col justify-center object-cover object-center rounded-full shadow mr-3">
+                                        @if ($staff->photo)
+                                        <img src="{{asset('/storage/staff/'.$staff->photo)}}" alt="{{$staff->firstname}}" class="w-full h-full rounded-full">
+                                        @else
+                                        <img src="{{asset('/storage/img/profile.svg')}}" alt="{{$staff->firstname}}" class="w-full h-full rounded-full">
+                                        @endif
+                                       <div class="flex justify-center">
                                         <p class="capitalize text-cyan-950">{{$staff->name}} </p>
                                        </div>
-                                        <div class="flex justify-start" >
+                                        <div class="flex justify-center" >
                                             <p class="">{{$staff->email}}</p>
                                         </div>
+                                    </div>
                                 </th>
                                 <td class="px-6 py-4">
                                 <span class="bg-green-200 text-green-500 px-1 rounded-sm"> {{$staff->role}}</span>
@@ -121,12 +128,24 @@
 
                                 </td>
                                 <td>
-                                    <div class="flex justify-center mt-5">
+                                    <div class="flex  items-center justify-center mt-5">
                                         
                                         <!-- edit -->
+                                         
+                                        <form action="{{route("admin.update_staffRole",$staff->id)}}" method="POST">
+                                            @csrf
+                                            @method("PUT")
+                                            <select name="role" onchange="this.form.submit()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-1.5 dark:bg-white dark:border-gray-600 ">
+                                                <option value="">Select Role</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="patient">Patient</option>
+                                                <option value="doctor">Doctor</option>
+                                            </select>
+                                        </form>
+                                        {{-- edit --}}
                                         <a href="{{route("admin.edit_staff",$staff->id)}}"  data-tooltip-target="tooltip-edit"   class="text-white  px-5 py-2 text-center mb-2" type="button">
                                             <i class="fas fa-edit text-blue-700 text-xl"></i>
-                                        </a>    
+                                        </a> 
                                         <!-- trash -->
                                         <a href="#" data-tooltip-target="tooltip-delete"  data-modal-target="deleteStaff" data-modal-toggle="deleteStaff" class="text-white  px-5 py-2 text-center mr-2 mb-2" type="button">
                                             <i class="fas fa-trash text-red-700 text-xl"></i>
@@ -170,21 +189,21 @@
                 <h3 class="text-xl  font-bold text-red-700 ">
                     Are You Sure ?
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="deleteService">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="deleteStaff">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form id="delete-form"  action="{{route("admin.delete_staff",$staff->id)}}"  class="text-white mx-2  px-5 py-2 text-center mb-2"  method="POST">
+                <form  method="POST" class="text-white mx-2  px-5 py-2 text-center mb-2"  action="{{route("admin.delete_staff",$staff->id)}}"  >
                     @csrf
                     @method("DELETE")
                    
                 <!-- Modal footer -->
                 <div class="flex justify-start   rounded-b dark:border-gray-600">
                     <button  type="submit" class="text-white bg-red-700 mx-2 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
-                    <button data-modal-hide="deleteDoctor" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    <button data-modal-hide="deleteStaff" type="button" class="text-gray-500  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
                 </div>
                 </form>
             </div>

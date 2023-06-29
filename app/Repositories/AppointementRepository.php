@@ -160,6 +160,11 @@ class AppointementRepository implements RepositoryInterface {
 
         return $this->appointement->with("doctors")->findOrFail($id);
     }
+    public function getByIdPatients($id){
+       
+
+        return $this->appointement->with("patients")->findOrFail($id);
+    }
 
     public function store($params){
            
