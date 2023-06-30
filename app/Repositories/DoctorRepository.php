@@ -34,6 +34,11 @@ class DoctorRepository implements RepositoryInterface {
        
         return  $this->doctor->select("*")->with("specializations:name")->paginate(5) ; 
     }
+    public function doctors() {
+
+       
+        return  $this->doctor->select("*")->paginate(5) ; 
+    }
     public function doctors_count() {
 
        

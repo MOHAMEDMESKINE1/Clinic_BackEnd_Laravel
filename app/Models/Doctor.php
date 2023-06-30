@@ -50,6 +50,11 @@ class Doctor extends Model
         return $this->hasMany(Visit::class,"visit_id");
     }
     
+    public function schedules(){
+
+        return $this->hasMany(Schedule::class,'schedule_id');
+    }
+    
     
    
 }

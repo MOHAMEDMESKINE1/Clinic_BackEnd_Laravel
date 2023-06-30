@@ -26,6 +26,9 @@
         });
     </script>
     <!-- datatable -->
+    <!-- editor text -->
+      <!-- editor text -->
+      <script src="../editortext/ckeditor.js"></script>
          <!--  poppins font -->
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +44,7 @@
 <body class="bg-gray-100">
    <div class="m-5 ml-10 flex justify-between ">
     <h1 class="text-gray-900 text-xl md\:flex-col flex-row">Visits Details</h1>
-    <a href="{{route('visits')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
+    <a href="{{route('doctor.visits')}}" class="relative inline-flex items-center justify-center p-0.5 mb-2  mr-5 w-75 overflow-hidden text-sm font-medium dark:text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500">
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-cyan-900  rounded-md group-hover:bg-opacity-0 hover:text-white">
             Back
         </span>
@@ -70,48 +73,58 @@
                 
                 <h1 class="mb-2 text-gray-800 underline">Patient Name : </h1>
                 <span class="text-blue-500 font-medium text-xl ">
-                  Thomas Seteve
+                 {{$visit->patients->firstname}}  {{$visit->patients->lastname}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Profile : </h1>
-               <img src="{{asset('storage/img/profile.svg')}}" class="w-12 h-12" alt="">
+                @if ($visit->patients->photo)
+
+                    <div class="w-16 h-16 flex-shrink-0 object-cover  object-center rounded-full shadow mr-3">
+                        <img src="{{asset('storage/patients/'.$visit->patients->photo)}}" alt="photo" class="w-full h-full rounded-full "><br>
+                    </div>
+                    @else
+                    <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                        <img src="{{asset('storage/img/profile.svg')}}" alt="photo" class="w-full h-full rounded-full "><br>
+                    </div>
+                @endif
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Email: </h1>
-                <span class="text-blue-500 text-xl ">
-                  Thomas@gmail.com
+                <span class="text-blue-500 font-medium text-xl ">
+                    {{$visit->patients->email}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800 underline">Doctor : </h1>
-                <span class="text-blue-500 text-xl ">
-                  Thomas Alberto
+                <span class="text-blue-500 font-medium text-xl ">
+                    {{$visit->doctors->firstname}}  {{$visit->doctors->lastname}}
+
                 </span>
             </div>
           
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Visit Date : </h1>
-                <span class=" text-blue-500 rounded-sm  text-xl ">
-                    22 April 2023
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->date}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Created At : </h1>
-                <span class=" text-blue-500 rounded-sm  text-xl ">
-                    14 hours ago
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->patients->created_at}}
                 </span>
             </div>
             <div class="w-full mb-6 ">
                 
                 <h1 class="mb-2 text-gray-800  underline">Updated at : </h1>
-                <span class=" text-blue-500 rounded-sm  text-xl ">
-                    7 hours ago
+                <span class=" text-blue-500 rounded-sm p-1 text-xl ">
+                    {{$visit->patients->updated_at}}
                 </span>
             </div>
           
@@ -120,7 +133,13 @@
        
     </div>
 
-
+<script>
+    ClassicEditor
+   .create( document.querySelector( '#editor' ) )
+   .catch( error => {
+       console.error( error );
+   } );
+</script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 

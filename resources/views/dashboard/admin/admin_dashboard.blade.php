@@ -47,7 +47,7 @@
   </head>
   <body >
 
-    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
+    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');  ">
       <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
         <!-- Loading screen -->
         <div
@@ -72,11 +72,11 @@
 
              
                 </a>
-                <div role="menu" x-show="open" class="mt-2 space-y-3 px-5" aria-label="Dashboards">
+                <div role="menu" x-show="open" class="mt-2 space-y-3 px-5  " aria-label="Dashboards">
                   <a
                     href="{{route('admin.statistics')}}"
                     role="menuitem"
-                    class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                    class="block hover:shadow-md hover:border   border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
                   <i class="fas fa-light fa-gauge p-1"></i>
                     Dashboard

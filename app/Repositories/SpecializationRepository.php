@@ -17,7 +17,6 @@ class SpecializationRepository implements RepositoryInterface {
     }
      
     public function all() {
-        // $specializations = $this->specialization->all()->paginate();
        
         return  $this->specialization->select("*")->paginate(5); 
     }

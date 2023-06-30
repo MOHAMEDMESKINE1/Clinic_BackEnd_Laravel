@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\VisitRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\ServiceRepository;
+use App\Http\Controllers\Excel\ExportVisits;
 use App\Repositories\AppointementRepository;
 use App\Http\Controllers\Excel\ExportAppointements;
 
@@ -18,18 +20,35 @@ class DoctorController extends Controller
     public $doctors ;
     public $patients ;
     public $services ;
+    public $visits ;
 
     public function __construct(AppointementRepository $appointementRepository,
     PatientRepository $patientRepository,
     DoctorRepository $doctorRepository,
     ServiceRepository $serviceRepository,
+    VisitRepository $visitRepository,
     ) {
        
         $this->appointement = $appointementRepository;
         $this->doctors = $doctorRepository;
         $this->patients = $patientRepository;
         $this->services = $serviceRepository;
+        $this->visits = $visitRepository;
     }
+
+    // public function RouteName($route){
+    //     $middlewareName = Request::route()->getName();
+
+    //     if ($middlewareName == 'doctor') { 
+    //         $view = 'dashboard.doctor'. $route;
+    //     } elseif ($middlewareName == 'admin') {
+    //         $view = 'dashboard.admin'.$route;
+    //     } else {
+    //         $view = 'dashboard.patient'.$route;
+    //     }
+
+    //     return $view
+    // }
     public function doctors(){
 
         $doctors =   $this->doctors->all();
@@ -190,6 +209,79 @@ class DoctorController extends Controller
     }
 
     
+    // visits
+    public function visits(){
+
+        $doctors= $this->doctors->all();
+        $patients= $this->patients->all();
+
+        $visits= $this->visits->all();
+       
+
+        return    view('dashboard.doctor.visits',compact(["visits","patients","doctors"]));
+
+    }
+    public function storeVisit(Request $request){
+
+        $this->visits->store($request->all());
+
+        return    redirect()->route("doctor.visits");
+
+    }
+    public function searchVisit( Request $request){
+        
+        $patients = $this->patients->all();
+        $doctors= $this->doctors->all();
+
+        $query = $request->search;
+        $visits = $this->visits->search($query);
+
+        return    view('dashboard.doctor.visits',compact(['visits','patients','doctors']));
+
+      
+
+    }
+    public function visits_details ($id){
+        
+        $visit = $this->visits->getById($id);
+    
+        return  view('dashboard.doctor.visits_details',compact("visit"));
+
+     }
+    public function editVisit($id){
+
+         $visit = $this->visits->getById($id);
+         $doctors= $this->doctors->all();
+         $patients= $this->patients->all();
+
+        return    view('dashboard.doctor.visit.edit',compact("visit","doctors","patients"));
+
+    }
+
+    public function updateVisit (Request $params,$id){
+        
+        $this->visits->update($params,$id);
+
+        toastr()->success('Visit has been updated successfully!', 'Update');
+
+        return redirect()->route("doctor.visits");
+    
+    }
+    public function deleteVisit(Request $request){
+
+        $this->visits->delete($request->id);
+ 
+        toastr()->success('Visit has been deleted successfully!', 'Deletion');
+ 
+        return redirect()->route("doctor.visits");
+ 
+ 
+     }
+    public function export_visits()
+    {
+        return Excel::download( new ExportVisits(), 'visits.xlsx');
+    }
+
     public function profile(){
 
         return    view('dashboard.doctor.profile');
@@ -201,18 +293,8 @@ class DoctorController extends Controller
 
     }
     
-    public function visits(){
-        return    view('dashboard.doctor.visits');
-
-    }
-    public function visits_details(){
-        return    view('dashboard.doctor.visits_details');
-
-    }
-    public function schedule(){
-        return    view('dashboard.doctor.schedule');
-
-    }
+   
+    
     public function live_consultations(){
         return    view('dashboard.doctor.live_consultations');
 

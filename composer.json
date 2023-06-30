@@ -19,6 +19,7 @@
         "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^7.0",
         "stichoza/google-translate-php": "^5.1",
+        "stripe/stripe-php": "^10.15",
         "symfony/http-client": "*",
         "symfony/mailgun-mailer": "*",
         "twilio/sdk": "*",

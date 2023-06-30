@@ -102,7 +102,7 @@ class AppointementRepository implements RepositoryInterface {
      public function upcoming_appointements_doctors() {
  
         
-        $appointment =  $this->appointement->with("doctors")->whereDate("created_at",Carbon::today()->addDay())->get();
+        $appointment =  $this->appointement->with("doctors")->whereDate("date",'>',Carbon::today())->get();
  
          
          return  $appointment ;
@@ -123,7 +123,7 @@ class AppointementRepository implements RepositoryInterface {
         ->paginate(5);
 
        
-            return $appointments;
+        return $appointments;
        
 
       

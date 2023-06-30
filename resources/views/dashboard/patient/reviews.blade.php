@@ -54,7 +54,17 @@
                     <article class="bg-white p-5 shadow-gray-100 shadow-md rounded-md">
                         
                         <div class="flex items-center mb-4 space-x-4">
-                            <div></div>
+                            @if (auth()->user()->photo)
+                            <div class="w-11 h-11 flex-shrink-0 object-cover  object-center rounded-full shadow mr-3">
+                                <img src="{{asset('storage/staff/'.auth()->user()->photo)}}" alt="photo" class="w-full h-full rounded-full "><br>
+                            </div>
+                            @else
+                            <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
+                                <img src="{{asset('storage/img/profile.svg')}}" alt="photo" class="w-full h-full rounded-full "><br>
+                            </div>
+
+                            @endif
+                           
                             <div class="space-y-1 font-medium dark:text-gray-500">
                                 <p>{{auth()->user()->name}}</p> 
                                 <p class="mb-2 text-gray-500 dark:text-gray-400">{{auth()->user()->email}}</p>

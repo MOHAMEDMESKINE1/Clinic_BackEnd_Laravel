@@ -90,7 +90,6 @@ class VisitRepository implements RepositoryInterface {
 
         $visit->delete();
         
-        $this->all();
     }
 
 

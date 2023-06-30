@@ -43,12 +43,14 @@ class VisitController extends Controller
     public function search(Request $request){
 
         $query = $request->search;
+        
         $visits = $this->visits->search($query);
 
      
         $patients = $this->patients->all();
 
         $doctors= $this->doctors->all();
+
         if ($patients->isEmpty()) {
 
            
@@ -87,7 +89,7 @@ class VisitController extends Controller
         // $patients= $this->patients->all();
              
         // "patients","doctors"
-        return  view('dashboard.admin.visits_details',compact(["visit"]));
+        return  view('dashboard.admin.visits_details',compact("visit"));
 
      }
     public function update (Request $params,$id){

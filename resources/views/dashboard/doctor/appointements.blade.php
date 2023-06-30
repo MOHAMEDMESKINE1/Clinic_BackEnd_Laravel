@@ -59,26 +59,30 @@
         <div class=" col-span-2 bg-white mx-4 p-4 shadow text-center rounded-md dark:bg-darker relative overflow-x-auto">
           
            
-              {{-- export excel --}}
-                <x-export-excel route="doctor.export_appointments"></x-export-excel>
-                {{-- export excel --}}
-            <form action="{{ route('doctor.filter_appointements') }}" method="GET" class="flex mb-5 items-center">
-                <select id="order-filter" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
-                    <option disabled selected>
-                        <i class="fas fa-light fa-filter"></i>
-                        Filter Status
-                    </option>
-                    <option >all</option>
-                    <option value="booked">booked</option>
-                    <option value="checkin">Check In</option>
-                    <option value="checkout">Check Out</option>
-                    <option value="cancelled">Cancelled</option>
-                </select>
+             <div class="flex justify-between">
+                
+                <form action="{{ route('doctor.filter_appointements') }}"  method="GET" class="flex mb-5 items-center">
+                    <select id="order-filter" onchange="this.form.submit()" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                        <option disabled selected>
+                            <i class="fas fa-light fa-filter"></i>
+                            Filter Status
+                        </option>
+                        <option >all</option>
+                        <option value="booked">booked</option>
+                        <option value="checkin">Check In</option>
+                        <option value="checkout">Check Out</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </form>
+                 {{-- export excel --}}
+                 <x-export-excel route="doctor.export_appointments"></x-export-excel>
+                 {{-- export excel --}}
+             </div>
     
-                <button type="submit"  class="text-white    bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                {{-- <button type="submit"  class="text-white    bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                     Filter
-                </button>
-            </form>
+                </button> --}}
+            
             
             <table class="w-full text-sm  text-center   overflow-hidden rounded-md ">
                 <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
