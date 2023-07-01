@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Appointement;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Excel\ExportAppointements;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\ServiceRepository;
+use Picqer\Barcode\BarcodeGeneratorPNG;
 use App\Repositories\AppointementRepository;
+use App\Http\Controllers\Excel\ExportAppointements;
 
 class AppointementController extends Controller
 {
@@ -82,7 +83,8 @@ class AppointementController extends Controller
             ]));
     }
     public function store (Request $request){
-            
+
+       
             $this->appointement->store($request->all());            
             
             // just igonre this error it still working 
@@ -91,7 +93,9 @@ class AppointementController extends Controller
 
         return  redirect()->route('admin.appointements');
     }
-
+  
+ 
+   
      public function appointements_details($id){
 
         $appointement = $this->appointement->getById($id);

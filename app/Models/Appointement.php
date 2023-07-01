@@ -31,6 +31,10 @@ class Appointement extends Model
     {
         return $this->hasOne(Transaction::class);
     }
-
+    public function WhereBarCode($barcode)
+    {
+        return $this->where('barcode', $barcode);
+    }
+    
    
 }

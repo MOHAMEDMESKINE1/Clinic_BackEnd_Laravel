@@ -7,6 +7,8 @@ use App\Models\Patient;
 use App\Models\Appointement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Picqer\Barcode\BarcodeGeneratorPNG;
+use Picqer\Barcode\BarcodeGeneratorHTML;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -149,7 +151,10 @@ class AppointementRepository implements RepositoryInterface {
       
         
     }
+    public function barCodeExists($number){
         
+        return $this->appointement->WhereBarCode($number)->exists();
+    }  
     public function getById($id){
        
 
@@ -167,7 +172,14 @@ class AppointementRepository implements RepositoryInterface {
     }
 
     public function store($params){
-           
+        $number =$params["sku"];
+        $generator = new BarcodeGeneratorPNG();
+        $barcode = base64_encode($generator->getBarcode($number, $generator::TYPE_CODE_128));
+     
+        // $generator = new BarcodeGeneratorHTML();
+        // $barcode = $generator->getBarcode($number, $generator::TYPE_CODE_128);
+            
+
         $total_payment  = $params["charge"] + $params["extra_fees"];
             $this->appointement->status = $params["status"];
             $this->appointement->payment = $params["payment"];
@@ -178,11 +190,16 @@ class AppointementRepository implements RepositoryInterface {
             $this->appointement->total_payment = $total_payment ;
             $this->appointement->date = $params["date"];
             $this->appointement->doctor_id = $params["doctor"];
+            
+            $this->appointement->sku = $params["sku"];;
+            $this->appointement->barcode = $barcode;
+
             $this->appointement->save();
         
     }
 
     public function update($params,$id){
+        
         $total_payment  = $params["charge"] + $params["extra_fees"];
         $appointement = $this->getById($id);
 

@@ -53,7 +53,7 @@
                     <div class=" flex justify-between  mx-8" >
                        
                         
-                        <button data-modal-target="addAppointement" data-modal-toggle="addAppointement" class="text-white bg-gradient-to-br  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
+                        <button onclick="generateBarcode()" data-modal-target="addAppointement" data-modal-toggle="addAppointement" class="text-white bg-gradient-to-br  from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
                             Add Appointemet
                         </button>
                             
@@ -90,7 +90,7 @@
                   </form>
                   
                 </div>
-                <table class="w-full text-sm  text-center   overflow-hidden rounded-md ">
+                <table class="w-full text-sm  text-center scroll-x-auto  overflow-hidden rounded-md ">
                     <thead class="text-xs text-gray-500 font-semibold bg-gray-100 uppercase">
                         <tr class=" ">
                             <th scope="col" class="px-6 py-3">
@@ -108,6 +108,12 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                               STATUS
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                              BARCODE
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                              SKU
                             </th>
                            
                             <th scope="col" class="px-6 py-3">
@@ -144,7 +150,7 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="flex flex-col p-2.5">
+                                <div class="flex flex-col p-2">
 
                                     @if ($appointment->patients->photo)
                                     <div class="w-11 h-11 flex-shrink-0 object-cover object-center rounded-full shadow mr-3">
@@ -211,6 +217,29 @@
                                 @endif
                             </td>
                             <td>
+                                  <div>
+                                    <span>
+                                    
+                                        @if ($appointment->barcode)
+                                        <img src="data:image/png;base64,{{$appointment->barcode}}"/>
+                                        @else
+                                            <span> - </span>
+                                        @endif
+                                    </span>
+                                  </div>
+                            </td>
+                            <td>
+                                    @if ($appointment->sku)
+                                    <span class="bg-black mx-2 text-white font-medium">
+                                        {{$appointment->sku}}
+                                    </span>
+                                    @else
+                                        <span> - </span>
+                                    @endif
+                                    
+                                  </div>
+                            </td>
+                            <td>
                                 <div class="flex justify-center mt-5">
                                               
                                     {{-- 
@@ -219,7 +248,7 @@
                                     <a href="{{route('admin.appointements_details',$appointment->id)}} "  data-tooltip-target="tooltip-view"  class="text-white  text-sm px-5 py-2 text-center mb-2" type="button">
                                         <i class="fas fa-eye text-green-700 text-xl"></i>
                                     </a> 
-                                    <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-target="deleteAppointement" data-modal-toggle="deleteDoctor" class="text-white   text-sm px-5 py-2 text-center mb-2" type="button">
+                                    <a href="#"  data-tooltip-target="tooltip-delete"   data-modal-toggle="deleteAppointement"  data-modal-target="deleteAppointement" data-modal-toggle="deleteDoctor" class="text-white   text-sm px-5 py-2 text-center mb-2" type="button">
                                         <i class="fas fa-trash text-red-700 text-xl"></i>
                                     </a>    
                                     <div id="tooltip-view" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -284,6 +313,10 @@
                                     <div class="w-full mb-6 group">
                                         <label for="date" class="font-medium "> Date:<span class="text-red-500 font-medium">*</span></label>
                                         <input type="date" name="date" id="date" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
+                                    </div>
+                                    <div class="w-full mb-6 group">
+                                        <label for="sku" class="font-medium "> SKU:<span class="text-red-500 font-medium">*</span></label>
+                                        <input id="sku" type="number"  name="sku" id="date" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " required />
                                     </div>
                                   
                                     <!-- services -->
@@ -422,7 +455,15 @@
         </div>
         @endsection
 
-      
+        <script>
+            function generateBarcode() {
+                // Generate a random barcode
+                var randomBarcode = Math.floor(Math.random() * 1000000000000).toString();
+    
+                // Set the barcode value in the input field
+                document.getElementById("sku").value = randomBarcode;
+            }
+        </script>
     
     
         <!-- select year -->

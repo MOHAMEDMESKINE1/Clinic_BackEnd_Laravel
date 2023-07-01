@@ -33,6 +33,7 @@ class TransactionController extends Controller
         return    view('dashboard.admin.transactions_details',compact("transaction"));
 
     }
+    
     public function search(Request $request)
     {
         
