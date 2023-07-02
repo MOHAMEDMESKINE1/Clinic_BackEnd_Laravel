@@ -10,6 +10,7 @@ use App\Http\Controllers\Lang\LangController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Visit\VisitController;
 use App\Http\Controllers\Review\ReviewController;
+use App\Http\Controllers\Stripe\StripeController;
 use App\Http\Controllers\Holiday\HolidayController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Service\ServiceController;
@@ -204,6 +205,8 @@ Route::group(['middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], functio
 
 
     });
+
+  
 });
 
 
@@ -342,7 +345,10 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::post('/reviews/create', 'store')->name('patient.store_reviews');
 
     });
-
+    Route::controller(StripeController::class)->group(function(){
+        Route::get('stripe', 'stripe')->name("patient.stripe");
+        Route::post('stripe', 'stripePost')->name('stripe.post');
+    });
 
 });
 

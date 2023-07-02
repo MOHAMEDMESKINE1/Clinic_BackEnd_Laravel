@@ -103,7 +103,10 @@
                     </article>
 
           @endforeach
-
+       
+        </div>
+        <div class="mt-5   mx-5   ">
+            {{ $reviews->links() }}
         </div>
     </div>
 
@@ -158,6 +161,7 @@
             </div>
         </div>
     </div>
+  
  </div>
   
 

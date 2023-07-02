@@ -73,6 +73,7 @@
              
                 </a>
                 <div role="menu" x-show="open" class="mt-2 space-y-3 px-5  " aria-label="Dashboards">
+
                   <a
                     href="{{route('admin.statistics')}}"
                     role="menuitem"
@@ -81,6 +82,7 @@
                   <i class="fas fa-light fa-gauge p-1"></i>
                     Dashboard
                   </a>
+                 
                   <a
                     href="{{route('admin.staff')}}"
                     role="menuitem"
@@ -175,7 +177,7 @@
                                         this.closest('form').submit();">
                         <i class="fas fa-light fa-right-from-bracket p-1"></i> {{ __('Log Out') }}
                     </a>
-                </form>       
+                  </form>       
                  
                 </div>
               </div>

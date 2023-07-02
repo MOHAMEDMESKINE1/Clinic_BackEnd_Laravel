@@ -76,10 +76,18 @@
                     role="menuitem"
                     class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                   >
-                  <i class="fas fa-light fa-gauge p-1"></i>
+                  <i class="fas fa-light fa-gauge p-1.5"></i>
                     Dashboard
                   </a>
-                 
+                  <a
+                  href="{{route('patient.stripe')}}"
+                  role="menuitem"
+                  class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                >
+                {{-- <i class="fas fa-sharp fa-solid "></i>                   --}}
+                <i class="fas fa-solid fa-sack-dollar "></i>
+                 Appointements Bills
+                </a>
                 
                   <a
                     href="{{route('patient.appointements')}}"

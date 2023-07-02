@@ -50,7 +50,7 @@
                         
                       
                         
-                        <button data-modal-target="addAppointement" data-modal-toggle="addAppointement" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
+                        <button onclick="generateBarcode()" data-modal-target="addAppointement" data-modal-toggle="addAppointement" class="text-white bg-gradient-to-br   from-cyan-600 to-cyan-500 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="button">
                             Add Appointemet
                         </button>
                             
@@ -64,7 +64,7 @@
                     
                     <div class="flex justify-between mb-2">
                        
-                        <form action="{{ route('patient.filter_appointements') }}" method="GET" class="flex mb-5 items-center">
+                        {{-- <form action="{{ route('patient.filter_appointements') }}" method="GET" class="flex mb-5 items-center">
                             <select id="order-filter" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                                 <option disabled selected>
                                     <i class="fas fa-light fa-filter"></i>
@@ -80,6 +80,21 @@
                             <button type="submit"  class="text-white    bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                                 Filter
                             </button>
+                        </form> --}}
+                        <form action="{{ route('patient.filter_appointements') }}" method="GET" class="flex mb-5 items-center">
+                            <select id="order-filter" onchange="this.form.submit()" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                                <option disabled selected>
+                                    <i class="fas fa-light fa-filter"></i>
+                                    Filter Status
+                                </option>
+                                <option >all</option>
+                                <option value="booked">booked</option>
+                                <option value="checkin">Check In</option>
+                                <option value="checkout">Check Out</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                
+                           
                         </form>
 
                          {{-- export excel --}}
@@ -104,6 +119,12 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                 STATUS
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                BARCODE
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                SKU
                                 </th>
                             
                             
@@ -140,18 +161,41 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span>{{$appointement->charge}} </span>
+                                    <span>{{$appointement->charge}} $ </span>
                                 </td>
                             
                                 <td>
-                                    <span class="bg-red-500 p-0.5 text-white rounded-md">
-                                        {{$appointement->payment}}
-                                    </span>
+                                    @if ($appointement->payment === "paid")
+                                <span class="bg-green-500 text-white rounded-md p-1">
+                                    {{$appointement->payment}}
+
+                                </span>
+                                @else
+                                 <span class="bg-red-500 text-white rounded-md p-1">
+                                    {{$appointement->payment}}
+                                </span>
+                                @endif
                                     <i class="fas fa-regular fa-credit-card ml-2"></i>
 
                                 </td>
                                 <td>
-                                <span>{{$appointement->status}}</span>   
+                                    <span>{{$appointement->status}}</span>   
+                                </td>
+                                <td>
+                                    @if ($appointement->barcode)
+                                    <img src="data:image/png;base64,{{$appointement->barcode}}"/>
+                                    @else
+                                        <span> - </span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($appointement->sku)
+                                    <span class="bg-black mx-2 text-white font-medium">
+                                        {{$appointement->sku}}
+                                    </span>
+                                    @else
+                                        <span> - </span>
+                                    @endif   
                                 </td>
                                 <td>
                                     <div class="flex justify-center mt-5">
@@ -241,7 +285,11 @@
                                 <label for="date" class="font-medium "> Date:<span class="text-red-500 font-medium">*</span></label>
                                 <input type="date" name="date" id="date" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder="Email@gmail.com " required />
                             </div>
-                          
+                          {{-- sku --}}
+                            <div class="w-full mb-6 group">
+                                <label for="sku" class="font-medium "> SKU:<span class="text-red-500 font-medium">*</span></label>
+                                <input id="sku" type="number"  name="sku" id="date" class="block  p-2.5  w-full text-sm text-gray-900 bg-transparent border  border-gray-300 rounded-md appearance-none  dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " required />
+                            </div>
                             <!-- services -->
                             <div class="w-full mb-6  group ">
                                 <label for="services" class="font-medium ">Services:<span class="text-red-500 font-medium mb-1">*</span><br></label>
@@ -374,6 +422,15 @@
         </div>
     </div>
 </div>
+<script>
+    function generateBarcode() {
+        // Generate a random barcode
+        var randomBarcode = Math.floor(Math.random() * 1000000000000).toString();
+
+        // Set the barcode value in the input field
+        document.getElementById("sku").value = randomBarcode;
+    }
+</script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
