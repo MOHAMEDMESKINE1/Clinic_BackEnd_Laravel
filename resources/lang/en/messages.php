@@ -59,6 +59,7 @@ return [
             'lastname' => "Last Name ",
             'email' => "Email ",
             'doctor' => "Doctor ",
+            'service' => "Service",
             'date' => "Date ",
             'appointement_now' => "Appointement now ",
     ],

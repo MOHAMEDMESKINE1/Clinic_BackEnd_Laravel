@@ -53,6 +53,9 @@ Route::controller(WebsiteController::class)->group(function(){
     // store contact
     route::post('/contact','StoreContact')->name('store.contact');
 
+    // store appointement
+    route::post('/appointement','StoreAppointement')->name('store.appointement');
+
 });
 Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_subscribers');
 

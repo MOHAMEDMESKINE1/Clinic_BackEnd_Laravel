@@ -103,25 +103,25 @@
             <div class="text-center shadow-md    border-b mb-4 md:border-r border-r-gray-300">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
-                    ">32</h1>
+                    "> {{$specializations}} </h1>
                     <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.specializations')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 md:border-r border-r-gray-300">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
-                    ">38</h1>
+                    "> {{$services}} </h1>
                     <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.services')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 md:border-r border-r-gray-300">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
-                    ">40</h1>
+                    ">{{ $doctors}}</h1>
                     <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.doctors')</p>
             </div>
             <div class="text-center shadow-md   border-b mb-4 ">
                     <h1 class="text-5xl mb-4 font-bold
                     text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400
-                    ">100</h1>
+                    ">{{ $patients_count}}</h1>
                     <p class="text-xl text-cyan-900 mb-4">@lang('messages.statistics.satisfied')</p>
             </div>
         </div>
@@ -133,56 +133,34 @@
           <div class="text-4xl font-semibold text-cyan-500 mb-5">@lang('messages.statistics.title_doctors')</div>
         </div>
         <div class="container mx-auto ">
-            <div class="grid grid-col-1 m-5 md:grid-cols-3 gap-x-2 mt-5">
+            <div class="grid grid-col-1 m-5 md:grid-cols-3 gap-2 mt-5">
 
-
+                @foreach ($teams as $team)
                     <div class="bg-white  shadow-md rounded-md my-10 p-5">
                        <div class="relative flex justify-center">
                         <div class="flex justify-center absolute -top-20 ">
-                            <img src="{{asset('storage/img/avatar-richard.png')}}" class="rounded-full object-cover border-2 border-gray-500" alt="">
+                          @if ($team->photo)
+                          <img src="{{asset('storage/doctors/'.$team->photo)}}" class="h-32  w-32  rounded-full object-cover border-2 border-gray-500" alt="">
+                          @else
+
+                           <img src="{{asset('storage/img/profile.svg')}}" class="  h-32 w-32 rounded-full object-cover border-2 border-gray-500" alt="">
+ 
+                          @endif
                         </div>
                        </div>
                         <div class="text-center mt-20">
-                            <h1 class="text-2xl mb-2 text-cyan-800">Thomas Philips </h1>
-                            <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
-                        </div>
-                        <div class="flex items-center  justify-center mt-5">
-                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
-                        </div>
-                    </div>
-
-
-                    <div class="bg-white  shadow-md rounded-md my-10 p-5">
-                       <div class="relative flex justify-center ">
-                            <div class="flex justify-center absolute -top-20 ">
-                              <img src="{{asset('storage/img/avatar-ali.png')}}" class="rounded-full object-cover border-2 border-gray-500" alt="">
+                            <h1 class="text-2xl mb-2 text-cyan-800">{{$team->firstname}} {{$team->lastname}}  </h1>
+                            <p class="text-cyan-600 text-sm">{{$team->phone}}</p>
+                            <p class="text-cyan-600 text-sm">{{$team->email}}</p>
+                            <p class="text-gray-700 text-sm"> University : {{$team->university}}  </p>
+                            <p class="text-gray-700 text-sm"> Experience : {{$team->exprience}} {{ $team->exprience > 1 ? 'Years' :'Year' }} 
+                            <p class="text-gray-700 text-sm"> Specialization : {{$team->specializations->name}}</p>
                             </div>
-                       </div>
-
-                        <div class="text-center mt-20">
-                            <h1 class="text-2xl mb-2 text-cyan-800">Megan Diaz</h1>
-                            <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
-                        </div>
                         <div class="flex items-center  justify-center mt-5">
                             <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
                         </div>
                     </div>
-
-
-                    <div class="bg-white  shadow-md rounded-md my-10 p-5">
-                       <div class="relative flex justify-center">
-                        <div class="flex justify-center absolute -top-20 ">
-                          <img src="{{asset('storage/img/avatar-shanai.png')}}" class="rounded-full object-cover border-2 border-gray-500" alt="">
-                        </div>
-                       </div>
-                        <div class="text-center mt-20">
-                            <h1 class="text-2xl mb-2 text-cyan-800"> Katelyn Brady</h1>
-                            <p class="font-light">Lorem ipsum dolor sit amet.</p>                           
-                        </div>
-                        <div class="flex items-center  justify-center mt-5">
-                            <a href="{{route('appointement')}}" class="  md:block font-semibold p-3 px-6 text-white  rounded-full shadow-md hover:bg-transparent hover:border border-cyan-700 hover:text-cyan-700 baseline bg-cyan-700">@lang('messages.appointement.title')</a>
-                        </div>
-                    </div>
+                    @endforeach                  
                    
                     
             </div>

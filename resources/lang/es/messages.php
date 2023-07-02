@@ -61,7 +61,9 @@ return [
             'lastname' => "Apellido",
             'email' => "correo electrónico",
             'doctor' => "Médico ",
+            'service' => "Service",
             'date' => "Fecha ",
+            "payment"=>"Pago",
             'appointement_now' => "Cita ahora",
         ],
         'map'=>[

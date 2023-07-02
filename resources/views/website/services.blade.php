@@ -34,16 +34,24 @@
             <h2 class="text-4xl font-bold mb-4 text-cyan-800 mt-20 wow bounce" data-wow-duration="3s" data-wow-delay=".2s">@lang('messages.services.title')</h2>
             <h3 class="text-center text-cyan-800 "> <a href="/">@lang('messages.navbar.home')</a> / <a href="#">@lang('messages.services.services')</a></h3>
             <div class="grid md:grid-cols-3 gap-x-4 gap-y-4 xl:gap-x-12 mt-5">
-                    <!-- service 1 -->
-                    <div class="bg-white p-5 rounded-tr-lg rounded-bl-lg shadow-md transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100 cursor-pointer">
-                        <div class="flex justify-center">
-                            <img src="{{asset('storage/img/avatar-anisha.png')}}" alt="" class="rounded-full mx-auto mb-3">
+
+                    @foreach ($services as $service)
+                        <!-- service 1 -->
+                        <div class="bg-white p-5 rounded-tr-lg rounded-bl-lg shadow-md transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100 cursor-pointer">
+
+                            <div class="flex justify-center">
+
+                                <img src="{{asset('storage/services/'.$service->photo)}}" alt="" class=" w-21  h-21 mx-auto mb-3">
+                            </div>
+                            <h1 class="text-cyan-800 text-center">{{$service->name}}</h1>
+                            <h1 class="text-orange-800">Doctor : {{$service->doctors->firstname}} {{$service->doctors->lastname}}</h1>
+                            <div class="bg-gray-50">
+                                <p class="font-light">{{$service->description}}</p>
+                            </div>
                         </div>
-                        <h1 class="text-cyan-800">Services 1</h1>
-                        <p class="font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, est?</p>
-                    </div>
+                    @endforeach
                     <!-- service 2 -->
-                    <div class="bg-white p-5 shadow-md rounded-tr-lg rounded-bl-lg transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100 cursor-pointer">
+                    {{-- <div class="bg-white p-5 shadow-md rounded-tr-lg rounded-bl-lg transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100 cursor-pointer">
                         <div class="flex justify-center">
                             <img src="{{asset('storage/img/avatar-richard.png')}}" alt="" class="rounded-full mx-auto mb-3">
                         </div>
@@ -60,7 +68,7 @@
                         
                         <h1 class="text-cyan-800">Services 1</h1>
                         <p class="font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, est?</p>
-                    </div>
+                    </div> --}}
                 
             </div>
             

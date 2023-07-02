@@ -55,7 +55,9 @@ return [
         'lastname' => "Nachname",
         'email' => "E-Mail",
         'doctor' => "Arzt",
+        'service' => "Service",
         'date' => "Datum",
+        'payment' => "Zahlung",
         'appointement_now' => "Jetzt Termin vereinbaren",
     ],
     

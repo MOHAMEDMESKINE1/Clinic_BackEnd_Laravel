@@ -20,7 +20,11 @@ class SpecializationRepository implements RepositoryInterface {
        
         return  $this->specialization->select("*")->paginate(5); 
     }
+    public function specialization_count() {
 
+       
+        return  $this->specialization->count() ;
+    }
     public function search($query)
     {
         $specializations = $this->specialization->where('name', 'like', '%' . $query . '%')->paginate();

@@ -52,10 +52,10 @@
               <div class="">
                   <h2 class="mb-6 font-semibold text-gray-900 mt-5 md:mt-0 uppercase dark:text-white">@lang('messages.footer.subscribe') </h2>
                   <div class="flex items-stretch mt-5 ">
-                    <form action="{{route('store_subscribers')}}" method="POST">
+                    <form  method="POST" action="{{route('store_subscribers')}}" >
                         @csrf
                         @method("POST")
-                        <input   id="subscriber"  type="email" required name="subscriber" class="bg-gray-100 rounded-lg rounded-r-none text-base leading-none p-2 w-36 md:p-3 text-gray-800  md:w-auto  border border-transparent focus:outline-none focus:border-gray-500"  placeholder="@lang('messages.footer.palceholder_email')" />
+                        <input   id="subscriber"  type="email"  name="subscriber" class="bg-gray-100 rounded-lg rounded-r-none text-base leading-none p-2 w-36 md:p-3 text-gray-800  md:w-auto  border border-transparent focus:outline-none focus:border-gray-500"  placeholder="@lang('messages.footer.palceholder_email')" required />
 
                         <button type="submit"  class="w-24 md:w-28 rounded-l-none hover:bg-cyan-600 bg-cyan-700 rounded text-base font-medium leading-none text-white p-2 capitalize focus:outline-none focus:ring-2  focus:ring-cyan-500">@lang('messages.footer.subscribe')</button>
     

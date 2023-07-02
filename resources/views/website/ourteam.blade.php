@@ -37,44 +37,39 @@
           <h3 class="text-center "> <a href="/">@lang('messages.team.home')</a> / <a href="#">@lang('messages.team.team')</a></h3>
       </div>
      
-      <div class="grid grid-col-1 md:grid-cols-2 gap-5 lg:grid-cols-3 px-4 py-4 mt-8 mb-8 ">
+      <div class="grid grid-col-1 md:grid-cols-3 gap-5 px-4 py-4 mt-8 mb-8 ">
+         
+        @foreach ($teams as $team)
           <div class="max-w-md mx-auto bg-white  ">
               <div class="p-5 border-2 border-gray-200 rounded-lg shadow-md cursor-pointer transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100">
-                <div class="flex items-center mb-4">
-                  <img class="h-12 w-12 rounded-full object-cover mr-4" src="{{asset('storage/img/avatar-richard.png')}}"t="testimonial avatar">
-                  <div>
-                    <h4 class="font-semibold text-gray-800">Jane Smith</h4>
-                    <p class="text-gray-600 text-sm">COO, ABC Inc.</p>
+                    <div class="flex items-center mb-4">
+                      @if ( $team->photo)
+                        <img class="h-12 w-12 rounded-full object-cover mr-4" src="{{asset('storage/doctors/'.$team->photo)}}"t="testimonial avatar">
+                      @else 
+                      <img class="h-12 w-12 rounded-full object-cover mr-4" src="{{asset('storage/img/profile.svg')}}"t="testimonial avatar">
+
+                      @endif
+                      <div>
+                        <h4 class="font-semibold text-gray-800">{{$team->firstname}} {{$team->lastname}}</h4>
+                        <p class="text-cyan-600 text-sm">{{$team->phone}}</p>
+                        <p class="text-cyan-600 text-sm">{{$team->email}}</p>
+                        <p class="text-gray-700 text-sm"> University : {{$team->university}}  </p>
+                        <p class="text-gray-700 text-sm"> Experience : {{$team->exprience}} {{ $team->exprience > 1 ? 'Years' :'Year' }} 
+                        <p class="text-gray-700 text-sm"> Specialization : {{$team->specializations->name}}</p>
+                          </p>
+  
+                      </div>
+                    </div>
+                    <p class="text-cyan-700 text-lg leading-7"> Lorem ipsum dolor sit amet cofficia reprehenderit facere quam quae dignissimos unde consectetur placeat, explicabo ab perferendis harum, obcaecati corporis at fugiat necessitatibus consequuntur qui voluptas provident quia exercitationem ut animi? </p>
+                    <div class="flex justify-center sm:justify-center mt-10">
+                      <a href="{{route("appointement")}}"   class="  bg-cyan-900  font-semibold py-3 px-4   text-white  rounded-full shadow-md  hover:shadow-lg baseline transform transition duration-500 hover:scale-110 ">@lang('messages.appointement.appointement_now')  </a>
+                    </div>
+
                   </div>
-                </div>
-                <p class="text-gray-700 text-lg leading-7">Suspendisse tristique, dolor sit amet aliquet interdum, lacus nisl iaculis turpis, non lacinia ex metus at sapien. Duis eget metus eu magna blandit varius. Praesent lobortis nec metus eget molestie. </p>
               </div>
-            </div>
-          <div class="max-w-md mx-auto bg-white ">
-              <div class="p-5 border-2 border-gray-200 rounded-lg shadow-md cursor-pointer transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100">
-                <div class="flex items-center mb-4">
-                  <img class="h-12 w-12 rounded-full object-cover mr-4" src="{{asset('storage/img/avatar-richard.png')}}" alt="testimonial avatar">
-                  <div>
-                    <h4 class="font-semibold text-gray-800">Jane Smith</h4>
-                    <p class="text-gray-600 text-sm">COO, ABC Inc.</p>
-                  </div>
-                </div>
-                <p class="text-gray-700 text-lg leading-7">Suspendisse tristique, dolor sit amet aliquet interdum, lacus nisl iaculis turpis, non lacinia ex metus at sapien. Duis eget metus eu magna blandit varius. Praesent lobortis nec metus eget molestie. </p>
-              </div>
-            </div>
-          <div class="max-w-md mx-auto bg-white ">
-              <div class="p-5 border-2 border-gray-200 rounded-lg shadow-md cursor-pointer transform transition-transform duration-500 ease-in-out hover:scale-105 active:scale-100">
-                <div class="flex items-center mb-4">
-                  <img class="h-12 w-12 rounded-full object-cover mr-4" src="{{asset('storage/img/avatar-richard.png')}}" alt="testimonial avatar">
-                  <div>
-                    <h4 class="font-semibold text-gray-800">Jane Smith</h4>
-                    <p class="text-gray-600 text-sm">COO, ABC Inc.</p>
-                  </div>
-                </div>
-                <p class="text-gray-700 text-lg leading-7">Suspendisse tristique, dolor sit amet aliquet interdum, lacus nisl iaculis turpis, non lacinia ex metus at sapien. Duis eget metus eu magna blandit varius. Praesent lobortis nec metus eget molestie. </p>
-              </div>
-          </div>
-         
+            @endforeach
+          
+          
       </div>
   </section> 
    <!-- footer -->   

@@ -48,7 +48,7 @@ class SubscriberController extends Controller
 
         toastr()->success('Thank you for your subscription !', 'Subscription ');
 
-         return view("welcome");
+        return redirect("/");
     }
     public function delete(Request $request){
 

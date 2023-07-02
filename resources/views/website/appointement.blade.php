@@ -58,7 +58,9 @@
           <div>
               <h1  class="text-white text-2xl md:text-3xl my-5 text-center font-semibold">@lang('messages.appointement.title') </h1>
               <div class="container mx-auto px-4">
-                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " method="POST" >
+                <form class="bg-transparent  md:px-8 pt-6 pb-8 mb-4 " action="{{route("store.appointement")}}" method="POST" >
+                  @csrf
+                  @method("POST")
                       <div class="mb-4 ">
                         <div class="flex justify-between">
                           <div class="w-1/2 pr-2">
@@ -87,23 +89,52 @@
                       
                       <div class="mb-4">
                         <div class="flex justify-between">
+
                           <div class="w-1/2 pr-2">
                             <label class="block text-white font-bold mb-2" for="select">
                               @lang('messages.appointement.doctor')
                             </label>
                             <select id="doctor"  name="doctor" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
-                              <option>Dr.Teddy Thomas</option>
-                              <option>Dr.Smith Franky</option>
+                              @foreach ($doctors as $doctor)
+                                <option value="{{$doctor->id}}">{{$doctor->firstname}} {{$doctor->lastname}}</option>
+                              @endforeach
+                            </select>
+
+                            
+                          </div>
+                          <div class="w-1/2 pr-2">
+                            <label class="block text-white font-bold mb-2" for="select">
+                              @lang('messages.appointement.service')
+                            </label>
+                            <select id="service"  name="service" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                              @foreach ($services as $service)
+                                <option value="{{$service->id}}">{{$service->name}}</option>
+                              @endforeach
                             </select>
                           </div>
-                          <div class="w-1/2 pl-2">
+
+                         
+                        </div>
+                        
+
+                          <div class="w-full">
                             <label class="block text-white font-bold mb-2" for="datetime">
                               @lang('messages.appointement.date')
 
                             </label>
-                            <input id="date" class="block mt-1 py-4  px-4  w-full text-sm text-white  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime" type="datetime-local">
+                            <input id="date"  name="date"  type="datetime-local" class="block mt-1 py-4  px-4  w-full text-sm text-white  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime">
+                          
+                            <label class="block text-white font-bold mb-2 mt-2" for="datetime">
+                              @lang('messages.appointement.payment')
+                            </label>
+
+                            <select id="payment_method"  name="payment_method" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                            
+                                <option value="manually">Manually</option>
+                                <option value="stripe">Stripe</option>
+                             
+                            </select>
                           </div>
-                        </div>
                       </div>
                       <div class="flex justify-center sm:justify-center mt-10">
                         <button type="submit"  class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">@lang('messages.appointement.appointement_now')  </button>

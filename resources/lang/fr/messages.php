@@ -67,7 +67,9 @@ return [
         'lastname' => "Nom",
         'email' => "Email",
         'doctor' => "Médecin",
+        'service' => "Service",
         'date' => "Date",
+        'payment' => "Paiment",
         'appointement_now' => "Prendre un rendez-vous maintenant",
     ],
     
@@ -103,7 +105,7 @@ return [
     
     // Page des statistiques
     'statistics'=>[
-        'specializations' => "Spécialisations",
+        'specializations' => "Spécializations",
         'services' => "Services",
         'doctors' => "Médecins",
         'satisfied' => "Patients satisfaits",

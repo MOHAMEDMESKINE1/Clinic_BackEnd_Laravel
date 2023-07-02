@@ -57,7 +57,9 @@ return [
         'lastname' => "الاسم العائلي ",
         'email' => "البريد الإلكتروني ",
         'doctor' => "الطبيب ",
+        'service' => "الخدمة",
         'date' => "التاريخ ",
+        'payment' => "الدفع",
         'appointement_now' => "احجز موعد الآن 
         ",
         ],
