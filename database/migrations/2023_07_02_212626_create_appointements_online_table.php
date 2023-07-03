@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("firstname")->nullable();
             $table->string("lastname")->nullable();
             $table->string("email")->nullable();
-            $table->string("date")->nullable();
+            $table->date("date")->nullable();
             $table->string("payment_method")->nullable();
 
             

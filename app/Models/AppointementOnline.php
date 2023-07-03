@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AppointementOnline extends Model
 {
     use HasFactory;
+    protected $table = 'appointements_online'; 
+
     protected $guarded = [""];
 }

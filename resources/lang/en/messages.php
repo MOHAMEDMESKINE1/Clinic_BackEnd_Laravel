@@ -60,6 +60,7 @@ return [
             'email' => "Email ",
             'doctor' => "Doctor ",
             'service' => "Service",
+            "payment"=>"Payment",
             'date' => "Date ",
             'appointement_now' => "Appointement now ",
     ],

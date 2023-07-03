@@ -67,14 +67,14 @@
                             <label class="block text-white font-bold mb-2" for="last-name">
                               @lang('messages.appointement.firstname')
                             </label>
-                            <input  type="text"  id="firstname" name="firstname" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.firstname') " required />
+                            <input  type="text"  id="firstname" name="firstname"  value="{{ old('firstname') }}" class="block mt-1 py-4  px-4  w-full text-sm  bg-white  text-gray-900   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.firstname') " required />
   
                           </div>
                           <div class="w-1/2 pl-2">
                             <label class="block text-white font-bold mb-2" for="last-name">
                               @lang('messages.appointement.lastname')
                             </label>
-                            <input  type="text" id="lastname" name="lastname"  class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.lastname')" required />
+                            <input  type="text" id="lastname" name="lastname"  value="{{ old('lastname') }}"  class="block mt-1 py-4  px-4  w-full text-sm  bg-white  text-gray-900   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.lastname')" required />
   
                           </div>
                         </div>
@@ -83,7 +83,7 @@
                         <label class="block text-white font-bold mb-2" for="email">
                           @lang('messages.appointement.email')
                         </label>
-                        <input  type="email" name="email" id="email" class="block mt-1 py-4  px-4  w-full text-sm   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.email')" required />
+                        <input  type="email" name="email" id="email"  value="{{ old('email') }}" class="block mt-1 py-4  px-4  w-full text-sm bg-white  text-gray-900    bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.appointement.email')" required />
   
                       </div>
                       
@@ -94,9 +94,9 @@
                             <label class="block text-white font-bold mb-2" for="select">
                               @lang('messages.appointement.doctor')
                             </label>
-                            <select id="doctor"  name="doctor" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                            <select id="doctor"  name="doctor" class="block mt-1 py-4  px-4  w-full text-sm bg-white  text-gray-900  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
                               @foreach ($doctors as $doctor)
-                                <option value="{{$doctor->id}}">{{$doctor->firstname}} {{$doctor->lastname}}</option>
+                                <option value="{{$doctor->id}}" {{ old('doctor') ===  $doctor->id ? 'selected' : ''}}>{{$doctor->firstname}} {{$doctor->lastname}}</option>
                               @endforeach
                             </select>
 
@@ -106,9 +106,9 @@
                             <label class="block text-white font-bold mb-2" for="select">
                               @lang('messages.appointement.service')
                             </label>
-                            <select id="service"  name="service" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                            <select id="service"  name="service" class="block mt-1 py-4  px-4  w-full text-sm bg-white  text-gray-900    bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
                               @foreach ($services as $service)
-                                <option value="{{$service->id}}">{{$service->name}}</option>
+                                <option value="{{$service->id}}" {{ old('service') ===  $service->id ? 'selected' : ''}}>{{$service->name}}</option>
                               @endforeach
                             </select>
                           </div>
@@ -122,16 +122,16 @@
                               @lang('messages.appointement.date')
 
                             </label>
-                            <input id="date"  name="date"  type="datetime-local" class="block mt-1 py-4  px-4  w-full text-sm text-white  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime">
+                            <input id="date"  name="date"  type="datetime-local" class="block mt-1 py-4  px-4  w-full text-sm bg-white  text-gray-900   bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="datetime">
                           
                             <label class="block text-white font-bold mb-2 mt-2" for="datetime">
                               @lang('messages.appointement.payment')
                             </label>
 
-                            <select id="payment_method"  name="payment_method" class="block mt-1 py-4  px-4  w-full text-sm text-gray-400  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                            <select id="payment_method"  name="payment_method" class="block mt-1 py-4  px-4  bg-white w-full text-sm text-gray-900  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
                             
-                                <option value="manually">Manually</option>
-                                <option value="stripe">Stripe</option>
+                                <option value="manually" {{ old('payment_method') ===  'manually' ? 'selected' : ''}}>Manually</option>
+                                <option value="stripe" {{ old('doctor') ===  'stripe' ? 'selected' : ''}}>Stripe</option>
                              
                             </select>
                           </div>

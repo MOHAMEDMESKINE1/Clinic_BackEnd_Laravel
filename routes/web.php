@@ -57,6 +57,12 @@ Route::controller(WebsiteController::class)->group(function(){
     route::post('/appointement','StoreAppointement')->name('store.appointement');
 
 });
+
+Route::controller(StripeController::class)->group(function(){
+    Route::get('stripe', 'stripe')->name("patient.stripe");
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+})->middleware("auth:guest");
+
 Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_subscribers');
 
 // Routes Admin Dashboard
