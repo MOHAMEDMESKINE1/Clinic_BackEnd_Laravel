@@ -66,7 +66,19 @@
                         </div>              
                        </div>
                     </div> --}}
-                    <x-search route="admin.search_staff"></x-search>
+                    {{-- <x-search route="admin.search_staff"></x-search> --}}
+                    <form action="{{ route('admin.search_staff') }}" method="GET" class="flex mb-5 items-center">
+                        @csrf
+                        <select id="order-filter" onchange="this.form.submit()" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                            <option disabled selected>
+                                <i class="fas fa-light fa-filter"></i>
+                                Filter Role
+                            </option>
+                            <option >all</option>
+                            <option value="patient">Patient</option>
+                            <option value="role">Role </option>
+                            <option value="admin">Admin</option>
+                        </select>
                 </div>
             
           <!-- Recent registration patients -->
@@ -99,19 +111,23 @@
                          
                             <tr class="bg-whit   border-b dark:bg-white dark:border-gray-400">
                                 <th scope="row" class="px-6 py-4 text-center font-medium text-black whitespace-nowrap ">
-                                    <div class="w-10 h-10 p-1.5 mx-14 flex flex-col justify-center object-cover object-center rounded-full shadow mr-3">
+                                   
+                                    <div class="w-16 h-16   p-1.5    flex  justify-center mr-3">
+                                        
                                         @if ($staff->photo)
-                                        <img src="{{asset('/storage/staff/'.$staff->photo)}}" alt="{{$staff->firstname}}" class="w-full h-full rounded-full">
+                                        <img src="{{asset('/storage/staff/'.$staff->photo)}}" alt="{{$staff->firstname}}" class="w-full  rounded-full h-full ">
                                         @else
-                                        <img src="{{asset('/storage/img/profile.svg')}}" alt="{{$staff->firstname}}" class="w-full h-full rounded-full">
+                                        <img src="{{asset('/storage/img/profile.svg')}}" alt="{{$staff->firstname}}" class="w-full  rounded-full h-full ">
                                         @endif
-                                       <div class="flex justify-center">
-                                        <p class="capitalize text-cyan-950">{{$staff->name}} </p>
-                                       </div>
-                                        <div class="flex justify-center" >
-                                            <p class="">{{$staff->email}}</p>
-                                        </div>
+
+                                       
                                     </div>
+                                    <div class="flex flex-col justify-center ">
+                                        <p class="capitalize text-cyan-950">{{$staff->name}} </p>
+                                        <p class="">{{$staff->email}}</p>
+
+                                    </div>
+                                        
                                 </th>
                                 <td class="px-6 py-4">
                                 <span class="bg-green-200 text-green-500 px-1 rounded-sm"> {{$staff->role}}</span>
@@ -173,7 +189,7 @@
                 </div>
             <div>
             <div class="mt-4">
-              {{$staffs->links()}}
+              {{-- {{$staffs->links()}} --}}
             </div>
         </div>
             </div>

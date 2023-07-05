@@ -124,6 +124,9 @@ class AppointementRepository implements RepositoryInterface {
         ->with(['doctors', 'patients'])
         ->paginate(5);
 
+        if($appointments->isEmpty()){
+            $appointments = $this->all();
+        }
        
         return $appointments;
        
@@ -159,6 +162,11 @@ class AppointementRepository implements RepositoryInterface {
        
 
         return $this->appointement->with(["doctors","patients","services"])->findOrFail($id);
+    }
+    public function getByIdAppointement($id){
+       
+
+        return $this->appointement->with(["doctors","patients"])->where("id",$id)->first();
     }
     public function getByIdDoctors($id){
        

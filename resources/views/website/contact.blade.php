@@ -86,12 +86,12 @@
                           
                             <div class="mb-8 ">
                               <label for="name" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.name') <b class="text-orange-600">*</b></label>
-                              <input type="text" name="name" id="name" value="{{ old('name') }}" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder=" @lang('messages.contact.name') " required />
+                              <input type="text" name="name" id="name" value="{{ old('name') }}" class="block mt-1 py-4   px-4  w-full text-sm bg-white  text-gray-900 bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder=" @lang('messages.contact.name') " required />
   
                             </div>
                             <div class="mb-8">
                               <label for="email" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.email') <b class="text-orange-600">*</b></label>
-                              <input type="email" name="email" id="email" value="{{ old('email') }}" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="example@gmail.com " required />
+                              <input type="email" name="email" id="email" value="{{ old('email') }}" class="block mt-1 py-4   px-4  w-full text-sm bg-white  text-gray-900 bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="example@gmail.com " required />
       
                             </div>
                             
@@ -100,12 +100,12 @@
                           </div>
                           <div class="mb-8">
                             <label for="number" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.phone')<b class="text-orange-600">*</b></label>
-                            <input type="number" name="number" id="number" value="{{ old('number') }}" class="block mt-1 py-4   px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="+212 00 00 00 00 " required />
+                            <input type="number" name="number" id="number" value="{{ old('number') }}" class="block mt-1 py-4   px-4  w-full text-sm bg-white  text-gray-900  bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="+212 00 00 00 00 " required />
     
                           </div>
                           <div class="mb-8">
                             <label for="message" class="block mb-2  font-bold  dark:text-white">@lang('messages.contact.message') <b class="text-orange-600">*</b></label>
-                            <textarea id="message" name="message" rows="4"  class="block mt-1 py-4  px-4  w-full text-sm text-white bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.contact.message')">{{ old('message') }}"</textarea>
+                            <textarea id="message" name="message" rows="4"  class="block mt-1 py-4  px-4  w-full text-sm bg-white  text-gray-900  bg-transparent border-2  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" placeholder="@lang('messages.contact.message')">{{ old('message') }}</textarea>
                                                           
                           </div>
                           <div class="mb-8">
@@ -142,7 +142,7 @@
             <div class="bg-white border border-gray-100 shadow-md md:shadow-lg shadow-slate-400 rounded-md  p-10">
               <i class=" fa-solid fa-location-dot text-3xl text-cyan-900 mb-2  p-2 py-1 md:mr-2 bg-cyan-50 rounded-full border border-cyan-500 "></i>
               <h1 class="text-2xl font-semibold text-cyan-800 mb-3">@lang('messages.contact.address')</h1>
-              <span>C-303, Atlanta Shopping Mall, Nr. Sudama Chowk, Mota Varachha, Surat, Gujarat, India.</span>
+              <span>N°1 Morocco ,Tiznit Agadir .</span>
             </div>
       </div>
     </div>

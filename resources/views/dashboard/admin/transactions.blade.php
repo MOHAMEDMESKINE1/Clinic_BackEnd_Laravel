@@ -102,7 +102,7 @@
                                 </a>
                                 <div class="flex flex-col p-2.5">
                                     <a class="mb-1 text-green-700  font-medium "
-                                    href="{{route("admin.transactions_details",$transaction->patients->id)}}" 
+                                    href="{{route("admin.transactions_details",$transaction->id)}}" 
                                     >
                                         {{$transaction->patients->firstname}}  
                                         {{$transaction->patients->lastname}} 
@@ -135,7 +135,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                               
-                                <a href="{{route('admin.transactions_details',$transaction->patients->id)}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('admin.transactions_details',$transaction->id)}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a>                                
                                

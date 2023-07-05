@@ -55,7 +55,7 @@
                
             
                 {{$doctors_count}}
-                0
+           
                     
                
               </span>
@@ -327,7 +327,7 @@
       }
 
         Patients_typeChart("line","patient_LineChart")
-        Patients_typeChart("doughnut","patient_DoughnutChart")
+        Patients_typeChart("bar","patient_DoughnutChart")
 
         // Doctors charts
         function Doctors_typeChart(type,id){

@@ -66,12 +66,12 @@ class PatientController extends Controller
 
         $patients = $this->patient->search($query);
 
-        if ($patients->isEmpty()) {
+        // if ($patients->isEmpty()) {
 
            
-            $patients = $this->patient->all();
+        //     $patients = $this->patient->all();
 
-         }
+        //  }
         return    view('dashboard.admin.patients',compact('patients'));
 
      }
@@ -79,7 +79,6 @@ class PatientController extends Controller
             
             $this->patient->store($request->all());            
             
-            // just igonre this error it still working 
                     
             toastr()->success('Patient has been saved successfully!', 'Saving ');
 
@@ -159,9 +158,9 @@ class PatientController extends Controller
         return    view('dashboard.patient.transactions',compact("transactions"));
 
     }
-    public function transactions_details($id){
+    public function transactions_patients_details($id){
 
-        $transaction = $this->appointements->getById($id);
+        $transaction = $this->appointements->getByIdAppointement($id);
         return    view('dashboard.patient.transactions_details',compact("transaction"));
 
     }

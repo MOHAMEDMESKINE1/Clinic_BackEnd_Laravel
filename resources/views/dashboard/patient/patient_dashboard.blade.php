@@ -61,12 +61,12 @@
             <nav aria-label="Main" class="flex-1 px-2 py-2 overflow-y-hidden  ">
               <!-- Dashboards links -->
               <div class=" " x-data="{ isActive: true, open: true}">
-                <div class="flex justify-start ml-2 text-sm"> 
+                <a href="{{url("/")}}" class="flex justify-start ml-2 text-sm"> 
                   <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="w-7 h-7 max-w-md mx-5" alt="photo" >
                   <h1 class=" mt-2">
                     We<b class="text-cyan-500">Care</b>
                   </h1>
-               </div>
+               </a>
 
              
                 </a>

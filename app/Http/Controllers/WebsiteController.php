@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Contact;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
+use App\Repositories\ReviewRepository;
 use Illuminate\Http\Request;
 use App\Repositories\ServiceRepository;
 use App\Repositories\SpecializationRepository;
@@ -17,12 +18,14 @@ class WebsiteController extends Controller
     public $doctors ; 
     public $specializations ; 
     public $patients ; 
+    public $reviews ; 
     
     public function __construct(
     ServiceRepository $serviceRepository,
     PatientRepository $patientRepository,
     SpecializationRepository $specializationRepository,
     DoctorRepository $doctorRepository,
+    ReviewRepository $reviewRepository,
    
     )
     {
@@ -30,6 +33,7 @@ class WebsiteController extends Controller
         $this->doctors = $doctorRepository ;
         $this->patients = $patientRepository ;
         $this->specializations = $specializationRepository ;
+        $this->reviews = $reviewRepository ;
     }   
     
     public function StoreContact(Request $request){
@@ -59,9 +63,10 @@ class WebsiteController extends Controller
         $specializations =$this->specializations->specialization_count()  ; 
         $patients = $this->patients->all();
         $patients_count = $this->patients->patients_count() ; 
-
         $teams = $this->doctors->allDoctors();
-        return view ('website.about',compact("doctors","services","specializations","patients","patients_count","teams"));
+        $reviews = $this->reviews->all();
+        
+        return view ('website.about',compact("reviews","doctors","services","specializations","patients","patients_count","teams"));
     }
     public function services(){
 

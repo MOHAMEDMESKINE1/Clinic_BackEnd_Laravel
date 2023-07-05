@@ -26,7 +26,7 @@
                 background: url("/storage/img/background-wecare.jpg") !important;
                 background-repeat: no-repeat !important;
                 object-fit :scale-down !important ;
-               
+               background:  fixed;
                
         }
     .mtop{

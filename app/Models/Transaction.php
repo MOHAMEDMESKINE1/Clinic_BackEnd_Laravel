@@ -13,10 +13,10 @@ class Transaction extends Model
 
     public function patients()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class,'patient_id');
     }
     public function appointments()
     {
-        return $this->belongsTo(Appointement::class);
+        return $this->belongsTo(Appointement::class,'appointment_id');
     }
 }

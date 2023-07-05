@@ -1,5 +1,5 @@
 
-    <nav class="bg-white   border-gray-200 dark:bg-cyan-50   fixed w-full z-20 top-0 left-0 nav ">
+    <nav class="bg-white font-medium  border-gray-200 dark:bg-cyan-50   fixed w-full z-20 top-0 left-0 nav ">
         <div class=" flex flex-wrap items-center justify-between mx-auto p-4  ">
         <a href="#home" class="flex items-center">
             <img src="{{asset('storage/img/logo-hoptial.svg')}}" class="h-10 w-10 mx-3 " alt="Flowbite Logo" />

@@ -11,7 +11,7 @@ class StaffController extends Controller
 {
     public function staff(){
 
-        $staffs = User::latest()->paginate();
+        $staffs = User::all();
 
         return view("dashboard.admin.staff",compact("staffs"));
     }
@@ -60,14 +60,25 @@ class StaffController extends Controller
     }
     public function search(Request $query)
     {
-        $staffs = User::where('name', 'like', '%' . $query . '%')
-        ->orWhere('email', 'like', '%' . $query . '%')
-        ->orWhere('role', 'like', '%' . $query . '%')
-        ->paginate();
+        $staffs = User::where('role', 'like', '%' . $query . '%');
+        // ->orWhere('email', 'like', '%' . $query . '%')
+        // ->orWhere('role', 'like', '%' . $query . '%') 
 
-        if (!$staffs){
-            $staffs = $this->staff();
-        }
+        // // if (!$staffs){
+        // //     $staffs = $this->staff();
+        // // }
+        // if ($staffs->isEmpty()){
+        //     $staffs =  User::latest()->paginate(5);
+        // }
+
+        // $staffs = User::where(function ($queryBuilder) use ($query) {
+        //     $queryBuilder->where('name', 'like', '%' . $query . '%')
+        //         ->orWhere('email', 'like', '%' . $query . '%')
+        //         ->orWhere('role', 'like', '%' . $query . '%');
+        // })
+        // ->latest()
+        // ->paginate(5);
+
         return view("dashboard.admin.staff",compact("staffs"));
      
         

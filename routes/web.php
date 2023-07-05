@@ -58,10 +58,10 @@ Route::controller(WebsiteController::class)->group(function(){
 
 });
 
-Route::controller(StripeController::class)->group(function(){
-    Route::get('stripe', 'stripe')->name("patient.stripe");
-    Route::post('stripe', 'stripePost')->name('stripe.post');
-})->middleware("auth:guest");
+// Route::controller(StripeController::class)->group(function(){
+//     Route::get('stripe', 'stripe')->name("patient.stripe");
+//     Route::post('stripe', 'stripePost')->name('stripe.post');
+// })->middleware("auth:guest");
 
 Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_subscribers');
 
@@ -334,7 +334,7 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
 
         // transactions
         Route::get('/transactions', 'transactions')->name('patient.transactions');
-        Route::get('/transactions/{id}/details', 'transactions_details')->name('patient.transactions_details');
+        Route::get('/transactions/details/{id}', 'transactions_patients_details')->name('patient.transactions_details');
         Route::get('/transactions/search', 'searchTransaction')->name('patient.search_transactions');
 
         // visits

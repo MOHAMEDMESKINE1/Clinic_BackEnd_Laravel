@@ -90,9 +90,11 @@ class ServiceRepository implements RepositoryInterface {
             }           
              $service->description = $params["description"];
 
-            if (isset($params['status'])) {
-            $service->status = 0;
-        }
+            if (isset($params['status'])) 
+            {
+            $service->status = $params["status"];
+            
+            }
 
         if (request()->hasfile('photo')) {
             $file = request()->file('photo');

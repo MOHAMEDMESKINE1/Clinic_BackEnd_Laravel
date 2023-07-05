@@ -17,7 +17,7 @@ class ReviewRepository implements RepositoryInterface {
     public function all() {
 
     
-        $user_id = auth()->user()->id;
+        // $user_id = auth()->user()->id;
          $reviews =  $this->reviews->select("*")->with("users")
          ->latest()->paginate(6); 
     
