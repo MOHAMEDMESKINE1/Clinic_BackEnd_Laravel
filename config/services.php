@@ -40,5 +40,9 @@ return [
         // 'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    // vonage
+    // 'nexmo' => [
+    //     'sms_from' => 'Vonage SMS API HERE',
+    // ],
 
 ];

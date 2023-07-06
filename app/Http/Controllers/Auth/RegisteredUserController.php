@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use Vonage\Client;
 use App\Models\User;
 use Illuminate\View\View;
@@ -16,7 +15,7 @@ use Vonage\Client\Credentials\Basic;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-
+use App\Notifications\SuccessfulRegistration;
 class RegisteredUserController extends Controller
 {
     /**
@@ -54,6 +53,9 @@ class RegisteredUserController extends Controller
         
         
         Auth::login($user);
+
+        // vonage notification
+    //    SuccessfulRegistration::SendSmsNotification($user->name);
 
          return redirect(RouteServiceProvider::HOME);
         

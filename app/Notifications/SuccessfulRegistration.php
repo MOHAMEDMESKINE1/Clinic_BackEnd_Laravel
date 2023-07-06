@@ -2,7 +2,9 @@
 
 namespace App\Notifications;
 
+use Vonage\Client;
 use Illuminate\Bus\Queueable;
+use Vonage\Client\Credentials\Basic;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,13 +13,13 @@ use Illuminate\Notifications\Messages\VonageMessage;
 class SuccessfulRegistration extends Notification implements ShouldQueue
 {
     use Queueable;
-
+    protected $project ; 
     /**
      * Create a new notification instance.
      */
-    public function __construct(private string $name)
+    public function __construct( $project)
     {
-        //
+        $this->project = $project;
     }
 
     /**
@@ -43,7 +45,27 @@ class SuccessfulRegistration extends Notification implements ShouldQueue
     public function toVonage($notifiable)
     {
         return (new VonageMessage())
-            ->content('Welcome to WeCare, ' . $this->name . '.');
+            ->content('Welcome to WeCare, ' . $this->project . '.');
+    }
+    public static function SendSmsNotification($notifiable)
+    {
+        $basic  = new Basic("b05fff58", "39vWH4Ij3bTKB5hp");
+        $client = new Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("212704282927", "WeCare", $notifiable.' Has Been Registred to WeCare')
+        );
+        
+        $message = $response->current();
+        
+        if ($message->getStatus() == 0) {
+           
+
+        } else {
+        
+            toastr()->error('The message failed with status:'.$message->getStatus(), 'Failed');
+
+        }
     }
 
     /**
