@@ -87,7 +87,7 @@
                     
                     <h1 class="text-lg font-semibold text-gray-500 pt-3 pb-3 uppercase  border-b dark:border-primary dark:text-light mb-4 ">Recent registred staffs </h1>
                     
-                    <table class="w-full text-sm text-center  overflow-hidden rounded-md ">
+                     <table class="w-full text-sm text-center  overflow-hidden rounded-md ">
                         <thead class="text-xs  text-gray-500 font-semibold bg-gray-100 uppercase">
                             <tr class=" ">
                                 <th scope="col" class="px-6 py-3">
@@ -158,7 +158,7 @@
                                                 <option value="doctor">Doctor</option>
                                             </select>
                                         </form>
-                                        {{-- edit --}}
+                                       <!-- edit-->
                                         <a href="{{route("admin.edit_staff",$staff->id)}}"  data-tooltip-target="tooltip-edit"   class="text-white  px-5 py-2 text-center mb-2" type="button">
                                             <i class="fas fa-edit text-blue-700 text-xl"></i>
                                         </a> 
@@ -216,19 +216,22 @@
                         
                         </tbody>
                        
-                    </table>
+                    </table> 
                 </div>
             <div>
-            <div class="mt-4">
-              {{-- {{$staffs->links()}} --}}
+            <div class="m-4">
+              {{$staffs->links()}} 
             </div>
         </div>
             </div>
    
 </div>
-
 @endsection
-  
+
+    
+
+   
+
 
 </body>
 </html>

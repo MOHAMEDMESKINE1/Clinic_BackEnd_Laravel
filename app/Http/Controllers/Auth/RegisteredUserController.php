@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // vonage notification
-    //    SuccessfulRegistration::SendSmsNotification($user->name);
+       SuccessfulRegistration::SendSmsNotification($user->name);
 
          return redirect(RouteServiceProvider::HOME);
         

@@ -36,19 +36,7 @@ class DoctorController extends Controller
         $this->visits = $visitRepository;
     }
 
-    // public function RouteName($route){
-    //     $middlewareName = Request::route()->getName();
-
-    //     if ($middlewareName == 'doctor') { 
-    //         $view = 'dashboard.doctor'. $route;
-    //     } elseif ($middlewareName == 'admin') {
-    //         $view = 'dashboard.admin'.$route;
-    //     } else {
-    //         $view = 'dashboard.patient'.$route;
-    //     }
-
-    //     return $view
-    // }
+   
     public function doctors(){
 
         $doctors =   $this->doctors->all();

@@ -14,18 +14,15 @@ class AuthController extends Controller
            if(auth()->user()->role === "admin"){
              
             return  redirect()->route('admin.statistics');
-            // return  view('dashboard.admin.statistics');
 
 
            }
            elseif(auth()->user()->role === "doctor"){
             return  redirect()->route('doctor.statistics');
-            // return view('dashboard.doctor.statistics');
 
            }
            elseif(auth()->user()->role === "patient"){
             return  redirect()->route('patient.statistics');
-            // return view('dashboard.patient.statistics');
 
            }
         }else{

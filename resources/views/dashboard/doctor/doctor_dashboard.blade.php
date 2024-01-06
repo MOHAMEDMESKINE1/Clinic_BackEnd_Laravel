@@ -4,19 +4,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Patient Dashboard </title>
-    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
+    <title>Admin Dashboard </title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+    <link rel="shortcut icon" href="{{ asset('storage/img/logo-hoptial.svg') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 
 
     <script src="https://kit.fontawesome.com/b535effebb.js" crossorigin="anonymous"></script>
+   
     <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
     rel="stylesheet"
@@ -29,20 +31,18 @@
       {
         new google.translate.TranslateElement("languages")
       }
-
-   
     </script>
-        <!--  poppins font -->
-          <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,700;1,100;1,300;1,400&display=swap" rel="stylesheet">
+       <!--  poppins font -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,700;1,100;1,300;1,400&display=swap" rel="stylesheet">
 
-       <!-- poppins font  -->
-       <style>
-          body{
-            font-family: 'Poppins', sans-serif;
-          }
-       </style>
+    <!-- poppins font  -->
+    <style>
+       body{
+         font-family: 'Poppins', sans-serif;
+       }
+    </style>
   </head>
   <body >
     <div x-data="setup()" x-init="$refs.loading.classList.add('hidden');">
@@ -186,7 +186,7 @@
                 href="index.html"
                 class="inline-block text-2xl  font-light tracking-wider capitalize text-cyan-900 dark:text-light"
               >
-              Patient Dashboard 
+              Doctor Dashboard 
 
                
               </a>
@@ -251,7 +251,7 @@
                     aria-label="User menu"
                   >
                   <a
-                  href="../patient/profile.html"
+                  href="{{route('profile.edit')}}"
                   role="menuitem"
                   class="block  hover:shadow-sm px-4 py-2 text-sm  text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
                 >
@@ -334,19 +334,13 @@
                     aria-label="User menu"
                   >
                     <a
-                      href="#"
+                      href="{{route('profile.edit')}}"
                       role="menuitem"
                       class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
                     >
                       Your Profile
                     </a>
-                    <a
-                      href="#"
-                      role="menuitem"
-                      class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                      Settings
-                    </a>
+                   
                     <form method="POST" action="{{ route('logout') }}">
                       @csrf
     
@@ -621,10 +615,6 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-
     <script >
       
       const setup = () => {
@@ -657,5 +647,8 @@
 
       }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+    
   </body>
 </html>

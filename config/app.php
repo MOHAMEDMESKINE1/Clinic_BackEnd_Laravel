@@ -4,7 +4,6 @@ use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Excel\ExcelServiceProvider;
-use ConsoleTVs\Charts\ChartsServiceProvider;
 
 return [
 
@@ -172,9 +171,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // yajra
-        Yajra\DataTables\DataTablesServiceProvider::class,
-
         // excel
         ExcelServiceProvider::class,
 
@@ -201,7 +197,7 @@ return [
         // excel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // chart
-        'Chart' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Chart' => Charts::class,
     ])->toArray(),
 
 ];

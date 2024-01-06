@@ -127,7 +127,7 @@
 
                                 @endif
                                
-                                    <a class="text-green-700" href="{{route('admin.doctor_details',$appointment->patients->id)}}">
+                                    <a class="text-green-700" href="{{route('doctor.patient_details',$appointment->patients->id)}}">
                                         {{$appointment->patients->firstname}} {{$appointment->patients->lastname}}
                                     </a>
                                     <span class="text-base font-medium text-gray-600"> {{$appointment->patients->email}} </span>

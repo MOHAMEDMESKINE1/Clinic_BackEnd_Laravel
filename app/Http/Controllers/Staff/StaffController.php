@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -11,10 +12,11 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class StaffController extends Controller
 { 
    
+  
     public function staff(){
 
-        $staffs = User::all();
-
+        $staffs = User::paginate(5);
+      
         return view("dashboard.admin.staff",compact("staffs"));
     }
     public function store(Request $request)

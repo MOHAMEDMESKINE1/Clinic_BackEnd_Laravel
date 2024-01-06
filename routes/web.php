@@ -18,7 +18,6 @@ use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Appointement\AppointementController;
-use App\Http\Controllers\QRLogin\QrLoginController;
 use App\Http\Controllers\Specialization\SpecializationController;
 
 /*
@@ -44,7 +43,6 @@ Route::controller(StripeController::class)->group(function(){
 })->middleware("guest");
 
 Route::get('locale/{lang}', [LangController::class,'switchLang']);
-Route::get('qrcode', [QrLoginController::class,'checkUser']);
 
 Route::controller(WebsiteController::class)->group(function(){
 
@@ -310,8 +308,6 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
     
     Route::controller(PatientController::class)->group(function (){
 
-        // 
-        Route::get('/staff/generateQrCode', 'generateQrCode')->name('patient.qrcode');
 
         // 
         Route::get('/statistics', 'statistics')->name('patient.statistics');
