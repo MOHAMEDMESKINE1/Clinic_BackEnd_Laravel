@@ -105,7 +105,7 @@
                                     @endif
                                    
                                     <div class="flex flex-col">
-                                        <a class="text-green-700" href="{{route('doctor.visits_details',$visit->doctors->id)}}">
+                                        <a class="text-green-700" href="{{route('doctor.visits_details',$visit->id)}}">
                                             {{$visit->doctors->firstname}} {{$visit->doctors->lastname}}
                                         </a>
                                         <span class="text-base font-medium text-gray-600"> {{$visit->doctors->email}} </span>
@@ -128,7 +128,7 @@
                                 @endif
                                    
                                     <div class="flex flex-col p-2.5">
-                                        <a class="text-green-700" href="{{route('doctor.visits_details',$visit->patients->id)}}">
+                                        <a class="text-green-700" href="{{route('doctor.visits_details',$visit->id)}}">
                                             {{$visit->patients->firstname}} {{$visit->patients->lastname}}
                                         </a>
                                         <span class="text-base font-medium text-gray-600"> {{$visit->patients->email}} </span>

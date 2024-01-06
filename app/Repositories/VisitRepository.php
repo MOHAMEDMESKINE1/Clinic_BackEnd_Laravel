@@ -41,7 +41,7 @@ class VisitRepository implements RepositoryInterface {
     public function getById($id){
        
 
-        return $this->visit->findOrFail($id);
+        return $this->visit->with(["doctors","patients"])->findOrFail($id);
     }
 
     public function store($params){

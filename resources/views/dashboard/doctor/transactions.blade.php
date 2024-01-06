@@ -60,7 +60,7 @@
          
          </div>             
     </div>
-    <div class="grid grid-cols-1 ">
+    <div class="grid grid-cols-1 md:grid-col-2 ">
         <div class=" col-span-2 bg-white mx-4 p-4 shadow text-center rounded-md dark:bg-darker relative overflow-x-auto">
 
             <table id="" class="w-full text-sm mt-5  text-center text-gray-700  overflow-hidden rounded-md ">
@@ -135,7 +135,7 @@
                         <td>
                             <div class="flex justify-center mt-5">
                                                               
-                                <a href="{{route('doctor.transactions_details',$transaction->patients->id)}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
+                                <a href="{{route('doctor.transactions_details',$transaction->id)}}"  data-tooltip-target="tooltip-view"  data-modal-target="editDoctor" data-modal-toggle="editDoctor" class="text-white mx-2  w-25 font-medium rounded-lg text-sm px-5 py-2 text-center mb-2" type="button">
                                     <i class="fas fa-eye text-xl text-green-700"></i>
                                 </a>                                
                                

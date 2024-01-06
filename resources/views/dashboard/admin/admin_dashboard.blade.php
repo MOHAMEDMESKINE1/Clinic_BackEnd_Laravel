@@ -158,7 +158,7 @@
                   <i class="fas fa-sharp fa-solid fa-s p-1"></i>                  
                   Subscribers
                   </a>
-                  <a
+                  {{-- <a
                     href="{{route('admin.settings')}}"
                     role="menuitem"
                     class="block hover:border shadow-md  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
@@ -166,7 +166,7 @@
                   <i class="fas fa-light fa-gears p-1"></i>
                   
                   Settings
-                  </a>
+                  </a> --}}
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
   

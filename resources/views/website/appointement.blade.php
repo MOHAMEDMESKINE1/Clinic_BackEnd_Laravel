@@ -128,14 +128,19 @@
                               @lang('messages.appointement.payment')
                             </label>
 
-                            <select id="payment_method"  name="payment_method" class="block mt-1 py-4  px-4  bg-white w-full text-sm text-gray-900  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
+                            <select id="paymentOption"  name="payment_method" class="block mt-1 py-4  px-4  bg-white w-full text-sm text-gray-900  bg-transparent border  border-gray-300 rounded-md appearance-none  focus:outline-none focus:ring-0 focus:border-white  peer focus:border-2" id="select">
                             
                                 <option value="manually" {{ old('payment_method') ===  'manually' ? 'selected' : ''}}>Manually</option>
                                 <option value="stripe" {{ old('doctor') ===  'stripe' ? 'selected' : ''}}>Stripe</option>
                              
                             </select>
                           </div>
-                      </div>
+
+                          <div id="stripePayment" style="display: none;">
+                                <div id="card-element text-white font-bold">Stripe Card Payment</div>
+                                <a href="{{route('stripe')}}">Pay</a>
+                            </div>
+                          </div>
                       <div class="flex justify-center sm:justify-center mt-10">
                         <button type="submit"  class="   font-semibold py-3 px-4  text-cyan-800  rounded-full shadow-md  hover:shadow-lg baseline bg-white transform transition duration-500 hover:scale-110 ">@lang('messages.appointement.appointement_now')  </button>
                       </div>
@@ -157,8 +162,24 @@
         ScrollReveal().reveal('.headline', { delay: 500 });
 
       </script>
-    
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+        var paymentOption = document.getElementById('paymentOption');
+        var stripePayment = document.getElementById('stripePayment');
+
+        paymentOption.addEventListener("change", function() {
+            var selectedOption = paymentOption.value;
+            stripePayment.style.display = 'none';
+
+            // Show the selected payment div
+            if (selectedOption === 'stripe') {
+                stripePayment.style.display = 'block';
+            } 
+        });
+    });
+  </script>
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 </body>
 </html>

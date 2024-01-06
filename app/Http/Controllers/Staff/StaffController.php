@@ -6,9 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class StaffController extends Controller
-{
+{ 
+   
     public function staff(){
 
         $staffs = User::all();
@@ -58,9 +60,11 @@ class StaffController extends Controller
       return redirect()->route("admin.staff");
         
     }
-    public function search(Request $query)
+    public function search(Request $request)
     {
-        $staffs = User::where('role', 'like', '%' . $query . '%');
+        $staffs = User::where('role', 'like', '%' . $request->filter . '%')->get();
+
+        
         // ->orWhere('email', 'like', '%' . $query . '%')
         // ->orWhere('role', 'like', '%' . $query . '%') 
 
@@ -142,11 +146,13 @@ class StaffController extends Controller
         return redirect()->route('admin.staff');
     }
 
-    public function deleteStaff(Request $request){
+    public function deleteStaff(Request $request,User $staff){
 
-        $user =User::find($request->id);
+        $user =User::where("id",$request->id);
+        // dd($user->name);
        
-         $photo_path = $user->photo;
+        
+        $photo_path = $staff->photo;
 
         if ($photo_path && file_exists(public_path('storage/staff/' . $photo_path))) {
             unlink(public_path('storage/staff/' . $photo_path));

@@ -16,7 +16,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         {!! ReCaptcha::htmlScriptTagJsApi() !!}
-
+        @stack('scripts')
         <style>
             .background{
                 background: url("/storage/img/background.jpg") !important;
@@ -26,6 +26,8 @@
                
             }
         </style>
+
+        
     </head>
     <body class="font-sans text-gray-900 antialiased ">
         <div class="min-h-screen background flex flex-col sm:justify-center text-gray-900 items-center pt-6  sm:pt-0 bg-white ">

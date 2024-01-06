@@ -18,6 +18,7 @@ use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Subscriber\SubscriberController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Appointement\AppointementController;
+use App\Http\Controllers\QRLogin\QrLoginController;
 use App\Http\Controllers\Specialization\SpecializationController;
 
 /*
@@ -37,9 +38,13 @@ Route::get('/', function () {
 });
 
 
-
+Route::controller(StripeController::class)->group(function(){
+    Route::get('stripe', 'stripe')->name("stripe");
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+})->middleware("guest");
 
 Route::get('locale/{lang}', [LangController::class,'switchLang']);
+Route::get('qrcode', [QrLoginController::class,'checkUser']);
 
 Route::controller(WebsiteController::class)->group(function(){
 
@@ -58,10 +63,6 @@ Route::controller(WebsiteController::class)->group(function(){
 
 });
 
-// Route::controller(StripeController::class)->group(function(){
-//     Route::get('stripe', 'stripe')->name("patient.stripe");
-//     Route::post('stripe', 'stripePost')->name('stripe.post');
-// })->middleware("auth:guest");
 
 Route::post('/subscribers',[SubscriberController::class,'store'])->name('store_subscribers');
 
@@ -309,6 +310,10 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
     
     Route::controller(PatientController::class)->group(function (){
 
+        // 
+        Route::get('/staff/generateQrCode', 'generateQrCode')->name('patient.qrcode');
+
+        // 
         Route::get('/statistics', 'statistics')->name('patient.statistics');
         Route::get('/appointement_details/{id}', 'appointement_details')->name('patient.appointement_details');
         Route::get('/doctor_details/{id}', 'doctor_details')->name('patient.doctor_details');
@@ -353,10 +358,6 @@ Route::group(['middleware' => ['auth', 'isPatient'], 'prefix' => 'patient'], fun
         Route::put('/reviews/update', 'update')->name('patient.update_reviews');
         Route::post('/reviews/create', 'store')->name('patient.store_reviews');
 
-    });
-    Route::controller(StripeController::class)->group(function(){
-        Route::get('stripe', 'stripe')->name("patient.stripe");
-        Route::post('stripe', 'stripePost')->name('stripe.post');
     });
 
 });

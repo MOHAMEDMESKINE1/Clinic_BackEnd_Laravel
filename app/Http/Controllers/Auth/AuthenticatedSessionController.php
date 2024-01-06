@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
-     */
+     */ 
+
     public function create(): View
     {
+       
         return view('auth.login');
     }
 
@@ -25,9 +28,7 @@ class AuthenticatedSessionController extends Controller
      */
     protected function redirectTo()
     {
-    
-
-    return redirect('/dashboard');
+        return redirect('/dashboard');
     }
 
     public function store(LoginRequest $request)
@@ -41,7 +42,7 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended($this->redirectTo());
 
     }
-
+   
     /**
      * Destroy an authenticated session.
      */

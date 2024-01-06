@@ -27,19 +27,19 @@
      
     @extends('dashboard.doctor.doctor_dashboard')
     @section('content')
-    <div class="container ">
+    <div class="container  ">
 
       <h1 class="text-2xl mb-2 mx-5 mt-5  ">
          My Schedule
       </h1>
       <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container ">
-            <div class="m-5">
+        <div class=" container m-5">
+            <div class="">
                 <div class="flex justify-between sm\:flex-row ">
                 
                     {{-- search --}}
-                        <x-search route="doctor.search_schedules"></x-search>
+                        <x-search route="doctor.search_schedules" ></x-search>
                     {{-- search --}}
                 <div class=" flex justify-between  " >
                   

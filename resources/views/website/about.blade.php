@@ -264,7 +264,7 @@
           <article class="bg-white p-5 m-5 border-gray-400 border  border-1 shadow-md rounded-md">
               
               <div class="flex items-center mb-4 space-x-2">
-                  @if ($review->users->photo)
+                  @if ($review->users && $review->users->photo)
                   <div class="w-11 h-11 flex-shrink-0 object-cover  object-center rounded-full shadow mr-3">
                       <img src="{{asset('storage/staff/'.$review->users->photo)}}" alt="photo" class="w-full h-full rounded-full "><br>
                   </div>
@@ -276,8 +276,8 @@
                   @endif
                   
                   <div class="space-y-1 font-medium dark:text-gray-500">
-                      <p>{{$review->users->name}}</p> 
-                      <p class="mb-2 text-gray-500 dark:text-gray-400">{{$review->users->email}}</p>
+                      <p>{{$review->users && $review->users->name}}</p> 
+                      <p class="mb-2 text-gray-500 dark:text-gray-400">{{$review->users && $review->users->email}}</p>
 
                   </div>
               </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Patient;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,11 @@ use App\Repositories\VisitRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PatientRepository;
 use App\Repositories\ServiceRepository;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\Excel\ExportVisits;
 use App\Repositories\AppointementRepository;
 use App\Http\Controllers\Excel\ExportAppointements;
+use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
 {
@@ -38,8 +41,12 @@ class PatientController extends Controller
         $this->visits = $visitRepository;
         
     }
+   
     public function statistics(){
-        
+       
+       
+       
+
         // patients
         $today_appointment = $this->appointements->today_appointements_patients_count();
         $next_appointment = $this->appointements->next_appointements_patients_count();

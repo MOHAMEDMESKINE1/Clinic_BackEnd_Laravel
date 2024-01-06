@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Vonage\Client;
+use Vonage\SMS\Message\SMS;
 use Illuminate\Bus\Queueable;
 use Vonage\Client\Credentials\Basic;
 use Illuminate\Notifications\Notification;
@@ -53,13 +54,14 @@ class SuccessfulRegistration extends Notification implements ShouldQueue
         $client = new Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("212704282927", "WeCare", $notifiable.' Has Been Registred to WeCare')
+            new SMS("212704282927", "WeCare", $notifiable.' Has Been Registred to WeCare')
         );
         
         $message = $response->current();
         
         if ($message->getStatus() == 0) {
            
+            toastr()->success('The message Has Been sent succefully','Success');
 
         } else {
         

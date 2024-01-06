@@ -70,8 +70,17 @@
                
                 
               </div>
+             
               
             </div>
+             {{--<div class="mb-3"> 
+              <h4>{{ Auth::user()->name }} --}}
+                <!-- below code show the name of User like QRCode and user can download that image to login -->
+                {{-- <a href="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(400)->generate(Auth::user()->name))!!}" download="{{Auth::user()->name}}">
+                  <img src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(400)->generate(Auth::user()->name))!!} ">
+                </a>
+            </div>
+             --}}
             <!-- Today Appointements card -->
             <div class="flex items-center shadow-md text-white justify-between p-7 bg-green-500 rounded-md dark:bg-darker">
               <div>

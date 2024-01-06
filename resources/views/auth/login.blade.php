@@ -1,6 +1,17 @@
 <x-guest-layout>
+    {{-- qrLogin --}}
+    @push('scripts')
+        <script src="https://reeteshghimire.com.np/wp-content/uploads/2021/05/html5-qrcode.min_.js"></script>
+
+    @endpush
+    
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    {{-- <img src="data:image/png;base64,{{ $code }}"> --}}
+   
+    <h4>SCAN RESULT</h4>
+    <div id="result">Result Here</div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -65,4 +76,6 @@
 
    
     </div>
+    
+   
 </x-guest-layout>
