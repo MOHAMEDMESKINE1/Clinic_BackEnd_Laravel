@@ -40,6 +40,13 @@ class ServiceRepository implements RepositoryInterface {
         ->where('name', 'like', '%' . $query . '%')
         ->orWhere('category', 'like', '%' . $query . '%')
         ->paginate();
+        
+        // if($services_searched){
+        //     return  $services_searched;
+        // }else{
+        //     return $this->service->all();
+        // }
+
         return $services;
         
     }

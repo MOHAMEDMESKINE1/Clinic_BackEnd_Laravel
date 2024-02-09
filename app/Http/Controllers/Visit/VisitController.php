@@ -46,17 +46,20 @@ class VisitController extends Controller
         
         $visits = $this->visits->search($query);
 
-     
+
+        if ($query) {
+            $visits = $this->visits->search($query);
+
+            if($visits->isEmpty()){
+                $visits = $this->visits->all();
+            }
+
+
+         }
+         
         $patients = $this->patients->all();
 
         $doctors= $this->doctors->all();
-
-        if ($patients->isEmpty()) {
-
-           
-            $visits = $this->all();
-
-         }
        
         return    view('dashboard.admin.visits',compact(['visits','patients','doctors']));
 

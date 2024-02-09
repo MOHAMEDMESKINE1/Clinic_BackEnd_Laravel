@@ -51,12 +51,24 @@ class AppointementController extends Controller
 
         $query = $request->search;
 
-        $appointments = $this->appointement->search($query);
-
+      
         $doctors = $this->doctors->all();
         $patients = $this->patients->all();
         $services = $this->services->all();
-         
+
+        if($query){
+
+            $appointments = $this->appointement->search($query);
+
+            if($appointments->isEmpty()){
+                // $appointments = $this->appointement->all();
+                $appointments = $this->appointement->all();
+            }
+        }else{
+            $appointments = $this->appointement->all();
+
+        }
+
        return view('dashboard.admin.appointements',compact(
             [
                 "appointments",

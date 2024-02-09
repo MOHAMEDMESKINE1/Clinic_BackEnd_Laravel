@@ -29,9 +29,10 @@
     <!-- Search -->
     <div class=" container  ">
       <div class="m-5">
-        {{-- <div class="flex justify-between sm\:flex-row  ">
+        <div class="flex justify-between sm\:flex-row  ">
             <div>
-                <form action="">
+                <form method="get" action="{{ route("admin.search_subscribers")}}">
+                   <div class="flex">
                     <label class="relative block">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                             <svg class="h-5 w-5 fill-black" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
@@ -46,12 +47,17 @@
                             class="w-full bg-white placeholder:font-italitc border border-slate-300 rounded-full py-2 pl-10 pr-4 focus:outline-none"
                             placeholder="Search" type="text" />
                     </label>
+                    <button  class="bg-gray-500 p-1.5 rounded-full  w-75 text-white mx-4"  type="submit"  >
+                                    
+                       Search
+                    </button>
+                   </div>
                 </form>  
             </div>              
             
-        </div> --}}
+        </div>
          <!-- Search -->
-            <x-search route="admin.search_subscribers"></x-search>
+            {{-- <x-search route="admin.search_subscribers"></x-search> --}}
         <!-- Search -->
         <div class="grid grid-col-1 mt-5">
             

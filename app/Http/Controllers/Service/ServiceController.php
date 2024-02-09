@@ -37,8 +37,16 @@ class ServiceController extends Controller
 
         $query = $request->search;
 
-        $services = $this->services->search($query);
+        if($query){
+            $services = $this->services->search($query);
 
+            if($services->isEmpty()){
+                $services = $this->services->all();
+            }
+        }else{
+            $services = $this->services->all();
+        }
+      
         $doctors= $this->doctors->all();
 
         return    view('dashboard.admin.services',compact(['services','doctors']));

@@ -29,7 +29,9 @@ class AppointementRepository implements RepositoryInterface {
     public function appointementsChart(){
    
         $today = Carbon::now();
-        $startDate = Carbon::create(date('Y'), 1, 1)->startOfDay(); // Start from January 1st of the current year
+        $currentMonth = now()->month;
+        $currentDay = now()->day;
+        $startDate = Carbon::create(date('Y'),$currentMonth,$currentDay)->startOfDay(); // Start from January 1st of the current year
     
         $appointments = $this->appointement->select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as date"))
             ->whereBetween('created_at', [$startDate, $today])
@@ -124,10 +126,6 @@ class AppointementRepository implements RepositoryInterface {
         ->with(['doctors', 'patients'])
         ->paginate(5);
 
-        if($appointments->isEmpty()){
-            $appointments = $this->all();
-        }
-       
         return $appointments;
        
 

@@ -35,7 +35,7 @@ class SocialAuthController extends Controller
                 $newUser = User::create([
                     "name"=>$user->name,
                     "email"=>$user->email,
-                    "google_id"=>$user->google_id,
+                    // "google_id"=>$user->google_id,
                     "password"=>Hash::make($user->password),
 
                 ]);

@@ -40,8 +40,18 @@ class TransactionController extends Controller
 
         $query = $request->search;
 
-        $transactions = $this->appointement->search($query);
+       
+        if($query){
+            $transactions = $this->appointement->search($query);
 
+            if($transactions->isEmpty()){
+
+                $transactions = $this->appointement->all();
+            }
+        }else{
+            $transactions = $this->appointement->all();
+        }
+      
         $patients = $this->patients->all();
          
        return view('dashboard.admin.transactions',compact(

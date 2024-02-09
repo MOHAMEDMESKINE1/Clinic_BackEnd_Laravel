@@ -73,12 +73,15 @@ class PatientController extends Controller
 
         $patients = $this->patient->search($query);
 
-        // if ($patients->isEmpty()) {
+        if($query){
+            if ($patients->isEmpty()) {
 
            
-        //     $patients = $this->patient->all();
-
-        //  }
+                $patients = $this->patient->all();
+    
+             }
+        }
+     
         return    view('dashboard.admin.patients',compact('patients'));
 
      }
