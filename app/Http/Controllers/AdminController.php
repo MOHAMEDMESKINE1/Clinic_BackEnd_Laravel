@@ -113,11 +113,17 @@ class AdminController extends Controller
      }
      public function filter(Request $request){
 
-        $query = $request->filter;
+            $search = $request->filter;
 
-        $doctors = $this->doctors->filter($query);
-
-        return    view('dashboard.admin.doctors',compact('doctors'));
+            if ($search) {
+               $staffs_filtered = User::where('role', 'like', '%' . $search . '%')->paginate();
+               $staffs = $staffs_filtered;
+            } else {
+               // If search is not provided, display all users with pagination
+               $staffs = User::paginate(5);
+            }
+           
+         return    view('dashboard.admin.staff',compact("staffs"));
 
      }
 

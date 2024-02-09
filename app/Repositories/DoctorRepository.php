@@ -64,14 +64,15 @@ class DoctorRepository implements RepositoryInterface {
     {
         if($filter==="0"){
 
-            return $this->doctor->where('status', '=',0)->paginate();
+            return $this->doctor->where('status', '=',0)->paginate(5);
 
         }elseif($filter==="1"){
-            return $this->doctor->where('status', '=',1)->paginate();
+            return $this->doctor->where('status', '=',1)->paginate(5);
 
         }
+        return $this->all();
       
-        return  $this->all();
+        
         
     }
     

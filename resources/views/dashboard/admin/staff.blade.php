@@ -67,18 +67,19 @@
                        </div>
                     </div> --}}
                     {{-- <x-search route="admin.search_staff"></x-search> --}}
-                    <form action="{{ route('admin.search_staff') }}" method="GET" class="flex mb-5 items-center">
+                    <form action="{{ route('admin.filter') }}" method="GET" class="flex mb-5 items-center">
                         
-                        <select id="order-filter" onchange="this.form.submit()" name="filter" class="text-white      mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                        <select id="order-filter" onchange="this.form.submit()" name="filter" class="text-white  mx-5  bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                             <option disabled selected>
                                 <i class="fas fa-light fa-filter"></i>
-                                Filter Role
+                                Filter Role 
                             </option>
                             <option value="">all</option>
                             <option value="patient">Patient</option>
                             <option value="doctor">Doctor </option>
                             <option value="admin">Admin</option>
                         </select>
+                    </form>
                 </div>
             
           <!-- Recent registration patients -->

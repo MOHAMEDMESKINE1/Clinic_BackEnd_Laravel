@@ -1,17 +1,9 @@
 <x-guest-layout>
-    {{-- qrLogin --}}
-    @push('scripts')
-        <script src="https://reeteshghimire.com.np/wp-content/uploads/2021/05/html5-qrcode.min_.js"></script>
-
-    @endpush
-    
-
+   
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    {{-- <img src="data:image/png;base64,{{ $code }}"> --}}
-   
-    <h4>SCAN RESULT</h4>
-    <div id="result">Result Here</div>
+
+
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -64,7 +56,7 @@
                 <div class=" flex justify-start mx-auto">
                     <img src="{{asset('storage/img/gmail.svg')}}" class="w-10 h-10 mr-5 bg-white p-2 border border-2 rounded-full " alt="">
                     <a href="{{ url('/redirect') }}" class=" 
-                    text-gray-100 hover:text-cyan-500 mt-3 font-medium  text-sm text-center 
+                    text-gray-900 hover:text-cyan-500 mt-3 font-medium  text-sm text-center 
                      ">
                     
                      @lang('messages.login.google')</a>
