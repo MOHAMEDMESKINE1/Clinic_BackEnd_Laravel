@@ -55,7 +55,7 @@
                     
                 <div class=" flex justify-start mx-auto">
                     <img src="{{asset('storage/img/gmail.svg')}}" class="w-10 h-10 mr-5 bg-white p-2 border border-2 rounded-full " alt="">
-                    <a href="{{ url('/redirect') }}" class=" 
+                    <a href="{{ url('/auth/google') }}" class=" 
                     text-gray-900 hover:text-cyan-500 mt-3 font-medium  text-sm text-center 
                      ">
                     

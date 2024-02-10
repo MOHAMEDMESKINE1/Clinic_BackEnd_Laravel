@@ -495,7 +495,7 @@
           </header>
 
           <!-- Main content -->
-          <main class="container ">
+          <main class="container">
                 @yield('content')
          
         

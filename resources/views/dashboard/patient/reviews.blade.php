@@ -180,8 +180,7 @@
 
             <!-- modal body -->
             <div class="grid grid-cols-1 md\:grid-cols-2 pt-4 px-2">
-                <form method="post"  enctype="multipart/form-data" action="{{route("patient.delete_reviews",$review->id)}}">
-
+                <form method="POST"  enctype="multipart/form-data" action="{{route("patient.delete_reviews",$review->id)}}">
                     @csrf
                     @method("DELETE")
 

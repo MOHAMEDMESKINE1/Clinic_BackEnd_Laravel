@@ -115,32 +115,23 @@
                 
                 My Schedule
                 </a>
-                {{-- <a
-                  href="{{route('doctor.live_consultations')}}"
-                  role="menuitem"
-                  class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                >
-                <i class="fas fa-light fa-video p-1"></i>
-                
-                Live Consultation
-              
-              </a> --}}
                 <a
                   href="{{route('doctor.holidays')}}"
                   role="menuitem"
-                  class="block hover:shadow-md hover:border mx-5  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                  class="block hover:shadow-md hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 >
                 <i class="fas fa-light fa-calendar-xmark"></i>                  
                  Holiday
+             
                 </a>
-                                   
+                    
                 </div>
               </div>
 
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <a class="block hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                <a class="block mt-5 hover:shadow-md hover:cursor-pointer hover:border  border-l-gray-600 hover:border-l-4   hover:bg-gray-200 hover:font-semibold active:bg-gray-50 p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                 
                  :href="route('logout')"
                         onclick="event.preventDefault();

@@ -47,9 +47,9 @@ class ReviewController extends Controller
        
         $this->review->all();
     }
-    public function delete (Request $request){
+    public function deleteReview ($id){
 
-        $this->review->delete($request->id);
+        $this->review->delete($id);
  
         toastr()->warning('Review has been deleted successfully!', 'Deletion');
  

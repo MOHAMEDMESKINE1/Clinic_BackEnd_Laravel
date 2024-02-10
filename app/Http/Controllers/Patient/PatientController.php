@@ -181,8 +181,17 @@ class PatientController extends Controller
 
         $query = $request->search;
 
-        $transactions = $this->appointements->search($query);
-       
+        if($query){
+            $transactions = $this->appointements->search($query);
+
+            if($transactions->isEmpty()){
+
+                $transactions = $this->appointements->all();
+            }
+        }else{
+            $transactions = $this->appointements->all();
+        }
+      
         $patients = $this->patient->all();
 
         
@@ -245,15 +254,21 @@ class PatientController extends Controller
 
      
         $patients = $this->patient->all();
-
         $doctors= $this->doctors->all();
-        if ($patients->isEmpty()) {
+
+        if($query){
+            
+             $visits = $this->visits->search($query);
+            if ($visits->isEmpty()) {
 
            
-            $visits = $this->all();
-
-         }
-       
+                $visits = $this->visits->all();
+    
+             }
+        }else{
+            $visits  = $this->visits->all();
+        }
+        
         return    view('dashboard.patient.visits',compact(['visits','patients','doctors']));
 
      }

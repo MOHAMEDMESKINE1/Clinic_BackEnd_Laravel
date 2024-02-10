@@ -66,8 +66,9 @@ class ReviewRepository implements RepositoryInterface {
 
         $review =$this->getById($id) ;
         $review->delete();
+        $this->all();
         
-        return  $this->all();
+      
     }
 
 

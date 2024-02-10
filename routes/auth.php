@@ -37,7 +37,7 @@ Route::middleware('guest')->group(function () {
                 
     
     // login wth google
-    Route::get('/redirect', [SocialAuthController::class, 'redirectToProvider']);
+    Route::get('/auth/google', [SocialAuthController::class, 'redirectToProvider']);
     Route::get('/auth/google/callback', [SocialAuthController::class, 'HandleCallback']);
        
     // login with facebook

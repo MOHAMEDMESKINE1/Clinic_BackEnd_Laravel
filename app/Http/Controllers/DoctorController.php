@@ -77,11 +77,24 @@ class DoctorController extends Controller
 
         $query = $request->search;
 
-        $appointments = $this->appointement->search($query);
-
+      
         $doctors = $this->doctors->all();
         $patients = $this->patients->all();
         $services = $this->services->all();
+
+        if($query){
+
+            $appointments = $this->appointement->search($query);
+
+            if($appointments->isEmpty()){
+                // $appointments = $this->appointement->all();
+                $appointments = $this->appointement->all();
+            }
+        }else{
+            $appointments = $this->appointement->all();
+
+        }
+        
          
        return view('dashboard.doctor.appointements',compact(
             [
@@ -179,10 +192,20 @@ class DoctorController extends Controller
     {
         
 
-        $query = $request->search;
+          $query = $request->search;
 
-        $transactions = $this->appointement->search($query);
        
+        if($query){
+            $transactions = $this->appointement->search($query);
+
+            if($transactions->isEmpty()){
+
+                $transactions = $this->appointement->all();
+            }
+        }else{
+            $transactions = $this->appointement->all();
+        }
+      
         $patients = $this->patients->all();
 
         
@@ -218,12 +241,22 @@ class DoctorController extends Controller
     }
     public function searchVisit( Request $request){
         
-        $patients = $this->patients->all();
-        $doctors= $this->doctors->all();
-
+    
         $query = $request->search;
+        
         $visits = $this->visits->search($query);
+        if ($query) {
+            $visits = $this->visits->search($query);
 
+            if($visits->isEmpty()){
+                $visits = $this->visits->all();
+            }
+
+
+         }
+         $patients = $this->patients->all();
+         $doctors= $this->doctors->all();
+ 
         return    view('dashboard.doctor.visits',compact(['visits','patients','doctors']));
 
       

@@ -34,7 +34,7 @@
       </h1>
       <div class="grid grid-col-1 md:grid-col-2">
         <!-- Search -->
-        <div class=" container m-5">
+        <div class=" container ">
             <div class="">
                 <div class="flex justify-between sm\:flex-row ">
                 
@@ -55,7 +55,7 @@
         </div>
 
     </div>
-    <div  class="grid grid-cols-1">
+    <div  class="grid grid-cols-1 m-5">
         <table class=" table w-full text-sm   text-center overflow-hidden rounded-md ">
             <thead class="text-xs text-cyan-500  bg-cyan-100 uppercase">
                 <tr class=" ">
@@ -145,13 +145,13 @@
                 </tr>  
                 @endforeach 
                 </tbody>
-            </table>
-            <div class="mt-4 mx-5">
-           
-                <!-- navigation -->
-                    {{$schedules->links()}}
-                <!-- navigation -->
-               </div>
+        </table>
+        <div class="mt-4 mx-5">
+        
+            <!-- navigation -->
+                {{$schedules->links()}}
+            <!-- navigation -->
+            </div>
         </div>
     </div>
       

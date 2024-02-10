@@ -422,15 +422,15 @@
         </div>
     </div>
 </div>
-<script>
-    function generateBarcode() {
-        // Generate a random barcode
-        var randomBarcode = Math.floor(Math.random() * 1000000000000).toString();
+        <script>
+            function generateBarcode() {
+                // Generate a random barcode
+                var randomBarcode = Math.floor(Math.random() * 1000000000000).toString();
 
-        // Set the barcode value in the input field
-        document.getElementById("sku").value = randomBarcode;
-    }
-</script>
+                // Set the barcode value in the input field
+                document.getElementById("sku").value = randomBarcode;
+            }
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
